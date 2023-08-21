@@ -1,0 +1,64 @@
+{
+  "words": [
+    {
+      "nameEng": "apple",
+      "nameUrk": "яблуко",
+      "description": "The usually round, red or yellow, edible fruit of a small tree.",
+      "image": "cameo-apple-tree-1-jpg-webp.webp"
+    },
+    {
+      "nameEng": "book",
+      "nameUrk": "книга",
+      "description": "A set of written, printed, or blank pages fastened along one side.",
+      "image": "book.jpg"
+    },
+    {
+      "nameEng": "cat",
+      "nameUrk": "кіт",
+      "description": "A small domesticated carnivorous mammal with soft fur.",
+      "image": "cat.jpg"
+    },
+    {
+      "nameEng": "door",
+      "nameUrk": "двері",
+      "description": "A hinged, sliding, or revolving barrier at the entrance to a building.",
+      "image": "door.jpg"
+    },
+    {
+      "nameEng": "egg",
+      "nameUrk": "яйце",
+      "description": "An oval or round object laid by a female bird.",
+      "image": "egg.png"
+    },
+    {
+      "nameEng": "flower",
+      "nameUrk": "квітка",
+      "description": "The seed-bearing part of a plant, consisting of reproductive organs.",
+      "image": "flower.jpg"
+    },
+    {
+      "nameEng": "grape",
+      "nameUrk": "виноград",
+      "description": "A berry, typically green or purple, growing in clusters on a vine.",
+      "image": "red-green-grapes.webp"
+    },
+    {
+      "nameEng": "hat",
+      "nameUrk": "капелюх",
+      "description": "A shaped covering for the head worn for warmth or as a fashion item.",
+      "image": "hat.jpg"
+    },
+    {
+      "nameEng": "island",
+      "nameUrk": "острів",
+      "description": "A piece of land surrounded by water.",
+      "image": "island.jpg"
+    },
+    {
+      "nameEng": "jacket",
+      "nameUrk": "куртка",
+      "description": "An outer garment extending either to the waist or the hips.",
+      "image": "jacket.webp"
+    }
+  ]
+}

@@ -1,0 +1,44 @@
+.middle {
+  position: absolute;
+}
+
+.deck-card {
+  cursor: pointer;
+}
+
+.front, .back {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  backface-visibility: hidden;
+  position: absolute;
+  transition: all .6s linear;
+}
+
+.front img {
+  height: 100%;
+  object-fit: cover;
+}
+
+.front {
+  transform: perspective(600px) rotateY(0);
+}
+
+.back {
+  background: #f1f1f1;
+  transform: perspective(600px) rotateY(180deg);
+}
+
+.back-content {
+  color: #2c3e50;
+  text-align: center;
+  width: 100%;
+}
+
+.active-front {
+  transform: perspective(600px) rotateY(-180deg);
+}
+
+.active-back {
+  transform: perspective(600px) rotateY(0);
+}

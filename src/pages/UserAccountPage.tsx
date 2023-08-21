@@ -1,0 +1,107 @@
+import { useEffect } from 'react'
+import Cookies from 'js-cookie';
+import { Link, useNavigate } from 'react-router-dom';
+import { useAppDispatch, useAppSelector } from '../app/hooks';
+import { setUser } from '../features/userSlice';
+import axios from "axios";
+import { ROUTE_AUTHORIZATION, ROUTE_EDIT_PROFILE } from '../constants/constants';
+
+export const UserAccountPage = () => {
+  const token = Cookies.get('token');
+  const dispatch = useAppDispatch();
+  const navigate = useNavigate();
+  const { user } = useAppSelector(state => state.user);
+
+  useEffect(() => {
+    async function getUser() {
+      if (!token) {
+        navigate(ROUTE_AUTHORIZATION);
+        return;
+      }
+
+      try {
+        const response = await axios.get('http://159.65.119.170:8000/user/profile/', {
+        headers: {
+          'Authorization': `Bearer ${token}`,
+        },
+      });
+
+      dispatch(setUser(response.data));
+      } catch (error) {
+        console.log(`Error:${error}`);
+      }
+    }
+
+    getUser();
+    
+  }, [dispatch, token, navigate])
+
+  const handleLogOut = () => {
+    Cookies.remove('token');
+    dispatch(setUser(null));
+    navigate(ROUTE_AUTHORIZATION);
+  }
+
+  return (
+    <section className="user-page">
+      {user && (
+        <div className="user-page__content flex flex-col items-center px-7 py-4">
+        <div className='flex flex-col'>
+            <div className="user-page__header flex items-center mb-8 gap-6">
+              <div className="user-page__image">
+                <img 
+                  src={user.avatar} 
+                  alt="ProfilePhoto" 
+                  className="user-page__img rounded-[50%] object-cover h-[72px] w-[72px]"
+                />
+              </div>
+              <div className="user-page__details flex flex-col gap-2">
+                <div className="user-page__name text-[#FDFDFD] text-2xl font-semibold">{`${user.first_name} ${user.last_name}`}</div>
+                <div className="user-page__status border-solid border-amber-400 border rounded-[8px] w-[fit-content] text-[10px] px-2 py-[3px]">FREE</div>
+              </div>
+          </div>
+          <div className="user-page__credentials credentials w-[550px] bg-[#21212B] rounded-[10px] mb-7">
+            <div className="credentials__content px-7 py-6">
+              <div className="credentials__block mb-6 flex justify-between items-center">
+                <div className="credentials__left">
+                  <div className="credentials__text text-[#818187]">Display Name</div>
+                  <div className="credentials__description text-[#FDFDFD]">{user.username}</div>
+                </div>
+                <div className="credentials__right">
+                </div>
+              </div>
+              <div className="credentials__block mb-6 flex justify-between items-center"> 
+                <div className="credentials__left">
+                  <div className="credentials__text text-[#818187]">Email</div>
+                  <div className="credentials__description text-[#FDFDFD]">{user.email}</div>
+                </div>
+              </div>
+              <div className="credentials__block flex justify-between items-center">
+                <div className="credentials__left">
+                  <div className="credentials__text text-[#818187]">Password</div>
+                  <div className="credentials__description text-[#FDFDFD]">●●●●●●●●●</div>
+                </div>
+                <div className="credentials__right">
+                  <Link 
+                    className="credentials__button bg-[#414052] px-4 py-1 rounded-[8px]"
+                    to={ROUTE_EDIT_PROFILE}
+                  >
+                    Edit
+                  </Link>
+                </div>
+              </div>
+            </div>
+          </div>
+          <button 
+            type='button' 
+            className='bg-[#21212B] rounded-[10px] px-5 py-2 w-[fit-content] self-center'
+            onClick={handleLogOut}
+          >
+            Sign out
+          </button>
+        </div>
+      </div>
+      )}
+    </section>
+  )
+}
