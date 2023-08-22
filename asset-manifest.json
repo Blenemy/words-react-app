@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/words-react-app/static/css/main.4f1b254b.css",
-    "main.js": "/words-react-app/static/js/main.50464748.js",
+    "main.css": "/words-react-app/static/css/main.adad39c0.css",
+    "main.js": "/words-react-app/static/js/main.267708da.js",
     "static/media/main-bg.jpg": "/words-react-app/static/media/main-bg.de24ffd0c3f15967e498.jpg",
     "static/media/book.jpg": "/words-react-app/static/media/book.c54458066963326e81fe.jpg",
     "static/media/door.jpg": "/words-react-app/static/media/door.67d56f4a9bdcf51f0abd.jpg",
@@ -20,11 +20,11 @@
     "static/media/arrow-up.svg": "/words-react-app/static/media/arrow-up.accffe10f3dcfae3990137dfed81379e.svg",
     "static/media/menu_open.svg": "/words-react-app/static/media/menu_open.d4cb6c79080db7c0400d6c15a8228bea.svg",
     "static/media/menu.svg": "/words-react-app/static/media/menu.bfaaf7e173f89ec1faf20440135148a5.svg",
-    "main.4f1b254b.css.map": "/words-react-app/static/css/main.4f1b254b.css.map",
-    "main.50464748.js.map": "/words-react-app/static/js/main.50464748.js.map"
+    "main.adad39c0.css.map": "/words-react-app/static/css/main.adad39c0.css.map",
+    "main.267708da.js.map": "/words-react-app/static/js/main.267708da.js.map"
   },
   "entrypoints": [
-    "static/css/main.4f1b254b.css",
-    "static/js/main.50464748.js"
+    "static/css/main.adad39c0.css",
+    "static/js/main.267708da.js"
   ]
 }
