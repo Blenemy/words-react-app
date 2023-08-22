@@ -1,4 +1,5 @@
 {
+  "homepage": "https://blenemy.github.io/words-react-app",
   "name": "words-react-app",
   "version": "0.1.0",
   "private": true,
@@ -20,6 +21,7 @@
     "classnames": "^2.3.2",
     "eslint-config-airbnb": "^19.0.4",
     "eslint-config-airbnb-typescript": "^17.1.0",
+    "gh-pages": "^6.0.0",
     "js-cookie": "^3.0.5",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
@@ -33,6 +35,8 @@
   },
   "scripts": {
     "start": "react-scripts start",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
