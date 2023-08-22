@@ -1,13 +1,15 @@
 import burgerIconOpen from '../../images/menu_open.svg';
 import { useAppDispatch, useAppSelector } from '../../app/hooks';
 import burgerIcon from '../../images/menu.svg';
-import userImageDefault from '../../images/user-acc.svg'
+import userDefault from '../../images/user-acc.svg';
 import { setOpened } from '../../features/burgerSlice';
+import { useLocation } from 'react-router-dom';
 
 export const Header = () => {
   const dispatch = useAppDispatch();
   const { opened } = useAppSelector(state => state.burger);
   const { user } = useAppSelector(state => state.user);
+  const location = useLocation();
 
   return (
     <header className="header bg-[#11121F] col-start-1 col-span-12">
@@ -26,15 +28,15 @@ export const Header = () => {
           </div>
           <div className="header__bread-crumbs"
         >
-          Dashboard
+          {location.pathname.slice(1)}
         </div>
         </div>
         <div className="header__right-piece">
           <div className="header__image">
-            {user ? (
-              <img src={user.avatar} alt='UserAvatat' className="header__img rounded-[50%] object-cover h-[36px] w-[36px]" />
+            {user?.avatar ? (
+              <img src={user.avatar} alt='UserAvatar' className="header__img rounded-[50%] object-cover h-[36px] w-[36px]" />
             ) : (
-              <img src={userImageDefault} alt='UserAvatat' className="header__img rounded-[50%] object-cover h-[36px] w-[36px]" />
+              <img src={userDefault} alt='UserAvatar' className="header__img rounded-[50%] object-cover h-[36px] w-[36px]" />
             )}
           </div>
         </div>

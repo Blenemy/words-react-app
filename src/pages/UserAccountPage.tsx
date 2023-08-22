@@ -1,16 +1,20 @@
-import { useEffect } from 'react'
+import { useEffect, useState } from 'react'
 import Cookies from 'js-cookie';
 import { Link, useNavigate } from 'react-router-dom';
 import { useAppDispatch, useAppSelector } from '../app/hooks';
 import { setUser } from '../features/userSlice';
 import axios from "axios";
 import { ROUTE_AUTHORIZATION, ROUTE_EDIT_PROFILE } from '../constants/constants';
+import userDefault from '../images/user-acc.svg'
+import pencil from '../images/icons8-pencil-50.png'
+import { Loader } from '../components/Loader/Loader';
 
 export const UserAccountPage = () => {
   const token = Cookies.get('token');
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
   const { user } = useAppSelector(state => state.user);
+  const [isLoading, setLoading] = useState(false);
 
   useEffect(() => {
     async function getUser() {
@@ -42,17 +46,65 @@ export const UserAccountPage = () => {
     navigate(ROUTE_AUTHORIZATION);
   }
 
+  async function sendDataToServer(base64: string | ArrayBuffer | null) {
+    try {
+      setLoading(true);
+
+        const dataToSend = {
+          avatar_base64: base64,
+        };
+
+        const response = await axios.patch('http://159.65.119.170:8000/user/profile/', dataToSend, {
+            headers: {
+                'Authorization': `Bearer ${token}`
+            }
+        });
+
+        if (response.status === 200) {
+            dispatch(setUser(response.data));
+        } else {
+            console.error('Ошибка при обновлении аватара');
+        } 
+
+    } catch (error) {
+        console.error(`Error during sending avatar: ${error}`);
+    } finally {
+      setLoading(false);
+    }
+  }
+
+  const handleChange = (event: any) => {
+    const data = new FileReader();
+    data.addEventListener('load', () => {
+      sendDataToServer(data.result);
+    })
+    data.readAsDataURL(event.target.files[0])
+  }
+
+  if (isLoading) {
+    return <Loader />
+  }
+
   return (
     <section className="user-page">
       {user && (
         <div className="user-page__content flex flex-col items-center px-7 py-4">
         <div className='flex flex-col'>
             <div className="user-page__header flex items-center mb-8 gap-6">
-              <div className="user-page__image">
+              <div className="user-page__image relative">
                 <img 
-                  src={user.avatar} 
+                  src={user.avatar || userDefault} 
                   alt="ProfilePhoto" 
                   className="user-page__img rounded-[50%] object-cover h-[72px] w-[72px]"
+                />
+                <label htmlFor="avatarInput">
+                  <img src={pencil} alt="" className='absolute bottom-0 right-0 w-[15px] h-[15px] cursor-pointer'/>
+                </label>
+                <input 
+                  type="file" 
+                  id="avatarInput" 
+                  onChange={handleChange}
+                  className='hidden'
                 />
               </div>
               <div className="user-page__details flex flex-col gap-2">

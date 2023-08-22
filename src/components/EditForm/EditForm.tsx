@@ -32,12 +32,15 @@ export const EditForm = () => {
   const handleOnSubmit = async (event: any) => {
 		event?.preventDefault();
 
-		const dataToSend = {
+		const dataToSend: any = {
 			first_name: formData.first_name || user?.first_name,
       last_name: formData.last_name || user?.last_name,
-			password: formData.password && formData.password,
 			email: formData.email || user?.email,
 	};
+
+    if (formData.password) {
+      dataToSend.password = formData.password;
+    }
 
 		try {
 			const response = await axios.patch('http://159.65.119.170:8000/user/profile/', dataToSend, {
@@ -46,9 +49,11 @@ export const EditForm = () => {
         }
       });
 
-      const newToken = response.data.token;
+      if (formData.password) {
+        const newToken = response.data.token;
 
-			Cookies.set('token', newToken, { expires: 1 });
+			  Cookies.set('token', newToken, { expires: 1 });
+      }
 
 			setFormData({
         'first_name': '',
@@ -69,14 +74,14 @@ export const EditForm = () => {
         <div className="content px-16 py-12">
           <form action="" onSubmit={handleOnSubmit}>
             <div className="flex justify-between items-center">
-              <h2>Edit profile</h2>
+              <h2 className="text-2xl">Edit profile</h2>
               <div>
                 <img src={user?.avatar} alt="profileImage" className="rounded-[50%] object-cover h-[72px] w-[72px]"/>
               </div>
             </div>
             <div className="flex justify-between gap-[64px] mb-4">
               <div className="flex flex-col basis-1/2">
-                <label className="font-['Roboto'] text-[20px] font-semibold text-stone-300" htmlFor="first_name">First Name</label>
+                <label className="font-['Inter var'] text-[20px] font-semibold text-stone-300" htmlFor="first_name">First Name</label>
                 <input 
                   id="first_name" 
                   type="text" 

@@ -20,7 +20,7 @@ export const Navigation = () => {
 
   return (
     <>
-      <div className="navigation__content px-4 py-4 font-['Inter'] text-[18px] tracking-[-2%] text-[#f5f5f5]">
+      <div className="navigation__content px-4 py-4 font-['Inter var'] text-[18px] tracking-[-2%] text-[#f5f5f5]">
         <ul className="navigation__list flex flex-col gap-10">
           <li className="navigation__item flex flex-nowrap items-center gap-2 hover:opacity-80 cursor-pointer duration-300">
             <img src={home} width={'24px'} height={'24px'} alt="" className="navigation__img" />

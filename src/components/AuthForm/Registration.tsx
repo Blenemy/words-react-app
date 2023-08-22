@@ -65,7 +65,7 @@ export const Registration = () => {
 							name={'username'}
 							type={'text'}
 							className='auth__input'
-							value={formData.email}
+							value={formData.username}
 							onChange={handleInputChange}
 							autocomplete={'off'}
 						/>

@@ -16,22 +16,22 @@ export const HomePage = () => {
       <section className="homepage font-['Inter var'] text-[#e5e7ff]">
         <div className="homepage__content px-24 py-10 h-full flex flex-col">
           <div className="homepage__header flex gap-20 justify-center items-center mb-24">
-            <div className="flex flex-col basis-1/2 gap-12">
-              <h1 className="homepage__title text-[48px] tracking-[-1px] font-bold">Learn Ensligh Language <br /> <span className='color-effect'>With Fun!</span></h1>
+            <div className="flex flex-col basis-3/5 gap-12">
+              <h1 className="homepage__title text-[48px] tracking-[-1px] font-bold"><span className='whitespace-nowrap'>Learn Ensligh Language </span><br /> <span className='color-effect'>With Fun!</span></h1>
               <p className="homepage__subtitle text-[24px]">Guess the word based on the image and description. Improve your vocabulary and knowledge of the English language every day.</p>
               <div className='flex gap-4'>
                 <Link to={ROUTE_CARD_GAME} className='bg-[#6832ae] px-8 py-4 rounded-md text-[18px]'>Get Started</Link>
                 <button className='bg-[#180919] px-8 py-4 rounded-md text-[18px]'>How does it work?</button>
               </div>
             </div>
-            <div className="basis-1/2">
+            <div className="basis-2/5">
               <div className='relative pb-[73%]'>
                 <img src={mainImage} alt="homePageImage" className='absolute w-full h-full top-0 left-0 object-cover'/>
               </div>
             </div>
           </div>
           <div className='mb-20'>
-            <h2 className='font-bold text-[32px] tracking-[-2px] text-center mb-6'>Why Life-Learns?</h2>
+            <h2 className='font-bold text-[32px] tracking-[-2px] text-center mb-6'>Why Live-Learns?</h2>
             <div className='flex gap-10 items-stretch'>
               <div className='basis-1/3 p-12 flex flex-col items-center relative bg-[#0D0E1B] flex-auto justify-between'>
                 <svg width="117" height="117" viewBox="0 0 117 117" fill="none" style={{ zIndex: 5 }} className="part1-card-img">
@@ -94,16 +94,16 @@ export const HomePage = () => {
             </div>
           </div> */}
           <div>
-            <div className='px-5 py-3 flex gap-6 justify-between rounded-md bg-[#180919]'>
+            <div className='px-20 py-12 flex gap-24 justify-between rounded-md bg-[#180919]'>
               <div className='w-[30%]'>
                 <h2 className='text-[32px] font-bold tracking-[2px] mb-5'>How Does It Work?</h2>
-                <p className='text-[32px] font-bold tracking-[2px] mb-5'>It works by presenting language concepts on interactive cards that adapt to your learning pace.</p>
+                <p className='text-[16px]'>It works by presenting language concepts on interactive cards that adapt to your learning pace.</p>
               </div>
-              <div className='w-[70%] flex flex-wrap gap-5'>
-                <div className='basis-[35%] flex-grow'>Start by selecting a language or topic you want to study</div>
-                <div className='basis-[35%] flex-grow'>Review interactive cards that introduce new words, phrases, and concepts.</div>
-                <div className='basis-[35%] flex-grow'>Test your knowledge through quizzes and repetition to reinforce memory.</div>
-                <div className='basis-[35%] flex-grow'>The app adapts, presenting cards based on your performance, ensuring you focus on areas that need improvement.</div>
+              <div className='w-[70%] flex flex-wrap gap-20'>
+                <div className='basis-[30%] flex-grow before:content-["1"] before:text-[#ae36b6] before:text-[24px] before:font-bold before:absolute before:translate-x-[-1em]'>Start by selecting a language or topic you want to study</div>
+                <div className='basis-[30%] flex-grow before:content-["2"] before:text-[#ae36b6] before:text-[24px] before:font-bold before:absolute before:translate-x-[-1em]'>Review interactive cards that introduce new words, phrases, and concepts.</div>
+                <div className='basis-[30%] flex-grow before:content-["3"] before:text-[#ae36b6] before:text-[24px] before:font-bold before:absolute before:translate-x-[-1em]'>Test your knowledge through quizzes and repetition to reinforce memory.</div>
+                <div className='basis-[30%] flex-grow before:content-["4"] before:text-[#ae36b6] before:text-[24px] before:font-bold before:absolute before:translate-x-[-1em]'>The app adapts, presenting cards based on your performance, ensuring you focus on areas that need improvement.</div>
               </div>
             </div>
           </div>
