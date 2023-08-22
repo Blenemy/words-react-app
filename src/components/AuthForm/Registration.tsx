@@ -1,12 +1,13 @@
 import { useState } from 'react';
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import axios from 'axios';
 import './AuthForm.css';
 import { UserData } from '../../types/UserData';
 import { CustomInput } from '../CustomInput/CustomInput';
-import { ROUTE_AUTHORIZATION, ROUTE_HOME } from '../../constants/constants';
+import { BASE_URL, ROUTE_AUTHORIZATION, ROUTE_HOME } from '../../constants/constants';
 
 export const Registration = () => {
+	const navigate = useNavigate();
 	const [formData, setFormData] = useState<UserData>({
     username: '',
     email: '',
@@ -36,13 +37,14 @@ export const Registration = () => {
 	};
 
 		try {
-			const response = await axios.post('http://159.65.119.170:8000/user/register/', dataToSend);
+			const response = await axios.post(BASE_URL + '/user/register/', dataToSend);
 			setFormData({
 					username: '',
 					email: '',
 					password: '',
 					confirmPassword: ''
 			});
+			navigate(ROUTE_AUTHORIZATION)
 			console.log(response);
 			
 		} catch (error) {

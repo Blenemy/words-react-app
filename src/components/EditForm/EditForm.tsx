@@ -3,7 +3,7 @@ import { useAppSelector } from "../../app/hooks"
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import Cookies from 'js-cookie';
-import { ROUTE_PROFILE } from "../../constants/constants";
+import { BASE_URL, ROUTE_PROFILE } from "../../constants/constants";
 
 export const EditForm = () => {
   const { user } = useAppSelector(state => state.user);
@@ -36,14 +36,14 @@ export const EditForm = () => {
 			first_name: formData.first_name || user?.first_name,
       last_name: formData.last_name || user?.last_name,
 			email: formData.email || user?.email,
-	};
+	  };
 
     if (formData.password) {
       dataToSend.password = formData.password;
     }
 
 		try {
-			const response = await axios.patch('http://159.65.119.170:8000/user/profile/', dataToSend, {
+			const response = await axios.patch(BASE_URL + '/user/profile/', dataToSend, {
         headers: {
           'Authorization': `Bearer ${token}`
         }

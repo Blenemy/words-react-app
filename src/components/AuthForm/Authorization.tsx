@@ -3,7 +3,7 @@ import axios from "axios";
 import { Link, useNavigate } from "react-router-dom"
 import { UserData } from '../../types/UserData';
 import Cookies from 'js-cookie';
-import { ROUTE_HOME, ROUTE_PROFILE, ROUTE_REGISTRATION } from '../../constants/constants';
+import { BASE_URL, ROUTE_HOME, ROUTE_PROFILE, ROUTE_REGISTRATION } from '../../constants/constants';
 import { CustomInput } from '../CustomInput/CustomInput';
 import { useAppSelector } from '../../app/hooks';
 
@@ -32,7 +32,7 @@ export const Authorization = () => {
 		}
 		
 		try {
-			const response = await axios.post('http://159.65.119.170:8000/user/login/', dataToSend);
+			const response = await axios.post(BASE_URL + '/user/login/', dataToSend);
 			const token = response.data.token;
 
 			Cookies.set('token', token, { expires: 1 });

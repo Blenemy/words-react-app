@@ -4,7 +4,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import { useAppDispatch, useAppSelector } from '../app/hooks';
 import { setUser } from '../features/userSlice';
 import axios from "axios";
-import { ROUTE_AUTHORIZATION, ROUTE_EDIT_PROFILE } from '../constants/constants';
+import { BASE_URL, ROUTE_AUTHORIZATION, ROUTE_EDIT_PROFILE } from '../constants/constants';
 import userDefault from '../images/user-acc.svg'
 import pencil from '../images/icons8-pencil-50.png'
 import { Loader } from '../components/Loader/Loader';
@@ -24,7 +24,7 @@ export const UserAccountPage = () => {
       }
 
       try {
-        const response = await axios.get('http://159.65.119.170:8000/user/profile/', {
+        const response = await axios.get(BASE_URL + '/user/profile/', {
         headers: {
           'Authorization': `Bearer ${token}`,
         },
@@ -54,7 +54,7 @@ export const UserAccountPage = () => {
           avatar_base64: base64,
         };
 
-        const response = await axios.patch('http://159.65.119.170:8000/user/profile/', dataToSend, {
+        const response = await axios.patch(BASE_URL + '/user/profile/', dataToSend, {
             headers: {
                 'Authorization': `Bearer ${token}`
             }

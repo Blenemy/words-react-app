@@ -1,15 +1,10 @@
-import { useState } from 'react';
 import mainImage from '../images/main-bg.jpg';
-import cat from '../images/cat.jpg';
-import book from '../images/book.jpg';
-import flower from '../images/flower.jpg';
 import './HomePage.scss';
 import { Link } from 'react-router-dom';
 import { ROUTE_CARD_GAME } from '../constants/constants';
 
 export const HomePage = () => {
-
-  const [cards] = useState([flower, book, cat]);
+  // const [cards] = useState([flower, book, cat]);
   
   return (
     <>

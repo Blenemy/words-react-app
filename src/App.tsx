@@ -1,5 +1,4 @@
 import { Routes, Route } from 'react-router-dom';
-import { MainPage } from './pages/MainPage';
 import { Registration } from './components/AuthForm/Registration';
 import { UserAccountPage } from './pages/UserAccountPage';
 import { HomePage } from './pages/HomePage';
@@ -14,7 +13,10 @@ import Cookies from 'js-cookie';
 import axios from "axios";
 import { setUser } from './features/userSlice';
 import { setCards } from './features/cardsSlice';
-import { ROUTE_AUTHORIZATION, ROUTE_CARD_GAME, ROUTE_EDIT_PROFILE, ROUTE_HOME, ROUTE_PROFILE, ROUTE_REGISTRATION } from './constants/constants';
+import { BASE_URL, ROUTE_AUTHORIZATION, ROUTE_BOOK_CARD, ROUTE_CARD_GAME, ROUTE_EDIT_PROFILE, ROUTE_FLIP_CARD, ROUTE_HOME, ROUTE_PROFILE, ROUTE_REGISTRATION } from './constants/constants';
+import { FlipCardPage } from './pages/FlipCardPage';
+import { BookCardPage } from './pages/BookCardPage';
+import { GamePage } from './pages/GamePage';
 
 function App() {
   const { opened } = useAppSelector(state => state.burger);
@@ -27,7 +29,7 @@ function App() {
 
       if (token) {
         try {
-          const response = await axios.get('http://159.65.119.170:8000/user/profile/', {
+          const response = await axios.get(BASE_URL + '/user/profile/', {
             headers: {
               'Authorization': `Bearer ${token}`,
             },
@@ -46,7 +48,7 @@ function App() {
   useEffect(() => {
     async function getCards() {
       try {
-        const response = await axios.get('http://159.65.119.170:8000/study/cards/');
+        const response = await axios.get(`${BASE_URL}/study/cards/`);
 
         dispatch(setCards(response.data));
         
@@ -57,6 +59,9 @@ function App() {
     getCards();
   }, [dispatch]);
 
+
+  console.log(cards);
+    
   return (
     <div className="App">
       <div className="wrapper flex flex-col text-white min-h-screen bg-[#060714]">
@@ -72,11 +77,13 @@ function App() {
           <main className="grid__main col-start-2 grow">
             <Routes>
               <Route path={ROUTE_HOME} element={<HomePage />}/>
-              <Route path={ROUTE_CARD_GAME} element={<MainPage />} />
+              <Route path={ROUTE_CARD_GAME} element={<GamePage />}/>
               <Route path={ROUTE_REGISTRATION} element={<Registration />}/>
               <Route path={ROUTE_AUTHORIZATION} element={<Authorization />}/>
               <Route path={ROUTE_PROFILE} element={<UserAccountPage />}/>
               <Route path={ROUTE_EDIT_PROFILE} element={<EditForm />}/>
+              <Route path={ROUTE_FLIP_CARD} element={<FlipCardPage />}/>
+              <Route path={ROUTE_BOOK_CARD} element={<BookCardPage />}/>
             </Routes>
           </main>
         </div>

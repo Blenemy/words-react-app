@@ -2,9 +2,8 @@ import { useEffect, useState } from 'react';
 import { CardType } from '../types/CardType';
 import cardsData from '../api/data.json';
 import { Card } from '../Card';
-// import { DeckCard } from '../components/DeckCard/DeckCard';
 
-export const MainPage = () => {
+export const BookCardPage = () => {
   const [data, setData] = useState<CardType []>();
   const [currentCard, setCurrentCard] = useState<CardType>();
 
@@ -49,8 +48,5 @@ export const MainPage = () => {
         Наступна картка
       </button>
     </div>
-    // <section>
-    //   <DeckCard />
-    // </section>
   );
 };

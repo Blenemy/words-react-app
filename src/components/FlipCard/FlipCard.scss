@@ -42,3 +42,7 @@
 .active-back {
   transform: perspective(600px) rotateY(0);
 }
+
+.no-transition {
+  transition: none !important;
+}
