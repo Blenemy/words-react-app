@@ -1,19 +1,32 @@
-import { useState } from "react";
-import { useAppSelector } from "../../app/hooks"
+import { useEffect, useState } from "react";
+import { useAppDispatch, useAppSelector } from "../../app/hooks"
 import { AddCardType } from "../../types/AddCardType";
 import axios from "axios";
 import { BASE_URL, ROUTE_FLIP_CARD } from "../../constants/constants";
 import { useNavigate } from "react-router-dom";
+import { setCurrentCard } from "../../features/currentCardSlice";
 
 export const ChangeCard: React.FC = () => {
   const { currentCard } = useAppSelector(state => state.currentCard);
-  const [formData, setFormData] = useState<AddCardType>({
-    'deck': currentCard?.deck,
-    'word': currentCard?.word,
-    'translation': currentCard?.translation,
-    'image': currentCard?.image || null,
-	});
   const navigate = useNavigate();
+  const dispatch = useAppDispatch();
+  const [formData, setFormData] = useState<AddCardType>({
+    deck: 1,
+    word: '',
+    translation: '',
+    image: null,
+	});
+
+  useEffect(() => {
+    if (currentCard) {
+      setFormData({
+        deck: currentCard?.deck,
+        word: currentCard?.word,
+        translation: currentCard?.translation,
+        image: null,
+      });
+    }
+}, [currentCard]);
 
   const handleInputChange = (event: any) => {
 		const { name, value } = event.target;
@@ -29,7 +42,7 @@ export const ChangeCard: React.FC = () => {
       setFormData(prevData => ({
 				...prevData,
 				image: data.result
-		}));
+		  }));
     })
     data.readAsDataURL(event.target.files[0])
   }
@@ -37,20 +50,27 @@ export const ChangeCard: React.FC = () => {
   const handleOnSubmit = async (event: any) => {
 		event?.preventDefault()
 
-		const dataToSend = {
+		const dataToSend: any = {
 			word: formData.word || currentCard?.word,
       translation: formData.translation || currentCard?.translation,
-      image: formData.image || currentCard?.image,
 		}
+
+    if (formData.image !== null) {
+      dataToSend.image = formData.image;
+    }
 
     console.log(dataToSend);
 
 		try {
 			const response = await axios.patch(BASE_URL + `/study/cards/${currentCard?.id}/`, dataToSend);
 
-      console.log(response);
+      console.log(response, currentCard);
 
       if (response.status === 200) {
+        dispatch(setCurrentCard({
+          id: currentCard?.id,
+          ...dataToSend
+        }))
         navigate(ROUTE_FLIP_CARD)
       }
 

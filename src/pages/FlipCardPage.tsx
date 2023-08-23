@@ -11,7 +11,6 @@ export const FlipCardPage = () => {
   const { cards } = useAppSelector(state => state.cards);
 
   useEffect(() => {
-
     if (cards) {
       const randomCard
        = cards[Math.floor(Math.random() * cards.length)];
