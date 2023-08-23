@@ -13,10 +13,12 @@ import Cookies from 'js-cookie';
 import axios from "axios";
 import { setUser } from './features/userSlice';
 import { setCards } from './features/cardsSlice';
-import { BASE_URL, ROUTE_AUTHORIZATION, ROUTE_BOOK_CARD, ROUTE_CARD_GAME, ROUTE_EDIT_PROFILE, ROUTE_FLIP_CARD, ROUTE_HOME, ROUTE_PROFILE, ROUTE_REGISTRATION } from './constants/constants';
+import { BASE_URL, ROUTE_ADD_CARD, ROUTE_AUTHORIZATION, ROUTE_BOOK_CARD, ROUTE_CARD_GAME, ROUTE_CHANGE_CARD, ROUTE_EDIT_PROFILE, ROUTE_FLIP_CARD, ROUTE_HOME, ROUTE_PROFILE, ROUTE_REGISTRATION } from './constants/constants';
 import { FlipCardPage } from './pages/FlipCardPage';
 import { BookCardPage } from './pages/BookCardPage';
 import { GamePage } from './pages/GamePage';
+import { AddCard } from './components/AddCard/AddCard';
+import { ChangeCard } from './components/ChangeCard/ChangeCard';
 
 function App() {
   const { opened } = useAppSelector(state => state.burger);
@@ -38,10 +40,10 @@ function App() {
           dispatch(setUser(response.data));
         } catch (error) {
           console.log(`Error: ${error}`);
-          
         }
       }
     }
+    
     initializeApp();
   }, [dispatch]);
 
@@ -84,6 +86,8 @@ function App() {
               <Route path={ROUTE_EDIT_PROFILE} element={<EditForm />}/>
               <Route path={ROUTE_FLIP_CARD} element={<FlipCardPage />}/>
               <Route path={ROUTE_BOOK_CARD} element={<BookCardPage />}/>
+              <Route path={ROUTE_ADD_CARD} element={<AddCard />}/>
+              <Route path={ROUTE_CHANGE_CARD} element={<ChangeCard />}/>
             </Routes>
           </main>
         </div>

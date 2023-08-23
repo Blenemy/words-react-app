@@ -51,7 +51,7 @@ export const UserAccountPage = () => {
       setLoading(true);
 
         const dataToSend = {
-          avatar_base64: base64,
+          avatar: base64,
         };
 
         const response = await axios.patch(BASE_URL + '/user/profile/', dataToSend, {

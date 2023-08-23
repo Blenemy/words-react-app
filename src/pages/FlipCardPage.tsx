@@ -1,10 +1,13 @@
-import { useEffect, useState } from 'react';
-import { useAppSelector } from '../app/hooks';
-import { CardFromServer } from '../types/CardFromServer';
+import { useEffect } from 'react';
+import { useAppDispatch, useAppSelector } from '../app/hooks';
 import { FlipCard } from '../components/FlipCard/FlipCard';
+import { ROUTE_CHANGE_CARD } from '../constants/constants';
+import { Link } from 'react-router-dom';
+import { setCurrentCard } from '../features/currentCardSlice';
 
 export const FlipCardPage = () => {
-  const [currentCard, setCurrentCard] = useState<CardFromServer>();
+  const dispatch = useAppDispatch();
+  const { currentCard } = useAppSelector(state => state.currentCard);
   const { cards } = useAppSelector(state => state.cards);
 
   useEffect(() => {
@@ -13,9 +16,9 @@ export const FlipCardPage = () => {
       const randomCard
        = cards[Math.floor(Math.random() * cards.length)];
 
-      setCurrentCard(randomCard);
+       dispatch(setCurrentCard(randomCard));
     }
-  }, [cards]);
+  }, [cards, dispatch]);
 
   if (!cards) {
     return (
@@ -26,7 +29,7 @@ export const FlipCardPage = () => {
   const randomCardGenerator = () => {
     const randomCard = [...cards][Math.floor(Math.random() * cards.length)];
 
-    setCurrentCard(randomCard);
+    dispatch(setCurrentCard(randomCard));
   };
 
   return (
@@ -44,6 +47,9 @@ export const FlipCardPage = () => {
       >
         Наступна картка
       </button>
+      <Link to={ROUTE_CHANGE_CARD}>
+        Modify the card
+      </Link>
     </div>
     </>
   )

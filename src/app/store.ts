@@ -3,6 +3,7 @@ import burgerSlice from '../features/burgerSlice';
 import userSlice from '../features/userSlice';
 import submenuSlice from '../features/submenuSlice';
 import cardsSlice from '../features/cardsSlice';
+import currentCardSlice from '../features/currentCardSlice';
 
 export const store = configureStore({
   reducer: {
@@ -10,6 +11,7 @@ export const store = configureStore({
     user: userSlice,
     isCollapsed: submenuSlice,
     cards: cardsSlice,
+    currentCard: currentCardSlice,
   },
 });
 

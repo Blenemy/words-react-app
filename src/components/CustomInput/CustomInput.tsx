@@ -4,7 +4,7 @@ type Props = {
   name: string,
   type: string,
   className: string,
-  value: string | undefined,
+  value: string | undefined | number,
   onChange: (event: any) => void,
   autocomplete?: string,
 }
