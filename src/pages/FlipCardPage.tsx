@@ -1,35 +1,35 @@
-import { useEffect } from 'react';
+import { useCallback, useEffect } from 'react';
 import { useAppDispatch, useAppSelector } from '../app/hooks';
 import { FlipCard } from '../components/FlipCard/FlipCard';
-import { ROUTE_CHANGE_CARD } from '../constants/constants';
+import { BASE_URL, ROUTE_CHANGE_CARD } from '../constants/constants';
 import { Link } from 'react-router-dom';
 import { setCurrentCard } from '../features/currentCardSlice';
+import axios from 'axios';
 
 export const FlipCardPage = () => {
   const dispatch = useAppDispatch();
   const { currentCard } = useAppSelector(state => state.currentCard);
   const { cards } = useAppSelector(state => state.cards);
 
-  useEffect(() => {
-    if (cards) {
-      const randomCard
-       = cards[Math.floor(Math.random() * cards.length)];
-
-       dispatch(setCurrentCard(randomCard));
+  const getRandomCard = useCallback(async () => {
+    try {
+      const response = await axios.get(BASE_URL + '/study/random_card/');
+      console.log(response.data);
+      dispatch(setCurrentCard(response.data));
+    } catch (error) {
+      console.log(error);
     }
-  }, [cards, dispatch]);
+  }, [dispatch]);
+
+  useEffect(() => {
+    getRandomCard();
+  }, [getRandomCard]);
 
   if (!cards) {
     return (
       <div>Something went wrong</div>
     )
   }
-
-  const randomCardGenerator = () => {
-    const randomCard = [...cards][Math.floor(Math.random() * cards.length)];
-
-    dispatch(setCurrentCard(randomCard));
-  };
 
   return (
     <>
@@ -41,7 +41,7 @@ export const FlipCardPage = () => {
         className="
           text-3xl font-serif text-yellow-600
           uppercase tracking-widest leading-loose"
-        onClick={randomCardGenerator}
+        onClick={getRandomCard}
         type="button"
       >
         Наступна картка

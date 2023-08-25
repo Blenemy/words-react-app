@@ -62,8 +62,6 @@ function App() {
   }, [dispatch]);
 
 
-  console.log(cards);
-    
   return (
     <div className="App">
       <div className="wrapper flex flex-col text-white min-h-screen bg-[#060714]">
