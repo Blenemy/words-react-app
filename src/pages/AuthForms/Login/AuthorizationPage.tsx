@@ -1,11 +1,11 @@
 import { useState } from 'react';
 import axios from "axios";
 import { Link, useNavigate } from "react-router-dom"
-import { UserData } from '../../types/UserData';
 import Cookies from 'js-cookie';
-import { BASE_URL, ROUTE_HOME, ROUTE_PROFILE, ROUTE_REGISTRATION } from '../../constants/constants';
-import { CustomInput } from '../CustomInput/CustomInput';
-import { useAppSelector } from '../../app/hooks';
+import { BASE_URL, ROUTE_HOME, ROUTE_PROFILE, ROUTE_REGISTRATION } from '../../../data/constants';
+import { UserData } from '../../../types/UserData';
+import { useAppSelector } from '../../../app/hooks';
+import { CustomInput } from '../../../components/CustomInput/CustomInput';
 
 export const Authorization = () => {
 	const navigate = useNavigate();

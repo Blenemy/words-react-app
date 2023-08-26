@@ -8,7 +8,7 @@ import arrowUp from '../../images/arrow-up.svg';
 import './Navigation.css';
 import { useAppDispatch, useAppSelector } from "../../app/hooks";
 import { setCollapsed } from "../../features/submenuSlice";
-import { ROUTE_AUTHORIZATION, ROUTE_CARD_GAME, ROUTE_HOME, ROUTE_PROFILE, ROUTE_REGISTRATION } from "../../constants/constants";
+import { ROUTE_AUTHORIZATION, ROUTE_CARD_GAME, ROUTE_HOME, ROUTE_PROFILE, ROUTE_REGISTRATION } from "../../data/constants";
 
 export const Navigation = () => {
   const dispatch = useAppDispatch();

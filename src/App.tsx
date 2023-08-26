@@ -1,28 +1,27 @@
 import { Routes, Route } from 'react-router-dom';
-import { Registration } from './components/AuthForm/Registration';
-import { UserAccountPage } from './pages/UserAccountPage';
-import { HomePage } from './pages/HomePage';
+import { UserAccountPage } from './pages/UserAccount/UserAccountPage';
 import { Navigation } from './components/Navigation/Navigation';
 import { Header } from './components/Header/Header';
-import { Authorization } from './components/AuthForm/Authorization';
 import cn from 'classnames';
 import { useAppDispatch, useAppSelector } from './app/hooks';
-import { EditForm } from './components/EditForm/EditForm';
 import { useEffect } from 'react';
 import Cookies from 'js-cookie';
 import axios from "axios";
 import { setUser } from './features/userSlice';
 import { setCards } from './features/cardsSlice';
-import { BASE_URL, ROUTE_ADD_CARD, ROUTE_AUTHORIZATION, ROUTE_BOOK_CARD, ROUTE_CARD_GAME, ROUTE_CHANGE_CARD, ROUTE_EDIT_PROFILE, ROUTE_FLIP_CARD, ROUTE_HOME, ROUTE_PROFILE, ROUTE_REGISTRATION } from './constants/constants';
-import { FlipCardPage } from './pages/FlipCardPage';
-import { BookCardPage } from './pages/BookCardPage';
-import { GamePage } from './pages/GamePage';
-import { AddCard } from './components/AddCard/AddCard';
-import { ChangeCard } from './components/ChangeCard/ChangeCard';
+import { BASE_URL, ROUTE_ADD_CARD, ROUTE_AUTHORIZATION, ROUTE_BOOK_CARD, ROUTE_CARD_GAME, ROUTE_EDIT_PROFILE, ROUTE_FLIP_CARD, ROUTE_HOME, ROUTE_PROFILE, ROUTE_REGISTRATION } from './data/constants';
+import { BookCardPage } from './pages/CardsPage/BookCardPage';
+import { GamePage } from './pages/GamePage/GamePage';
+import { AddCard } from './pages/CardsPage/AddCard/AddCard';
+import { EditForm } from './pages/UserAccount/EditFormPage';
+import { HomePage } from './pages/Home/HomePage';
+import { Registration } from './pages/AuthForms/Signup/RegistrationPage';
+import { Authorization } from './pages/AuthForms/Login/AuthorizationPage';
+import { FlipCardPage } from './pages/CardsPage/FlipCardPage';
+import { ChangeCard } from './pages/CardsPage/ChangeCard/ChangeCard';
 
 function App() {
   const { opened } = useAppSelector(state => state.burger);
-  const { cards } = useAppSelector(state => state.cards);
   const dispatch = useAppDispatch();
 
   useEffect(() => {
@@ -82,10 +81,15 @@ function App() {
               <Route path={ROUTE_AUTHORIZATION} element={<Authorization />}/>
               <Route path={ROUTE_PROFILE} element={<UserAccountPage />}/>
               <Route path={ROUTE_EDIT_PROFILE} element={<EditForm />}/>
-              <Route path={ROUTE_FLIP_CARD} element={<FlipCardPage />}/>
+              <Route path={ROUTE_FLIP_CARD}>
+                <Route index element={<FlipCardPage />} />
+                  <Route
+                    path=":cardId"
+                    element={<ChangeCard/>}
+                  />
+              </Route>
               <Route path={ROUTE_BOOK_CARD} element={<BookCardPage />}/>
               <Route path={ROUTE_ADD_CARD} element={<AddCard />}/>
-              <Route path={ROUTE_CHANGE_CARD} element={<ChangeCard />}/>
             </Routes>
           </main>
         </div>

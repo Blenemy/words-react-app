@@ -1,10 +1,10 @@
 import { useState } from 'react';
 import { Link, useNavigate } from "react-router-dom";
 import axios from 'axios';
-import './AuthForm.css';
-import { UserData } from '../../types/UserData';
-import { CustomInput } from '../CustomInput/CustomInput';
-import { BASE_URL, ROUTE_AUTHORIZATION, ROUTE_HOME } from '../../constants/constants';
+import '../AuthForm.css';
+import { UserData } from '../../../types/UserData';
+import { CustomInput } from '../../../components/CustomInput/CustomInput';
+import { BASE_URL, ROUTE_AUTHORIZATION, ROUTE_HOME } from '../../../data/constants';
 
 export const Registration = () => {
 	const navigate = useNavigate();

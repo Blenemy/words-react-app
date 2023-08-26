@@ -1,11 +1,10 @@
-import mainImage from '../images/main-bg.jpg';
+import { ROUTE_CARD_GAME } from '../../data/constants';
+import mainImage from '../../assets/main-bg.jpg';
 import './HomePage.scss';
 import { Link } from 'react-router-dom';
-import { ROUTE_CARD_GAME } from '../constants/constants';
+
 
 export const HomePage = () => {
-  // const [cards] = useState([flower, book, cat]);
-  
   return (
     <>
       <section className="homepage font-['Inter var'] text-[#e5e7ff]">

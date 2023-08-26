@@ -1,13 +1,13 @@
 import { useEffect, useState } from 'react'
 import Cookies from 'js-cookie';
 import { Link, useNavigate } from 'react-router-dom';
-import { useAppDispatch, useAppSelector } from '../app/hooks';
-import { setUser } from '../features/userSlice';
+import { useAppDispatch, useAppSelector } from '../../app/hooks';
+import { setUser } from '../../features/userSlice';
 import axios from "axios";
-import { BASE_URL, ROUTE_AUTHORIZATION, ROUTE_EDIT_PROFILE } from '../constants/constants';
-import userDefault from '../images/user-acc.svg'
-import pencil from '../images/icons8-pencil-50.png'
-import { Loader } from '../components/Loader/Loader';
+import { BASE_URL, ROUTE_AUTHORIZATION, ROUTE_EDIT_PROFILE } from '../../data/constants';
+import userDefault from '../../assets/user-acc.svg'
+import pencil from '../../assets/icons8-pencil-50.png'
+import { Loader } from '../../components/Loader/Loader';
 
 export const UserAccountPage = () => {
   const token = Cookies.get('token');
@@ -63,11 +63,11 @@ export const UserAccountPage = () => {
         if (response.status === 200) {
             dispatch(setUser(response.data));
         } else {
-            console.error('Ошибка при обновлении аватара');
+            console.error('Error during changing the avatar');
         } 
 
     } catch (error) {
-        console.error(`Error during sending avatar: ${error}`);
+        console.error(`Error during sending the avatar: ${error}`);
     } finally {
       setLoading(false);
     }

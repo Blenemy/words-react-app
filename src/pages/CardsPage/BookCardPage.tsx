@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
-import { CardType } from '../types/CardType';
-import cardsData from '../api/data.json';
-import { Card } from '../Card';
+import { CardType } from '../../types/CardType';
+import cardsData from '../../api/data.json';
+import { Card } from '../../components/Card';
 
 export const BookCardPage = () => {
   const [data, setData] = useState<CardType []>();

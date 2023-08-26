@@ -3,7 +3,7 @@ import { useAppSelector } from "../../app/hooks"
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import Cookies from 'js-cookie';
-import { BASE_URL, ROUTE_PROFILE } from "../../constants/constants";
+import { BASE_URL, ROUTE_PROFILE } from "../../data/constants";
 
 export const EditForm = () => {
   const { user } = useAppSelector(state => state.user);

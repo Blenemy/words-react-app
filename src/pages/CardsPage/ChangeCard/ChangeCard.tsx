@@ -1,15 +1,16 @@
 import { useEffect, useState } from "react";
-import { useAppDispatch, useAppSelector } from "../../app/hooks"
-import { AddCardType } from "../../types/AddCardType";
+import { AddCardType } from "../../../types/AddCardType";
 import axios from "axios";
-import { BASE_URL, ROUTE_FLIP_CARD } from "../../constants/constants";
-import { useNavigate } from "react-router-dom";
-import { setCurrentCard } from "../../features/currentCardSlice";
+import { BASE_URL, ROUTE_FLIP_CARD } from "../../../data/constants";
+import { useNavigate, useParams} from "react-router-dom";
+import { CardFromServer } from "../../../types/CardFromServer";
+import { Loader } from "../../../components/Loader/Loader";
 
 export const ChangeCard: React.FC = () => {
-  const { currentCard } = useAppSelector(state => state.currentCard);
+  const [currentCard, setCurrentCard] = useState<null | CardFromServer>(null)
   const navigate = useNavigate();
-  const dispatch = useAppDispatch();
+  const { cardId } = useParams();
+  const [isLoading, setLoading] = useState<boolean>(true);
   const [formData, setFormData] = useState<AddCardType>({
     deck: 1,
     word: '',
@@ -17,17 +18,25 @@ export const ChangeCard: React.FC = () => {
     image: null,
 	});
 
-  useEffect(() => {
-    if (currentCard) {
-      setFormData({
-        deck: currentCard?.deck,
-        word: currentCard?.word,
-        translation: currentCard?.translation,
-        image: null,
-      });
-    }
-}, [currentCard]);
+  const getCurrentCard = async () => {
+    setLoading(true);
+    try {
+      const response = await axios.get(BASE_URL + `/study/cards/${cardId}`);
 
+      setCurrentCard(response.data);
+      setLoading(false);
+      
+    } catch (error) {
+      console.log(`Error: ${error}`);
+    }
+  }
+
+  useEffect(() => {
+    if (!currentCard) {
+      getCurrentCard();
+    } 
+  }, [cardId]);
+  
   const handleInputChange = (event: any) => {
 		const { name, value } = event.target;
 		setFormData(prevData => ({
@@ -36,7 +45,7 @@ export const ChangeCard: React.FC = () => {
 		}));
 	};
 
-  const handleChange = (event: any) => {
+  const handleFileChange = (event: any) => {
     const data = new FileReader();
     data.addEventListener('load', () => {
       setFormData(prevData => ({
@@ -59,18 +68,17 @@ export const ChangeCard: React.FC = () => {
       dataToSend.image = formData.image;
     }
 
-    console.log(dataToSend);
-
 		try {
 			const response = await axios.patch(BASE_URL + `/study/cards/${currentCard?.id}/`, dataToSend);
 
-      console.log(response, currentCard);
-
       if (response.status === 200) {
-        dispatch(setCurrentCard({
-          id: currentCard?.id,
-          ...dataToSend
-        }))
+        setCurrentCard(null)
+        setFormData({
+          deck: 1,
+          word: '',
+          translation: '',
+          image: null,
+        });
         navigate(ROUTE_FLIP_CARD)
       }
 
@@ -78,19 +86,17 @@ export const ChangeCard: React.FC = () => {
 			if (error.response) {
 				console.log(error.response.data);
 			}
-		} finally {
-      setFormData({
-				deck: 1,
-        word: '',
-        translation: '',
-        image: null,
-		  });
-    }
+		}
 	}
   
   return (
     <div>
-      <form action="" className="flex flex-col gap-4" onSubmit={handleOnSubmit}>
+      {isLoading ? (
+        <Loader />
+      ) : (
+        <>
+        <h2>{currentCard?.word}</h2>
+        <form action="" className="flex flex-col gap-4" onSubmit={handleOnSubmit}>
           <input
             placeholder='Deck'
             required
@@ -124,10 +130,12 @@ export const ChangeCard: React.FC = () => {
           <input
             type="file" 
             id="addCardInput" 
-            onChange={handleChange}
+            onChange={handleFileChange}
           />
           <button type="submit">Modify the card</button>
         </form>
+      </>
+    )}
     </div>
   )
 }

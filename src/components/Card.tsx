@@ -1,17 +1,17 @@
 import { useState } from 'react';
 import cn from 'classnames';
-import { CardType } from './types/CardType';
-import appleImage from './images/cameo-apple-tree-1-jpg-webp.webp';
-import bookImage from './images/book.jpg';
-import catImage from './images/cat.jpg';
-import doorImage from './images/door.jpg';
-import eggImage from './images/egg.png';
-import flowerImage from './images/flower.jpg';
-import grapeImage from './images/red-green-grapes.webp';
-import hatImage from './images/hat.jpg';
-import islandImage from './images/island.jpg';
-import jacketImg from './images/jacket.webp';
-import questionMark from './images/question-mark-2492009_1280.webp';
+import { CardType } from '../types/CardType';
+import appleImage from '../assets/cameo-apple-tree-1-jpg-webp.webp';
+import bookImage from '../assets/book.jpg';
+import catImage from '../assets/cat.jpg';
+import doorImage from '../assets/door.jpg';
+import eggImage from '../assets/egg.png';
+import flowerImage from '../assets/flower.jpg';
+import grapeImage from '../assets/red-green-grapes.webp';
+import hatImage from '../assets/hat.jpg';
+import islandImage from '../assets/island.jpg';
+import jacketImg from '../assets/jacket.webp';
+import questionMark from '../assets/question-mark-2492009_1280.webp';
 
 const imageMap: { [key: string]: string } = {
   'cameo-apple-tree-1-jpg-webp.webp': appleImage,

@@ -1,12 +1,12 @@
 import cn from 'classnames';
-import { useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { CardFromServer } from '../../types/CardFromServer';
 import './FlipCard.scss';
 
 type Props = {
   card: CardFromServer
 }
-export const FlipCard: React.FC<Props> = ({ card }) => {
+export const FlipCard: React.FC<Props> = React.memo(({ card }) => {
   const [isClicked, setClicked] = useState(false);
   const [disableTransition, setDisableTransition] = useState(false);
 
@@ -55,4 +55,4 @@ export const FlipCard: React.FC<Props> = ({ card }) => {
     </>
     
   )
-}
+}) 

@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom"
-import { ROUTE_ADD_CARD, ROUTE_BOOK_CARD, ROUTE_FLIP_CARD } from "../constants/constants"
+import { ROUTE_ADD_CARD, ROUTE_BOOK_CARD, ROUTE_FLIP_CARD } from "../../data/constants"
 
 export const GamePage = () => {
   return (

@@ -1,7 +1,7 @@
 import { useState } from "react";
-import { AddCardType } from "../../types/AddCardType";
+import { AddCardType } from "../../../types/AddCardType";
 import axios from "axios";
-import { BASE_URL } from "../../constants/constants";
+import { BASE_URL } from "../../../data/constants";
 
 export const AddCard = () => {
   const [formData, setFormData] = useState<AddCardType>({
@@ -29,12 +29,8 @@ export const AddCard = () => {
       image: formData.image,
 		}
 
-    console.log(dataToSend);
-
 		try {
-			const response = await axios.post(BASE_URL + '/study/cards/', dataToSend);
-
-    console.log(response);
+			await axios.post(BASE_URL + '/study/cards/', dataToSend);
 
 		} catch (error: any) {
 			if (error.response) {
