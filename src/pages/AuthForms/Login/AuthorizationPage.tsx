@@ -6,6 +6,7 @@ import { BASE_URL, ROUTE_HOME, ROUTE_PROFILE, ROUTE_REGISTRATION } from '../../.
 import { UserData } from '../../../types/UserData';
 import { useAppSelector } from '../../../app/hooks';
 import { CustomInput } from '../../../components/CustomInput/CustomInput';
+import { handleInputChange } from '../../../utils/helpers';
 
 export const Authorization = () => {
 	const navigate = useNavigate();
@@ -14,14 +15,6 @@ export const Authorization = () => {
     password: '',
 	});
 	const { user } = useAppSelector(state => state.user);
-
-	const handleInputChange = (event: any) => {
-		const { name, value } = event.target;
-		setFormData(prevData => ({
-				...prevData,
-				[name]: value
-		}));
-	};
 
 	const handleOnSubmit = async (event: any) => {
 		event?.preventDefault()
@@ -70,7 +63,7 @@ export const Authorization = () => {
 								type={'text'}
 								className='auth__input'
 								value={formData.email}
-								onChange={handleInputChange}
+								onChange={(event) => handleInputChange(event, setFormData)}
 								autocomplete={'off'}
 							/>
 						</div>
@@ -82,7 +75,7 @@ export const Authorization = () => {
 								type={'password'}
 								className='auth__input'
 								value={formData.password}
-								onChange={handleInputChange}
+								onChange={(event) => handleInputChange(event, setFormData)}
 							/>
 						</div>
 						<div className="auth__footer mt-auto">

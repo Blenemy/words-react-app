@@ -26,7 +26,7 @@ export const FlipCard: React.FC<Props> = React.memo(({ card }) => {
           text-3xl font-serif text-yellow-600
           uppercase tracking-widest leading-loose"
         >
-          {card.translation}
+          {card.word}
       </h1>
       <div className='flex items-start justify-center h-96'>
         <div 

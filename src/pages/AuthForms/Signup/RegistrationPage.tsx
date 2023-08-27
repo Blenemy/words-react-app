@@ -5,6 +5,7 @@ import '../AuthForm.css';
 import { UserData } from '../../../types/UserData';
 import { CustomInput } from '../../../components/CustomInput/CustomInput';
 import { BASE_URL, ROUTE_AUTHORIZATION, ROUTE_HOME } from '../../../data/constants';
+import { handleInputChange } from '../../../utils/helpers';
 
 export const Registration = () => {
 	const navigate = useNavigate();
@@ -14,14 +15,6 @@ export const Registration = () => {
     password: '',
     confirmPassword: ''
 	});
-
-	const handleInputChange = (event: any) => {
-		const { name, value } = event.target;
-		setFormData(prevData => ({
-				...prevData,
-				[name]: value
-		}));
-	};
 
 	const handleOnSubmit = async (event: any) => {
 		event?.preventDefault();
@@ -68,7 +61,7 @@ export const Registration = () => {
 							type={'text'}
 							className='auth__input'
 							value={formData.username}
-							onChange={handleInputChange}
+							onChange={(event) => handleInputChange(event, setFormData)}
 							autocomplete={'off'}
 						/>
 					</div>
@@ -80,7 +73,7 @@ export const Registration = () => {
 							type={'email'}
 							className='auth__input'
 							value={formData.email}
-							onChange={handleInputChange}
+							onChange={(event) => handleInputChange(event, setFormData)}
 							autocomplete={'off'}
 						/>
 					</div>
@@ -92,7 +85,7 @@ export const Registration = () => {
 							type={'password'}
 							className='auth__input'
 							value={formData.password}
-							onChange={handleInputChange}
+							onChange={(event) => handleInputChange(event, setFormData)}
 						/>
 					</div>
 					<div className="auth__input-box relative w-[300px] mb-4">
@@ -103,7 +96,7 @@ export const Registration = () => {
 							type={'password'}
 							className='auth__input'
 							value={formData.confirmPassword}
-							onChange={handleInputChange}
+							onChange={(event) => handleInputChange(event, setFormData)}
 						/>
 					</div>
 					<div className="auth__footer mt-auto">

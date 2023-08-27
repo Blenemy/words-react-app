@@ -2,12 +2,18 @@ import { useState } from "react";
 import { AddCardType } from "../../../types/AddCardType";
 import axios from "axios";
 import { BASE_URL } from "../../../data/constants";
+import { useLocation } from "react-router-dom";
+import Cookies from "js-cookie";
 
 export const AddCard = () => {
+  const location = useLocation();
+  const deckId = location.state.deckId;
+  const token = Cookies.get('token');
   const [formData, setFormData] = useState<AddCardType>({
-    'deck': 1,
+    'deck': deckId,
     'word': '',
     'translation': '',
+    'description': '',
     'image': '',
 	});
 
@@ -23,14 +29,18 @@ export const AddCard = () => {
 		event?.preventDefault()
 
 		const dataToSend = {
-			deck: 1,
+			deck: deckId,
 			word: formData.word,
       translation: formData.translation,
       image: formData.image,
 		}
 
 		try {
-			await axios.post(BASE_URL + '/study/cards/', dataToSend);
+			await axios.post(BASE_URL + '/study/cards/', dataToSend, {
+        headers: {
+          'Authorization': `Bearer ${token}`,
+        },
+      });
 
 		} catch (error: any) {
 			if (error.response) {
@@ -38,9 +48,10 @@ export const AddCard = () => {
 			}
 		} finally {
       setFormData({
-				deck: 1,
+				deck: deckId,
         word: '',
         translation: '',
+        description: '',
         image: null,
 		  });
     }
@@ -88,6 +99,16 @@ export const AddCard = () => {
             type={'text'}
             className='text-black'
             value={formData.translation}
+            onChange={handleInputChange}
+            autoComplete="off"
+          />
+          <input
+            placeholder='Description'
+            required
+            name={'description'}
+            type={'text'}
+            className='text-black'
+            value={formData.description}
             onChange={handleInputChange}
             autoComplete="off"
           />

@@ -3,5 +3,6 @@ export interface CardFromServer {
   deck: number,
   word: string,
   translation: string,
+  answers?: string[],
   image: string,
 }

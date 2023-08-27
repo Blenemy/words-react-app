@@ -1,10 +1,10 @@
 import { Link } from "react-router-dom";
-import user from '../../images/user-acc.svg';
-import game from '../../images/game.svg';
-import home from '../../images/Home-simple-door.svg';
-import userAcc from '../../images/User.svg';
-import arrowDown from '../../images/arrow-down.svg';
-import arrowUp from '../../images/arrow-up.svg';
+import user from '../../assets/user-acc.svg';
+import game from '../../assets/game.svg';
+import home from '../../assets/Home-simple-door.svg';
+import userAcc from '../../assets/User.svg';
+import arrowDown from '../../assets/arrow-down.svg';
+import arrowUp from '../../assets/arrow-up.svg';
 import './Navigation.css';
 import { useAppDispatch, useAppSelector } from "../../app/hooks";
 import { setCollapsed } from "../../features/submenuSlice";

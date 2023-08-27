@@ -8,8 +8,7 @@ import { useEffect } from 'react';
 import Cookies from 'js-cookie';
 import axios from "axios";
 import { setUser } from './features/userSlice';
-import { setCards } from './features/cardsSlice';
-import { BASE_URL, ROUTE_ADD_CARD, ROUTE_AUTHORIZATION, ROUTE_BOOK_CARD, ROUTE_CARD_GAME, ROUTE_EDIT_PROFILE, ROUTE_FLIP_CARD, ROUTE_HOME, ROUTE_PROFILE, ROUTE_REGISTRATION } from './data/constants';
+import { BASE_URL, ROUTE_ADD_CARD, ROUTE_AUTHORIZATION, ROUTE_BOOK_CARD, ROUTE_CARD_GAME, ROUTE_EDIT_PROFILE, ROUTE_FLIP_CARD, ROUTE_HOME, ROUTE_PROFILE, ROUTE_REGISTRATION, ROUTE_USER_DECKS } from './data/constants';
 import { BookCardPage } from './pages/CardsPage/BookCardPage';
 import { GamePage } from './pages/GamePage/GamePage';
 import { AddCard } from './pages/CardsPage/AddCard/AddCard';
@@ -19,6 +18,8 @@ import { Registration } from './pages/AuthForms/Signup/RegistrationPage';
 import { Authorization } from './pages/AuthForms/Login/AuthorizationPage';
 import { FlipCardPage } from './pages/CardsPage/FlipCardPage';
 import { ChangeCard } from './pages/CardsPage/ChangeCard/ChangeCard';
+import { AddDeck } from './pages/GamePage/AddDeck/AddDeck';
+import { ChangeDeck } from './pages/GamePage/ChangeDeck/ChangeDeck';
 
 function App() {
   const { opened } = useAppSelector(state => state.burger);
@@ -45,21 +46,6 @@ function App() {
     
     initializeApp();
   }, [dispatch]);
-
-  useEffect(() => {
-    async function getCards() {
-      try {
-        const response = await axios.get(`${BASE_URL}/study/cards/`);
-
-        dispatch(setCards(response.data));
-        
-      } catch (error) {
-        
-      }
-    }
-    getCards();
-  }, [dispatch]);
-
 
   return (
     <div className="App">
@@ -90,6 +76,14 @@ function App() {
               </Route>
               <Route path={ROUTE_BOOK_CARD} element={<BookCardPage />}/>
               <Route path={ROUTE_ADD_CARD} element={<AddCard />}/>
+              {/* <Route path={ROUTE_USER_DECKS} element={<AddDeck />}/> */}
+              <Route path={ROUTE_USER_DECKS}>
+                <Route index element={<AddDeck />} />
+                  <Route
+                    path=":deckId"
+                    element={<ChangeDeck/>}
+                  />
+              </Route>
             </Routes>
           </main>
         </div>

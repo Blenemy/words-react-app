@@ -1,7 +1,7 @@
-import burgerIconOpen from '../../images/menu_open.svg';
+import burgerIconOpen from '../../assets/menu_open.svg';
 import { useAppDispatch, useAppSelector } from '../../app/hooks';
-import burgerIcon from '../../images/menu.svg';
-import userDefault from '../../images/user-acc.svg';
+import burgerIcon from '../../assets/menu.svg';
+import userDefault from '../../assets/user-acc.svg';
 import { setOpened } from '../../features/burgerSlice';
 import { useLocation } from 'react-router-dom';
 
