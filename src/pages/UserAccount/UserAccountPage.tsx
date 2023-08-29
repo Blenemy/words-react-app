@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react'
 import Cookies from 'js-cookie';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { useAppDispatch, useAppSelector } from '../../app/hooks';
 import { setUser } from '../../features/userSlice';
 import axios from "axios";
@@ -15,30 +15,14 @@ export const UserAccountPage = () => {
   const navigate = useNavigate();
   const { user } = useAppSelector(state => state.user);
   const [isLoading, setLoading] = useState(false);
+  const location = useLocation();
+  // const { getUser } = useAccountGetUser();
 
   useEffect(() => {
-    async function getUser() {
-      if (!token) {
-        navigate(ROUTE_AUTHORIZATION);
-        return;
-      }
-
-      try {
-        const response = await axios.get(BASE_URL + '/user/profile/', {
-        headers: {
-          'Authorization': `Bearer ${token}`,
-        },
-      });
-
-      dispatch(setUser(response.data));
-      } catch (error) {
-        console.log(`Error:${error}`);
-      }
+    if (!token) {
+      navigate(ROUTE_AUTHORIZATION, { state: { from: location.pathname } });
     }
-
-    getUser();
-    
-  }, [dispatch, token, navigate])
+  }, [navigate, token, location.pathname])
 
   const handleLogOut = () => {
     Cookies.remove('token');
@@ -73,7 +57,7 @@ export const UserAccountPage = () => {
     }
   }
 
-  const handleChange = (event: any) => {
+  const handleFileChange = (event: any) => {
     const data = new FileReader();
     data.addEventListener('load', () => {
       sendDataToServer(data.result);
@@ -103,7 +87,7 @@ export const UserAccountPage = () => {
                 <input 
                   type="file" 
                   id="avatarInput" 
-                  onChange={handleChange}
+                  onChange={handleFileChange}
                   className='hidden'
                 />
               </div>

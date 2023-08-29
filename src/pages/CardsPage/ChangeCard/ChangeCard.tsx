@@ -5,12 +5,15 @@ import { BASE_URL, ROUTE_FLIP_CARD } from "../../../data/constants";
 import { useNavigate, useParams} from "react-router-dom";
 import { CardFromServer } from "../../../types/CardFromServer";
 import { Loader } from "../../../components/Loader/Loader";
+import { handleInputChange } from "../../../utils/helpers";
+import Cookies from "js-cookie";
 
 export const ChangeCard: React.FC = () => {
   const [currentCard, setCurrentCard] = useState<null | CardFromServer>(null)
   const navigate = useNavigate();
   const { cardId } = useParams();
   const [isLoading, setLoading] = useState<boolean>(true);
+  const token = Cookies.get('token');
   const [formData, setFormData] = useState<AddCardType>({
     deck: 1,
     word: '',
@@ -21,7 +24,11 @@ export const ChangeCard: React.FC = () => {
   const getCurrentCard = async () => {
     setLoading(true);
     try {
-      const response = await axios.get(BASE_URL + `/study/cards/${cardId}`);
+      const response = await axios.get(BASE_URL + `/study/cards/${cardId}`, {
+        headers: {
+          'Authorization': `Bearer ${token}`,
+        },
+      });
 
       setCurrentCard(response.data);
       setLoading(false);
@@ -37,14 +44,6 @@ export const ChangeCard: React.FC = () => {
     } 
   }, [cardId]);
   
-  const handleInputChange = (event: any) => {
-		const { name, value } = event.target;
-		setFormData(prevData => ({
-				...prevData,
-				[name]: value
-		}));
-	};
-
   const handleFileChange = (event: any) => {
     const data = new FileReader();
     data.addEventListener('load', () => {
@@ -104,7 +103,7 @@ export const ChangeCard: React.FC = () => {
             type={'number'}
             className='text-black'
             value={formData.deck}
-            onChange={handleInputChange}
+            onChange={(event) => handleInputChange(event, setFormData)}
             autoComplete="off"
           />
           <input
@@ -114,7 +113,7 @@ export const ChangeCard: React.FC = () => {
             type={'text'}
             className='text-black'
             value={formData.word}
-            onChange={handleInputChange}
+            onChange={(event) => handleInputChange(event, setFormData)}
             autoComplete="off"
           />
           <input
@@ -124,7 +123,7 @@ export const ChangeCard: React.FC = () => {
             type={'text'}
             className='text-black'
             value={formData.translation}
-            onChange={handleInputChange}
+            onChange={(event) => handleInputChange(event, setFormData)}
             autoComplete="off"
           />
           <input

@@ -1,85 +1,27 @@
-import { useState } from "react";
-import { AddCardType } from "../../../types/AddCardType";
-import axios from "axios";
-import { BASE_URL } from "../../../data/constants";
-import { useLocation } from "react-router-dom";
-import Cookies from "js-cookie";
+import { handleInputChange } from "../../../utils/helpers";
+import { useAddCart } from "../../../hooks/useAddCard";
 
 export const AddCard = () => {
-  const location = useLocation();
-  const deckId = location.state.deckId;
-  const token = Cookies.get('token');
-  const [formData, setFormData] = useState<AddCardType>({
-    'deck': deckId,
-    'word': '',
-    'translation': '',
-    'description': '',
-    'image': '',
-	});
-
-  const handleInputChange = (event: any) => {
-		const { name, value } = event.target;
-		setFormData(prevData => ({
-				...prevData,
-				[name]: value
-		}));
-	};
-
-  const handleOnSubmit = async (event: any) => {
-		event?.preventDefault()
-
-		const dataToSend = {
-			deck: deckId,
-			word: formData.word,
-      translation: formData.translation,
-      image: formData.image,
-		}
-
-		try {
-			await axios.post(BASE_URL + '/study/cards/', dataToSend, {
-        headers: {
-          'Authorization': `Bearer ${token}`,
-        },
-      });
-
-		} catch (error: any) {
-			if (error.response) {
-				console.log(error.response.data);
-			}
-		} finally {
-      setFormData({
-				deck: deckId,
-        word: '',
-        translation: '',
-        description: '',
-        image: null,
-		  });
-    }
-	}
-
-  const handleChange = (event: any) => {
-    const data = new FileReader();
-    data.addEventListener('load', () => {
-      setFormData(prevData => ({
-				...prevData,
-				image: data.result
-		}));
-    })
-    data.readAsDataURL(event.target.files[0])
-  }
+  const { 
+    formData, 
+    setFormData, 
+    handleAddCardOnSubmit, 
+    handleFileChange, 
+    error 
+  } = useAddCart();
 
   return (
     <>
       <div className="flex flex-col justify-center items-center">
-        <form action="" className="flex flex-col gap-4" onSubmit={handleOnSubmit}>
+        <form action="" className="flex flex-col gap-4" onSubmit={handleAddCardOnSubmit}>
           <input
             placeholder='Deck'
-            required
+            disabled
             name={'deck'}
             type={'number'}
             className='text-black'
             value={formData.deck}
-            onChange={handleInputChange}
+            onChange={(event) => handleInputChange(event, setFormData)}
             autoComplete="off"
           />
           <input
@@ -89,7 +31,7 @@ export const AddCard = () => {
             type={'text'}
             className='text-black'
             value={formData.word}
-            onChange={handleInputChange}
+            onChange={(event) => handleInputChange(event, setFormData)}
             autoComplete="off"
           />
           <input
@@ -99,7 +41,7 @@ export const AddCard = () => {
             type={'text'}
             className='text-black'
             value={formData.translation}
-            onChange={handleInputChange}
+            onChange={(event) => handleInputChange(event, setFormData)}
             autoComplete="off"
           />
           <input
@@ -109,15 +51,18 @@ export const AddCard = () => {
             type={'text'}
             className='text-black'
             value={formData.description}
-            onChange={handleInputChange}
+            onChange={(event) => handleInputChange(event, setFormData)}
             autoComplete="off"
           />
           <input
             type="file" 
             id="addCardInput" 
-            onChange={handleChange}
+            onChange={handleFileChange}
           />
           <button type="submit">Add a card</button>
+          {error && (
+            <div className="text-[14px] text-red-500">{error}</div>
+          )}
         </form>
       </div>
     </>

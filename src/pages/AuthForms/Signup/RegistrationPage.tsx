@@ -1,49 +1,12 @@
-import { useState } from 'react';
-import { Link, useNavigate } from "react-router-dom";
-import axios from 'axios';
+import { Link } from "react-router-dom";
 import '../AuthForm.css';
-import { UserData } from '../../../types/UserData';
 import { CustomInput } from '../../../components/CustomInput/CustomInput';
-import { BASE_URL, ROUTE_AUTHORIZATION, ROUTE_HOME } from '../../../data/constants';
+import { ROUTE_AUTHORIZATION, ROUTE_HOME } from '../../../data/constants';
 import { handleInputChange } from '../../../utils/helpers';
+import { useRegistration } from '../../../hooks/useRegistration';
 
 export const Registration = () => {
-	const navigate = useNavigate();
-	const [formData, setFormData] = useState<UserData>({
-    username: '',
-    email: '',
-    password: '',
-    confirmPassword: ''
-	});
-
-	const handleOnSubmit = async (event: any) => {
-		event?.preventDefault();
-
-		if (formData.password !== formData.confirmPassword) {
-			return;
-		}
-
-		const dataToSend = {
-			username: formData.username,
-			password: formData.password,
-			email: formData.email,
-	};
-
-		try {
-			const response = await axios.post(BASE_URL + '/user/register/', dataToSend);
-			setFormData({
-					username: '',
-					email: '',
-					password: '',
-					confirmPassword: ''
-			});
-			navigate(ROUTE_AUTHORIZATION)
-			console.log(response);
-			
-		} catch (error) {
-				console.error('Error:', error);
-		}
-	}
+	const { formData, setFormData, handleOnSubmit, error } = useRegistration();
 
   return (
 		<section className="flex bg-customBg justify-center items-center h-full">
@@ -53,6 +16,9 @@ export const Registration = () => {
 					onSubmit={handleOnSubmit}
 				>
 					<h2 className="auth__title text-white font-medium text-center tracking-wide text-3xl mb-5">Sign up</h2>
+					{error && (
+						<p className="text-[12px] text-red-500">{error}</p>
+					)}
 					<div className="auth__input-box relative w-[300px] mb-4">
 						<CustomInput
 							placeholder='Username'
@@ -109,7 +75,7 @@ export const Registration = () => {
 							className="auth__button border-none outline-none py-2 px-6 bg-white w-full
 							text-black cursor-pointer rounded-md font-semibold active:opacity-80"
 						>
-							Login
+							Sign up
 						</button>
 					</div>
 					

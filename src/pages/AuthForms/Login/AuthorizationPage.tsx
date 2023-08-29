@@ -1,48 +1,13 @@
-import { useState } from 'react';
-import axios from "axios";
-import { Link, useNavigate } from "react-router-dom"
-import Cookies from 'js-cookie';
-import { BASE_URL, ROUTE_HOME, ROUTE_PROFILE, ROUTE_REGISTRATION } from '../../../data/constants';
-import { UserData } from '../../../types/UserData';
+import { Link } from "react-router-dom"
+import { ROUTE_HOME, ROUTE_REGISTRATION } from '../../../data/constants';
 import { useAppSelector } from '../../../app/hooks';
 import { CustomInput } from '../../../components/CustomInput/CustomInput';
 import { handleInputChange } from '../../../utils/helpers';
+import { useAuth } from '../../../hooks/useAuth';
 
 export const Authorization = () => {
-	const navigate = useNavigate();
-	const [formData, setFormData] = useState<UserData>({
-    username: '',
-    password: '',
-	});
 	const { user } = useAppSelector(state => state.user);
-
-	const handleOnSubmit = async (event: any) => {
-		event?.preventDefault()
-
-		const dataToSend = {
-			username: formData.username,
-			password: formData.password,
-		}
-		
-		try {
-			const response = await axios.post(BASE_URL + '/user/login/', dataToSend);
-			const token = response.data.token;
-
-			Cookies.set('token', token, { expires: 1 });
-
-			setFormData({
-				username: '',
-				password: '',
-		});
-
-		navigate(ROUTE_PROFILE);
-
-		} catch (error: any) {
-			if (error.response) {
-				console.log(error.response.data);
-			}
-		}
-	}
+	const { formData, setFormData, handleOnSubmit, error } = useAuth();
 
   return (
     <section className="flex bg-customBg justify-center items-center h-full">
@@ -55,6 +20,9 @@ export const Authorization = () => {
 						onSubmit={handleOnSubmit}
 					>
 						<h2 className="auth__title text-white font-medium text-center tracking-wide text-3xl mb-5">Login to your Account</h2>
+						{error && (
+							<p className="text-[12px] text-red-500">{error}</p>
+						)}
 						<div className="auth__input-box relative w-[300px] mb-4">
 							<CustomInput
 								placeholder='Username'
@@ -62,7 +30,7 @@ export const Authorization = () => {
 								name={'username'}
 								type={'text'}
 								className='auth__input'
-								value={formData.email}
+								value={formData.username}
 								onChange={(event) => handleInputChange(event, setFormData)}
 								autocomplete={'off'}
 							/>

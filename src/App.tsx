@@ -45,6 +45,7 @@ function App() {
     }
     
     initializeApp();
+
   }, [dispatch]);
 
   return (
