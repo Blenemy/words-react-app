@@ -4,6 +4,7 @@ import { useEffect, useState } from "react"
 import { Link, useParams } from "react-router-dom"
 import { BASE_URL, ROUTE_ADD_CARD } from "../../../data/constants";
 import { CardFromServer } from "../../../types/CardFromServer";
+import { DeckCard } from "../../../components/DeckCard/DeckCard";
 
 export const ChangeDeck = () => {
   const { deckId } = useParams();
@@ -29,17 +30,15 @@ export const ChangeDeck = () => {
     getDeck()
   }, [deckId, token])
 
-  console.log(cardInDeck);
-  
   return (
     <div>
-      <div>
+      <div className="px-10 py-8">
         {!!cardInDeck?.length ? (
-          <>
+          <div className="flex flex-wrap gap-5">
             {cardInDeck.map(card => (
-              <div key={card.id}>{card.word}</div>
+              <DeckCard key={card.id} card={card}/>
             ))}
-          </>
+          </div>
         ) : (
           <>
             <div>'There are no cards in this deck'</div>

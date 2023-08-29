@@ -4,5 +4,6 @@ export interface CardFromServer {
   word: string,
   translation: string,
   answers?: string[],
+  description?: string | null,
   image: string,
 }

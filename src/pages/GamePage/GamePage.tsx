@@ -73,7 +73,7 @@ export const GamePage = () => {
               <div 
                 className="stack flex gap-8 relative items-center justify-center mb-8" 
               >
-                <StackOfDecks deck={deckTypes[index]}/>
+                <StackOfDecks images={deck.preview}/>
               </div>
               <button 
                 key={deck.id} 
