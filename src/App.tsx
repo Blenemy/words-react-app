@@ -1,9 +1,7 @@
 import { Routes, Route } from 'react-router-dom';
 import { UserAccountPage } from './pages/UserAccount/UserAccountPage';
-import { Navigation } from './components/Navigation/Navigation';
 import { Header } from './components/Header/Header';
-import cn from 'classnames';
-import { useAppDispatch, useAppSelector } from './app/hooks';
+import { useAppDispatch } from './app/hooks';
 import { useEffect } from 'react';
 import Cookies from 'js-cookie';
 import axios from "axios";
@@ -20,9 +18,9 @@ import { FlipCardPage } from './pages/CardsPage/FlipCardPage';
 import { ChangeCard } from './pages/CardsPage/ChangeCard/ChangeCard';
 import { AddDeck } from './pages/GamePage/AddDeck/AddDeck';
 import { ChangeDeck } from './pages/GamePage/ChangeDeck/ChangeDeck';
+import './App.scss';
 
 function App() {
-  const { opened } = useAppSelector(state => state.burger);
   const dispatch = useAppDispatch();
 
   useEffect(() => {
@@ -50,17 +48,10 @@ function App() {
 
   return (
     <div className="App">
-      <div className="wrapper flex flex-col text-white min-h-screen bg-[#060714]">
-        <Header />
-        <div className="grid h-full grow grid-cols-[250px_1fr]">
-          <nav 
-            className={cn('grid__nav', 'h-full', 'bg-[#11121F]', 'navigation', 'col-start-1', 'duration-500', {
-              '-translate-x-full': !opened
-            })}
-          >
-            <Navigation />
-          </nav>
-          <main className="grid__main col-start-2 grow">
+      <div className="wrapper flex flex-col text-white min-h-screen">
+        <div className="grid h-full grow px-16 py-8">
+          <Header />
+          <main className="grid__main">
             <Routes>
               <Route path={ROUTE_HOME} element={<HomePage />}/>
               <Route path={ROUTE_CARD_GAME} element={<GamePage />}/>

@@ -5,6 +5,11 @@
   -webkit-text-fill-color: transparent;
 }
 
+.homepage__content {
+  background: url('../../images/heart-front-page.svg') 70% 85% / cover no-repeat;
+  background-size: 30%;
+}
+
 .stack {
   width: 180px;
   height: 250px;
@@ -79,3 +84,52 @@ $--y: calc(-50%);
     z-index: -1;
   }
 }
+
+@keyframes moveUpDown {
+  0%, 100% {
+    transform: translateY(0) rotate(-6deg);
+  }
+  50% {
+    transform: translateY(-10px) rotate(-6deg);
+  }
+}
+
+.animation-words li p {
+  animation: moveUpDown 2s linear infinite;
+}
+
+.animation-words li:nth-child(2n) p {
+  animation-name: moveUpDownWithoutRotate;
+}
+
+@keyframes moveUpDownWithoutRotate {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+.animation-words li:nth-child(1) p {
+  animation: moveUpDown 2s linear infinite;
+}
+
+.animation-words li:nth-child(2) p {
+  animation: moveUpDownWithoutRotate 2s linear infinite 0.4s;
+}
+
+.animation-words li:nth-child(3) p {
+  animation: moveUpDown 2s linear infinite 0.8s;
+}
+
+.animation-words li:nth-child(4) p {
+  animation: moveUpDownWithoutRotate 2s linear infinite 1.2s;
+}
+
+.animation-words li:nth-child(5) p {
+  animation: moveUpDown 2s linear infinite 1.6s;
+}
+
+
+

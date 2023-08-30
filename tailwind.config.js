@@ -9,6 +9,11 @@ module.exports = {
       },
       colors: {
         customBg: '#010615',
+        primary: '#181818',
+        secondary: '#EFE6FF',
+        violetStroke: '#8560BF',
+        lilackButton: '#D8BFFF',
+        wave: '#80DCFF',
         customCard: '#060c21',
       },
       keyframes: {
