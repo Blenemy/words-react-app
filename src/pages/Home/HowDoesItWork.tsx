@@ -8,8 +8,11 @@ export const HowDoesItWork = () => {
         <p className="w-[392px] h-[52px] bg-wave rounded-3xl flex justify-center items-center border-2 border-primary text-3xl font-semibold -rotate-6 mb-5">Does it Work?</p>
         <p>It works by presenting language concepts on interactive to your learning pace.</p>
       </div>
-      <div className="text-primary">
-        <BenefitsCard text="awa" number="123"/>
+      <div className="text-primary flex gap-3">
+        <BenefitsCard text="awa" number="01."/>
+        <BenefitsCard text="awa" number="02."/>
+        <BenefitsCard text="awa" number="03."/>
+        <BenefitsCard text="awa" number="04."/>
       </div>
     </>
   )
