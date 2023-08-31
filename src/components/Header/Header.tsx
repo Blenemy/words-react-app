@@ -9,7 +9,7 @@ export const Header = () => {
   const { user } = useAppSelector(state => state.user);
 
   return (
-    <header className="header col-start-1 col-span-12 mb-16">
+    <header className="header col-start-1 col-span-12 mb-28">
       <div className="header__content flex items-center justify-between">
         <div className="header__left-piece flex gap-7 items-center">
           <ul className='flex gap-10'>

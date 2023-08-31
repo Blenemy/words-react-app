@@ -3,7 +3,7 @@ type Props = {
   number: string,
 }
 
-export const BenefitsCard: React.FC<Props> = ({ text, number }) => {
+export const HowDoesItWorkCard: React.FC<Props> = ({ text, number }) => {
   return (
     <div className="basis-1/4 bg card-benefit rounded-3xl min-h-[305px]">
       <div className="px-4 py-7 flex flex-col items-center justify-center">

@@ -8,19 +8,25 @@ export const HomePage = () => {
   return (
     <>
       <section className="homepage-section-one min-h-screen">
-        <div className="heart-bg h-full px-12 pt-8">
-          <Header />
-          <MainContent />
+        <div className="container mx-auto my-0">
+          <div className="heart-bg h-full px-12 py-16">
+            <Header />
+            <MainContent />
+          </div>
         </div>
       </section>
       <section className="homepage-section-two bg-primary min-h-screen overflow-visible">
-        <div className="min-h-screen px-12 py-8 arrow-bg">
-          <Benefits />
+        <div className="container mx-auto my-0">
+          <div className="min-h-screen px-12 py-8 arrow-bg">
+            <Benefits />
+          </div>
         </div>
       </section>
       <section className="homepage-section-three bg-white relative">
-        <div className="px-12">
-          <HowDoesItWork />
+        <div className="container mx-auto my-0">
+          <div className="px-12">
+            <HowDoesItWork />
+          </div>
         </div>
       </section>
     </>

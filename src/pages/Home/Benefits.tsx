@@ -10,13 +10,13 @@ export const Benefits = () => {
       <TextCarousel />
       <div className='relative'>
         <div className="flex gap-6">
-          <div className="basis-1/3 z-10">
+          <div className="basis-1/3 z-10 min-h-[200px]">
             <div className="blurs p-6 flex flex-col gap-2 bg-[rgba(255,255,254,0.4)] rounded-3xl min-h-full">
               <h3 className="text-wave text-2xl">Saved time</h3>
               <p className="text-xl text-[rgba(255,255,255,0.6)]">No need to spend hours finding different variations of cards.Add your card right away!</p>
             </div>
           </div>
-          <div className="basis-1/3 z-10">
+          <div className="basis-1/3 z-10 min-h-[200px]">
             <div className="blurs p-6 bg-[rgba(255,255,254,0.4)] rounded-3xl min-h-full">
               <div className="flex flex-col gap-2">
                 <h3 className="text-wave text-2xl">It`s Realistic</h3>
@@ -24,7 +24,7 @@ export const Benefits = () => {
               </div>
             </div>
           </div>
-          <div className="basis-1/3 z-10">
+          <div className="basis-1/3 z-10 min-h-[200px]">
             <div className="blurs p-6 flex flex-col gap-2 bg-[rgba(255,255,254,0.4)] rounded-3xl min-h-full">
               <h3 className="text-wave text-2xl">It`s Simple</h3>
               <p className="text-xl text-[rgba(255,255,255,0.6)]">The app interface is simple and intuitive. Just press a few buttons, and you`re done!</p>
@@ -33,8 +33,8 @@ export const Benefits = () => {
         </div>
         <div className='flex'>
           <img src={image1} alt="" className='absolute top-[175px] left-0 z-1'/>
-          <img src={image2} alt="" className='absolute top-[-45px] left-[325px] z-1'/>
-          <img src={image3} alt="" className='absolute top-[175px] left-[775px] z-1'/>
+          <img src={image2} alt="" className='absolute top-[-30%] left-[28%] z-1'/>
+          <img src={image3} alt="" className='absolute bottom-[-40%] left-[63%] z-1'/>
           <img src={image4} alt=""className='absolute top-[-65px] right-0 z-1' />
         </div>
       </div>
