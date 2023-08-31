@@ -5,7 +5,6 @@ import './Header.scss';
 import { ROUTE_AUTHORIZATION, ROUTE_CARD_GAME, ROUTE_HOME, ROUTE_PROFILE, ROUTE_REGISTRATION } from '../../data/constants';
 import { Logo } from '../CustomLogo/Logo';
 
-
 export const Header = () => {
   const { user } = useAppSelector(state => state.user);
 
@@ -30,9 +29,14 @@ export const Header = () => {
           {user ? (
             <div className="header__image">
               {user.avatar ? (
-                <img src={user.avatar} alt='UserAvatar' className="header__img rounded-[50%] object-cover h-[36px] w-[36px]" />
+                <Link to={ROUTE_PROFILE}>
+                  <img src={user.avatar} alt='UserAvatar' className="header__img rounded-[50%] object-cover h-[36px] w-[36px]" />
+                </Link>
+                
               ) : (
-                <img src={userDefault} alt='UserAvatar' className="header__img rounded-[50%] object-cover h-[36px] w-[36px]" />
+                <Link to={ROUTE_PROFILE}>
+                  <img src={userDefault} alt='UserAvatar' className="header__img rounded-[50%] object-cover h-[36px] w-[36px]" />
+                </Link>
               )}
             </div>
           ) : (

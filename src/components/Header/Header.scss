@@ -1,3 +1,34 @@
 .changing-colors svg {
   transition: fill 1s;
 }
+
+@keyframes changeColor {
+  0%, 100% { color: #D8BFFF; }
+  33% { color: #FFDE59; }
+  67% { color: #8560BF; }
+}
+
+@keyframes changeColor2 {
+  0%, 100% { color: #8560BF; }
+  33% { color: #D8BFFF; }
+  67% { color: #FFDE59; }
+}
+
+@keyframes changeColor3 {
+  0%, 100% { color: #FFDE59; }
+  33% { color: #8560BF; }
+  67% { color: #D8BFFF; }
+}
+
+.svg-container-one {
+  animation: changeColor 6s infinite;
+}
+
+.svg-container-two {
+  animation: changeColor2 6s infinite;
+}
+
+.svg-container-three {
+  animation: changeColor3 6s infinite;
+}
+

@@ -7,7 +7,7 @@ import image4 from '../../images/frontpage-list-image4.png'
 
 export const MainContent = () => {
   return (
-    <div className="homepage__header flex gap-20 mb-24">
+    <div className="homepage__header flex gap-20">
       <div className="flex flex-col basis-1/2 gap-12">
         <h1 className="homepage__title text-[48px] tracking-wide font-bold leading-tight"><span className='text-primary text-[96px]'>Learn Ensligh Language </span><br /> <span className='color-effect'>With Fun!</span></h1>
         <p className="homepage__subtitle text-[24px] text-primary">Guess the word based on the image and description. Improve your vocabulary and knowledge of the English language every day.</p>

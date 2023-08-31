@@ -49,36 +49,32 @@ function App() {
   return (
     <div className="App">
       <div className="wrapper flex flex-col text-white min-h-screen">
-        <div className="grid h-full grow px-16 py-8">
-          <Header />
-          <main className="grid__main">
-            <Routes>
-              <Route path={ROUTE_HOME} element={<HomePage />}/>
-              <Route path={ROUTE_CARD_GAME} element={<GamePage />}/>
-              <Route path={ROUTE_REGISTRATION} element={<Registration />}/>
-              <Route path={ROUTE_AUTHORIZATION} element={<Authorization />}/>
-              <Route path={ROUTE_PROFILE} element={<UserAccountPage />}/>
-              <Route path={ROUTE_EDIT_PROFILE} element={<EditForm />}/>
-              <Route path={ROUTE_FLIP_CARD}>
-                <Route index element={<FlipCardPage />} />
-                  <Route
-                    path=":cardId"
-                    element={<ChangeCard/>}
-                  />
-              </Route>
-              <Route path={ROUTE_BOOK_CARD} element={<BookCardPage />}/>
-              <Route path={ROUTE_ADD_CARD} element={<AddCard />}/>
-              {/* <Route path={ROUTE_USER_DECKS} element={<AddDeck />}/> */}
-              <Route path={ROUTE_USER_DECKS}>
-                <Route index element={<AddDeck />} />
-                  <Route
-                    path=":deckId"
-                    element={<ChangeDeck/>}
-                  />
-              </Route>
-            </Routes>
-          </main>
-        </div>
+        <main className="grid__main">
+          <Routes>
+            <Route path={ROUTE_HOME} element={<HomePage />}/>
+            <Route path={ROUTE_CARD_GAME} element={<GamePage />}/>
+            <Route path={ROUTE_REGISTRATION} element={<Registration />}/>
+            <Route path={ROUTE_AUTHORIZATION} element={<Authorization />}/>
+            <Route path={ROUTE_PROFILE} element={<UserAccountPage />}/>
+            <Route path={ROUTE_EDIT_PROFILE} element={<EditForm />}/>
+            <Route path={ROUTE_FLIP_CARD}>
+              <Route index element={<FlipCardPage />} />
+                <Route
+                  path=":cardId"
+                  element={<ChangeCard/>}
+                />
+            </Route>
+            <Route path={ROUTE_BOOK_CARD} element={<BookCardPage />}/>
+            <Route path={ROUTE_ADD_CARD} element={<AddCard />}/>
+            <Route path={ROUTE_USER_DECKS}>
+              <Route index element={<AddDeck />} />
+                <Route
+                  path=":deckId"
+                  element={<ChangeDeck/>}
+                />
+            </Route>
+          </Routes>
+        </main>
       </div>
     </div>
   );
