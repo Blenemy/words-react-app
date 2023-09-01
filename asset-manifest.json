@@ -1,30 +1,39 @@
 {
   "files": {
-    "main.css": "/words-react-app/static/css/main.adad39c0.css",
-    "main.js": "/words-react-app/static/js/main.97b47542.js",
-    "static/media/main-bg.jpg": "/words-react-app/static/media/main-bg.de24ffd0c3f15967e498.jpg",
+    "main.css": "/words-react-app/static/css/main.f20271be.css",
+    "main.js": "/words-react-app/static/js/main.54923ed2.js",
+    "static/media/BackgroundGradient.png": "/words-react-app/static/media/BackgroundGradient.87f31503f8fe53709b26.png",
     "static/media/book.jpg": "/words-react-app/static/media/book.c54458066963326e81fe.jpg",
     "static/media/door.jpg": "/words-react-app/static/media/door.67d56f4a9bdcf51f0abd.jpg",
     "static/media/jacket.webp": "/words-react-app/static/media/jacket.cdfb55c3daa26fbe2cda.webp",
     "static/media/cameo-apple-tree-1-jpg-webp.webp": "/words-react-app/static/media/cameo-apple-tree-1-jpg-webp.57826ba8927874dd52da.webp",
+    "static/media/benefits-image1.png": "/words-react-app/static/media/benefits-image1.31c4798c7b72902e701e.png",
     "static/media/flower.jpg": "/words-react-app/static/media/flower.6516c97948f151b1e4c8.jpg",
     "static/media/question-mark-2492009_1280.webp": "/words-react-app/static/media/question-mark-2492009_1280.06ec556c557f9cc86600.webp",
+    "static/media/MagilioRegular.ttf": "/words-react-app/static/media/MagilioRegular.bc3470a85a964b2f4cda.ttf",
     "static/media/red-green-grapes.webp": "/words-react-app/static/media/red-green-grapes.07f9dbfdd96abe73a006.webp",
     "static/media/island.jpg": "/words-react-app/static/media/island.f8e72be13f2aa01cc72e.jpg",
-    "static/media/Home-simple-door.svg": "/words-react-app/static/media/Home-simple-door.dc8620c79f096e9c349ef31b57fcdf6d.svg",
-    "static/media/User.svg": "/words-react-app/static/media/User.b175257c1dee32fc39b1cb58a71d89aa.svg",
-    "static/media/game.svg": "/words-react-app/static/media/game.cffe9474fc99bc6a0f6d5ce68e7783e1.svg",
+    "static/media/benefits-image4.png": "/words-react-app/static/media/benefits-image4.05de5c933097f05aacde.png",
+    "static/media/benefits-image2.png": "/words-react-app/static/media/benefits-image2.25ba24d5740d39add404.png",
+    "static/media/benefits-image3.png": "/words-react-app/static/media/benefits-image3.44435a125032a6bbf211.png",
+    "static/media/MagilioRegular.otf": "/words-react-app/static/media/MagilioRegular.4bb4f911c8d1d4d8aa98.otf",
+    "static/media/heart-front-page.svg": "/words-react-app/static/media/heart-front-page.dfee9fec544dc05cfd6c.svg",
+    "static/media/copyright.svg": "/words-react-app/static/media/copyright.ee23373c7afff2e943117bf980cfa0b8.svg",
     "static/media/user-acc.svg": "/words-react-app/static/media/user-acc.71e89c140d56e582ca50aa98e59de4fd.svg",
+    "static/media/arrow-white.svg": "/words-react-app/static/media/arrow-white.90d3d07d9b80e5a046e65a49eafc01ab.svg",
     "index.html": "/words-react-app/index.html",
-    "static/media/arrow-down.svg": "/words-react-app/static/media/arrow-down.68f0c31e48bc7187c6f5bfaa01c7213b.svg",
-    "static/media/arrow-up.svg": "/words-react-app/static/media/arrow-up.accffe10f3dcfae3990137dfed81379e.svg",
-    "static/media/menu_open.svg": "/words-react-app/static/media/menu_open.d4cb6c79080db7c0400d6c15a8228bea.svg",
-    "static/media/menu.svg": "/words-react-app/static/media/menu.bfaaf7e173f89ec1faf20440135148a5.svg",
-    "main.adad39c0.css.map": "/words-react-app/static/css/main.adad39c0.css.map",
-    "main.97b47542.js.map": "/words-react-app/static/js/main.97b47542.js.map"
+    "static/media/arrow-bg.svg": "/words-react-app/static/media/arrow-bg.f1c170dc862f5009d8b1.svg",
+    "static/media/howitworks-react-yellow.svg": "/words-react-app/static/media/howitworks-react-yellow.b67c71ff9ddc6acb91389f217506cdfb.svg",
+    "static/media/howitworks-react-wave.svg": "/words-react-app/static/media/howitworks-react-wave.48300a2661f157d10e9ed26fb49890c7.svg",
+    "static/media/pink-logo-animated-rectangle.svg": "/words-react-app/static/media/pink-logo-animated-rectangle.b0536148b9b1016fe9655ac41cc0acd9.svg",
+    "static/media/howitworks-react-pink.svg": "/words-react-app/static/media/howitworks-react-pink.fe9c54d98fed8b106fbbbb301834fd2d.svg",
+    "static/media/yellow-logo-animated-rectangle.svg": "/words-react-app/static/media/yellow-logo-animated-rectangle.de6c575b331b1828ed178155e6639ac7.svg",
+    "static/media/violet-logo-animated-rectangle.svg": "/words-react-app/static/media/violet-logo-animated-rectangle.d09de536b7aaaf4b67701119c28cdcd8.svg",
+    "main.f20271be.css.map": "/words-react-app/static/css/main.f20271be.css.map",
+    "main.54923ed2.js.map": "/words-react-app/static/js/main.54923ed2.js.map"
   },
   "entrypoints": [
-    "static/css/main.adad39c0.css",
-    "static/js/main.97b47542.js"
+    "static/css/main.f20271be.css",
+    "static/js/main.54923ed2.js"
   ]
 }
