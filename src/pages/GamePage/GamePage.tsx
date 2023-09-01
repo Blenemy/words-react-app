@@ -15,8 +15,6 @@ export const GamePage = () => {
   const navigate = useNavigate();
 	const location = useLocation();
   const token = Cookies.get('token');
-  const deckTypes: ('easy' | 'medium' | 'hard')[] = ['easy', 'medium', 'hard'];
-  console.log(selectedDeck);
 
   const handleSumbitDeck = async (deck: number) => {
     setSelectedDeck(deck);
@@ -58,7 +56,7 @@ export const GamePage = () => {
   }, [token, user, navigate, location.pathname])
 
   return (
-    <div>
+    <div className="h-screen bg-primary">
       <div className="px-10 py-8 flex flex-col items-center">
         <Link className="mb-6" to={ROUTE_USER_DECKS}>My Decks</Link>
         <h2 
@@ -87,7 +85,12 @@ export const GamePage = () => {
             </div>
           ))}
         </div>
-        <Link to={ROUTE_FLIP_CARD} state={{ deckId: selectedDeck }}>Start the Game</Link>
+        {selectedDeck 
+          ? 
+            <Link to={ROUTE_FLIP_CARD} state={{ deckId: selectedDeck }}>Start the Game</Link> 
+          : 
+            <div>Warning: Choose a deck, please!</div>
+        }
       </div>
     </div>
   )

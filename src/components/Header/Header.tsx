@@ -4,12 +4,13 @@ import { Link } from 'react-router-dom';
 import './Header.scss';
 import { ROUTE_AUTHORIZATION, ROUTE_CARD_GAME, ROUTE_HOME, ROUTE_PROFILE, ROUTE_REGISTRATION } from '../../data/constants';
 import { Logo } from '../CustomLogo/Logo';
+import cardLingoBlack from '../../images/cardLingo.png'
 
 export const Header = () => {
   const { user } = useAppSelector(state => state.user);
 
   return (
-    <header className="header col-start-1 col-span-12 mb-28">
+    <header className="header col-start-1 col-span-12 mb-28 sticky top-0 left-0 right-0">
       <div className="header__content flex items-center justify-between">
         <div className="header__left-piece flex gap-7 items-center">
           <ul className='flex gap-10'>
@@ -24,7 +25,7 @@ export const Header = () => {
             </li>
           </ul>
         </div>
-        <Logo />
+        <Logo image={cardLingoBlack}/>
         <div className="header__right-piece">
           {user ? (
             <div className="header__image">

@@ -3,6 +3,7 @@ import { Benefits } from './Benefits';
 import { HowDoesItWork } from './HowDoesItWork';
 import { MainContent } from './MainContent';
 import { Header } from '../../components/Header/Header';
+import { Footer } from './Footer';
 
 export const HomePage = () => {
   return (
@@ -24,11 +25,18 @@ export const HomePage = () => {
       </section>
       <section className="homepage-section-three bg-white relative">
         <div className="container mx-auto my-0">
-          <div className="px-12">
+          <div className="px-12 pb-36">
             <HowDoesItWork />
           </div>
         </div>
       </section>
+      <footer className='bg-primary'>
+        <div className='container mx-auto my-0'>
+          <div className='px-14 py-10'>
+            <Footer />
+          </div>
+        </div>
+      </footer>
     </>
   )
 }

@@ -1,15 +1,17 @@
 import axios from "axios"
-import { BASE_URL } from "../../../data/constants"
+import { BASE_URL, ROUTE_FLIP_CARD } from "../../../data/constants"
 import { useEffect, useState } from "react";
 import { handleInputChange } from "../../../utils/helpers";
 import Cookies from "js-cookie";
 import { DeckFromServer } from "../../../types/DeckFromServer";
 import { Link } from "react-router-dom";
 import { StackOfDecks } from "../StackOfDecks";
+import classNames from "classnames";
 
 export const AddDeck = () => {
   const [addDeck, setAddDeck] = useState<any>({ title: '', });
   const [decks, setDecks] = useState<DeckFromServer[] | null>(null);
+  const [selectedDeck, setSelectedDeck] = useState<number | null>(null);
   const token = Cookies.get('token');
 
   const handleAddDeck = async () => {
@@ -37,7 +39,22 @@ export const AddDeck = () => {
     }
   }
 
-  console.log(decks);
+  const handleSumbitDeck = async (deck: number) => {
+    setSelectedDeck(deck);
+
+    try {
+      await axios.post(BASE_URL + `/study/add_deck/${deck}/`, {}, {
+        headers: {
+          'Authorization': `Bearer ${token}`,
+        },
+      });
+
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
+  console.log(selectedDeck);
 
   useEffect(() => {
     async function getDecks() {
@@ -82,14 +99,32 @@ export const AddDeck = () => {
         </div>
         <div>
           <h3 className="text-center mb-12">List of your decks</h3>
-          {decks?.map(deck => (
-            <div 
-              className="stack flex flex-col gap-8 relative items-center justify-center mb-8" 
-            >
-              <StackOfDecks images={deck.preview}/>
-              <Link to={`./${deck.id}`}>{deck.title}</Link>
-            </div>
-          ))}
+          <div className="flex">
+            {decks?.map(deck => (
+              <div 
+                className="stack flex flex-col gap-8 relative items-center justify-center mb-8" 
+                key={deck.id}
+              >
+                <StackOfDecks images={deck.preview}/>
+                <button 
+                  className={classNames({
+                    'text-red-400': selectedDeck === deck.id
+                  })} 
+                  onClick={() => handleSumbitDeck(deck.id)}
+                >
+                  {deck.title}
+                </button>
+                {/* <Link to={`./${deck.id}`}>{deck.title}</Link> */}
+              </div>
+            ))}
+          </div>
+
+        {selectedDeck
+          ? 
+            <Link to={ROUTE_FLIP_CARD} state={{ deckId: selectedDeck }}>Start the Game</Link> 
+          : 
+            <div>Warning: Choose a deck, please!</div>
+        }
             
         </div>
       </div>

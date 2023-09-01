@@ -1,6 +1,5 @@
 import { Routes, Route } from 'react-router-dom';
 import { UserAccountPage } from './pages/UserAccount/UserAccountPage';
-import { Header } from './components/Header/Header';
 import { useAppDispatch } from './app/hooks';
 import { useEffect } from 'react';
 import Cookies from 'js-cookie';
@@ -48,7 +47,7 @@ function App() {
 
   return (
     <div className="App">
-      <div className="wrapper flex flex-col text-white min-h-screen">
+      <div className="wrapper flex flex-col text-white min-h-screen bg-primary">
         <main className="grid__main">
           <Routes>
             <Route path={ROUTE_HOME} element={<HomePage />}/>
