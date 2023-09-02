@@ -18,6 +18,8 @@ import { ChangeCard } from './pages/CardsPage/ChangeCard/ChangeCard';
 import { AddDeck } from './pages/GamePage/AddDeck/AddDeck';
 import { ChangeDeck } from './pages/GamePage/ChangeDeck/ChangeDeck';
 import './App.scss';
+import { Header } from './components/Header/Header';
+import { Footer } from './components/Footer/Footer';
 
 function App() {
   const dispatch = useAppDispatch();
@@ -47,8 +49,9 @@ function App() {
 
   return (
     <div className="App">
-      <div className="wrapper flex flex-col text-white min-h-screen bg-primary">
-        <main className="grid__main">
+      <div className="wrapper flex flex-col text-white min-h-screen">
+        <Header />
+        <main className="grid__main min-h-full grow">
           <Routes>
             <Route path={ROUTE_HOME} element={<HomePage />}/>
             <Route path={ROUTE_CARD_GAME} element={<GamePage />}/>
@@ -74,6 +77,7 @@ function App() {
             </Route>
           </Routes>
         </main>
+        <Footer />
       </div>
     </div>
   );

@@ -7,12 +7,12 @@ import image4 from '../../images/frontpage-list-image4.png'
 
 export const MainContent = () => {
   return (
-    <div className="homepage__header flex gap-20">
+    <div className="homepage__header flex gap-20 font-['Roboto_flex']">
       <div className="flex flex-col basis-1/2 gap-12">
-        <h1 className="homepage__title text-[48px] tracking-wide font-bold leading-tight"><span className='text-primary text-[96px]'>Learn Ensligh Language </span><br /> <span className='color-effect'>With Fun!</span></h1>
-        <p className="homepage__subtitle text-[24px] text-primary">Guess the word based on the image and description. Improve your vocabulary and knowledge of the English language every day.</p>
+        <h1 className="homepage__title text-[48px] tracking-wide font-bold leading-tight font-['Magilio']"><span className='text-primary text-[96px]'>Learn Ensligh Language </span><br /> <span className='color-effect'>With Fun!</span></h1>
+        <p className="homepage__subtitle text-[24px] text-primary">Guess the word based on the image and description. <br />Improve your vocabulary and knowledge of the English language every day.</p>
         <div className='flex gap-4'>
-          <Link to={ROUTE_CARD_GAME} className='bg-lilackButton px-8 py-4 rounded-3xl text-[18px] w-[312px] h-[38px] flex items-center justify-center text-black border-black border-2 hover:bg-wave duration-300'>Get Started</Link>
+          <Link to={ROUTE_CARD_GAME} className='bg-lilackButton px-8 py-4 rounded-3xl text-[18px] w-[312px] h-[38px] flex items-center justify-center text-black border-black border-2 hover:bg-wave duration-300 font-medium'>Get Started</Link>
           {/* <button className='bg-[#180919] px-8 py-4 rounded-md text-[18px]'>How does it work?</button> */}
         </div>
       </div>

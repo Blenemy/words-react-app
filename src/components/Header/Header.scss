@@ -2,6 +2,33 @@
   transition: fill 1s;
 }
 
+.header {
+  position: relative;
+  overflow: hidden;
+  height: 71px;
+
+  &::before {
+    content: "";
+    position: absolute;
+    top: -10px;
+    left: -10px; 
+    right: -10px;
+    bottom: -10px;
+    z-index: -1;
+
+    background-image: url('./../../images/BackgroundGradient.png');
+    background-size: cover;
+    background-position: 0 100%;
+
+    -webkit-filter: blur(30px);
+    -moz-filter: blur(30px);
+    -o-filter: blur(30px);
+    -ms-filter: blur(30px);
+    filter: blur(40px);
+  }
+}
+
+
 @keyframes changeColor {
   0%, 100% { color: #D8BFFF; }
   33% { color: #FFDE59; }
