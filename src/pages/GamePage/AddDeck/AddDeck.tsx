@@ -54,8 +54,6 @@ export const AddDeck = () => {
     }
   }
 
-  console.log(selectedDeck);
-
   useEffect(() => {
     async function getDecks() {
       try {
@@ -76,7 +74,7 @@ export const AddDeck = () => {
   }, [token, setDecks])
 
   return (
-    <div>
+    <div className="bg-primary">
       <div className="px-10 py-8">
         <h2 
           className="text-2xl font-serif text-yellow-600
@@ -98,14 +96,14 @@ export const AddDeck = () => {
           <button className="w-[20%] bg-orange-500" onClick={handleAddDeck}>Add you own deck</button>
         </div>
         <div>
-          <h3 className="text-center mb-12">List of your decks</h3>
-          <div className="flex">
+          <h3 className="mb-12">List of your decks</h3>
+          <div className="flex gap-8 mb-10">
             {decks?.map(deck => (
-              <div 
-                className="stack flex flex-col gap-8 relative items-center justify-center mb-8" 
-                key={deck.id}
-              >
-                <StackOfDecks images={deck.preview}/>
+              <div key={deck.id} className="flex flex-col gap-3 items-center justify-center">
+                <div className="stack flex flex-col gap-8 relative">
+                  <StackOfDecks images={deck.preview} onDeckClick={() => handleSumbitDeck(deck.id)}/>
+                </div>
+                <div className="flex flex-col gap-2">
                 <button 
                   className={classNames({
                     'text-red-400': selectedDeck === deck.id
@@ -114,18 +112,19 @@ export const AddDeck = () => {
                 >
                   {deck.title}
                 </button>
-                {/* <Link to={`./${deck.id}`}>{deck.title}</Link> */}
+                <Link to={`./${deck.id}`}>Modify the deck</Link>
               </div>
+            </div>
+              
             ))}
           </div>
 
-        {selectedDeck
-          ? 
-            <Link to={ROUTE_FLIP_CARD} state={{ deckId: selectedDeck }}>Start the Game</Link> 
-          : 
-            <div>Warning: Choose a deck, please!</div>
-        }
-            
+          {selectedDeck
+            ? 
+              <Link to={ROUTE_FLIP_CARD} state={{ deckId: selectedDeck, isDefault: false }}>Start the Game</Link> 
+            : 
+              <div>Warning: Choose a deck, please!</div>
+          }
         </div>
       </div>
     </div>

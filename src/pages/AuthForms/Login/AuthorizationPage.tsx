@@ -10,7 +10,7 @@ export const Authorization = () => {
 	const { formData, setFormData, handleOnSubmit, error } = useAuth();
 
   return (
-    <section className="flex bg-customBg justify-center items-center h-full">
+    <section className="flex bg-customBg justify-center items-center min-h-screen">
 			{user ? (
 				<div>You are already singed in. Quit your previous account first</div>
 			) : (

@@ -25,6 +25,7 @@ export const useAddCart = () => {
 			deck: deckId,
 			word: formData.word,
       translation: formData.translation,
+      description: formData.description,
       image: formData.image,
 		}
 

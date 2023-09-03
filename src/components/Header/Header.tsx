@@ -16,13 +16,13 @@ export const Header = () => {
           <div className="header__left-piece flex gap-7 items-center">
             <ul className='flex gap-20 items-center'>
               <li>
-                <Link className='flex items-center justify-center cursor-pointer px-5 py-2 rounded-2xl bg-secondary h-[35px] text-primary hover:bg-lilackButton hover:text-violetStroke duration-300 text-[20px]' to={ROUTE_HOME}>Home</Link>
+                <HeaderLink route={ROUTE_HOME} title='Home'/>
               </li>
               <li>
-                <Link className='flex items-center justify-center cursor-pointer px-2 py-1 rounded-2xl bg-secondary h-[35px] text-primary hover:bg-lilackButton hover:text-violetStroke duration-300 text-[20px]' to={ROUTE_CARD_GAME}>Play the Game</Link>
+                <HeaderLink route={ROUTE_CARD_GAME} title='Play the Game'/>
               </li>
               <li>
-                <Link className='flex items-center justify-center cursor-pointer px-2 py-1 rounded-2xl bg-secondary h-[35px] text-primary hover:bg-lilackButton hover:text-violetStroke duration-300 text-[20px]' to={ROUTE_PROFILE}>Personal Account</Link>
+                <HeaderLink route={ROUTE_PROFILE} title='Personal Account'/>
               </li>
               <li>
                 <Logo image={cardLingoBlack}/>
@@ -53,6 +53,17 @@ export const Header = () => {
         </div>
       </div>
     </header>
+  )
+}
+
+const HeaderLink = ({ route, title}: { route: string, title: string }) => {
+  return (
+    <Link 
+      className='flex items-center justify-center cursor-pointer px-5 py-2 rounded-2xl bg-secondary h-[35px] text-primary hover:bg-lilackButton hover:text-violetStroke duration-300 text-[20px]' 
+      to={route}
+    >
+      {title}
+    </Link>
   )
 }
 

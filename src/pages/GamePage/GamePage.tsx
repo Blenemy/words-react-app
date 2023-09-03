@@ -71,7 +71,7 @@ export const GamePage = () => {
               <div 
                 className="stack flex gap-8 relative items-center justify-center mb-8" 
               >
-                <StackOfDecks images={deck.preview}/>
+                <StackOfDecks images={deck.preview} onDeckClick={() => handleSumbitDeck(deck.id)}/>
               </div>
               <button 
                 key={deck.id} 
@@ -87,7 +87,7 @@ export const GamePage = () => {
         </div>
         {selectedDeck 
           ? 
-            <Link to={ROUTE_FLIP_CARD} state={{ deckId: selectedDeck }}>Start the Game</Link> 
+            <Link to={ROUTE_FLIP_CARD} state={{ deckId: selectedDeck, isDefault: true }}>Start the Game</Link> 
           : 
             <div>Warning: Choose a deck, please!</div>
         }

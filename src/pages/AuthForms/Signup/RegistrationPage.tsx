@@ -9,7 +9,7 @@ export const Registration = () => {
 	const { formData, setFormData, handleOnSubmit, error } = useRegistration();
 
   return (
-		<section className="flex bg-customBg justify-center items-center h-full">
+		<section className="flex bg-customBg justify-center items-center min-h-screen">
 			<div className="auth relative w-96 h-[580px] bg-blue-950 rounded-lg overflow-hidden ">
 				<form 
 					className="auth__form absolute inset-1 px-10 py-12 rounded-lg z-[2] flex flex-col bg-[#010615]"

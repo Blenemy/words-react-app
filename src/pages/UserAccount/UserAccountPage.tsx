@@ -16,7 +16,6 @@ export const UserAccountPage = () => {
   const { user } = useAppSelector(state => state.user);
   const [isLoading, setLoading] = useState(false);
   const location = useLocation();
-  // const { getUser } = useAccountGetUser();
 
   useEffect(() => {
     if (!token) {

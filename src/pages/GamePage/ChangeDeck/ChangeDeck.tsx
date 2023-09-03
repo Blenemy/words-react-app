@@ -31,12 +31,14 @@ export const ChangeDeck = () => {
   }, [deckId, token])
 
   return (
-    <div>
+    <div className="bg-primary">
       <div className="px-10 py-8">
         {!!cardInDeck?.length ? (
           <div className="flex flex-wrap gap-5">
             {cardInDeck.map(card => (
-              <DeckCard key={card.id} card={card}/>
+              <div key={card.id} className="max-w-[180px]">
+                <DeckCard card={card}/>
+              </div>
             ))}
           </div>
         ) : (
