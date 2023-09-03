@@ -12,7 +12,7 @@ export const Header = () => {
   return (
     <header id='header' className="header font-semibold">
       <div className="container mx-auto my-0">
-        <div className="header__content flex items-center justify-between h-[71px] px-12">
+        <div className="header__content flex items-center justify-between h-[71px]">
           <div className="header__left-piece flex gap-7 items-center">
             <ul className='flex gap-20 items-center'>
               <li>
@@ -59,7 +59,7 @@ export const Header = () => {
 const HeaderLink = ({ route, title}: { route: string, title: string }) => {
   return (
     <Link 
-      className='flex items-center justify-center cursor-pointer px-5 py-2 rounded-2xl bg-secondary h-[35px] text-primary hover:bg-lilackButton hover:text-violetStroke duration-300 text-[20px]' 
+      className='flex items-center justify-center cursor-pointer rounded-2xl bg-secondary h-[35px] text-primary hover:bg-lilackButton hover:text-violetStroke duration-300 text-[20px]' 
       to={route}
     >
       {title}

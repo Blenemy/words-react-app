@@ -24,7 +24,7 @@ export const HomePage = () => {
     <>
       <section className={`homepage-section-one`} style={{ minHeight: viewportHeight }}>
         <div className="container mx-auto my-0">
-          <div className="heart-bg h-full px-12 pt-20 pb-14">
+          <div className="heart-bg h-full pt-20 pb-14">
             <MainContent />
           </div>
         </div>
