@@ -15,7 +15,7 @@ export const FlipCardPage: React.FC = () => {
   const { deckId, isDefault } = location.state;
   const token = Cookies.get('token');
 
-  console.log(deckId, currentCard);
+  console.log(deckId, currentCard, isDefault);
 
   const getNextCard = useCallback(async (answer: string) => {
     setLoading(true);

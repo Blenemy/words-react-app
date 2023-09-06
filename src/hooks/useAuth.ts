@@ -57,7 +57,7 @@ export const useAuth = () => {
         setError(error.response.data.error)
         console.log(error.response.data);
       }
-    }
+    } 
   }
 
   return { handleOnSubmit, formData, setFormData, error };

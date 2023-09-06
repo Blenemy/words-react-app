@@ -1,4 +1,4 @@
-import { Routes, Route } from 'react-router-dom';
+import { Routes, Route, useLocation } from 'react-router-dom';
 import { UserAccountPage } from './pages/UserAccount/UserAccountPage';
 import { useAppDispatch } from './app/hooks';
 import { useEffect } from 'react';
@@ -23,6 +23,8 @@ import { Footer } from './components/Footer/Footer';
 
 function App() {
   const dispatch = useAppDispatch();
+  const location = useLocation();
+  const showHeader = ![ROUTE_REGISTRATION, ROUTE_AUTHORIZATION].includes(location.pathname);
 
   useEffect(() => {
     async function initializeApp() {
@@ -50,8 +52,10 @@ function App() {
   return (
     <div className="App">
       <div className="wrapper flex flex-col text-white min-h-screen">
-        <Header />
-        <main className="grid__main min-h-full grow bg-primary">
+        {showHeader && (
+          <Header />
+        )}
+        <main className="grid__main min-h-screen grow">
           <Routes>
             <Route path={ROUTE_HOME} element={<HomePage />}/>
             <Route path={ROUTE_CARD_GAME} element={<GamePage />}/>

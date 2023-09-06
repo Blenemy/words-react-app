@@ -101,7 +101,7 @@ export const AddDeck = () => {
             {decks?.map(deck => (
               <div key={deck.id} className="flex flex-col gap-3 items-center justify-center">
                 <div className="stack flex flex-col gap-8 relative">
-                  <StackOfDecks images={deck.preview} onDeckClick={() => handleSumbitDeck(deck.id)}/>
+                  <StackOfDecks frontImage={deck.preview![0]} onDeckClick={() => handleSumbitDeck(deck.id)} deckTitle={deck.title}/>
                 </div>
                 <div className="flex flex-col gap-2">
                 <button 

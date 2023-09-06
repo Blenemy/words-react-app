@@ -1,0 +1,57 @@
+@tailwind components;
+
+.auth::before {
+  @apply content-[''] absolute w-96 h-[580px] top-[-50%] left-[-50%] animate-animate origin-bottom-right;
+}
+
+.auth::after {
+  @apply content-[''] absolute w-96 h-[580px] top-[-50%] left-[-50%] animate-animate origin-bottom-right animation-delay;
+}
+
+.auth__link {
+  @apply my-[10px] mx-0 text-[14px] no-underline text-[#8f8f8f] hover:text-white;
+}
+
+.auth-page__form-button {
+  @apply text-white bg-gradient-to-br from-green-400 to-blue-600 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-green-200 dark:focus:ring-green-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2;
+}
+
+.angry-grid {
+  display: grid; 
+  grid-template-rows: repeat(12, 1fr);
+  grid-template-columns: repeat(12, 1fr);
+  gap: 20px;
+  height: 100%;
+}
+
+#item-0 {
+  grid-row-start: 1;
+  grid-column-start: 1;
+
+  grid-row-end: 6;      /* было 4, увеличиваем на 1,5 */
+  grid-column-end: 9;   /* было 6, увеличиваем на 1,5 */
+}
+
+#item-1 {
+  grid-row-start: 1;
+  grid-column-start: 9;   /* было 6, увеличиваем на 1,5 */
+
+  grid-row-end: 4;      /* было 3, увеличиваем на 1,5 */
+  grid-column-end: 13;  /* было 9, увеличиваем на 1,5 */
+}
+
+#item-2 {
+  grid-row-start: 4;    /* было 3, увеличиваем на 1,5 */
+  grid-column-start: 9; /* было 6, увеличиваем на 1,5 */
+
+  grid-row-end: 13;     /* было 9, увеличиваем на 1,5 */
+  grid-column-end: 13;  /* так и остается 13, так как это уже максимальное значение */
+}
+
+#item-3 {
+  grid-row-start: 6;    /* было 4, увеличиваем на 1,5 */
+  grid-column-start: 1;
+
+  grid-row-end: 13;     /* было 9, увеличиваем на 1,5 */
+  grid-column-end: 9;   /* было 6, увеличиваем на 1,5 */
+}
