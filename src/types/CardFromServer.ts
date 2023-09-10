@@ -6,4 +6,5 @@ export interface CardFromServer {
   answers?: string[],
   description?: string | null,
   image: string,
+  additional_images?: string[],
 }

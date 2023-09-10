@@ -4,7 +4,7 @@ import { CardFromServer } from '../../types/CardFromServer';
 import './FlipCard.scss';
 
 type Props = {
-  card: CardFromServer
+  card: CardFromServer | null,
 }
 export const FlipCard: React.FC<Props> = React.memo(({ card }) => {
   const [isClicked, setClicked] = useState(false);
@@ -22,32 +22,27 @@ export const FlipCard: React.FC<Props> = React.memo(({ card }) => {
 
   return (
     <>
-      <h1 className="
-          text-3xl font-serif text-yellow-600
-          uppercase tracking-widest leading-loose"
-        >
-          {card.word}
-      </h1>
-      <div className='flex items-start justify-center h-96'>
+      <div className='flex items-start justify-center'>
+      <p className='blured-image h-[113px] absolute w-full top-0 left-0 right-0 rounded-t-3xl text-3xl font-semibold text-primary flex items-center justify-center z-20'>{card?.word}</p>
         <div 
-          className="deck-card middle text-black h-96 w-80" onClick={onCardClick}>
+          className="deck-card text-black h-full w-full " onClick={onCardClick}>
           <div 
             className={cn('front', {
               'active-front': isClicked,
               'no-transition': disableTransition,
             })}
           >
-            <img src={card?.image} alt="" className='h-full'/>
+            <img src={card?.image} alt="" className='h-full rounded-3xl'/>
           </div>
           <div 
-            className={cn('back', {
+            className={cn('back', 'flex', 'flex-col', 'items-center', 'justify-center', 'rounded-3xl', {
               'active-back': isClicked,
               'no-transition': disableTransition,
             })}
+            style={{ background: `url(${card?.image}) center / cover no-repeat` }}
           >
-            <div className="back-content middle">
-              <h2>{card?.word}</h2>
-              <span>{card?.translation}</span>
+            <div className="back-content rounded-3xl ">
+              <h2 className='text-2xl'>{card?.description}</h2>
             </div>
           </div>
         </div>

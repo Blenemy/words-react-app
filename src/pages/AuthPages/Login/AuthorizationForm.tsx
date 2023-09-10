@@ -1,0 +1,42 @@
+import { CustomInput } from "../../../components/CustomInput";
+import { useAuth } from "../../../hooks/useAuth";
+import { handleInputChange } from "../../../utils/helpers";
+
+export const AuthorizationForm = () => {
+	const { formData, setFormData, handleOnSubmit, error } = useAuth();
+
+  return (
+    <form onSubmit={handleOnSubmit} className="flex flex-col font-['Roboto_flex'] mb-8">
+      <h3 className="mb-[52px] text-3xl text-center font-medium">Sign in</h3>
+      <div className="flex flex-col gap-8 mb-[52px]">
+        <CustomInput
+          placeholder='Username'
+          name={'username'}
+          type={'text'}
+          required
+          value={formData.username}
+          onChangeHandler={(event: Event) => handleInputChange(event, setFormData)}
+          autoComplete="off"
+        />
+        <CustomInput
+          placeholder='Password'
+          name={'password'}
+          type={'password'}
+          required
+          value={formData.password}
+          onChangeHandler={(event: Event) => handleInputChange(event, setFormData)}
+          autoComplete="off"
+        />
+      </div>
+      <button 
+        type="submit" 
+        className="bg-lilackButton rounded-3xl w-full py-2 text-primary font-semibold border-2 border-primary"
+      >
+        Sign up
+      </button>
+      {error && (
+        <div>{error}</div>
+      )}
+    </form>
+  )
+}

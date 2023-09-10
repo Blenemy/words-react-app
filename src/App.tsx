@@ -1,7 +1,6 @@
 import { Routes, Route, useLocation } from 'react-router-dom';
 import { UserAccountPage } from './pages/UserAccount/UserAccountPage';
 import { useAppDispatch } from './app/hooks';
-import { useEffect } from 'react';
 import Cookies from 'js-cookie';
 import axios from "axios";
 import { setUser } from './features/userSlice';
@@ -11,8 +10,6 @@ import { GamePage } from './pages/GamePage/GamePage';
 import { AddCard } from './pages/CardsPage/AddCard/AddCard';
 import { EditForm } from './pages/UserAccount/EditFormPage';
 import { HomePage } from './pages/Home/HomePage';
-import { Registration } from './pages/AuthForms/Signup/RegistrationPage';
-import { Authorization } from './pages/AuthForms/Login/AuthorizationPage';
 import { FlipCardPage } from './pages/CardsPage/FlipCardPage';
 import { ChangeCard } from './pages/CardsPage/ChangeCard/ChangeCard';
 import { AddDeck } from './pages/GamePage/AddDeck/AddDeck';
@@ -20,34 +17,43 @@ import { ChangeDeck } from './pages/GamePage/ChangeDeck/ChangeDeck';
 import './App.scss';
 import { Header } from './components/Header/Header';
 import { Footer } from './components/Footer/Footer';
+import { useQuery } from '@tanstack/react-query';
+import { Registration } from './pages/AuthPages/Signup/RegistrationPage';
+import { Authorization } from './pages/AuthPages/Login/AuthorizationPage';
 
 function App() {
   const dispatch = useAppDispatch();
   const location = useLocation();
   const showHeader = ![ROUTE_REGISTRATION, ROUTE_AUTHORIZATION].includes(location.pathname);
 
-  useEffect(() => {
-    async function initializeApp() {
-      const token = Cookies.get('token');
+  const initializeApp = async () => {
+    const token = Cookies.get('token');
 
-      if (token) {
-        try {
-          const response = await axios.get(BASE_URL + '/user/profile/', {
-            headers: {
-              'Authorization': `Bearer ${token}`,
-            },
-          });
+    if (!token) {
+      return null;
+    }
 
-          dispatch(setUser(response.data));
-        } catch (error) {
-          console.log(`Error: ${error}`);
-        }
+    const response = await axios.get(BASE_URL + '/user/profile/', {
+      headers: {
+          'Authorization': `Bearer ${token}`,
+      },
+    });
+
+    return response.data;
+  };
+
+  useQuery(
+    ['initialize'],
+    initializeApp,
+    {
+      onSuccess: (data) => {
+        dispatch(setUser(data));
+      },
+      onError: (error) => {
+        console.error("Initialization error:", error);
       }
     }
-    
-    initializeApp();
-
-  }, [dispatch]);
+  );
 
   return (
     <div className="App">
