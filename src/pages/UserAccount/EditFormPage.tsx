@@ -1,14 +1,16 @@
 import { useState } from "react";
-import { useAppSelector } from "../../app/hooks"
+import { useAppDispatch, useAppSelector } from "../../app/hooks"
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import Cookies from 'js-cookie';
 import { BASE_URL, ROUTE_PROFILE } from "../../data/constants";
+import { setUser } from "../../features/userSlice";
 
 export const EditForm = () => {
   const { user } = useAppSelector(state => state.user);
   const token = Cookies.get('token');
   const navigate = useNavigate();
+  const dispatch = useAppDispatch();
   const [formData, setFormData] = useState({
     'first_name': '',
     'last_name': '',
@@ -62,6 +64,7 @@ export const EditForm = () => {
         'password': '',
 			});
 
+      dispatch(setUser(response.data));
       navigate(ROUTE_PROFILE);
 		} catch (error) {
 				console.error('Error:', error);
@@ -94,11 +97,11 @@ export const EditForm = () => {
                 />
               </div>
               <div className="flex flex-col basis-1/2">
-                <label className="font-['Roboto'] text-[20px] font-semibold text-stone-300" htmlFor="second-name">Second Name</label>
+                <label className="font-['Roboto'] text-[20px] font-semibold text-stone-300" htmlFor="last_name">Second Name</label>
                 <input 
-                  id="second-name" 
+                  id="last_name" 
                   type="text" 
-                  placeholder="Second Name" 
+                  placeholder="Last name" 
                   className="px-6 py-5 text-[#858585] font-['Roboto'] text-xl" 
                   autoComplete="off"
                   value={formData.last_name} 

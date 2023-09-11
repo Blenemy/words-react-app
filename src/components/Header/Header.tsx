@@ -44,9 +44,9 @@ export const Header = () => {
                 )}
               </div>
             ) : (
-              <div className='flex'>
-                <Link className='flex items-center justify-center w-[175px] text-[20px] h-38px bg-[#181818] text-white mr-[-50px] rounded-xl cursor-pointer hover:text-primary hover:bg-white duration-300' to={ROUTE_AUTHORIZATION}>Log in</Link>
-                <Link className='flex items-center justify-center w-[175px] text-[20px] h-38px bg-white text-[#181818] rounded-xl cursor-pointer hover:bg-primary hover:text-white duration-300' to={ROUTE_REGISTRATION}>Sign up</Link>
+              <div className='flex font-["Roboto_flex"] font-medium'>
+                <Link className='flex relative items-center justify-center w-[175px] text-[16px] h-[38px] bg-[#181818] text-white mr-[-30px] rounded-3xl cursor-pointer hover:text-primary z-10 hover:bg-white duration-300' to={ROUTE_REGISTRATION}>Sign up</Link>
+                <Link className='flex relative  items-center justify-center w-[175px] text-[16px] h-[38px] bg-white text-[#181818] rounded-3xl cursor-pointer hover:bg-primary hover:text-white duration-300' to={ROUTE_AUTHORIZATION}>Log in</Link>
               </div>
             )}
           </div>

@@ -35,9 +35,9 @@
     left: 0;
     right: 0;
     bottom: 0;
-    background: inherit;  // Inherit the background from its parent
-    filter: blur(5px);   // Apply blur effect
-    z-index: -1;          // Position it below the actual content
+    background: inherit;
+    filter: blur(5px);
+    z-index: -1;
   }
 }
 

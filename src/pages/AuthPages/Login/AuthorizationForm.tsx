@@ -32,7 +32,7 @@ export const AuthorizationForm = () => {
         type="submit" 
         className="bg-lilackButton rounded-3xl w-full py-2 text-primary font-semibold border-2 border-primary"
       >
-        Sign up
+        Sign in
       </button>
       {error && (
         <div>{error}</div>

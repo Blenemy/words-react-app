@@ -1,9 +1,9 @@
-.color-effect {
-  background: linear-gradient(120deg, #6832ae, #ae36b6);
-  -webkit-background-clip: text;
-  background-clip: text;
-  -webkit-text-fill-color: transparent;
-}
+// .color-effect {
+//   background: linear-gradient(120deg, #6832ae, #ae36b6);
+//   -webkit-background-clip: text;
+//   background-clip: text;
+//   -webkit-text-fill-color: transparent;
+// }
 
 .homepage-section-one {
   background: url('../../images/BackgroundGradient.png') 0% 100% / cover no-repeat;
@@ -19,16 +19,6 @@
   background-size: 15%;
 }
 
-
-
-.animation-words li p {
-  animation: moveUpDown 2s linear infinite;
-}
-
-.animation-words li:nth-child(2n) p {
-  animation-name: moveUpDownWithoutRotate;
-}
-
 @keyframes moveUpDownWithoutRotate {
   0%, 100% {
     transform: translateY(0);
@@ -39,7 +29,7 @@
 }
 
 .animation-words li:nth-child(1) p {
-  animation: moveUpDown 2s linear infinite;
+  animation: moveUpDownWithoutRotate 2s linear infinite;
 }
 
 .animation-words li:nth-child(2) p {
@@ -47,7 +37,7 @@
 }
 
 .animation-words li:nth-child(3) p {
-  animation: moveUpDown 2s linear infinite 0.8s;
+  animation: moveUpDownWithoutRotate 2s linear infinite 0.8s;
 }
 
 .animation-words li:nth-child(4) p {
@@ -55,7 +45,7 @@
 }
 
 .animation-words li:nth-child(5) p {
-  animation: moveUpDown 2s linear infinite 1.6s;
+  animation: moveUpDownWithoutRotate 2s linear infinite 1.6s;
 }
 
 .blurs {
