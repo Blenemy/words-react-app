@@ -8,15 +8,12 @@ type Props = {
 }
 export const FlipCard: React.FC<Props> = React.memo(({ card }) => {
   const [isClicked, setClicked] = useState(false);
-  const [disableTransition, setDisableTransition] = useState(false);
 
   useEffect(() => {
-    setDisableTransition(true);
     setClicked(false);
   }, [card]);
 
   const onCardClick = () => {
-    setDisableTransition(false);
     setClicked(prev => !prev);
   };
 
@@ -29,7 +26,6 @@ export const FlipCard: React.FC<Props> = React.memo(({ card }) => {
           <div 
             className={cn('front', {
               'active-front': isClicked,
-              'no-transition': disableTransition,
             })}
           >
             <img src={card?.image} alt="" className='h-full rounded-3xl'/>
@@ -37,12 +33,11 @@ export const FlipCard: React.FC<Props> = React.memo(({ card }) => {
           <div 
             className={cn('back', 'flex', 'flex-col', 'items-center', 'justify-center', 'rounded-3xl', {
               'active-back': isClicked,
-              'no-transition': disableTransition,
             })}
-            style={{ background: `url(${card?.image}) center / cover no-repeat` }}
+            style={{ backgroundColor: '#333'}}
           >
             <div className="back-content rounded-3xl ">
-              <h2 className='text-2xl'>{card?.description}</h2>
+              <h2 className='text-2xl text-white'>{card?.description}</h2>
             </div>
           </div>
         </div>

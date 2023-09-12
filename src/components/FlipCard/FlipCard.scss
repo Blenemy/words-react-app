@@ -28,17 +28,17 @@
 .back {
   transform: perspective(600px) rotateY(180deg);
 
-  &::before {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: inherit;
-    filter: blur(5px);
-    z-index: -1;
-  }
+  // &::before {
+  //   content: "";
+  //   position: absolute;
+  //   top: 0;
+  //   left: 0;
+  //   right: 0;
+  //   bottom: 0;
+  //   background: inherit;
+  //   filter: blur(5px);
+  //   z-index: -1;
+  // }
 }
 
 .back-content {
@@ -53,8 +53,4 @@
 
 .active-back {
   transform: perspective(600px) rotateY(0);
-}
-
-.no-transition {
-  transition: none !important;
 }

@@ -12,8 +12,6 @@ type Props = {
   link: string,
 }
 
-const clientID = process.env.REACT_APP_GOOGLE_CLIENT_ID!;
-
 export const GoogleLayoutForm: React.FC<Props> = ({ route, message, link }) => {
   const navigate = useNavigate();
   const dispatch = useAppDispatch();
@@ -42,7 +40,7 @@ export const GoogleLayoutForm: React.FC<Props> = ({ route, message, link }) => {
   return (
     <div className="flex flex-col items-center justify-center gap-8">
       <p className="text-violetStroke relative before:w-[153px] before:content-[''] before:h-[1px] before:bg-violetStroke before:absolute before:top-[13px] before:left-[-157px] after:top-[13px] after:left-[113px] right-0 after:content-[''] after:h-[1px] after:bg-violetStroke after:absolute after:w-[153px]">Or sign up with</p>
-      <GoogleOAuthProvider clientId={clientID}>
+      <GoogleOAuthProvider clientId={process.env.REACT_APP_GOOGLE_CLIENT_ID!}>
         <GoogleLogin
           onSuccess={credentialResponse => {
             getGoogleAuthCredential(credentialResponse.credential);

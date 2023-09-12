@@ -1,5 +1,4 @@
 import { useCallback, useEffect, useState } from 'react';
-import { FlipCard } from '../../components/FlipCard/FlipCard';
 import { BASE_URL, ROUTE_CARD_GAME } from '../../data/constants';
 import { Link, useLocation } from 'react-router-dom';
 import axios from 'axios';
@@ -7,7 +6,6 @@ import { CardFromServer } from '../../types/CardFromServer';
 import { Loader } from '../../components/Loader/Loader';
 import Cookies from 'js-cookie';
 import { BreadCrumbs } from '../../components/BreadCrumbs';
-import testImage from '../../images/test.png';
 import './FlipCardPage.scss';
 import { FlipCardLayout } from './FlipCardLayout';
 
@@ -93,7 +91,7 @@ export const FlipCardPage: React.FC = () => {
               <div className='flex gap-5 justify-center'>
                 {currentCard?.answers?.map(answer => (
                   <button 
-                    className='w-[151px] h-[46px] rounded-3xl quiz-button font-["Roboto_flex"]'
+                    className='w-[151px] h-[46px] rounded-3xl quiz-button font-["Roboto_flex"] font-semibold'
                     key={answer} 
                     onClick={() => getNextCard(answer)}
                   >
