@@ -1,13 +1,15 @@
 {
   "files": {
-    "main.css": "/words-react-app/static/css/main.e2bc09a5.css",
-    "main.js": "/words-react-app/static/js/main.707c84da.js",
+    "main.css": "/words-react-app/static/css/main.9037be8e.css",
+    "main.js": "/words-react-app/static/js/main.351132b6.js",
     "static/media/BackgroundGradient.png": "/words-react-app/static/media/BackgroundGradient.87f31503f8fe53709b26.png",
     "static/media/book.jpg": "/words-react-app/static/media/book.c54458066963326e81fe.jpg",
     "static/media/door.jpg": "/words-react-app/static/media/door.67d56f4a9bdcf51f0abd.jpg",
     "static/media/jacket.webp": "/words-react-app/static/media/jacket.cdfb55c3daa26fbe2cda.webp",
     "static/media/createAccountImage1.png": "/words-react-app/static/media/createAccountImage1.31e2bea9c14445a12e5e.png",
     "static/media/createAccountImage3.png": "/words-react-app/static/media/createAccountImage3.29ec94a7333076ee6722.png",
+    "static/media/imageFillerSecond.png": "/words-react-app/static/media/imageFillerSecond.136f7a47087caf9b353e.png",
+    "static/media/imageFiller3.png": "/words-react-app/static/media/imageFiller3.9033d7c530a06328836e.png",
     "static/media/cameo-apple-tree-1-jpg-webp.webp": "/words-react-app/static/media/cameo-apple-tree-1-jpg-webp.57826ba8927874dd52da.webp",
     "static/media/createAccountImage6.png": "/words-react-app/static/media/createAccountImage6.3fe8b8647417affa0c28.png",
     "static/media/benefits-image1.png": "/words-react-app/static/media/benefits-image1.31c4798c7b72902e701e.png",
@@ -36,11 +38,11 @@
     "static/media/howitworks-react-pink.svg": "/words-react-app/static/media/howitworks-react-pink.fe9c54d98fed8b106fbbbb301834fd2d.svg",
     "static/media/yellow-logo-animated-rectangle.svg": "/words-react-app/static/media/yellow-logo-animated-rectangle.de6c575b331b1828ed178155e6639ac7.svg",
     "static/media/violet-logo-animated-rectangle.svg": "/words-react-app/static/media/violet-logo-animated-rectangle.d09de536b7aaaf4b67701119c28cdcd8.svg",
-    "main.e2bc09a5.css.map": "/words-react-app/static/css/main.e2bc09a5.css.map",
-    "main.707c84da.js.map": "/words-react-app/static/js/main.707c84da.js.map"
+    "main.9037be8e.css.map": "/words-react-app/static/css/main.9037be8e.css.map",
+    "main.351132b6.js.map": "/words-react-app/static/js/main.351132b6.js.map"
   },
   "entrypoints": [
-    "static/css/main.e2bc09a5.css",
-    "static/js/main.707c84da.js"
+    "static/css/main.9037be8e.css",
+    "static/js/main.351132b6.js"
   ]
 }
