@@ -2,7 +2,6 @@ import userDefault from '../../assets/user-acc.svg';
 import { Link } from 'react-router-dom';
 import { ROUTE_PROFILE } from '../../data/constants';
 
-
 export const UserAvatar = ({ userAvatar }: { userAvatar: string; }) => {
   const avatar = userAvatar || userDefault;
 

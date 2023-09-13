@@ -1,7 +1,6 @@
 import { Link } from 'react-router-dom';
 import { ROUTE_AUTHORIZATION, ROUTE_REGISTRATION } from '../../data/constants';
 
-
 export const HeaderAuthLinks = () => {
   return (
     <>

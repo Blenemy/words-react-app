@@ -1,6 +1,5 @@
 import { Link } from 'react-router-dom';
 
-
 export const HeaderLink = ({ route, title }: { route: string; title: string; }) => {
   return (
     <li>
