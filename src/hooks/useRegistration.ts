@@ -5,23 +5,28 @@ import { useNavigate } from "react-router-dom";
 import { UserData } from "../types/UserData";
 import { useMutation } from "@tanstack/react-query";
 
+type FieldsErrors = {
+  username?: string;
+  email?: string;
+  password?: string;
+  message?: string;
+};
+
 export const useRegistration = () => {
   const navigate = useNavigate();
-
   const [formData, setFormData] = useState<UserData>({
     username: "",
     email: "",
     password: "",
     confirmPassword: "",
   });
-
-  const [localError, setLocalError] = useState<string | null>(null);
+  const [fieldErrors, setFieldErrors] = useState<FieldsErrors>({});
 
   const registerUser = (data: UserData) =>
     axios.post(BASE_URL + "/user/register/", data);
 
   const mutation = useMutation(registerUser, {
-    onSuccess: (response) => {
+    onSuccess: () => {
       setFormData({
         username: "",
         email: "",
@@ -31,15 +36,40 @@ export const useRegistration = () => {
       navigate(ROUTE_HOME);
     },
     onError: (error: any) => {
-      console.error("Error:", error);
+      const emailError = error.response.data.email[0];
+      setFieldErrors((prev) => ({
+        ...prev,
+        email: emailError,
+        message: emailError,
+      }));
     },
   });
 
   const handleOnSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
+    setFieldErrors({
+      username: "",
+      email: "",
+      password: "",
+    });
+    let errors: FieldsErrors = {};
 
     if (formData.password !== formData.confirmPassword) {
-      setLocalError("Passwords don't match");
+      errors.password = "Passwords don't match";
+      errors.message = "Passwords don't match";
+    }
+
+    const emailPattern =
+      /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
+    const isValidEmail = emailPattern.test(formData.email!);
+
+    if (!isValidEmail) {
+      errors.email = "Please enter a valid email";
+      errors.message = "Please enter a valid email";
+    }
+
+    if (Object.keys(errors).length > 0) {
+      setFieldErrors(errors);
       return;
     }
 
@@ -52,9 +82,5 @@ export const useRegistration = () => {
     mutation.mutate(dataToSend);
   };
 
-  const error = mutation.isError
-    ? (mutation.error as { message: string }).message
-    : localError;
-
-  return { handleOnSubmit, formData, setFormData, error };
+  return { handleOnSubmit, formData, setFormData, fieldErrors };
 };

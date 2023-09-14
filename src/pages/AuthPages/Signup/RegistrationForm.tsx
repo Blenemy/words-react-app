@@ -3,7 +3,8 @@ import { useRegistration } from "../../../hooks/useRegistration";
 import { handleInputChange } from "../../../utils/helpers";
 
 export const RegistrationForm = () => {
-  const { formData, setFormData, handleOnSubmit, error } = useRegistration();
+  const { formData, setFormData, handleOnSubmit, fieldErrors } =
+    useRegistration();
 
   return (
     <form
@@ -35,6 +36,7 @@ export const RegistrationForm = () => {
             handleInputChange(event, setFormData)
           }
           autoComplete="off"
+          error={fieldErrors.email}
         />
         <CustomInput
           placeholder="Password"
@@ -46,6 +48,7 @@ export const RegistrationForm = () => {
             handleInputChange(event, setFormData)
           }
           autoComplete="off"
+          error={fieldErrors.password}
         />
         <CustomInput
           placeholder="Confirm password"
@@ -57,6 +60,7 @@ export const RegistrationForm = () => {
             handleInputChange(event, setFormData)
           }
           autoComplete="off"
+          error={fieldErrors.password}
         />
       </div>
       <button
@@ -65,7 +69,7 @@ export const RegistrationForm = () => {
       >
         Sign up
       </button>
-      {error && <div>{error}</div>}
+      {fieldErrors.message && <div>{fieldErrors.message}</div>}
     </form>
   );
 };

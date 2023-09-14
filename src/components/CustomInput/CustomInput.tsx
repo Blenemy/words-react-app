@@ -1,3 +1,5 @@
+import { useState } from "react";
+
 type Props = {
   classname?: string;
   placeholder: string;
@@ -7,6 +9,7 @@ type Props = {
   value: string | undefined;
   onChangeHandler: any;
   autoComplete: string;
+  error?: string;
 };
 
 export const CustomInput: React.FC<Props> = ({
@@ -18,17 +21,31 @@ export const CustomInput: React.FC<Props> = ({
   value,
   onChangeHandler,
   autoComplete,
+  error,
 }) => {
+  const [placeholderColor, setPlaceholderColor] = useState("");
+  const currentColor = error ? "border-red-400" : "";
+
+  const handleOnFocus = () => {
+    setPlaceholderColor("placeholder:text-violetStroke");
+  };
+
+  const handleOnBlur = () => {
+    setPlaceholderColor("");
+  };
+
   return (
     <input
       placeholder={placeholder}
       name={name}
       type={type}
-      className={`border-b border-violetStroke focus:outline-none px-4 py-2 w-[424px] ${classname}`}
+      className={`border-b ${currentColor} ${placeholderColor}  focus:outline-none px-4 py-2 w-[424px] ${classname}`}
       required={required}
       value={value}
       onChange={onChangeHandler}
       autoComplete={autoComplete}
+      onFocus={handleOnFocus}
+      onBlur={handleOnBlur}
     />
   );
 };
