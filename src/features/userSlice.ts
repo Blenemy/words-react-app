@@ -1,8 +1,8 @@
-import { PayloadAction, createSlice } from '@reduxjs/toolkit';
-import { UserFromServer } from '../types/UserFromServer';
+import { PayloadAction, createSlice } from "@reduxjs/toolkit";
+import { UserFromServer } from "../types/UserFromServer";
 
 type UserState = {
-  user: UserFromServer | null,
+  user: UserFromServer | null;
 };
 
 const InitialState: UserState = {
@@ -10,7 +10,7 @@ const InitialState: UserState = {
 };
 
 const userSlice = createSlice({
-  name: 'user',
+  name: "user",
   initialState: InitialState,
   reducers: {
     setUser: (state, action: PayloadAction<UserFromServer | null>) => {

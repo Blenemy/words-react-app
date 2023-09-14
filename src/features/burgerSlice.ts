@@ -1,8 +1,8 @@
 /* eslint-disable no-param-reassign */
-import { PayloadAction, createSlice } from '@reduxjs/toolkit';
+import { PayloadAction, createSlice } from "@reduxjs/toolkit";
 
 type BurgerState = {
-  opened: boolean,
+  opened: boolean;
 };
 
 const InitialState: BurgerState = {
@@ -10,7 +10,7 @@ const InitialState: BurgerState = {
 };
 
 const burgerSlice = createSlice({
-  name: 'burger',
+  name: "burger",
   initialState: InitialState,
   reducers: {
     setOpened: (state, action: PayloadAction<boolean>) => {
@@ -20,4 +20,4 @@ const burgerSlice = createSlice({
 });
 
 export default burgerSlice.reducer;
-export const { setOpened} = burgerSlice.actions;
+export const { setOpened } = burgerSlice.actions;

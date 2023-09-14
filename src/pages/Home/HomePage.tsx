@@ -1,28 +1,31 @@
-import './HomePage.scss';
-import { Benefits } from './Benefits';
-import { HowDoesItWork } from './HowDoesItWork';
-import { MainContent } from './MainContent';
-import { useEffect, useState } from 'react';
+import "./HomePage.scss";
+import { Benefits } from "./Benefits/Benefits";
+import { MainContent } from "./MainContent/MainContent";
+import { useEffect, useState } from "react";
+import { HowDoesItWork } from "./HowDoesItWork/HowDoesItWork";
 
 export const HomePage = () => {
   const [viewportHeight, setViewportHeight] = useState(0);
 
   useEffect(() => {
     const updateHeight = () => {
-      const header = document.getElementById('header');
+      const header = document.getElementById("header");
       const headerHeight = header ? header.getBoundingClientRect().height : 0;
       setViewportHeight(window.innerHeight - headerHeight);
     };
 
-    window.addEventListener('resize', updateHeight);
+    window.addEventListener("resize", updateHeight);
     updateHeight();
 
-    return () => window.removeEventListener('resize', updateHeight);
+    return () => window.removeEventListener("resize", updateHeight);
   }, []);
 
   return (
     <>
-      <section className={`homepage-section-one`} style={{ minHeight: viewportHeight }}>
+      <section
+        className={`homepage-section-one`}
+        style={{ minHeight: viewportHeight }}
+      >
         <div className="container mx-auto my-0">
           <div className="heart-bg h-full pt-20 pb-14">
             <MainContent />
@@ -44,5 +47,5 @@ export const HomePage = () => {
         </div>
       </section>
     </>
-  )
-}
+  );
+};

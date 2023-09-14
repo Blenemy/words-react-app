@@ -1,9 +1,9 @@
 /* eslint-disable no-param-reassign */
-import { PayloadAction, createSlice } from '@reduxjs/toolkit';
-import { CardFromServer } from '../types/CardFromServer';
+import { PayloadAction, createSlice } from "@reduxjs/toolkit";
+import { CardFromServer } from "../types/CardFromServer";
 
 type cardsState = {
-  cards: CardFromServer[] | null,
+  cards: CardFromServer[] | null;
 };
 
 const InitialState: cardsState = {
@@ -11,7 +11,7 @@ const InitialState: cardsState = {
 };
 
 const burgerSlice = createSlice({
-  name: 'cards',
+  name: "cards",
   initialState: InitialState,
   reducers: {
     setCards: (state, action: PayloadAction<CardFromServer[]>) => {

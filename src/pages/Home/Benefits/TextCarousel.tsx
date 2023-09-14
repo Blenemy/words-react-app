@@ -17,7 +17,7 @@ export const TextCarousel = () => {
         <p>Why Card Lingo?</p>
         <p>Why Card Lingo?</p>
         <p>Why Card Lingo?</p>
-      </div> 
+      </div>
       <div className="carousel-text">
         <p>Why Card Lingo?</p>
         <p>Why Card Lingo?</p>
@@ -51,7 +51,7 @@ export const TextCarousel = () => {
         <p>Why Card Lingo?</p>
         <p>Why Card Lingo?</p>
         <p>Why Card Lingo?</p>
-      </div> 
+      </div>
     </div>
-  )
-}
+  );
+};

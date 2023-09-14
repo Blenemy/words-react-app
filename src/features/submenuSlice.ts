@@ -1,7 +1,7 @@
-import { PayloadAction, createSlice } from '@reduxjs/toolkit';
+import { PayloadAction, createSlice } from "@reduxjs/toolkit";
 
 type menuState = {
-  isCollapsed: boolean,
+  isCollapsed: boolean;
 };
 
 const InitialState: menuState = {
@@ -9,7 +9,7 @@ const InitialState: menuState = {
 };
 
 const userSlice = createSlice({
-  name: 'submenu',
+  name: "submenu",
   initialState: InitialState,
   reducers: {
     setCollapsed: (state, action: PayloadAction<boolean>) => {

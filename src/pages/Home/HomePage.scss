@@ -1,26 +1,34 @@
-// .color-effect {
-//   background: linear-gradient(120deg, #6832ae, #ae36b6);
-//   -webkit-background-clip: text;
-//   background-clip: text;
-//   -webkit-text-fill-color: transparent;
-// }
+$primary-font: "Magilio";
+
+@mixin background-cover($url, $position: center, $size: cover) {
+  background: url($url) $position / $size no-repeat;
+}
+
+@mixin moveUpDownAnimation($delay: 0s) {
+  animation: moveUpDownWithoutRotate 2s linear infinite $delay;
+}
 
 .homepage-section-one {
-  background: url('../../images/BackgroundGradient.png') 0% 100% / cover no-repeat;
+  @include background-cover("../../images/BackgroundGradient.png", 0% 100%);
 }
 
 .heart-bg {
-  background: url('../../images/heart-front-page.svg') 70% 85% / contain no-repeat;
+  @include background-cover(
+    "../../images/heart-front-page.svg",
+    70% 85%,
+    contain
+  );
   background-size: 30%;
 }
 
 .arrow-bg {
-  background: url('../../images/arrow-bg.svg') 50% 90% / cover no-repeat;
+  @include background-cover("../../images/arrow-bg.svg", 50% 90%);
   background-size: 15%;
 }
 
 @keyframes moveUpDownWithoutRotate {
-  0%, 100% {
+  0%,
+  100% {
     transform: translateY(0);
   }
   50% {
@@ -28,43 +36,26 @@
   }
 }
 
-.animation-words li:nth-child(1) p {
-  animation: moveUpDownWithoutRotate 2s linear infinite;
-}
+.animation-words {
+  li:nth-child(1) p {
+    @include moveUpDownAnimation();
+  }
 
-.animation-words li:nth-child(2) p {
-  animation: moveUpDownWithoutRotate 2s linear infinite 0.4s;
-}
+  li:nth-child(2) p {
+    @include moveUpDownAnimation(0.4s);
+  }
 
-.animation-words li:nth-child(3) p {
-  animation: moveUpDownWithoutRotate 2s linear infinite 0.8s;
-}
+  li:nth-child(3) p {
+    @include moveUpDownAnimation(0.8s);
+  }
 
-.animation-words li:nth-child(4) p {
-  animation: moveUpDownWithoutRotate 2s linear infinite 1.2s;
-}
+  li:nth-child(4) p {
+    @include moveUpDownAnimation(1.2s);
+  }
 
-.animation-words li:nth-child(5) p {
-  animation: moveUpDownWithoutRotate 2s linear infinite 1.6s;
-}
-
-.blurs {
-  backdrop-filter: blur(5px);
-}
-
-.carousel-container {
-  overflow: hidden;
-  white-space: nowrap;
-}
-
-.carousel-text {
-  display: inline-flex;
-  animation: marquee 45s linear infinite;
-}
-
-.carousel-text p {
-  margin: 0;
-  padding: 0;
+  li:nth-child(5) p {
+    @include moveUpDownAnimation(1.6s);
+  }
 }
 
 @keyframes marquee {
@@ -84,15 +75,8 @@
   z-index: 101;
   background-color: white;
   border-radius: 84px 84px 0px 0px;
-  -webkit-border-radius: 84px 84px 0px 0px;
-  -moz-border-radius: 84px 84px 0px 0px;
 
   h2 {
-    font-family: 'Magilio';
+    font-family: $primary-font;
   }
-}
-
-.card-benefit {
-  background: url('../../images/BackgroundGradient.png') center / cover no-repeat;
-  box-shadow: 10px -10px 0 1px #000;
 }
