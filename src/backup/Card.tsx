@@ -1,45 +1,46 @@
-import { useState } from 'react';
-import cn from 'classnames';
-import { CardType } from '../types/CardType';
-import appleImage from '../assets/cameo-apple-tree-1-jpg-webp.webp';
-import bookImage from '../assets/book.jpg';
-import catImage from '../assets/cat.jpg';
-import doorImage from '../assets/door.jpg';
-import eggImage from '../assets/egg.png';
-import flowerImage from '../assets/flower.jpg';
-import grapeImage from '../assets/red-green-grapes.webp';
-import hatImage from '../assets/hat.jpg';
-import islandImage from '../assets/island.jpg';
-import jacketImg from '../assets/jacket.webp';
-import questionMark from '../assets/question-mark-2492009_1280.webp';
+import { useState } from "react";
+import cn from "classnames";
+import appleImage from "../assets/cameo-apple-tree-1-jpg-webp.webp";
+import bookImage from "../assets/book.jpg";
+import catImage from "../assets/cat.jpg";
+import doorImage from "../assets/door.jpg";
+import eggImage from "../assets/egg.png";
+import flowerImage from "../assets/flower.jpg";
+import grapeImage from "../assets/red-green-grapes.webp";
+import hatImage from "../assets/hat.jpg";
+import islandImage from "../assets/island.jpg";
+import jacketImg from "../assets/jacket.webp";
+import questionMark from "../assets/question-mark-2492009_1280.webp";
+import { CardType } from "../types/CardType";
 
 const imageMap: { [key: string]: string } = {
-  'cameo-apple-tree-1-jpg-webp.webp': appleImage,
-  'book.jpg': bookImage,
-  'cat.jpg': catImage,
-  'door.jpg': doorImage,
-  'flower.jpg': flowerImage,
-  'red-green-grapes.webp': grapeImage,
-  'hat.jpg': hatImage,
-  'island.jpg': islandImage,
-  'jacket.webp': jacketImg,
-  'egg.png': eggImage,
+  "cameo-apple-tree-1-jpg-webp.webp": appleImage,
+  "book.jpg": bookImage,
+  "cat.jpg": catImage,
+  "door.jpg": doorImage,
+  "flower.jpg": flowerImage,
+  "red-green-grapes.webp": grapeImage,
+  "hat.jpg": hatImage,
+  "island.jpg": islandImage,
+  "jacket.webp": jacketImg,
+  "egg.png": eggImage,
 };
 
 type Props = {
-  card: CardType,
+  card: CardType;
 };
 
 export const Card: React.FC<Props> = ({ card }) => {
   const [isClicked, setClicked] = useState(false);
 
   const onCardClick = () => {
-    setClicked(prev => !prev);
+    setClicked((prev) => !prev);
   };
 
   return (
     <>
-      <h1 className="
+      <h1
+        className="
         text-3xl font-serif text-yellow-600
         uppercase tracking-widest leading-loose"
       >
@@ -59,11 +60,19 @@ export const Card: React.FC<Props> = ({ card }) => {
       >
         <div
           className={cn(
-            'card__image-box', 'relative', 'cursor-pointer',
-            'w-full', 'h-full', 'z-10', 'origin-left',
-            'preserve-3d', 'bg-black', 'duration-1000', {
-              '-rotateY-180': isClicked,
-            },
+            "card__image-box",
+            "relative",
+            "cursor-pointer",
+            "w-full",
+            "h-full",
+            "z-10",
+            "origin-left",
+            "preserve-3d",
+            "bg-black",
+            "duration-1000",
+            {
+              "-rotateY-180": isClicked,
+            }
           )}
           onClick={onCardClick}
         >
@@ -87,18 +96,21 @@ export const Card: React.FC<Props> = ({ card }) => {
               backface-hidden"
           />
         </div>
-        <div className="
+        <div
+          className="
           card__details absolute top-0
           left-0 w-full h-full
           p-5 flex justify-center
           items-center font-bold bg-customCard"
         >
-          <div className="
+          <div
+            className="
             card__content flex flex-col
             justify-center items-center text-center
             gap-4 leading-6"
           >
-            <h2 className="
+            <h2
+              className="
               card__title text-3xl text-gray-300"
             >
               {card.nameEng}
@@ -107,7 +119,6 @@ export const Card: React.FC<Props> = ({ card }) => {
           </div>
         </div>
       </div>
-
     </>
   );
 };

@@ -24,14 +24,17 @@ export const CustomInput: React.FC<Props> = ({
   error,
 }) => {
   const [placeholderColor, setPlaceholderColor] = useState("");
+  const [borderOnFocus, setBorderOnFocus] = useState("");
   const currentColor = error ? "border-red-400" : "";
 
   const handleOnFocus = () => {
     setPlaceholderColor("placeholder:text-violetStroke");
+    setBorderOnFocus("border-violetStroke");
   };
 
   const handleOnBlur = () => {
     setPlaceholderColor("");
+    setBorderOnFocus("");
   };
 
   return (
@@ -39,7 +42,7 @@ export const CustomInput: React.FC<Props> = ({
       placeholder={placeholder}
       name={name}
       type={type}
-      className={`border-b ${currentColor} ${placeholderColor}  focus:outline-none px-4 py-2 w-[424px] ${classname}`}
+      className={`border-b ${currentColor} ${placeholderColor} ${borderOnFocus} placeholder:font-medium focus:outline-none px-4 py-2 w-[424px] ${classname} font-semibold font-['Roboto_flex']`}
       required={required}
       value={value}
       onChange={onChangeHandler}

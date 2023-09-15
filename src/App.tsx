@@ -17,7 +17,7 @@ import {
   ROUTE_REGISTRATION,
   ROUTE_USER_DECKS,
 } from "./data/constants";
-import { BookCardPage } from "./pages/CardsPage/BookCardPage";
+import { BookCardPage } from "./backup/BookCardPage";
 import { GamePage } from "./pages/GamePage/GamePage";
 import { AddCard } from "./pages/CardsPage/AddCard/AddCard";
 import { EditForm } from "./pages/UserAccount/EditFormPage";

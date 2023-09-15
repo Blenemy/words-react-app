@@ -1,27 +1,25 @@
-import { useEffect, useState } from 'react';
-import { CardType } from '../../types/CardType';
-import cardsData from '../../api/data.json';
-import { Card } from '../../components/Card';
+import { useEffect, useState } from "react";
+import { CardType } from "../types/CardType";
+import cardsData from "./data.json";
+import { Card } from "./Card";
 
 export const BookCardPage = () => {
-  const [data, setData] = useState<CardType []>();
+  const [data, setData] = useState<CardType[]>();
   const [currentCard, setCurrentCard] = useState<CardType>();
 
   useEffect(() => {
     setData(cardsData.words);
 
     if (cardsData.words && cardsData.words.length) {
-      const randomCard
-       = cardsData.words[Math.floor(Math.random() * cardsData.words.length)];
+      const randomCard =
+        cardsData.words[Math.floor(Math.random() * cardsData.words.length)];
 
       setCurrentCard(randomCard);
     }
   }, []);
 
   if (!data) {
-    return (
-      <div>Something went wrong</div>
-    );
+    return <div>Something went wrong</div>;
   }
 
   const randomCardGenerator = () => {
@@ -32,12 +30,7 @@ export const BookCardPage = () => {
 
   return (
     <div className="flex flex-col gap-8 justify-center items-center h-full">
-      {currentCard && (
-        <Card
-          key={currentCard?.nameEng}
-          card={currentCard}
-        />
-      )}
+      {currentCard && <Card key={currentCard?.nameEng} card={currentCard} />}
       <button
         className="
           text-3xl font-serif text-yellow-600
