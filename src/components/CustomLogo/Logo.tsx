@@ -1,6 +1,6 @@
-import { ReactComponent as LogoPink } from "../../images/pink-logo-animated-rectangle.svg";
-import { ReactComponent as LogoViolet } from "../../images/violet-logo-animated-rectangle.svg";
-import { ReactComponent as LogoYellow } from "../../images/yellow-logo-animated-rectangle.svg";
+import { ReactComponent as LogoPink } from "../../assets/pink-logo-animated-rectangle.svg";
+import { ReactComponent as LogoViolet } from "../../assets/violet-logo-animated-rectangle.svg";
+import { ReactComponent as LogoYellow } from "../../assets/yellow-logo-animated-rectangle.svg";
 
 export const Logo = ({ image }: { image: string }) => {
   return (

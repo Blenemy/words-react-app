@@ -11,12 +11,12 @@
     content: "";
     position: absolute;
     top: -10px;
-    left: -10px; 
+    left: -10px;
     right: -10px;
     bottom: -10px;
     z-index: -1;
 
-    background-image: url('./../../images/BackgroundGradient.png');
+    background-image: url("./../../assets/BackgroundGradient.png");
     background-size: cover;
     background-position: 0 100%;
 
@@ -28,23 +28,43 @@
   }
 }
 
-
 @keyframes changeColor {
-  0%, 100% { color: #D8BFFF; }
-  33% { color: #FFDE59; }
-  67% { color: #8560BF; }
+  0%,
+  100% {
+    color: #d8bfff;
+  }
+  33% {
+    color: #ffde59;
+  }
+  67% {
+    color: #8560bf;
+  }
 }
 
 @keyframes changeColor2 {
-  0%, 100% { color: #8560BF; }
-  33% { color: #D8BFFF; }
-  67% { color: #FFDE59; }
+  0%,
+  100% {
+    color: #8560bf;
+  }
+  33% {
+    color: #d8bfff;
+  }
+  67% {
+    color: #ffde59;
+  }
 }
 
 @keyframes changeColor3 {
-  0%, 100% { color: #FFDE59; }
-  33% { color: #8560BF; }
-  67% { color: #D8BFFF; }
+  0%,
+  100% {
+    color: #ffde59;
+  }
+  33% {
+    color: #8560bf;
+  }
+  67% {
+    color: #d8bfff;
+  }
 }
 
 .svg-container-one {
@@ -58,4 +78,3 @@
 .svg-container-three {
   animation: changeColor3 6s infinite;
 }
-

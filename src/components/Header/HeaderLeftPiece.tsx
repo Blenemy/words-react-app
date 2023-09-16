@@ -4,7 +4,7 @@ import {
   ROUTE_PROFILE,
 } from "../../data/constants";
 import { Logo } from "../CustomLogo/Logo";
-import cardLingoBlack from "../../images/cardLingo.png";
+import cardLingoBlack from "../../assets/cardLingo.png";
 import { HeaderLink } from "./HeaderLink";
 
 export const HeaderLeftPiece = () => {

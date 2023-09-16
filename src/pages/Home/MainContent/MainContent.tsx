@@ -1,9 +1,9 @@
 import { Link } from "react-router-dom";
 import { ROUTE_CARD_GAME } from "../../../data/constants";
-import image1 from "../../../images/frontpage-list-image1.png";
-import image2 from "../../../images/frontpage-list-image2.png";
-import image3 from "../../../images/frontpage-list-image3.png";
-import image4 from "../../../images/frontpage-list-image4.png";
+import image1 from "../../../assets/frontpage-list-image1.png";
+import image2 from "../../../assets/frontpage-list-image2.png";
+import image3 from "../../../assets/frontpage-list-image3.png";
+import image4 from "../../../assets/frontpage-list-image4.png";
 import { TextList } from "./TextList";
 
 export const MainContent = () => {

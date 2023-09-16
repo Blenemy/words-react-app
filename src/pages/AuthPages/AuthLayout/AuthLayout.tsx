@@ -1,9 +1,9 @@
-import image1 from "../../../images/createAccountImage1.png";
-import image2 from "../../../images/createAccountImage2.png";
-import image3 from "../../../images/createAccountImage3.png";
-import image4 from "../../../images/createAccountImage4.png";
-import image5 from "../../../images/createAccountImage5.png";
-import image6 from "../../../images/createAccountImage6.png";
+import image1 from "../../../assets/createAccountImage1.png";
+import image2 from "../../../assets/createAccountImage2.png";
+import image3 from "../../../assets/createAccountImage3.png";
+import image4 from "../../../assets/createAccountImage4.png";
+import image5 from "../../../assets/createAccountImage5.png";
+import image6 from "../../../assets/createAccountImage6.png";
 import "./AuthLayout.scss";
 import { RenderRowOfImages } from "./RenderRowOfImages";
 import { WelcomeMessage } from "./WelcomeMessage";

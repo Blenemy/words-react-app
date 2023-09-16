@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import arrowDecorator from "../../images/gamePageVector.svg";
+import arrowDecorator from "../../assets/gamePageVector.svg";
 
 type BreadCrumbsProps = {
   text: string;

@@ -1,6 +1,6 @@
 import { Logo } from "../../components/CustomLogo/Logo";
-import cardLingoWhite from "../../images/cardLingoWhite.png";
-import copyright from "../../images/copyright.svg";
+import cardLingoWhite from "../../assets/cardLingoWhite.png";
+import copyright from "../../assets/copyright.svg";
 
 export const Footer = () => {
   return (

@@ -1,4 +1,4 @@
-import progress from "../../images/progress.png";
+import progress from "../../assets/progress.png";
 
 export const DailyActivity = () => {
   return (

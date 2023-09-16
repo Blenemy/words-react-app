@@ -1,7 +1,7 @@
-import image1 from "../../../images/benefits-image1.png";
-import image2 from "../../../images/benefits-image2.png";
-import image3 from "../../../images/benefits-image3.png";
-import image4 from "../../../images/benefits-image4.png";
+import image1 from "../../../assets/benefits-image1.png";
+import image2 from "../../../assets/benefits-image2.png";
+import image3 from "../../../assets/benefits-image3.png";
+import image4 from "../../../assets/benefits-image4.png";
 import { TextCarousel } from "./TextCarousel";
 import "./Benefits.scss";
 

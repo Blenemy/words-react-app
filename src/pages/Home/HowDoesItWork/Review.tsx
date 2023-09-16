@@ -1,6 +1,6 @@
-import reviewImageFirst from "../../../images/howtiworks-revview-image.png";
-import reviewImageSecond from "../../../images/howtiworks-revview-image2.png";
-import star from "../../../images/star.png";
+import reviewImageFirst from "../../../assets/howtiworks-revview-image.png";
+import reviewImageSecond from "../../../assets/howtiworks-revview-image2.png";
+import star from "../../../assets/star.png";
 
 export const Review = () => {
   return (

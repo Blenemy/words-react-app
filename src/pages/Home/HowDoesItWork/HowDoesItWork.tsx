@@ -1,8 +1,8 @@
 import { HowDoesItWorkCard } from "./HowDoesItWorkCard";
-import arrowWhite from "../../../images/arrow-white.svg";
-import yellowReact from "../../../images/howitworks-react-yellow.svg";
-import pinkRect from "../../../images/howitworks-react-pink.svg";
-import waveRect from "../../../images/howitworks-react-wave.svg";
+import arrowWhite from "../../../assets/arrow-white.svg";
+import yellowReact from "../../../assets/howitworks-react-yellow.svg";
+import pinkRect from "../../../assets/howitworks-react-pink.svg";
+import waveRect from "../../../assets/howitworks-react-wave.svg";
 import { Review } from "./Review";
 
 export const HowDoesItWork = () => {
