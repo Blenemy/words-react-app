@@ -10,7 +10,6 @@ import {
   ROUTE_AUTHORIZATION,
   ROUTE_BOOK_CARD,
   ROUTE_CARD_GAME,
-  ROUTE_EDIT_PROFILE,
   ROUTE_FLIP_CARD,
   ROUTE_HOME,
   ROUTE_PROFILE,
@@ -20,10 +19,8 @@ import {
 import { BookCardPage } from "./backup/BookCardPage";
 import { GamePage } from "./pages/GamePage/GamePage";
 import { AddCard } from "./pages/CardsPage/AddCard/AddCard";
-import { EditForm } from "./pages/UserAccount/EditFormPage";
 import { HomePage } from "./pages/Home/HomePage";
 import { FlipCardPage } from "./pages/CardsPage/FlipCardPage";
-import { ChangeCard } from "./pages/CardsPage/ChangeCard/ChangeCard";
 import { AddDeck } from "./pages/GamePage/AddDeck/AddDeck";
 import { ChangeDeck } from "./pages/GamePage/ChangeDeck/ChangeDeck";
 import "./App.scss";
@@ -32,6 +29,7 @@ import { Footer } from "./components/Footer/Footer";
 import { useQuery } from "@tanstack/react-query";
 import { Registration } from "./pages/AuthPages/Signup/RegistrationPage";
 import { Authorization } from "./pages/AuthPages/Login/AuthorizationPage";
+import { ChangeCard } from "./pages/CardsPage/ChangeCard/ChangeCard";
 
 function App() {
   const dispatch = useAppDispatch();
@@ -76,7 +74,6 @@ function App() {
             <Route path={ROUTE_REGISTRATION} element={<Registration />} />
             <Route path={ROUTE_AUTHORIZATION} element={<Authorization />} />
             <Route path={ROUTE_PROFILE} element={<UserAccountPage />} />
-            <Route path={ROUTE_EDIT_PROFILE} element={<EditForm />} />
             <Route path={ROUTE_FLIP_CARD}>
               <Route index element={<FlipCardPage />} />
               <Route path=":cardId" element={<ChangeCard />} />

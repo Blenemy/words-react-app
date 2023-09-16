@@ -1,13 +1,13 @@
-import { useCallback, useEffect, useState } from 'react';
-import { BASE_URL, ROUTE_CARD_GAME } from '../../data/constants';
-import { Link, useLocation } from 'react-router-dom';
-import axios from 'axios';
-import { CardFromServer } from '../../types/CardFromServer';
-import { Loader } from '../../components/Loader/Loader';
-import Cookies from 'js-cookie';
-import { BreadCrumbs } from '../../components/BreadCrumbs';
-import './FlipCardPage.scss';
-import { FlipCardLayout } from './FlipCardLayout';
+import { useCallback, useEffect, useState } from "react";
+import { BASE_URL, ROUTE_CARD_GAME } from "../../data/constants";
+import { Link, useLocation } from "react-router-dom";
+import axios from "axios";
+import { CardFromServer } from "../../types/CardFromServer";
+import { Loader } from "../../components/Loader/Loader";
+import Cookies from "js-cookie";
+import { BreadCrumbs } from "../../components/BreakCrumbs/BreadCrumbs";
+import "./FlipCardPage.scss";
+import { FlipCardLayout } from "./FlipCardLayout";
 
 export const FlipCardPage: React.FC = () => {
   const [currentCard, setCurrentCard] = useState<null | CardFromServer>(null);
@@ -15,37 +15,44 @@ export const FlipCardPage: React.FC = () => {
   const [successMessage, setSuccessMessage] = useState<boolean>(false);
   const location = useLocation();
   const { deckId, isDefault } = location.state;
-  const token = Cookies.get('token');
+  const token = Cookies.get("token");
 
   console.log(currentCard);
 
-  const getNextCard = useCallback(async (answer: string) => {
-    setLoading(true);
+  const getNextCard = useCallback(
+    async (answer: string) => {
+      setLoading(true);
 
-    try {
-      const action = answer === currentCard?.translation ? 'good' : 'again';
-      const dataToSend = {
-        card_id: currentCard?.id,
-        action,
-      };
-      const response = await axios.post(`${BASE_URL}/study/learn/${deckId}/`, dataToSend, {
-        headers: {
-          'Authorization': `Bearer ${token}`,
-        },
-      });
+      try {
+        const action = answer === currentCard?.translation ? "good" : "again";
+        const dataToSend = {
+          card_id: currentCard?.id,
+          action,
+        };
+        const response = await axios.post(
+          `${BASE_URL}/study/learn/${deckId}/`,
+          dataToSend,
+          {
+            headers: {
+              Authorization: `Bearer ${token}`,
+            },
+          }
+        );
 
-      if (response.data.status === 'finished') {
-        setCurrentCard(null);
-        setSuccessMessage(true);
-      } else {
-        setCurrentCard(response.data);
+        if (response.data.status === "finished") {
+          setCurrentCard(null);
+          setSuccessMessage(true);
+        } else {
+          setCurrentCard(response.data);
+        }
+      } catch (error) {
+        console.error(error);
+      } finally {
+        setLoading(false);
       }
-    } catch (error) {
-      console.error(error);
-    } finally {
-      setLoading(false);
-    }
-  }, [currentCard, token, deckId]);
+    },
+    [currentCard, token, deckId]
+  );
 
   useEffect(() => {
     async function getFirstCard() {
@@ -53,17 +60,16 @@ export const FlipCardPage: React.FC = () => {
       try {
         const response = await axios.get(`${BASE_URL}/study/learn/${deckId}/`, {
           headers: {
-            'Authorization': `Bearer ${token}`,
+            Authorization: `Bearer ${token}`,
           },
         });
 
-        if (response.data.status === 'finished') {
+        if (response.data.status === "finished") {
           setCurrentCard(null);
           setSuccessMessage(true);
         } else {
           setCurrentCard(response.data);
         }
-        
       } catch (error) {
         console.error(error);
       } finally {
@@ -78,21 +84,19 @@ export const FlipCardPage: React.FC = () => {
 
   return (
     <div className="flex flex-col text-primary">
-      <div className='container mx-auto my-0'>
-        <div className='py-14 flex flex-col'>
-          <div className='mb-10'>
-            <BreadCrumbs />
+      <div className="container mx-auto my-0">
+        <div className="py-14 flex flex-col">
+          <div className="mb-10">
+            <BreadCrumbs text={"Back to GamePage"} route={ROUTE_CARD_GAME} />
           </div>
           {currentCard && (
             <>
-              <FlipCardLayout 
-                currentCard={currentCard}
-              />
-              <div className='flex gap-5 justify-center'>
-                {currentCard?.answers?.map(answer => (
-                  <button 
+              <FlipCardLayout currentCard={currentCard} />
+              <div className="flex gap-5 justify-center">
+                {currentCard?.answers?.map((answer) => (
+                  <button
                     className='w-[151px] h-[46px] rounded-3xl quiz-button font-["Roboto_flex"] font-semibold'
-                    key={answer} 
+                    key={answer}
                     onClick={() => getNextCard(answer)}
                   >
                     {answer}
