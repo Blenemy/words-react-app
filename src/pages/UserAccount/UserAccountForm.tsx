@@ -21,7 +21,11 @@ export const UserAccountForm: React.FC<UserAccountFormProps> = (props) => {
   };
 
   return (
-    <form className="flex flex-col gap-8 mb-10" onSubmit={handleOnSubmit}>
+    <form
+      data-testid="form"
+      className="flex flex-col gap-8 mb-10"
+      onSubmit={handleOnSubmit}
+    >
       <CustomInput
         placeholder="First Name"
         name={"first_name"}
