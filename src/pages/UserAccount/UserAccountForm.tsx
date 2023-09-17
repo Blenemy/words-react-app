@@ -7,10 +7,11 @@ type UserAccountFormProps = {
   formData: UserAccountFromType;
   setFormData: React.Dispatch<React.SetStateAction<UserAccountFromType>>;
   handleOnSubmit: (event: React.FormEvent<HTMLFormElement>) => Promise<void>;
+  handleOnCancel: () => void;
 };
 
 export const UserAccountForm: React.FC<UserAccountFormProps> = (props) => {
-  const { formData, setFormData, handleOnSubmit } = props;
+  const { formData, setFormData, handleOnSubmit, handleOnCancel } = props;
 
   const commonInputProps = {
     autoComplete: "off",
@@ -56,10 +57,11 @@ export const UserAccountForm: React.FC<UserAccountFormProps> = (props) => {
       <div className="flex gap-[40px]">
         <UserAccountButton type="submit" text="Save" color="primary" />
         <UserAccountButton
-          type="button"
+          type="reset"
           text="Cancel"
           color="violetStroke"
           transparent={true}
+          handleOnCancel={handleOnCancel}
         />
       </div>
     </form>

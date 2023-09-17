@@ -99,6 +99,15 @@ export const useUserProfile = (
     }
   };
 
+  const handleOnCancel = () => {
+    setFormData((prev) => ({
+      ...prev,
+      first_name: user?.first_name || "",
+      last_name: user?.last_name || "",
+      email: user?.email || "",
+    }));
+  };
+
   useEffect(() => {
     if (user) {
       setFormData((prev) => ({
@@ -110,5 +119,12 @@ export const useUserProfile = (
     }
   }, [user]);
 
-  return { formData, setFormData, handleOnSubmit, handleFileChange, isLoading };
+  return {
+    formData,
+    setFormData,
+    handleOnSubmit,
+    handleFileChange,
+    isLoading,
+    handleOnCancel,
+  };
 };

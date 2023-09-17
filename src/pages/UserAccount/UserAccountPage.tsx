@@ -17,7 +17,7 @@ export type UserAccountFromType = {
 
 export const UserAccountPage = () => {
   const { user, token, handleLogOut } = useUser();
-  const { formData, setFormData, handleOnSubmit, handleFileChange, isLoading } =
+  const { formData, setFormData, handleOnSubmit, handleFileChange, handleOnCancel, isLoading } =
     useUserProfile(token, user);
   const navigate = useNavigate();
   const location = useLocation();
@@ -44,6 +44,7 @@ export const UserAccountPage = () => {
             <div className="flex flex-col basis-2/5">
               <UserAccountForm
                 handleOnSubmit={handleOnSubmit}
+                handleOnCancel={handleOnCancel}
                 formData={formData}
                 setFormData={setFormData}
               />
