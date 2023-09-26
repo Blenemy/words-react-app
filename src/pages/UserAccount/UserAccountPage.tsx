@@ -17,8 +17,14 @@ export type UserAccountFromType = {
 
 export const UserAccountPage = () => {
   const { user, token, handleLogOut } = useUser();
-  const { formData, setFormData, handleOnSubmit, handleFileChange, handleOnCancel, isLoading } =
-    useUserProfile(token, user);
+  const {
+    formData,
+    setFormData,
+    handleOnSubmit,
+    handleFileChange,
+    handleOnCancel,
+    isLoading,
+  } = useUserProfile(token, user);
   const navigate = useNavigate();
   const location = useLocation();
 
