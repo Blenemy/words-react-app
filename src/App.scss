@@ -1,10 +1,9 @@
 @import url(https://fonts.googleapis.com/css?family=Roboto+Flex:regular);
 
 @font-face {
-  font-family: 'Magilio';
-  src: local('Magilio'), 
-       url('./fonts/MagilioRegular.ttf') format('truetype'),
-       url('./fonts/MagilioRegular.otf') format('opentype');
+  font-family: "Magilio";
+  src: local("Magilio"), url("./fonts/MagilioRegular.ttf") format("truetype"),
+    url("./fonts/MagilioRegular.otf") format("opentype");
   font-weight: normal;
   font-style: normal;
 }
