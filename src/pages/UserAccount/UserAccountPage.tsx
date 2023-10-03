@@ -7,6 +7,7 @@ import { DailyActivity } from "./DailyActivity";
 import { UserAccountForm } from "./UserAccountForm";
 import { useUser } from "../../hooks/useUser";
 import { useUserProfile } from "../../hooks/useUserProfile";
+import { UserStatisctics } from "./UserStatistics";
 
 export type UserAccountFromType = {
   first_name: string;
@@ -60,7 +61,7 @@ export const UserAccountPage = () => {
                 to improve your foreign language skills!
               </p>
             </div>
-            <div className="text-primary basis-3/5">123</div>
+            <UserStatisctics />
           </div>
         </div>
       </div>
