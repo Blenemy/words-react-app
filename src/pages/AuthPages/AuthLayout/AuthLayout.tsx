@@ -4,7 +4,6 @@ import image3 from "../../../assets/createAccountImage3.png";
 import image4 from "../../../assets/createAccountImage4.png";
 import image5 from "../../../assets/createAccountImage5.png";
 import image6 from "../../../assets/createAccountImage6.png";
-import "./AuthLayout.scss";
 import { RenderRowOfImages } from "./RenderRowOfImages";
 import { WelcomeMessage } from "./WelcomeMessage";
 
@@ -15,7 +14,7 @@ export const AuthLayout = ({ children }: { children: React.ReactNode }) => {
         <div className="px-10">
           <div className="flex gap-4">
             <div className="basis-1/2 flex flex-col">
-              <div className="angry-grid mb-5">
+              <div className="grid mb-5 grid-cols-custom12 grid-rows-custom12 gap-5">
                 <RenderRowOfImages images={[image1, image2, image3]} />
                 <WelcomeMessage />
               </div>

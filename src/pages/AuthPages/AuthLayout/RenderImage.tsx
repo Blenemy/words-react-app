@@ -10,6 +10,6 @@ export const RenderImage: React.FC<ImageProps> = ({
   <img
     src={src}
     alt="layout-img"
-    className={`rounded-3xl h-full w-full ${additionalClasses || ""}`}
+    className={`rounded-3xl h-full w-full ${additionalClasses || ""} `}
   />
 );
