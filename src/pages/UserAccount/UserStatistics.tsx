@@ -31,7 +31,7 @@ export const UserStatisctics = () => {
           <YAxis stroke="#444" domain={[0, 50]} tickCount={6} interval={0} />
           <Tooltip wrapperStyle={{ backgroundColor: "#ccc" }} />
           <Line
-            type="natural"
+            type="monotone"
             dataKey="progress"
             stroke="#8884d8"
             strokeWidth={4}

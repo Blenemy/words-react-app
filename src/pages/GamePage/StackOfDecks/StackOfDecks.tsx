@@ -1,5 +1,5 @@
 import "./StackOfDecks.scss";
-import titleDecorator from "../../assets/gamePageDecksDecorator.png";
+import titleDecorator from "../../../assets/gamePageDecksDecorator.png";
 
 type Props = {
   frontImage: string | undefined;

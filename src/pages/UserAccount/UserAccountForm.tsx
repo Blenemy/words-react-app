@@ -65,7 +65,7 @@ export const UserAccountForm: React.FC<UserAccountFormProps> = (props) => {
           text="Cancel"
           color="violetStroke"
           transparent={true}
-          handleOnCancel={handleOnCancel}
+          handleOnClick={handleOnCancel}
         />
       </div>
     </form>

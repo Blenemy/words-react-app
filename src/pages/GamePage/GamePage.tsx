@@ -10,7 +10,7 @@ import axios from "axios";
 import Cookies from "js-cookie";
 import { DeckFromServer } from "../../types/DeckFromServer";
 import { useAppSelector } from "../../app/hooks";
-import { StackOfDecks } from "./StackOfDecks";
+import { StackOfDecks } from "./StackOfDecks/StackOfDecks";
 import { BreadCrumbs } from "../../components/BreakCrumbs/BreadCrumbs";
 
 export const GamePage = () => {

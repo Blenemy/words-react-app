@@ -21,7 +21,6 @@ import { GamePage } from "./pages/GamePage/GamePage";
 import { AddCard } from "./pages/CardsPage/AddCard/AddCard";
 import { HomePage } from "./pages/Home/HomePage";
 import { FlipCardPage } from "./pages/CardsPage/FlipCardPage";
-import { AddDeck } from "./pages/GamePage/AddDeck/AddDeck";
 import { ChangeDeck } from "./pages/GamePage/ChangeDeck/ChangeDeck";
 import "./App.scss";
 import { Header } from "./components/Header/Header";
@@ -30,6 +29,7 @@ import { useQuery } from "@tanstack/react-query";
 import { Registration } from "./pages/AuthPages/Signup/RegistrationPage";
 import { Authorization } from "./pages/AuthPages/Login/AuthorizationPage";
 import { ChangeCard } from "./pages/CardsPage/ChangeCard/ChangeCard";
+import { UserDecksPage } from "./pages/UserDecks/UserDecksPage";
 
 function App() {
   const dispatch = useAppDispatch();
@@ -81,7 +81,7 @@ function App() {
             <Route path={ROUTE_BOOK_CARD} element={<BookCardPage />} />
             <Route path={ROUTE_ADD_CARD} element={<AddCard />} />
             <Route path={ROUTE_USER_DECKS}>
-              <Route index element={<AddDeck />} />
+              <Route index element={<UserDecksPage />} />
               <Route path=":deckId" element={<ChangeDeck />} />
             </Route>
           </Routes>
