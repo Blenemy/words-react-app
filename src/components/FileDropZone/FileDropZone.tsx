@@ -53,7 +53,7 @@ const FileDropZone: React.FC<FileDropZoneProps> = ({
           className="w-full h-full object-cover"
         />
       ) : (
-        <div style={{ textAlign: "center" }}>
+        <div className="text-black" style={{ textAlign: "center" }}>
           <div style={{ fontSize: "24px", marginBottom: "10px" }}>+</div>
           <div>Перетащите изображение сюда</div>
         </div>

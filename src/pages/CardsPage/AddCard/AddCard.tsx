@@ -1,65 +1,86 @@
 import { handleInputChange } from "../../../utils/helpers";
 import { useAddCart } from "../../../hooks/useAddCard";
+import { useState } from "react";
+import FileDropZone from "../../../components/FileDropZone/FileDropZone";
+import { CustomInput } from "../../../components/CustomInput/CustomInput";
+import { UserAccountButton } from "../../UserAccount/UserAccountButton";
 
-export const AddCard = () => {
-  const {
-    formData,
-    setFormData,
-    handleAddCardOnSubmit,
-    handleFileChange,
-    error,
-  } = useAddCart();
+export const AddCard = ({ deckId }: { deckId: number | undefined }) => {
+  const [previewImage, setPreviewImage] = useState<string | null>(null);
+  const { formData, setFormData, handleAddCardOnSubmit, error } =
+    useAddCart(deckId);
 
   return (
     <>
-      <div className="flex flex-col justify-center items-center">
-        <form
-          action=""
-          className="flex flex-col gap-4"
-          onSubmit={handleAddCardOnSubmit}
-        >
-          <input
+      <div className="flex flex-col">
+        <form className="flex flex-col gap-4" onSubmit={handleAddCardOnSubmit}>
+          <CustomInput
             placeholder="Deck"
             disabled
             name={"deck"}
             type={"number"}
-            className="text-black"
+            classname="text-black"
             value={formData.deck}
-            onChange={(event) => handleInputChange(event, setFormData)}
+            onChangeHandler={(event: Event) =>
+              handleInputChange(event, setFormData)
+            }
             autoComplete="off"
           />
-          <input
+          <CustomInput
             placeholder="Word in English"
             required
             name={"word"}
             type={"text"}
-            className="text-black"
+            classname="text-black"
             value={formData.word}
-            onChange={(event) => handleInputChange(event, setFormData)}
+            onChangeHandler={(event: Event) =>
+              handleInputChange(event, setFormData)
+            }
             autoComplete="off"
           />
-          <input
+          <CustomInput
             placeholder="Translation"
             required
             name={"translation"}
             type={"text"}
-            className="text-black"
+            classname="text-black"
             value={formData.translation}
-            onChange={(event) => handleInputChange(event, setFormData)}
+            onChangeHandler={(event: Event) =>
+              handleInputChange(event, setFormData)
+            }
             autoComplete="off"
           />
-          <input
+          <CustomInput
             placeholder="Description"
             required
             name={"description"}
             type={"text"}
-            className="text-black"
+            classname="text-black"
             value={formData.description}
-            onChange={(event) => handleInputChange(event, setFormData)}
+            onChangeHandler={(event: Event) =>
+              handleInputChange(event, setFormData)
+            }
             autoComplete="off"
           />
-          <input type="file" id="addCardInput" onChange={handleFileChange} />
-          <button type="submit">Add a card</button>
+          <FileDropZone
+            onFileUpload={(file) => {
+              const reader = new FileReader();
+              reader.addEventListener("load", () => {
+                setFormData((prevData) => ({
+                  ...prevData,
+                  image: reader.result as string,
+                }));
+              });
+              reader.readAsDataURL(file);
+            }}
+            setPreviewImage={setPreviewImage}
+            previewImage={previewImage}
+          />
+          <UserAccountButton
+            type="submit"
+            text="Add a card"
+            color="violetStroke"
+          />
           {error && <div className="text-[14px] text-red-500">{error}</div>}
         </form>
       </div>

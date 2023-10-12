@@ -6,7 +6,6 @@ import axios from "axios";
 import { setUser } from "./features/userSlice";
 import {
   BASE_URL,
-  ROUTE_ADD_CARD,
   ROUTE_AUTHORIZATION,
   ROUTE_BOOK_CARD,
   ROUTE_CARD_GAME,
@@ -18,10 +17,9 @@ import {
 } from "./data/constants";
 import { BookCardPage } from "./backup/BookCardPage";
 import { GamePage } from "./pages/GamePage/GamePage";
-import { AddCard } from "./pages/CardsPage/AddCard/AddCard";
 import { HomePage } from "./pages/Home/HomePage";
 import { FlipCardPage } from "./pages/CardsPage/FlipCardPage";
-import { ChangeDeck } from "./pages/GamePage/ChangeDeck/ChangeDeck";
+import { ChangeDeck } from "./pages/UserDecks/ChangeDeck/ChangeDeck";
 import "./App.scss";
 import { Header } from "./components/Header/Header";
 import { Footer } from "./components/Footer/Footer";
@@ -79,7 +77,6 @@ function App() {
               <Route path=":cardId" element={<ChangeCard />} />
             </Route>
             <Route path={ROUTE_BOOK_CARD} element={<BookCardPage />} />
-            <Route path={ROUTE_ADD_CARD} element={<AddCard />} />
             <Route path={ROUTE_USER_DECKS}>
               <Route index element={<UserDecksPage />} />
               <Route path=":deckId" element={<ChangeDeck />} />

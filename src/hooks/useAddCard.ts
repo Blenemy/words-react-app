@@ -3,11 +3,8 @@ import { useState } from "react";
 import Cookies from "js-cookie";
 import axios from "axios";
 import { BASE_URL } from "../data/constants";
-import { useLocation } from "react-router-dom";
 
-export const useAddCart = () => {
-  const location = useLocation();
-  const deckId = location.state.deckId;
+export const useAddCart = (deckId: number | undefined) => {
   const token = Cookies.get("token");
   const [error, setError] = useState<null | string>(null);
   const [formData, setFormData] = useState<AddCardType>({
@@ -18,8 +15,20 @@ export const useAddCart = () => {
     image: "",
   });
 
+  const onDrop = (acceptedFiles: File[]) => {
+    const file = acceptedFiles[0];
+    const reader = new FileReader();
+    reader.addEventListener("load", () => {
+      setFormData((prevData) => ({
+        ...prevData,
+        image: reader.result,
+      }));
+    });
+    reader.readAsDataURL(file);
+  };
+
   const handleAddCardOnSubmit = async (event: any) => {
-    event?.preventDefault();
+    event.preventDefault();
 
     const dataToSend = {
       deck: deckId,
@@ -53,22 +62,11 @@ export const useAddCart = () => {
     }
   };
 
-  const handleFileChange = (event: any) => {
-    const data = new FileReader();
-    data.addEventListener("load", () => {
-      setFormData((prevData) => ({
-        ...prevData,
-        image: data.result,
-      }));
-    });
-    data.readAsDataURL(event.target.files[0]);
-  };
-
   return {
     formData,
     setFormData,
     handleAddCardOnSubmit,
-    handleFileChange,
+    onDrop,
     error,
   };
 };

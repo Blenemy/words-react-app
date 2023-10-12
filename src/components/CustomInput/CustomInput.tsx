@@ -5,11 +5,12 @@ type Props = {
   placeholder: string;
   name: string;
   type: string;
-  required: boolean;
-  value: string | undefined;
+  required?: boolean;
+  value: string | undefined | number;
   onChangeHandler: any;
   autoComplete: string;
   error?: string;
+  disabled?: boolean;
 };
 
 export const CustomInput: React.FC<Props> = ({
@@ -22,6 +23,7 @@ export const CustomInput: React.FC<Props> = ({
   onChangeHandler,
   autoComplete,
   error,
+  disabled,
 }) => {
   const [placeholderColor, setPlaceholderColor] = useState("");
   const [borderOnFocus, setBorderOnFocus] = useState("");
@@ -49,6 +51,7 @@ export const CustomInput: React.FC<Props> = ({
       autoComplete={autoComplete}
       onFocus={handleOnFocus}
       onBlur={handleOnBlur}
+      disabled={disabled}
     />
   );
 };

@@ -1,7 +1,7 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 import Cookies from "js-cookie";
-import { BASE_URL } from "../../data/constants";
+import { BASE_URL, ROUTE_USER_DECKS } from "../../data/constants";
 import { DeckFromServer } from "../../types/DeckFromServer";
 import { UserDeckPreview } from "./UserDeckPreview/UserDeckPreview";
 import FileDropZone from "../../components/FileDropZone/FileDropZone";
@@ -43,6 +43,10 @@ export const UserDecksPage = () => {
     } catch (error) {}
   };
 
+  const redirectToDeck = (deckId: number) => {
+    navigate(ROUTE_USER_DECKS + `/${deckId}`);
+  };
+
   useEffect(() => {
     async function getDecks() {
       try {
@@ -70,6 +74,7 @@ export const UserDecksPage = () => {
               <UserDeckPreview
                 deck={deck}
                 key={deck.id}
+                redirectFunc={redirectToDeck}
                 handleSumbitDeck={() =>
                   handleSumbitDeck(deck.id, token, navigate)
                 }
