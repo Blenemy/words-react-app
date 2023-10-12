@@ -2,7 +2,6 @@ import { useLocation, useNavigate } from "react-router-dom";
 import {
   BASE_URL,
   ROUTE_AUTHORIZATION,
-  ROUTE_FLIP_CARD,
   ROUTE_USER_DECKS,
 } from "../../data/constants";
 import { useEffect, useState } from "react";
@@ -12,6 +11,7 @@ import { DeckFromServer } from "../../types/DeckFromServer";
 import { useAppSelector } from "../../app/hooks";
 import { StackOfDecks } from "./StackOfDecks/StackOfDecks";
 import { BreadCrumbs } from "../../components/BreakCrumbs/BreadCrumbs";
+import { handleSumbitDeck } from "../../api/handleSubmitDeck";
 
 export const GamePage = () => {
   const [defaultDecks, setDefaultDecks] = useState<DeckFromServer[] | null>(
@@ -21,26 +21,6 @@ export const GamePage = () => {
   const navigate = useNavigate();
   const location = useLocation();
   const token = Cookies.get("token");
-
-  const handleSumbitDeck = async (deck: number) => {
-    try {
-      const response = await axios.post(
-        BASE_URL + `/study/add_deck/${deck}/`,
-        {},
-        {
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
-        }
-      );
-
-      if (response.status === 201) {
-        navigate(ROUTE_FLIP_CARD, { state: { deckId: deck, isDefault: true } });
-      }
-    } catch (error) {
-      console.log(error);
-    }
-  };
 
   useEffect(() => {
     async function getDecks() {
@@ -93,7 +73,7 @@ export const GamePage = () => {
               <div key={deck.id} className="basis-1/3">
                 <StackOfDecks
                   frontImage={deck.preview![0]}
-                  onDeckClick={() => handleSumbitDeck(deck.id)}
+                  onDeckClick={() => handleSumbitDeck(deck.id, token, navigate)}
                   deckTitle={deck.title}
                 />
               </div>
