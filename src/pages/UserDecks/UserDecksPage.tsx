@@ -17,6 +17,11 @@ export const UserDecksPage = () => {
   const navigate = useNavigate();
   const [formData, setFormData] = useState({ name: "" });
   const token = Cookies.get("token");
+  const [fileError, setFileError] = useState<string>("");
+
+  const handleDragError = (payload: string) => {
+    setFileError(payload);
+  };
 
   const handleAddDeck = async () => {
     try {
@@ -85,6 +90,8 @@ export const UserDecksPage = () => {
           <FileDropZone
             setPreviewImage={setPreviewImage}
             previewImage={previewImage}
+            handleDragError={handleDragError}
+            fileError={fileError}
           />
           <CustomInput
             placeholder="The name of the deck"

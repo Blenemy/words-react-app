@@ -6,6 +6,7 @@ import { BASE_URL } from "../data/constants";
 
 export const useAddCart = (deckId: number | undefined) => {
   const token = Cookies.get("token");
+  const [previewImage, setPreviewImage] = useState<string | null>(null);
   const [error, setError] = useState<null | string>(null);
   const [formData, setFormData] = useState<AddCardType>({
     deck: deckId,
@@ -48,7 +49,6 @@ export const useAddCart = (deckId: number | undefined) => {
       setError(null);
     } catch (error: any) {
       if (error.response) {
-        console.log(error.response.data);
         setError(error.response.data.error);
       }
     } finally {
@@ -59,6 +59,7 @@ export const useAddCart = (deckId: number | undefined) => {
         description: "",
         image: null,
       });
+      setPreviewImage(null);
     }
   };
 
@@ -68,5 +69,7 @@ export const useAddCart = (deckId: number | undefined) => {
     handleAddCardOnSubmit,
     onDrop,
     error,
+    previewImage,
+    setPreviewImage,
   };
 };

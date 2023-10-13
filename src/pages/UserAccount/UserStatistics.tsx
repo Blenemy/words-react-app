@@ -16,12 +16,10 @@ export const UserStatisctics = () => {
     return <div>something went wrong</div>;
   }
 
-  const formattedData = Object.keys(user.progress)
-    .map((date) => ({
-      date,
-      progress: user.progress[date],
-    }))
-    .reverse();
+  const formattedData = Object.keys(user.progress).map((date) => ({
+    date,
+    progress: user.progress[date],
+  }));
 
   return (
     <div className="text-primary basis-3/5">

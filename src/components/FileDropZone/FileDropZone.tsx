@@ -5,24 +5,35 @@ interface FileDropZoneProps {
   onFileUpload?: (file: File) => void;
   setPreviewImage: React.Dispatch<React.SetStateAction<string | null>>;
   previewImage: string | null;
+  fileError?: string;
+  handleDragError: (payload: string) => void;
 }
 
 const FileDropZone: React.FC<FileDropZoneProps> = ({
   onFileUpload,
   setPreviewImage,
   previewImage,
+  fileError,
+  handleDragError,
 }) => {
   const onDrop = useCallback(
     (acceptedFiles: File[]) => {
-      const file = acceptedFiles[0];
-      const objectURL = URL.createObjectURL(file);
-      setPreviewImage(objectURL);
+      try {
+        const file = acceptedFiles[0];
+        const objectURL = URL.createObjectURL(file);
+        setPreviewImage(objectURL);
 
-      if (onFileUpload) {
-        onFileUpload(file);
+        if (onFileUpload) {
+          onFileUpload(file);
+          handleDragError("");
+        }
+      } catch (error) {
+        handleDragError(
+          "Overload resolution failed. The maximum size of an image is 30mb"
+        );
       }
     },
-    [onFileUpload, setPreviewImage]
+    [onFileUpload, setPreviewImage, handleDragError]
   );
 
   const { getRootProps, getInputProps, isDragActive } = useDropzone({
@@ -35,30 +46,33 @@ const FileDropZone: React.FC<FileDropZoneProps> = ({
       "image/svg": [".svg"],
     },
     multiple: false,
-    maxSize: 2000000,
+    maxSize: 30000000, // 30mb
   });
 
   return (
-    <div
-      {...getRootProps()}
-      className={`w-full h-48 rounded-lg border border-dashed border-gray-400 flex items-center justify-center ${
-        isDragActive ? "bg-f3f3f3" : "bg-e6e6e6"
-      } hover:cursor-pointer`}
-    >
-      <input {...getInputProps()} />
-      {previewImage ? (
-        <img
-          src={previewImage}
-          alt="previewImage"
-          className="w-full h-full object-cover"
-        />
-      ) : (
-        <div className="text-black" style={{ textAlign: "center" }}>
-          <div style={{ fontSize: "24px", marginBottom: "10px" }}>+</div>
-          <div>Перетащите изображение сюда</div>
-        </div>
-      )}
-    </div>
+    <>
+      <div
+        {...getRootProps()}
+        className={`w-full h-48 rounded-lg border border-dashed border-gray-400 flex items-center justify-center ${
+          isDragActive ? "bg-f3f3f3" : "bg-e6e6e6"
+        } hover:cursor-pointer`}
+      >
+        <input {...getInputProps()} />
+        {previewImage ? (
+          <img
+            src={previewImage}
+            alt="previewImage"
+            className="w-full h-full object-cover"
+          />
+        ) : (
+          <div className="text-black" style={{ textAlign: "center" }}>
+            <div style={{ fontSize: "24px", marginBottom: "10px" }}>+</div>
+            <div>Drag your image here</div>
+          </div>
+        )}
+      </div>
+      {fileError && <p className="text-red-500">{fileError}</p>}
+    </>
   );
 };
 

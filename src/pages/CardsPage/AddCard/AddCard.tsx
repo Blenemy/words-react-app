@@ -1,14 +1,26 @@
 import { handleInputChange } from "../../../utils/helpers";
 import { useAddCart } from "../../../hooks/useAddCard";
-import { useState } from "react";
 import FileDropZone from "../../../components/FileDropZone/FileDropZone";
 import { CustomInput } from "../../../components/CustomInput/CustomInput";
 import { UserAccountButton } from "../../UserAccount/UserAccountButton";
+import { useState } from "react";
+import { Modal } from "../../../components/Modal/Modal";
 
 export const AddCard = ({ deckId }: { deckId: number | undefined }) => {
-  const [previewImage, setPreviewImage] = useState<string | null>(null);
-  const { formData, setFormData, handleAddCardOnSubmit, error } =
-    useAddCart(deckId);
+  const [fileError, setFileError] = useState<string>("");
+
+  const handleDragError = (payload: string) => {
+    setFileError(payload);
+  };
+
+  const {
+    formData,
+    setFormData,
+    handleAddCardOnSubmit,
+    error,
+    previewImage,
+    setPreviewImage,
+  } = useAddCart(deckId);
 
   return (
     <>
@@ -75,6 +87,8 @@ export const AddCard = ({ deckId }: { deckId: number | undefined }) => {
             }}
             setPreviewImage={setPreviewImage}
             previewImage={previewImage}
+            fileError={fileError}
+            handleDragError={handleDragError}
           />
           <UserAccountButton
             type="submit"
