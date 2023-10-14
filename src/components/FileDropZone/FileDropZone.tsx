@@ -1,5 +1,7 @@
 import React, { useCallback } from "react";
 import { useDropzone } from "react-dropzone";
+import { ReactComponent as DownLoad } from "../../assets/downloadImage.svg";
+import { ReactComponent as Image } from "../../assets/Vector.svg";
 
 interface FileDropZoneProps {
   onFileUpload?: (file: File) => void;
@@ -65,9 +67,18 @@ const FileDropZone: React.FC<FileDropZoneProps> = ({
             className="w-full h-full object-cover"
           />
         ) : (
-          <div className="text-black" style={{ textAlign: "center" }}>
-            <div style={{ fontSize: "24px", marginBottom: "10px" }}>+</div>
-            <div>Drag your image here</div>
+          <div className="text-black text-center flex flex-col justify-center items-center gap-4">
+            <Image />
+            <div>
+              <div
+                className="flex items-center justify-center gap-2 text-[#1d7d74] text-center"
+                style={{ color: fileError ? "#F00631" : "" }}
+              >
+                <span>Завантажити зображення</span> <DownLoad />
+              </div>
+              <p className="text-sm">Формат зображення: JPG, PNG, SVG, WEBP</p>
+              <p className="text-sm">Максимальний розмір: 30 МБ</p>
+            </div>
           </div>
         )}
       </div>

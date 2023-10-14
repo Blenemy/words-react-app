@@ -30,7 +30,10 @@ export const UserDeckPreview: React.FC<Props> = ({
       </h3>
       <button
         className="absolute top-0 right-0 text-black py-2 px-7 rounded-3xl blured-image font-['Roboto_flex'] text-xl hover:text-violetStroke duration-300"
-        onClick={() => handleSumbitDeck(deck.id)}
+        onClick={(event) => {
+          event.stopPropagation();
+          handleSumbitDeck(deck.id);
+        }}
       >
         Play the deck
       </button>

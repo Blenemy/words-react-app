@@ -4,7 +4,6 @@ import FileDropZone from "../../../components/FileDropZone/FileDropZone";
 import { CustomInput } from "../../../components/CustomInput/CustomInput";
 import { UserAccountButton } from "../../UserAccount/UserAccountButton";
 import { useState } from "react";
-import { Modal } from "../../../components/Modal/Modal";
 
 export const AddCard = ({ deckId }: { deckId: number | undefined }) => {
   const [fileError, setFileError] = useState<string>("");

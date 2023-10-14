@@ -1,4 +1,9 @@
 import { CardFromServer } from "../../types/CardFromServer";
+import { CustomInput } from "../CustomInput/CustomInput";
+import { handleInputChange } from "../../utils/helpers";
+import { useChangeCard } from "../../hooks/useChangeCard";
+import FileDropZone from "../FileDropZone/FileDropZone";
+import { useState } from "react";
 
 type Props = {
   showModal?: boolean;
@@ -11,33 +16,91 @@ export const Modal: React.FC<Props> = ({
   handleShowModal,
   card,
 }) => {
+  const [previewImage, setPreviewImage] = useState<string | null>(card.image);
+
+  const { formData, setFormData, handleOnSubmit } = useChangeCard(card, () =>
+    handleShowModal(false)
+  );
+  const [fileError, setFileError] = useState<string>("");
+
+  const handleDragError = (payload: string) => {
+    setFileError(payload);
+  };
+
   return (
     <>
       {showModal ? (
         <>
-          <div className="justify-center items-center flex overflow-x-hidden overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none text-black">
-            <div className="relative w-auto my-6 mx-auto max-w-3xl">
-              {/*content*/}
+          <form
+            className="justify-center items-center flex overflow-x-hidden overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none text-black"
+            onSubmit={handleOnSubmit}
+          >
+            <div className="relative min-w-[700px] my-6 mx-auto max-w-3xl">
               <div className="border-0 rounded-lg shadow-lg relative flex flex-col w-full bg-white outline-none focus:outline-none">
-                {/*header*/}
-                <div className="flex items-start justify-between p-5 border-b border-solid border-blueGray-200 rounded-t">
-                  <h3 className="text-3xl font-semibold">{card.word}</h3>
+                <div className="flex gap-10 items-start justify-between p-5 border-b border-solid border-blueGray-200 rounded-t">
+                  <CustomInput
+                    classname="text-3xl font-semibold flex border-none"
+                    placeholder={card.word}
+                    name={"word"}
+                    type="text"
+                    value={formData.word || ""}
+                    onChangeHandler={(event: Event) =>
+                      handleInputChange(event, setFormData)
+                    }
+                    autoComplete="off"
+                  />
+                  <CustomInput
+                    classname="text-3xl font-semibold flex border-none"
+                    placeholder={card.translation}
+                    name={"translation"}
+                    type="text"
+                    value={formData.translation || ""}
+                    onChangeHandler={(event: Event) =>
+                      handleInputChange(event, setFormData)
+                    }
+                    autoComplete="off"
+                  />
                   <button
                     className="p-1 ml-auto bg-transparent border-0 text-black opacity-5 float-right text-3xl leading-none font-semibold outline-none focus:outline-none"
                     onClick={() => handleShowModal(false)}
                   >
-                    <span className="bg-transparent text-black opacity-5 h-6 w-6 text-2xl block outline-none focus:outline-none">
+                    <span
+                      className="bg-transparent text-black h-6 w-6 text-2xl block outline-none focus:outline-none"
+                      onClick={() => handleShowModal(false)}
+                    >
                       ×
                     </span>
                   </button>
                 </div>
-                {/*body*/}
                 <div className="relative p-6 flex-auto">
-                  <p className="my-4 text-blueGray-500 text-lg leading-relaxed">
-                    {card.description}
-                  </p>
+                  <CustomInput
+                    classname="my-4 text-blueGray-500 text-lg leading-relaxed border-none"
+                    placeholder={card.description || "Description"}
+                    name={"description"}
+                    type="text"
+                    value={formData.description || ""}
+                    onChangeHandler={(event: Event) =>
+                      handleInputChange(event, setFormData)
+                    }
+                    autoComplete="off"
+                  />
+                  <FileDropZone
+                    onFileUpload={(file) => {
+                      const reader = new FileReader();
+                      reader.addEventListener("load", () => {
+                        setFormData((prevData: any) => ({
+                          ...prevData,
+                          image: reader.result as string,
+                        }));
+                      });
+                      reader.readAsDataURL(file);
+                    }}
+                    setPreviewImage={setPreviewImage}
+                    previewImage={previewImage}
+                    handleDragError={handleDragError}
+                    fileError={fileError}
+                  />
                 </div>
-                {/*footer*/}
                 <div className="flex items-center justify-end p-6 border-t border-solid border-blueGray-200 rounded-b">
                   <button
                     className="text-red-500 background-transparent font-bold uppercase px-6 py-2 text-sm outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
@@ -48,15 +111,14 @@ export const Modal: React.FC<Props> = ({
                   </button>
                   <button
                     className="bg-emerald-500 text-white active:bg-emerald-600 font-bold uppercase text-sm px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
-                    type="button"
-                    onClick={() => handleShowModal(false)}
+                    type="submit"
                   >
                     Save Changes
                   </button>
                 </div>
               </div>
             </div>
-          </div>
+          </form>
           <div className="opacity-25 fixed inset-0 z-40 bg-black"></div>
         </>
       ) : null}
