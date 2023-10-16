@@ -29,7 +29,12 @@ export const FlipCard: React.FC<Props> = React.memo(({ card }) => {
               "active-front": isClicked,
             })}
           >
-            <img src={card?.image} alt="" className="h-full rounded-3xl" />
+            <img
+              src={card?.image}
+              alt=""
+              className="h-full rounded-3xl"
+              loading="lazy"
+            />
           </div>
           <div
             className={cn(

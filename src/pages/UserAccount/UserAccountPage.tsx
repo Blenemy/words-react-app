@@ -64,14 +64,14 @@ export const UserAccountPage = () => {
             <UserStatisctics />
           </div>
         </div>
+        <button
+          type="button"
+          className="bg-[#21212B] rounded-[10px] px-5 py-2 w-[fit-content] self-center"
+          onClick={handleLogOut}
+        >
+          Sign out
+        </button>
       </div>
-      <button
-        type="button"
-        className="bg-[#21212B] rounded-[10px] px-5 py-2 w-[fit-content] self-center"
-        onClick={handleLogOut}
-      >
-        Sign out
-      </button>
     </section>
   );
 };

@@ -14,10 +14,8 @@ export const FlipCardPage: React.FC = () => {
   const [isLoading, setLoading] = useState<boolean>(false);
   const [successMessage, setSuccessMessage] = useState<boolean>(false);
   const location = useLocation();
-  const { deckId, isDefault } = location.state;
+  const { deckId } = location.state;
   const token = Cookies.get("token");
-
-  console.log(currentCard);
 
   const getNextCard = useCallback(
     async (answer: string) => {
@@ -116,24 +114,3 @@ export const FlipCardPage: React.FC = () => {
     </div>
   );
 };
-
-// {currentCard && (
-//   <>
-//     <FlipCard card={currentCard} />
-//     {!isDefault && (
-//       <Link to={`./${currentCard.id}`}>Modify the card</Link>
-//     )}
-//     <div className='flex gap-5'>
-//       {currentCard.answers?.map(answer => (
-//         <button key={answer} onClick={() => getNextCard(answer)}>{answer}</button>
-//       ))}
-//     </div>
-//   </>
-// )}
-
-// {successMessage && (
-//   <>
-//     <div>Good Job! You've passed all the tests!</div>
-//     <Link to={ROUTE_CARD_GAME}>Return to the game page</Link>
-//   </>
-// )}
