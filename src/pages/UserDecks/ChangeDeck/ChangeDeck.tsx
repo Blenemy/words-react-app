@@ -5,7 +5,7 @@ import { useParams } from "react-router-dom";
 import { BASE_URL } from "../../../data/constants";
 import { CardFromServer } from "../../../types/CardFromServer";
 import { DeckCard } from "../../../components/DeckCard/DeckCard";
-import { AddCard } from "../../CardsPage/AddCard/AddCard";
+import { AddCard } from "../AddCard/AddCard";
 
 export const ChangeDeck = () => {
   const { deckId } = useParams();

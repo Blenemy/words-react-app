@@ -26,7 +26,6 @@ import { Footer } from "./components/Footer/Footer";
 import { useQuery } from "@tanstack/react-query";
 import { Registration } from "./pages/AuthPages/Signup/RegistrationPage";
 import { Authorization } from "./pages/AuthPages/Login/AuthorizationPage";
-import { ChangeCard } from "./pages/CardsPage/ChangeCard/ChangeCard";
 import { UserDecksPage } from "./pages/UserDecks/UserDecksPage";
 
 function App() {
@@ -74,7 +73,6 @@ function App() {
             <Route path={ROUTE_PROFILE} element={<UserAccountPage />} />
             <Route path={ROUTE_FLIP_CARD}>
               <Route index element={<FlipCardPage />} />
-              <Route path=":cardId" element={<ChangeCard />} />
             </Route>
             <Route path={ROUTE_BOOK_CARD} element={<BookCardPage />} />
             <Route path={ROUTE_USER_DECKS}>

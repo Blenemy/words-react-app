@@ -8,12 +8,18 @@ export const DailyActivity = () => {
     return <div>something went wrong</div>;
   }
 
-  const formattedData = Object.keys(user.progress).map((date) => ({
-    date,
-    progress: user.progress[date],
-  }))[0];
-
-  console.log(formattedData);
+  const date = new Date();
+  const options = {
+    timeZone: "Europe/Kiev",
+    year: "numeric" as const,
+    month: "2-digit" as const,
+    day: "2-digit" as const,
+  };
+  const formattedDate = date
+    .toLocaleString("en-CA", options)
+    .split("/")
+    .reverse()
+    .join("-");
 
   return (
     <div className="flex flex-col gap-4">
@@ -23,7 +29,7 @@ export const DailyActivity = () => {
         className="rounded-[50%] object-cover h-[84px] w-[84px] self-center"
       />
       <p className="text-primary">
-        {formattedData.progress} learned words today{" "}
+        {user.progress[formattedDate]} learned words today{" "}
       </p>
     </div>
   );
