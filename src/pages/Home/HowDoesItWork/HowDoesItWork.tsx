@@ -32,7 +32,7 @@ export const HowDoesItWork = () => {
           number="03."
         />
         <HowDoesItWorkCard
-          text="aThe app adapts, presenting cards based on your performance, ensuring you facus on areas that need improvement."
+          text="The app adapts, presenting cards based on your performance, ensuring you facus on areas that need improvement."
           number="04."
         />
       </div>
