@@ -21,7 +21,7 @@ export const UserDeckPreview: React.FC<Props> = ({
       onClick={() => redirectFunc(deck.id)}
     >
       <img
-        src={deck.preview![0]}
+        src={deck.image}
         alt="deck_preview"
         className="w-[424px] h-[220px] rounded-3xl object-cover"
       />

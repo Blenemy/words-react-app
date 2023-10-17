@@ -1,12 +1,6 @@
-import axios from "axios";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import Cookies from "js-cookie";
-import {
-  BASE_URL,
-  ROUTE_CARD_GAME,
-  ROUTE_USER_DECKS,
-} from "../../data/constants";
-import { DeckFromServer } from "../../types/DeckFromServer";
+import { ROUTE_CARD_GAME, ROUTE_USER_DECKS } from "../../data/constants";
 import { UserDeckPreview } from "./UserDeckPreview/UserDeckPreview";
 import FileDropZone from "../../components/FileDropZone/FileDropZone";
 import { CustomInput } from "../../components/CustomInput/CustomInput";
@@ -15,12 +9,11 @@ import { UserAccountButton } from "../UserAccount/UserAccountButton";
 import { useNavigate } from "react-router-dom";
 import { handleSumbitDeck } from "../../api/handleSubmitDeck";
 import { BreadCrumbs } from "../../components/BreakCrumbs/BreadCrumbs";
+import { useGetUserDecks } from "../../hooks/useGetUserDecks";
+import { useAddDeck } from "../../hooks/useAddDeck";
 
 export const UserDecksPage = () => {
-  const [decks, setDecks] = useState<DeckFromServer[] | null>(null);
-  const [previewImage, setPreviewImage] = useState<string | null>(null);
   const navigate = useNavigate();
-  const [formData, setFormData] = useState({ name: "" });
   const token = Cookies.get("token");
   const [fileError, setFileError] = useState<string>("");
 
@@ -28,52 +21,18 @@ export const UserDecksPage = () => {
     setFileError(payload);
   };
 
-  const handleAddDeck = async () => {
-    try {
-      const dataToSend = {
-        title: formData.name,
-      };
-      const response = await axios.post(
-        BASE_URL + "/study/decks/",
-        dataToSend,
-        {
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
-        }
-      );
-
-      setFormData({ name: "" });
-
-      if (decks) {
-        setDecks((prev) => [...prev!, response.data]);
-      } else {
-        setDecks([response.data]);
-      }
-    } catch (error) {}
-  };
-
   const redirectToDeck = (deckId: number) => {
     navigate(ROUTE_USER_DECKS + `/${deckId}`);
   };
 
-  useEffect(() => {
-    async function getDecks() {
-      try {
-        const response = await axios.get(BASE_URL + "/study/decks/", {
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
-        });
-
-        setDecks(response.data.filter((deck: DeckFromServer) => !deck.default));
-      } catch (error) {
-        console.log(error);
-      }
-    }
-
-    getDecks();
-  }, [token, setDecks]);
+  const { decks, setDecks } = useGetUserDecks(token);
+  const {
+    handleOnClick,
+    previewImage,
+    formData,
+    setFormData,
+    setPreviewImage,
+  } = useAddDeck(token, setDecks, decks);
 
   return (
     <div className="p-16">
@@ -97,6 +56,16 @@ export const UserDecksPage = () => {
         </div>
         <div className="basis-1/3 text-black flex flex-col gap-10">
           <FileDropZone
+            onFileUpload={(file) => {
+              const reader = new FileReader();
+              reader.addEventListener("load", () => {
+                setFormData((prevData) => ({
+                  ...prevData,
+                  image: reader.result as string,
+                }));
+              });
+              reader.readAsDataURL(file);
+            }}
             setPreviewImage={setPreviewImage}
             previewImage={previewImage}
             handleDragError={handleDragError}
@@ -118,7 +87,7 @@ export const UserDecksPage = () => {
             type="submit"
             text="Add a deck"
             color="violetStroke"
-            handleOnClick={handleAddDeck}
+            handleOnClick={handleOnClick}
           />
         </div>
       </div>
