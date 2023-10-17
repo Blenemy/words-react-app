@@ -1,7 +1,11 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 import Cookies from "js-cookie";
-import { BASE_URL, ROUTE_USER_DECKS } from "../../data/constants";
+import {
+  BASE_URL,
+  ROUTE_CARD_GAME,
+  ROUTE_USER_DECKS,
+} from "../../data/constants";
 import { DeckFromServer } from "../../types/DeckFromServer";
 import { UserDeckPreview } from "./UserDeckPreview/UserDeckPreview";
 import FileDropZone from "../../components/FileDropZone/FileDropZone";
@@ -10,6 +14,7 @@ import { handleInputChange } from "../../utils/helpers";
 import { UserAccountButton } from "../UserAccount/UserAccountButton";
 import { useNavigate } from "react-router-dom";
 import { handleSumbitDeck } from "../../api/handleSubmitDeck";
+import { BreadCrumbs } from "../../components/BreakCrumbs/BreadCrumbs";
 
 export const UserDecksPage = () => {
   const [decks, setDecks] = useState<DeckFromServer[] | null>(null);
@@ -72,6 +77,10 @@ export const UserDecksPage = () => {
 
   return (
     <div className="p-16">
+      <div className="mb-7">
+        <BreadCrumbs text={"Back to GamePage"} route={ROUTE_CARD_GAME} />
+      </div>
+
       <div className="flex gap-32">
         <div className="flex flex-wrap gap-6 basis-2/3">
           {decks &&

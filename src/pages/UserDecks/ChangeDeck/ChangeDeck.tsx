@@ -1,35 +1,22 @@
-import axios from "axios";
 import Cookies from "js-cookie";
-import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import { BASE_URL } from "../../../data/constants";
-import { CardFromServer } from "../../../types/CardFromServer";
+import { ROUTE_USER_DECKS } from "../../../data/constants";
 import { DeckCard } from "../../../components/DeckCard/DeckCard";
 import { AddCard } from "../AddCard/AddCard";
+import { BreadCrumbs } from "../../../components/BreakCrumbs/BreadCrumbs";
+import { useGetDeck } from "../../../hooks/useGetDeck";
 
 export const ChangeDeck = () => {
   const { deckId } = useParams();
-  const [cardInDeck, setCardInDeck] = useState<CardFromServer[]>();
   const token = Cookies.get("token");
-
-  useEffect(() => {
-    async function getDeck() {
-      try {
-        const response = await axios.get(BASE_URL + `/study/decks/${deckId}/`, {
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
-        });
-
-        setCardInDeck(response.data.cards);
-      } catch (error) {}
-    }
-
-    getDeck();
-  }, [deckId, token, cardInDeck]);
+  const { cardInDeck } = useGetDeck(deckId, token);
 
   return (
     <div className="p-16">
+      <div className="mb-7">
+        <BreadCrumbs text={"Back to my decks"} route={ROUTE_USER_DECKS} />
+      </div>
+
       <div className="flex gap-32">
         <div className="flex flex-wrap gap-4 basis-3/4">
           {!!cardInDeck?.length ? (
