@@ -2,10 +2,8 @@ import { Routes, Route, useLocation } from "react-router-dom";
 import { UserAccountPage } from "./pages/UserAccount/UserAccountPage";
 import { useAppDispatch } from "./app/hooks";
 import Cookies from "js-cookie";
-import axios from "axios";
 import { setUser } from "./features/userSlice";
 import {
-  BASE_URL,
   ROUTE_AUTHORIZATION,
   ROUTE_BOOK_CARD,
   ROUTE_CARD_GAME,
@@ -27,6 +25,7 @@ import { useQuery } from "@tanstack/react-query";
 import { Registration } from "./pages/AuthPages/Signup/RegistrationPage";
 import { Authorization } from "./pages/AuthPages/Login/AuthorizationPage";
 import { UserDecksPage } from "./pages/UserDecks/UserDecksPage";
+import { getuser } from "./api/getUser";
 
 function App() {
   const dispatch = useAppDispatch();
@@ -34,29 +33,13 @@ function App() {
   const showHeader = ![ROUTE_REGISTRATION, ROUTE_AUTHORIZATION].includes(
     location.pathname
   );
+  const token = Cookies.get("token");
 
-  const initializeApp = async () => {
-    const token = Cookies.get("token");
-
-    if (!token) {
-      return null;
-    }
-
-    const response = await axios.get(BASE_URL + "/user/profile/", {
-      headers: {
-        Authorization: `Bearer ${token}`,
-      },
-    });
-
-    return response.data;
-  };
-
-  useQuery(["initialize"], initializeApp, {
-    onSuccess: (data) => {
-      dispatch(setUser(data));
-    },
-    onError: (error) => {
-      console.error("Initialization error:", error);
+  useQuery({
+    queryFn: () => getuser(token),
+    queryKey: ["user"],
+    onSuccess: (payload) => {
+      dispatch(setUser(payload));
     },
   });
 

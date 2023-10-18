@@ -1,11 +1,11 @@
 import { CustomInput } from "../../components/CustomInput/CustomInput";
 import { handleInputChange } from "../../utils/helpers";
 import { UserAccountButton } from "./UserAccountButton";
-import { UserAccountFromType } from "./UserAccountPage";
+import { UserAccountFormType } from "./UserAccountPage";
 
 type UserAccountFormProps = {
-  formData: UserAccountFromType;
-  setFormData: React.Dispatch<React.SetStateAction<UserAccountFromType>>;
+  formData: UserAccountFormType;
+  setFormData: React.Dispatch<React.SetStateAction<UserAccountFormType>>;
   handleOnSubmit: (event: React.FormEvent<HTMLFormElement>) => Promise<void>;
   handleOnCancel: () => void;
 };

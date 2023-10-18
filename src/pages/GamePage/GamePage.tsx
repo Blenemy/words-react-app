@@ -1,51 +1,14 @@
-import { useLocation, useNavigate } from "react-router-dom";
-import {
-  BASE_URL,
-  ROUTE_AUTHORIZATION,
-  ROUTE_USER_DECKS,
-} from "../../data/constants";
-import { useEffect, useState } from "react";
-import axios from "axios";
+import { ROUTE_USER_DECKS } from "../../data/constants";
 import Cookies from "js-cookie";
-import { DeckFromServer } from "../../types/DeckFromServer";
-import { useAppSelector } from "../../app/hooks";
 import { StackOfDecks } from "./StackOfDecks/StackOfDecks";
 import { BreadCrumbs } from "../../components/BreakCrumbs/BreadCrumbs";
 import { handleSumbitDeck } from "../../api/handleSubmitDeck";
+import { useGamePageDecks } from "../../hooks/useGamePageDecks";
 
 export const GamePage = () => {
-  const [defaultDecks, setDefaultDecks] = useState<DeckFromServer[] | null>(
-    null
-  );
-  const { user } = useAppSelector((state) => state.user);
-  const navigate = useNavigate();
-  const location = useLocation();
   const token = Cookies.get("token");
 
-  useEffect(() => {
-    async function getDecks() {
-      if (!token) {
-        navigate(ROUTE_AUTHORIZATION, { state: { from: location.pathname } });
-        return;
-      }
-
-      try {
-        const response = await axios.get(BASE_URL + "/study/decks/", {
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
-        });
-
-        setDefaultDecks(
-          response.data.filter((deck: DeckFromServer) => deck.default)
-        );
-      } catch (error) {
-        console.log(error);
-      }
-    }
-
-    getDecks();
-  }, [token, user, navigate, location.pathname]);
+  const { defaultDecks, navigate } = useGamePageDecks(token);
 
   return (
     <div className="min-h-screen font-['Roboto_flex']">

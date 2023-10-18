@@ -4,7 +4,7 @@ import Cookies from "js-cookie";
 import { setUser } from "../features/userSlice";
 import { ROUTE_AUTHORIZATION } from "../data/constants";
 
-export const useUser = () => {
+export const useLogout = () => {
   const { user } = useAppSelector((state) => state.user);
   const dispatch = useAppDispatch();
   const navigate = useNavigate();

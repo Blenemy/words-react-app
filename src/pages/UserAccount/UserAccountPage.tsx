@@ -5,19 +5,19 @@ import { Loader } from "../../components/Loader/Loader";
 import { UserPhoto } from "./UserPhoto";
 import { DailyActivity } from "./DailyActivity";
 import { UserAccountForm } from "./UserAccountForm";
-import { useUser } from "../../hooks/useUser";
 import { useUserProfile } from "../../hooks/useUserProfile";
 import { UserStatisctics } from "./UserStatistics";
+import { useLogout } from "../../hooks/useLogout";
 
-export type UserAccountFromType = {
+export type UserAccountFormType = {
   first_name: string;
   last_name: string;
   email: string;
-  password: string;
+  password?: string;
 };
 
 export const UserAccountPage = () => {
-  const { user, token, handleLogOut } = useUser();
+  const { user, token, handleLogOut } = useLogout();
   const {
     formData,
     setFormData,
@@ -35,16 +35,16 @@ export const UserAccountPage = () => {
     }
   }, [navigate, token, location.pathname]);
 
-  if (isLoading) {
-    return <Loader />;
-  }
-
   return (
     <section>
       <div className="container my-0 mx-auto">
         <div className="py-6">
           <div className="flex justify-between px-24 mb-3 items-center">
-            <UserPhoto user={user} handleFileChange={handleFileChange} />
+            {isLoading ? (
+              <Loader />
+            ) : (
+              <UserPhoto user={user} handleFileChange={handleFileChange} />
+            )}
             <DailyActivity />
           </div>
           <div className="flex gap-32">

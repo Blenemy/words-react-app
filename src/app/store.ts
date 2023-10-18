@@ -1,14 +1,10 @@
-import { configureStore, ThunkAction, Action } from '@reduxjs/toolkit';
-import burgerSlice from '../features/burgerSlice';
-import userSlice from '../features/userSlice';
-import submenuSlice from '../features/submenuSlice';
-import cardsSlice from '../features/cardsSlice';
+import { configureStore, ThunkAction, Action } from "@reduxjs/toolkit";
+import userSlice from "../features/userSlice";
+import cardsSlice from "../features/cardsSlice";
 
 export const store = configureStore({
   reducer: {
-    burger: burgerSlice,
     user: userSlice,
-    isCollapsed: submenuSlice,
     cards: cardsSlice,
   },
 });

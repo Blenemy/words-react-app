@@ -14,7 +14,7 @@ export const getDeckInfo = async (
   return response.data;
 };
 
-export const getDeck = async (token: string | undefined) => {
+export const getDecks = async (token: string | undefined) => {
   const response = await axios.get(BASE_URL + "/study/decks/", {
     headers: {
       Authorization: `Bearer ${token}`,
