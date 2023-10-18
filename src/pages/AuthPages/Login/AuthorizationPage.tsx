@@ -11,7 +11,7 @@ export const Authorization = () => {
         <GoogleLayoutForm
           message="Don`t have an account?"
           route={ROUTE_REGISTRATION}
-          link="Create account"
+          link="Create the account"
         />
       </div>
     </AuthLayout>

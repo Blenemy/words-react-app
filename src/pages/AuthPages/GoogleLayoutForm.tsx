@@ -6,13 +6,17 @@ import { setUser } from "../../features/userSlice";
 import { useMutation } from "@tanstack/react-query";
 import { getGoogleAuthCredentials } from "../../api/getGoogleAuthCredentials";
 
-type Props = {
+type GoogleLayoutFormProps = {
   route: string;
   message: string;
   link: string;
 };
 
-export const GoogleLayoutForm: React.FC<Props> = ({ route, message, link }) => {
+export const GoogleLayoutForm: React.FC<GoogleLayoutFormProps> = ({
+  route,
+  message,
+  link,
+}) => {
   const navigate = useNavigate();
   const dispatch = useAppDispatch();
 
