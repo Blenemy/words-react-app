@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { UserFromServer } from "../types/UserFromServer";
 import { useAppDispatch } from "../app/hooks";
 import { setUser } from "../features/userSlice";
@@ -72,20 +72,16 @@ export const useUserProfile = (
     queryKey: ["user"],
     onSuccess: (payload) => {
       dispatch(setUser(payload));
+
+      setFormData((prev) => ({
+        ...prev,
+        first_name: payload.first_name,
+        last_name: payload.last_name,
+        email: payload.email,
+      }));
     },
     enabled: !!token,
   });
-
-  useEffect(() => {
-    if (user) {
-      setFormData((prev) => ({
-        ...prev,
-        first_name: user.first_name,
-        last_name: user.last_name,
-        email: user.email,
-      }));
-    }
-  }, [user]);
 
   return {
     formData,
