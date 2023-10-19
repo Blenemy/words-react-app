@@ -1,10 +1,12 @@
-import { useState } from "react";
-import axios from "axios";
-import Cookies from "js-cookie";
-import { BASE_URL, ROUTE_AUTHORIZATION, ROUTE_HOME } from "../data/constants";
-import { setUser } from "../features/userSlice";
 import { useAppDispatch } from "../app/hooks";
 import { useLocation, useNavigate } from "react-router-dom";
+import Cookies from "js-cookie";
+import { ROUTE_HOME } from "../data/constants";
+import { setUser } from "../features/userSlice";
+import { useState } from "react";
+import { useMutation, useQueryClient } from "@tanstack/react-query";
+import { loginUser } from "../api/loginUser";
+import { getUserProfile } from "../api/getUserProfile";
 
 export const useAuth = () => {
   const [formData, setFormData] = useState({ username: "", password: "" });
@@ -12,54 +14,32 @@ export const useAuth = () => {
   const dispatch = useAppDispatch();
   const location = useLocation();
   const navigate = useNavigate();
+  const queryClient = useQueryClient();
 
-  const loginUser = async (username: string, password: string) => {
-    const response = await axios.post(BASE_URL + "/user/login/", {
-      username,
-      password,
-    });
-    return response.data;
-  };
-
-  const getUserProfile = async (token: string) => {
-    const response = await axios.get(BASE_URL + "/user/profile/", {
-      headers: {
-        Authorization: `Bearer ${token}`,
-      },
-    });
-    return response.data;
-  };
-
-  const handleOnSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
-    event?.preventDefault();
-
-    const { username, password } = formData;
-
-    try {
-      const { token } = await loginUser(username, password);
-
-      if (token) {
-        Cookies.set("token", token, { expires: 1 });
-        const userData = await getUserProfile(token);
-        dispatch(setUser(userData));
-      } else {
-        navigate(ROUTE_AUTHORIZATION, { state: { from: location.pathname } });
-      }
-
-      setFormData({
-        username: "",
-        password: "",
-      });
+  const loginUserMutation = useMutation(loginUser, {
+    onSuccess: async ({ token }) => {
+      Cookies.set("token", token, { expires: 1 });
+      const userData = await queryClient.fetchQuery(
+        ["userProfile", token],
+        () => getUserProfile(token)
+      );
+      dispatch(setUser(userData));
+      setFormData({ username: "", password: "" });
       setError(null);
-
       const { from } = location.state || { from: { pathname: ROUTE_HOME } };
       navigate(from);
-    } catch (error: any) {
+    },
+    onError: (error: any) => {
       if (error.response) {
         setError(error.response.data.error);
-        console.log(error.response.data);
       }
-    }
+    },
+  });
+
+  const handleOnSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+    event?.preventDefault();
+    const { username, password } = formData;
+    loginUserMutation.mutate({ username, password });
   };
 
   return { handleOnSubmit, formData, setFormData, error };

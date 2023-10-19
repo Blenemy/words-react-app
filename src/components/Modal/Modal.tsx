@@ -74,7 +74,7 @@ export const Modal: React.FC<Props> = ({
                 </div>
                 <div className="relative p-6 flex-auto">
                   <CustomInput
-                    classname="my-4 text-blueGray-500 text-lg leading-relaxed border-none"
+                    classname="my-4 text-blueGray-500 text-lg leading-relaxed border-none w-full"
                     placeholder={card.description || "Description"}
                     name={"description"}
                     type="text"

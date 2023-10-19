@@ -4,8 +4,9 @@ import { useAppDispatch } from "../app/hooks";
 import { setUser } from "../features/userSlice";
 import Cookies from "js-cookie";
 import { UserAccountFormType } from "../pages/UserAccount/UserAccountPage";
-import { useMutation } from "@tanstack/react-query";
+import { useMutation, useQuery } from "@tanstack/react-query";
 import { updateuserInfo } from "../api/updateUserInfo";
+import { getUser } from "../api/getUser";
 
 export const useUserProfile = (
   token: string | undefined,
@@ -65,6 +66,15 @@ export const useUserProfile = (
       email: user?.email || "",
     }));
   };
+
+  useQuery({
+    queryFn: () => getUser(token),
+    queryKey: ["user"],
+    onSuccess: (payload) => {
+      dispatch(setUser(payload));
+    },
+    enabled: !!token,
+  });
 
   useEffect(() => {
     if (user) {

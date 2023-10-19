@@ -25,7 +25,7 @@ import { useQuery } from "@tanstack/react-query";
 import { Registration } from "./pages/AuthPages/Signup/RegistrationPage";
 import { Authorization } from "./pages/AuthPages/Login/AuthorizationPage";
 import { UserDecksPage } from "./pages/UserDecks/UserDecksPage";
-import { getuser } from "./api/getUser";
+import { getUser } from "./api/getUser";
 
 function App() {
   const dispatch = useAppDispatch();
@@ -36,11 +36,12 @@ function App() {
   const token = Cookies.get("token");
 
   useQuery({
-    queryFn: () => getuser(token),
+    queryFn: () => getUser(token),
     queryKey: ["user"],
     onSuccess: (payload) => {
       dispatch(setUser(payload));
     },
+    enabled: !!token,
   });
 
   return (
