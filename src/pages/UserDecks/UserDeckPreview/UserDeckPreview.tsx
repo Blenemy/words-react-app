@@ -27,7 +27,7 @@ export const UserDeckPreview: React.FC<Props> = ({
         <img
           src={deck.image}
           alt="cardImage"
-          className="h-[230px] w-full object-cover"
+          className="h-[230px] w-full object-cover rounded-3xl"
         />
       </ImageComponent>
       <h3 className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-black py-3 px-14 rounded-3xl blured-image font-['Roboto_flex'] text-3xl">

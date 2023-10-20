@@ -1,4 +1,4 @@
-import { ReactNode, useEffect, useState } from "react";
+import { ReactNode, useEffect, useRef, useState } from "react";
 import { Blurhash } from "react-blurhash";
 
 export type ImageBundlePath = {
@@ -18,21 +18,34 @@ export const ImageComponent: React.FC<Props> = ({
   mainImage = false,
 }) => {
   const [imageIsLoaded, setImageIsLoaded] = useState(false);
+  const blurhashRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     const img = new Image();
     img.onload = () => {
       setTimeout(() => {
         setImageIsLoaded(true);
-      }, 500);
+      }, 1000);
     };
 
     img.src = ImageBundlePath.image;
   }, [ImageBundlePath.image]);
 
+  useEffect(() => {
+    if (blurhashRef.current) {
+      const canvasElement = blurhashRef.current.querySelector("canvas");
+      if (canvasElement) {
+        canvasElement.classList.add("rounded-3xl");
+      }
+    }
+  }, []);
+
   return (
     <>
-      <div style={{ display: imageIsLoaded ? "none" : "inline" }}>
+      <div
+        style={{ display: imageIsLoaded ? "none" : "inline" }}
+        ref={blurhashRef}
+      >
         <Blurhash
           hash={ImageBundlePath.image_hash}
           width="100%"
