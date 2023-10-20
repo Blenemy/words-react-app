@@ -13,34 +13,31 @@ type Props = {
 export const FlipCardLayout: React.FC<Props> = ({ currentCard }) => {
   const additionalImages: any = currentCard?.additional_images;
 
-  console.log(additionalImages);
-
-  function hashImage(index: number) {
-    return additionalImages[index].image_hash;
-  }
-
-  function properImage(index: number) {
+  function getImageAndHash(index: number) {
     if (additionalImages && additionalImages[index]) {
-      return additionalImages[index].image;
+      return {
+        image: additionalImages[index].image,
+        hash: additionalImages[index].image_hash,
+      };
     }
 
-    switch (index) {
-      case 0:
-        return firstFiller;
-      case 1:
-        return firstFillerSecond;
-      case 2:
-        return firstFillerThird;
-      default:
-        return defaultImage;
-    }
+    const defaultImages = [
+      firstFiller,
+      firstFillerSecond,
+      firstFillerThird,
+      defaultImage,
+    ];
+    return {
+      image: defaultImages[index] || defaultImages[defaultImages.length - 1],
+      hash: "LEHV6nWB2yk8pyo0adR*.7kCMdnj",
+    };
   }
 
   return (
     <div className="flex gap-4 justify-center mb-8">
       <div className="flex flex-col gap-8 basis-1/3 justify-center">
-        <ImageComponent src={properImage(0)} hash={hashImage(0)} />
-        <ImageComponent src={properImage(1)} />
+        <ImageComponent imagePath={getImageAndHash(0)} />
+        <ImageComponent imagePath={getImageAndHash(1)} />
       </div>
       <div className="flex-basis-1/3 flex-grow -mt-5">
         <div className="flex flex-col h-full relative">
@@ -51,8 +48,8 @@ export const FlipCardLayout: React.FC<Props> = ({ currentCard }) => {
         </div>
       </div>
       <div className="flex flex-col gap-8 basis-1/3 justify-center">
-        <ImageComponent src={properImage(2)} />
-        <ImageComponent src={properImage(3)} />
+        <ImageComponent imagePath={getImageAndHash(2)} />
+        <ImageComponent imagePath={getImageAndHash(3)} />
       </div>
     </div>
   );

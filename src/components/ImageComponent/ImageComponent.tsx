@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { Blurhash } from "react-blurhash";
 
-export const ImageComponent = ({ src, hash }: any) => {
+export const ImageComponent = ({ imagePath }: any) => {
   const [imageIsLoaded, setImageIsLoaded] = useState(false);
 
   useEffect(() => {
@@ -10,14 +10,14 @@ export const ImageComponent = ({ src, hash }: any) => {
       setImageIsLoaded(true);
     };
 
-    img.src = src;
-  }, [src]);
+    img.src = imagePath.image;
+  }, [imagePath.image]);
 
   return (
     <>
       <div style={{ display: imageIsLoaded ? "none" : "inline " }}>
         <Blurhash
-          hash={hash ? hash : "LEHV6nWB2yk8pyo0adR*.7kCMdnj"}
+          hash={imagePath.hash}
           width="100%"
           height={230}
           resolutionX={32}
@@ -27,9 +27,9 @@ export const ImageComponent = ({ src, hash }: any) => {
       </div>
       <div style={{ display: !imageIsLoaded ? "none" : "inline " }}>
         <img
-          src={src}
+          src={imagePath.image}
           alt="description of the word"
-          className="_img max-h-[230px] rounded-3xl"
+          className="_img max-h-[230px] rounded-3xl min-h-[230px]"
         />
       </div>
     </>
