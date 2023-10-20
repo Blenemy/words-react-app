@@ -1,36 +1,49 @@
-import { useEffect, useState } from "react";
+import { ReactNode, useEffect, useState } from "react";
 import { Blurhash } from "react-blurhash";
 
-export const ImageComponent = ({ imagePath }: any) => {
+export type ImageBundlePath = {
+  image: string;
+  image_hash: string;
+};
+
+type Props = {
+  ImageBundlePath: ImageBundlePath;
+  children: ReactNode;
+  mainImage?: boolean;
+};
+
+export const ImageComponent: React.FC<Props> = ({
+  ImageBundlePath,
+  children,
+  mainImage = false,
+}) => {
   const [imageIsLoaded, setImageIsLoaded] = useState(false);
 
   useEffect(() => {
     const img = new Image();
     img.onload = () => {
-      setImageIsLoaded(true);
+      setTimeout(() => {
+        setImageIsLoaded(true);
+      }, 500);
     };
 
-    img.src = imagePath.image;
-  }, [imagePath.image]);
+    img.src = ImageBundlePath.image;
+  }, [ImageBundlePath.image]);
 
   return (
     <>
-      <div style={{ display: imageIsLoaded ? "none" : "inline " }}>
+      <div style={{ display: imageIsLoaded ? "none" : "inline" }}>
         <Blurhash
-          hash={imagePath.hash}
+          hash={ImageBundlePath.image_hash}
           width="100%"
-          height={230}
+          height={mainImage ? 524 : 230}
           resolutionX={32}
           resolutionY={32}
           punch={1}
         />
       </div>
-      <div style={{ display: !imageIsLoaded ? "none" : "inline " }}>
-        <img
-          src={imagePath.image}
-          alt="description of the word"
-          className="_img max-h-[230px] rounded-3xl min-h-[230px]"
-        />
+      <div style={{ display: !imageIsLoaded ? "none" : "inline" }}>
+        {children}
       </div>
     </>
   );

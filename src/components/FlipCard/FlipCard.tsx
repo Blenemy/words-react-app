@@ -2,6 +2,7 @@ import cn from "classnames";
 import React, { useState } from "react";
 import { CardFromServer } from "../../types/CardFromServer";
 import "./FlipCard.scss";
+import { ImageComponent } from "../ImageComponent/ImageComponent";
 
 type Props = {
   card: CardFromServer | null;
@@ -12,6 +13,10 @@ export const FlipCard: React.FC<Props> = React.memo(({ card }) => {
   const onCardClick = () => {
     setClicked((prev) => !prev);
   };
+
+  if (!card) {
+    return null;
+  }
 
   return (
     <>
@@ -25,16 +30,24 @@ export const FlipCard: React.FC<Props> = React.memo(({ card }) => {
           data-testid="flip-card"
         >
           <div
-            className={cn("front", {
+            className={cn("front h-full", {
               "active-front": isClicked,
             })}
           >
-            <img
-              src={card?.image}
-              alt=""
-              className="h-full rounded-3xl"
-              loading="lazy"
-            />
+            <ImageComponent
+              ImageBundlePath={{
+                image: card?.image,
+                image_hash: card?.image_hash,
+              }}
+              mainImage
+            >
+              <img
+                src={card?.image}
+                alt="main"
+                className="h-full rounded-3xl"
+                loading="lazy"
+              />
+            </ImageComponent>
           </div>
           <div
             className={cn(

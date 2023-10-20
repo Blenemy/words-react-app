@@ -5,7 +5,6 @@ import Cookies from "js-cookie";
 import { setUser } from "./features/userSlice";
 import {
   ROUTE_AUTHORIZATION,
-  ROUTE_BOOK_CARD,
   ROUTE_CARD_GAME,
   ROUTE_FLIP_CARD,
   ROUTE_HOME,
@@ -13,7 +12,6 @@ import {
   ROUTE_REGISTRATION,
   ROUTE_USER_DECKS,
 } from "./data/constants";
-import { BookCardPage } from "./backup/BookCardPage";
 import { GamePage } from "./pages/GamePage/GamePage";
 import { HomePage } from "./pages/Home/HomePage";
 import { FlipCardPage } from "./pages/CardsPage/FlipCardPage";
@@ -58,7 +56,6 @@ function App() {
             <Route path={ROUTE_FLIP_CARD}>
               <Route index element={<FlipCardPage />} />
             </Route>
-            <Route path={ROUTE_BOOK_CARD} element={<BookCardPage />} />
             <Route path={ROUTE_USER_DECKS}>
               <Route index element={<UserDecksPage />} />
               <Route path=":deckId" element={<ChangeDeck />} />

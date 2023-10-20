@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { CardFromServer } from "../../types/CardFromServer";
 import { Modal } from "../Modal/Modal";
+import { ImageComponent } from "../ImageComponent/ImageComponent";
 
 export const DeckCard = ({ card }: { card: CardFromServer }) => {
   const [showModal, setShowModal] = useState(false);
@@ -15,11 +16,15 @@ export const DeckCard = ({ card }: { card: CardFromServer }) => {
         className="flex flex-col text-black hover:cursor-pointer relative"
         onClick={() => handleShowModal(true)}
       >
-        <img
-          src={card.image}
-          alt="cardImage"
-          className="h-[220px] w-full object-cover"
-        />
+        <ImageComponent
+          ImageBundlePath={{ image: card.image, image_hash: card.image_hash }}
+        >
+          <img
+            src={card.image}
+            alt="cardImage"
+            className="h-[230px] w-full object-cover"
+          />
+        </ImageComponent>
         <h3 className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-black py-3 px-14 rounded-3xl blured-image font-['Roboto_flex'] text-3xl">
           {card.word}
         </h3>

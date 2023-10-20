@@ -1,3 +1,4 @@
+import { ImageComponent } from "../../../components/ImageComponent/ImageComponent";
 import { DeckFromServer } from "../../../types/DeckFromServer";
 
 type Props = {
@@ -20,11 +21,15 @@ export const UserDeckPreview: React.FC<Props> = ({
       className="relative w-[424px] h-[220px] rounded-3xl hover:cursor-pointer"
       onClick={() => redirectFunc(deck.id)}
     >
-      <img
-        src={deck.image}
-        alt="deck_preview"
-        className="w-[424px] h-[220px] rounded-3xl object-cover"
-      />
+      <ImageComponent
+        ImageBundlePath={{ image: deck.image, image_hash: deck.image_hash }}
+      >
+        <img
+          src={deck.image}
+          alt="cardImage"
+          className="h-[230px] w-full object-cover"
+        />
+      </ImageComponent>
       <h3 className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-black py-3 px-14 rounded-3xl blured-image font-['Roboto_flex'] text-3xl">
         {deck.title}
       </h3>

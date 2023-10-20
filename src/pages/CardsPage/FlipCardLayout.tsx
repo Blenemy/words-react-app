@@ -4,20 +4,24 @@ import { CardFromServer } from "../../types/CardFromServer";
 import firstFiller from "../../assets/imageFiller.png";
 import firstFillerSecond from "../../assets/imageFillerSecond.png";
 import firstFillerThird from "../../assets/imageFiller3.png";
-import { ImageComponent } from "../../components/ImageComponent/ImageComponent";
+import {
+  ImageComponent,
+  ImageBundlePath,
+} from "../../components/ImageComponent/ImageComponent";
 
 type Props = {
   currentCard: CardFromServer | null;
 };
 
 export const FlipCardLayout: React.FC<Props> = ({ currentCard }) => {
-  const additionalImages: any = currentCard?.additional_images;
+  const additionalImages: ImageBundlePath[] | any =
+    currentCard?.additional_images || [];
 
   function getImageAndHash(index: number) {
     if (additionalImages && additionalImages[index]) {
       return {
         image: additionalImages[index].image,
-        hash: additionalImages[index].image_hash,
+        image_hash: additionalImages[index].image_hash,
       };
     }
 
@@ -27,17 +31,30 @@ export const FlipCardLayout: React.FC<Props> = ({ currentCard }) => {
       firstFillerThird,
       defaultImage,
     ];
+
     return {
       image: defaultImages[index] || defaultImages[defaultImages.length - 1],
-      hash: "LEHV6nWB2yk8pyo0adR*.7kCMdnj",
+      image_hash: "LEHV6nWB2yk8pyo0adR*.7kCMdnj",
     };
   }
 
   return (
     <div className="flex gap-4 justify-center mb-8">
       <div className="flex flex-col gap-8 basis-1/3 justify-center">
-        <ImageComponent imagePath={getImageAndHash(0)} />
-        <ImageComponent imagePath={getImageAndHash(1)} />
+        <ImageComponent ImageBundlePath={getImageAndHash(0)}>
+          <img
+            src={getImageAndHash(0).image}
+            alt="description of the word"
+            className="_img max-h-[230px] rounded-3xl min-h-[230px]"
+          />
+        </ImageComponent>
+        <ImageComponent ImageBundlePath={getImageAndHash(1)}>
+          <img
+            src={getImageAndHash(1).image}
+            alt="description of the word"
+            className="_img max-h-[230px] rounded-3xl min-h-[230px]"
+          />
+        </ImageComponent>
       </div>
       <div className="flex-basis-1/3 flex-grow -mt-5">
         <div className="flex flex-col h-full relative">
@@ -48,8 +65,20 @@ export const FlipCardLayout: React.FC<Props> = ({ currentCard }) => {
         </div>
       </div>
       <div className="flex flex-col gap-8 basis-1/3 justify-center">
-        <ImageComponent imagePath={getImageAndHash(2)} />
-        <ImageComponent imagePath={getImageAndHash(3)} />
+        <ImageComponent ImageBundlePath={getImageAndHash(2)}>
+          <img
+            src={getImageAndHash(2).image}
+            alt="description of the word"
+            className="_img max-h-[230px] rounded-3xl min-h-[230px]"
+          />
+        </ImageComponent>
+        <ImageComponent ImageBundlePath={getImageAndHash(3)}>
+          <img
+            src={getImageAndHash(3).image}
+            alt="description of the word"
+            className="_img max-h-[230px] rounded-3xl min-h-[230px]"
+          />
+        </ImageComponent>
       </div>
     </div>
   );
