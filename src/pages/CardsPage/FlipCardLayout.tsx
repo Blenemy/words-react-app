@@ -8,6 +8,7 @@ import {
   ImageComponent,
   ImageBundlePath,
 } from "../../components/ImageComponent/ImageComponent";
+import { DEFAULT_HASH_SRC } from "../../data/constants";
 
 type Props = {
   currentCard: CardFromServer | null;
@@ -34,7 +35,7 @@ export const FlipCardLayout: React.FC<Props> = ({ currentCard }) => {
 
     return {
       image: defaultImages[index] || defaultImages[defaultImages.length - 1],
-      image_hash: "LEHV6nWB2yk8pyo0adR*.7kCMdnj",
+      image_hash: DEFAULT_HASH_SRC,
     };
   }
 

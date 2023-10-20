@@ -10,3 +10,5 @@ export const ROUTE_USER_DECKS = "/user-decks";
 export const ROUTE_CHANGE_CARD = "/change-card";
 
 export const BASE_URL = "https://langcards.fun";
+
+export const DEFAULT_HASH_SRC = "LEHV6nWB2yk8pyo0adR*.7kCMdnj";
