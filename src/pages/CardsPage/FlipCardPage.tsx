@@ -23,6 +23,8 @@ export const FlipCardPage: React.FC = () => {
     isCorrectAnswer,
   } = useCards(deckId, token!);
 
+  console.log(currentCard);
+
   if (isLoading) return <Loader />;
 
   return (

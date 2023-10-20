@@ -14,6 +14,7 @@ export const useCards = (deckId: number, token: string) => {
     () => getFirstCard(deckId, token),
     {
       onSuccess: (data) => {
+        console.log(data.status);
         if (data.status === "finished") {
           setCurrentCard(null);
           setSuccessMessage(true);
@@ -36,6 +37,7 @@ export const useCards = (deckId: number, token: string) => {
       ),
     {
       onSuccess: (data) => {
+        console.log(data.status);
         if (data.status === "finished") {
           setCurrentCard(null);
           setSuccessMessage(true);
