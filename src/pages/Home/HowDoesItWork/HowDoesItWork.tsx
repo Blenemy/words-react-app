@@ -14,25 +14,26 @@ export const HowDoesItWork = () => {
           Does it Work?
         </p>
         <p className="font-['Roboto_flex']">
-          It works by presenting language concepts on interactive to your
-          learning pace.
+          Learn new words effectively through interactive cards and images that
+          tailor to your learning pace.
         </p>
       </div>
       <div className="text-primary flex gap-3 mb-8">
         <HowDoesItWorkCard
-          text="Start by selecting a language or topic you want to study."
+          text="Start by selecting a deck you'd like to play. You can choose one from default decks or add your own one. Note that a deck must contain a minimum of 3 cards to be playable."
           number="01."
         />
         <HowDoesItWorkCard
-          text="Review interactive cards that introduce new words, phrases and concepts."
+          text="Review interactive cards that feature 5 images describing a word. During the game, you can tap on the main image to view the word's English description."
           number="02."
         />
         <HowDoesItWorkCard
-          text="Test your knowledge through quizzes and repetition to reinforce memory."
+          text="Test your knowledge through quizzes and repetition to reinforce memory. Track your progress with charts in your personal dashboard."
           number="03."
         />
         <HowDoesItWorkCard
-          text="The app adapts, presenting cards based on your performance, ensuring you facus on areas that need improvement."
+          text="
+          The app adapts to your learning needs by presenting cards based on your performance. If you guess a word incorrectly, the app will bring it back for review. Additionally, if a word is no longer new to you, it will appear less frequently, ensuring you focus on areas that need improvement."
           number="04."
         />
       </div>
