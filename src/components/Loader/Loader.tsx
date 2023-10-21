@@ -1,7 +1,14 @@
-import './Loader.scss';
+import { RotateLoader } from "react-spinners";
 
 export const Loader = () => (
-  <div className="Loader">
-    <div className="Loader__content" />
+  <div
+    style={{
+      display: "flex",
+      width: "100%",
+      justifyContent: "center",
+      alignItems: "center",
+    }}
+  >
+    <RotateLoader size={15} color="#D63636" />
   </div>
 );

@@ -29,7 +29,7 @@ export const useAddCart = (deckId: number | undefined) => {
     reader.readAsDataURL(file);
   };
 
-  const { mutateAsync } = useMutation(
+  const { mutateAsync, isLoading } = useMutation(
     (data: { dataToSend: Object; token: string | undefined }) =>
       handleAddCard(data.dataToSend, data.token),
     {
@@ -74,5 +74,6 @@ export const useAddCart = (deckId: number | undefined) => {
     error,
     previewImage,
     setPreviewImage,
+    isLoading,
   };
 };
