@@ -8,6 +8,8 @@ import { useGamePageDecks } from "../../hooks/useGamePageDecks";
 export const GamePage = () => {
   const token = Cookies.get("token");
 
+  console.log("gamePage render");
+
   const { defaultDecks, navigate } = useGamePageDecks(token);
 
   return (

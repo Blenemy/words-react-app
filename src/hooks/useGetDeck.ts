@@ -11,6 +11,7 @@ export const useGetDeck = (
 
   useQuery({
     queryFn: () => getDeckInfo(deckId, token),
+    queryKey: [`deck${deckId}`],
     onSuccess: (payload) => {
       setCardInDeck(payload.cards);
     },

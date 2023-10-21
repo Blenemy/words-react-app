@@ -14,6 +14,7 @@ export const useGamePageDecks = (token: string | undefined) => {
 
   useQuery({
     queryFn: () => getDecks(token),
+    queryKey: ["deck"],
     onSuccess: (payload) => {
       setDefaultDecks(payload.filter((deck: DeckFromServer) => deck.default));
     },

@@ -6,7 +6,7 @@ import { setUser } from "../features/userSlice";
 import { useState } from "react";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { loginUser } from "../api/loginUser";
-import { getUserProfile } from "../api/getUserProfile";
+import { getUser } from "../api/getUser";
 
 export const useAuth = () => {
   const [formData, setFormData] = useState({ username: "", password: "" });
@@ -21,7 +21,7 @@ export const useAuth = () => {
       Cookies.set("token", token, { expires: 1 });
       const userData = await queryClient.fetchQuery(
         ["userProfile", token],
-        () => getUserProfile(token)
+        () => getUser(token)
       );
       dispatch(setUser(userData));
       setFormData({ username: "", password: "" });

@@ -32,8 +32,6 @@ export const UserAccountPage = () => {
   const navigate = useNavigate();
   const location = useLocation();
 
-  console.log(123);
-
   useEffect(() => {
     if (!token) {
       navigate(ROUTE_AUTHORIZATION, { state: { from: location.pathname } });

@@ -1,10 +1,11 @@
 import { AddCardType } from "../types/AddCardType";
 import { useState } from "react";
 import Cookies from "js-cookie";
-import axios from "axios";
-import { BASE_URL } from "../data/constants";
+import { useMutation, useQueryClient } from "@tanstack/react-query";
+import { handleAddCard } from "../api/handleAddCard";
 
 export const useAddCart = (deckId: number | undefined) => {
+  const queryClient = useQueryClient();
   const token = Cookies.get("token");
   const [previewImage, setPreviewImage] = useState<string | null>(null);
   const [error, setError] = useState<null | string>(null);
@@ -28,6 +29,25 @@ export const useAddCart = (deckId: number | undefined) => {
     reader.readAsDataURL(file);
   };
 
+  const { mutateAsync } = useMutation(
+    (data: { dataToSend: Object; token: string | undefined }) =>
+      handleAddCard(data.dataToSend, "12321321321312"),
+    {
+      onSuccess: () => {
+        queryClient.invalidateQueries([`deck${deckId}`]);
+        setFormData({
+          deck: deckId,
+          word: "",
+          translation: "",
+          description: "",
+          image: null,
+        });
+        setPreviewImage(null);
+        setError(null);
+      },
+    }
+  );
+
   const handleAddCardOnSubmit = async (event: any) => {
     event.preventDefault();
 
@@ -40,26 +60,9 @@ export const useAddCart = (deckId: number | undefined) => {
     };
 
     try {
-      await axios.post(BASE_URL + "/study/cards/", dataToSend, {
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      });
-
-      setError(null);
+      await mutateAsync({ dataToSend, token });
     } catch (error: any) {
-      if (error.response) {
-        setError(error.response.data.error);
-      }
-    } finally {
-      setFormData({
-        deck: deckId,
-        word: "",
-        translation: "",
-        description: "",
-        image: null,
-      });
-      setPreviewImage(null);
+      setError(error.response.data.detail);
     }
   };
 
