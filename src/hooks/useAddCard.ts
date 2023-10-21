@@ -31,7 +31,7 @@ export const useAddCart = (deckId: number | undefined) => {
 
   const { mutateAsync } = useMutation(
     (data: { dataToSend: Object; token: string | undefined }) =>
-      handleAddCard(data.dataToSend, "12321321321312"),
+      handleAddCard(data.dataToSend, data.token),
     {
       onSuccess: () => {
         queryClient.invalidateQueries([`deck${deckId}`]);
