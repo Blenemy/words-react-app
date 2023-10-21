@@ -1,8 +1,5 @@
 import { Routes, Route, useLocation } from "react-router-dom";
 import { UserAccountPage } from "./pages/UserAccount/UserAccountPage";
-import { useAppDispatch } from "./app/hooks";
-import Cookies from "js-cookie";
-import { setUser } from "./features/userSlice";
 import {
   ROUTE_AUTHORIZATION,
   ROUTE_CARD_GAME,
@@ -19,28 +16,17 @@ import { ChangeDeck } from "./pages/UserDecks/ChangeDeck/ChangeDeck";
 import "./App.scss";
 import { Header } from "./components/Header/Header";
 import { Footer } from "./components/Footer/Footer";
-import { useQuery } from "@tanstack/react-query";
 import { Registration } from "./pages/AuthPages/Signup/RegistrationPage";
 import { Authorization } from "./pages/AuthPages/Login/AuthorizationPage";
 import { UserDecksPage } from "./pages/UserDecks/UserDecksPage";
-import { getUser } from "./api/getUser";
 
 function App() {
-  const dispatch = useAppDispatch();
   const location = useLocation();
   const showHeader = ![ROUTE_REGISTRATION, ROUTE_AUTHORIZATION].includes(
     location.pathname
   );
-  const token = Cookies.get("token");
 
-  useQuery({
-    queryFn: () => getUser(token),
-    queryKey: ["user"],
-    onSuccess: (payload) => {
-      dispatch(setUser(payload));
-    },
-    enabled: !!token,
-  });
+  console.log("render App");
 
   return (
     <div className="App">

@@ -1,11 +1,10 @@
 import { useNavigate } from "react-router-dom";
-import { useAppDispatch, useAppSelector } from "../app/hooks";
+import { useAppDispatch } from "../app/hooks";
 import Cookies from "js-cookie";
 import { setUser } from "../features/userSlice";
 import { ROUTE_AUTHORIZATION } from "../data/constants";
 
 export const useLogout = () => {
-  const { user } = useAppSelector((state) => state.user);
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
   const token = Cookies.get("token");
@@ -16,5 +15,5 @@ export const useLogout = () => {
     navigate(ROUTE_AUTHORIZATION);
   };
 
-  return { user, token, handleLogOut };
+  return { token, handleLogOut };
 };

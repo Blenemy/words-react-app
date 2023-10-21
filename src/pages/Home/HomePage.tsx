@@ -1,13 +1,13 @@
 import "./HomePage.scss";
 import { Benefits } from "./Benefits/Benefits";
 import { MainContent } from "./MainContent/MainContent";
-import { useEffect, useState } from "react";
+import { useLayoutEffect, useState } from "react";
 import { HowDoesItWork } from "./HowDoesItWork/HowDoesItWork";
 
 export const HomePage = () => {
   const [viewportHeight, setViewportHeight] = useState(0);
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     const updateHeight = () => {
       const header = document.getElementById("header");
       const headerHeight = header ? header.getBoundingClientRect().height : 0;

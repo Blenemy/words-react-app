@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { UserFromServer } from "../types/UserFromServer";
 import { useAppDispatch } from "../app/hooks";
 import { setUser } from "../features/userSlice";
@@ -28,7 +28,7 @@ export const useUserProfile = (
     data.readAsDataURL(event.target.files[0]);
   };
 
-  const { isLoading, mutateAsync } = useMutation({
+  const { isLoading: isUserUpdated, mutateAsync } = useMutation({
     mutationFn: (data: {
       token: string | undefined;
       base64?: string | ArrayBuffer | null;
@@ -45,15 +45,14 @@ export const useUserProfile = (
   const handleOnSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event?.preventDefault();
 
-    const dataToSend: UserAccountFormType = {
-      first_name: formData.first_name || user!.first_name,
-      last_name: formData.last_name || user!.last_name,
-      email: formData.email || user!.email,
-    };
+    const { first_name, last_name, email } = user || {};
 
-    if (formData.password) {
-      dataToSend.password = formData.password;
-    }
+    const dataToSend: UserAccountFormType = {
+      first_name: formData.first_name || first_name,
+      last_name: formData.last_name || last_name,
+      email: formData.email || email,
+      password: formData.password ? formData.password : undefined,
+    };
 
     mutateAsync({ token, formData: dataToSend });
   };
@@ -67,12 +66,11 @@ export const useUserProfile = (
     }));
   };
 
-  useQuery({
+  const { isLoading: isLoadedUser } = useQuery({
     queryFn: () => getUser(token),
     queryKey: ["user"],
     onSuccess: (payload) => {
       dispatch(setUser(payload));
-
       setFormData((prev) => ({
         ...prev,
         first_name: payload.first_name,
@@ -81,14 +79,27 @@ export const useUserProfile = (
       }));
     },
     enabled: !!token,
+    cacheTime: 0,
   });
+
+  useEffect(() => {
+    if (user) {
+      setFormData((prev) => ({
+        ...prev,
+        first_name: user.first_name,
+        last_name: user.last_name,
+        email: user.email,
+      }));
+    }
+  }, [user]);
 
   return {
     formData,
     setFormData,
     handleOnSubmit,
     handleFileChange,
-    isLoading,
+    isLoadedUser,
+    isUserUpdated,
     handleOnCancel,
   };
 };

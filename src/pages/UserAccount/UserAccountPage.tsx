@@ -8,26 +8,31 @@ import { UserAccountForm } from "./UserAccountForm";
 import { useUserProfile } from "../../hooks/useUserProfile";
 import { UserStatisctics } from "./UserStatistics";
 import { useLogout } from "../../hooks/useLogout";
+import { useAppSelector } from "../../app/hooks";
 
 export type UserAccountFormType = {
-  first_name: string;
-  last_name: string;
-  email: string;
+  first_name: string | undefined;
+  last_name: string | undefined;
+  email: string | undefined;
   password?: string;
 };
 
 export const UserAccountPage = () => {
-  const { user, token, handleLogOut } = useLogout();
+  const { user } = useAppSelector((state) => state.user);
+  const { token, handleLogOut } = useLogout();
   const {
     formData,
     setFormData,
     handleOnSubmit,
     handleFileChange,
     handleOnCancel,
-    isLoading,
+    isUserUpdated,
+    isLoadedUser,
   } = useUserProfile(token, user);
   const navigate = useNavigate();
   const location = useLocation();
+
+  console.log(123);
 
   useEffect(() => {
     if (!token) {
@@ -40,11 +45,7 @@ export const UserAccountPage = () => {
       <div className="container my-0 mx-auto">
         <div className="py-6">
           <div className="flex justify-between px-24 mb-3 items-center">
-            {isLoading ? (
-              <Loader />
-            ) : (
-              <UserPhoto user={user} handleFileChange={handleFileChange} />
-            )}
+            <UserPhoto user={user} handleFileChange={handleFileChange} />
             <DailyActivity />
           </div>
           <div className="flex gap-32">
@@ -55,6 +56,7 @@ export const UserAccountPage = () => {
                 formData={formData}
                 setFormData={setFormData}
               />
+
               <p className="text-primary max-w-[424px]">
                 It is recommended to learn at least{" "}
                 <span className="text-wave">10 words every day</span> in order
@@ -72,6 +74,7 @@ export const UserAccountPage = () => {
           Sign out
         </button>
       </div>
+      {(isLoadedUser || isUserUpdated) && <Loader />}
     </section>
   );
 };
