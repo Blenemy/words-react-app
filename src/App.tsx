@@ -19,6 +19,8 @@ import { Footer } from "./components/Footer/Footer";
 import { Registration } from "./pages/AuthPages/Signup/RegistrationPage";
 import { Authorization } from "./pages/AuthPages/Login/AuthorizationPage";
 import { UserDecksPage } from "./pages/UserDecks/UserDecksPage";
+import { useFetchUser } from "./hooks/useFetchUser";
+import { GlobalLoader } from "./components/Loaders/GlobalLoader";
 
 function App() {
   const location = useLocation();
@@ -26,13 +28,14 @@ function App() {
     location.pathname
   );
 
-  console.log("render App");
+  const { isLoading } = useFetchUser();
 
   return (
     <div className="App">
       <div className="wrapper flex flex-col text-white min-h-screen">
         {showHeader && <Header />}
         <main className="grid__main min-h-screen grow">
+          {isLoading && <GlobalLoader />}
           <Routes>
             <Route path={ROUTE_HOME} element={<HomePage />} />
             <Route path={ROUTE_CARD_GAME} element={<GamePage />} />
