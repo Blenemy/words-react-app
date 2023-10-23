@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import { ROUTE_AUTHORIZATION } from "../../data/constants";
-import { Loader } from "../../components/Loader/Loader";
+import { Loader } from "../../components/Loaders/Loader";
 import { UserPhoto } from "./UserPhoto";
 import { DailyActivity } from "./DailyActivity";
 import { UserAccountForm } from "./UserAccountForm";
@@ -27,7 +27,6 @@ export const UserAccountPage = () => {
     handleFileChange,
     handleOnCancel,
     isUserUpdated,
-    isLoadedUser,
   } = useUserProfile(token, user);
   const navigate = useNavigate();
   const location = useLocation();
@@ -72,7 +71,7 @@ export const UserAccountPage = () => {
           Sign out
         </button>
       </div>
-      {(isLoadedUser || isUserUpdated) && <Loader />}
+      {isUserUpdated && <Loader />}
     </section>
   );
 };

@@ -4,9 +4,8 @@ import { useAppDispatch } from "../app/hooks";
 import { setUser } from "../features/userSlice";
 import Cookies from "js-cookie";
 import { UserAccountFormType } from "../pages/UserAccount/UserAccountPage";
-import { useMutation, useQuery } from "@tanstack/react-query";
+import { useMutation } from "@tanstack/react-query";
 import { updateuserInfo } from "../api/updateUserInfo";
-import { getUser } from "../api/getUser";
 
 export const useUserProfile = (
   token: string | undefined,
@@ -66,22 +65,6 @@ export const useUserProfile = (
     }));
   };
 
-  const { isLoading: isLoadedUser } = useQuery({
-    queryFn: () => getUser(token),
-    queryKey: ["user"],
-    onSuccess: (payload) => {
-      dispatch(setUser(payload));
-      setFormData((prev) => ({
-        ...prev,
-        first_name: payload.first_name,
-        last_name: payload.last_name,
-        email: payload.email,
-      }));
-    },
-    enabled: !!token,
-    cacheTime: 0,
-  });
-
   useEffect(() => {
     if (user) {
       setFormData((prev) => ({
@@ -98,7 +81,6 @@ export const useUserProfile = (
     setFormData,
     handleOnSubmit,
     handleFileChange,
-    isLoadedUser,
     isUserUpdated,
     handleOnCancel,
   };
