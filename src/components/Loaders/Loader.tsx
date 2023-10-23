@@ -1,4 +1,4 @@
-import { RotateLoader } from "react-spinners";
+import { BeatLoader } from "react-spinners";
 
 export const Loader = () => (
   <div
@@ -9,6 +9,6 @@ export const Loader = () => (
       alignItems: "center",
     }}
   >
-    <RotateLoader size={15} color="#D63636" />
+    <BeatLoader size={15} color="#D63636" />
   </div>
 );
