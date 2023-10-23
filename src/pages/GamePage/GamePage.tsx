@@ -1,16 +1,10 @@
 import { ROUTE_USER_DECKS } from "../../data/constants";
-import Cookies from "js-cookie";
-import { StackOfDecks } from "./StackOfDecks/StackOfDecks";
 import { BreadCrumbs } from "../../components/BreakCrumbs/BreadCrumbs";
-import { handleSumbitDeck } from "../../api/handleSubmitDeck";
 import { useGamePageDecks } from "../../hooks/useGamePageDecks";
+import { DefaultDecksList } from "./DefaultDecksList/DefaultDecksList";
 
 export const GamePage = () => {
-  const token = Cookies.get("token");
-
-  console.log("gamePage render");
-
-  const { defaultDecks, navigate } = useGamePageDecks(token);
+  const { defaultDecks, navigate, token } = useGamePageDecks();
 
   return (
     <div className="min-h-screen font-['Roboto_flex']">
@@ -25,24 +19,17 @@ export const GamePage = () => {
                 Choose a deck you want to play. The harder you choose, the
                 harder the words will be!
               </h2>
-              <h2
-                className="basis-1/4 rounded-[30px] px-12 py-3 text-[22px]"
-                style={{ backgroundColor: "rgba(133, 96, 191, 0.65)" }}
-              >
+              <h2 className="basis-1/4 rounded-[30px] px-12 py-3 text-[22px] bg-[#8560BFA6]">
                 Please choose a deck!
               </h2>
             </div>
           </div>
           <div className="flex gap-6 relative">
-            {defaultDecks?.map((deck) => (
-              <div key={deck.id} className="basis-1/3">
-                <StackOfDecks
-                  frontImage={deck.preview![0]}
-                  onDeckClick={() => handleSumbitDeck(deck.id, token, navigate)}
-                  deckTitle={deck.title}
-                />
-              </div>
-            ))}
+            <DefaultDecksList
+              defaultDecks={defaultDecks}
+              navigateFunc={navigate}
+              token={token}
+            />
           </div>
         </div>
       </div>

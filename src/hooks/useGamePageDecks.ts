@@ -1,24 +1,15 @@
 import { useQuery } from "@tanstack/react-query";
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { DeckFromServer } from "../types/DeckFromServer";
 import { useLocation, useNavigate } from "react-router-dom";
 import { ROUTE_AUTHORIZATION } from "../data/constants";
 import { getDecks } from "../api/getDeck";
+import Cookies from "js-cookie";
 
-export const useGamePageDecks = (token: string | undefined) => {
-  const [defaultDecks, setDefaultDecks] = useState<DeckFromServer[] | null>(
-    null
-  );
+export const useGamePageDecks = () => {
+  const token = Cookies.get("token");
   const navigate = useNavigate();
   const location = useLocation();
-
-  useQuery({
-    queryFn: () => getDecks(token),
-    queryKey: ["deck"],
-    onSuccess: (payload) => {
-      setDefaultDecks(payload.filter((deck: DeckFromServer) => deck.default));
-    },
-  });
 
   useEffect(() => {
     if (!token) {
@@ -27,5 +18,13 @@ export const useGamePageDecks = (token: string | undefined) => {
     }
   }, [token, navigate, location.pathname]);
 
-  return { defaultDecks, navigate };
+  const query = useQuery({
+    queryFn: () => getDecks(token),
+    queryKey: ["deck"],
+  });
+
+  const defaultDecks: DeckFromServer[] =
+    query.data?.filter((deck: DeckFromServer) => deck.default) || null;
+
+  return { defaultDecks, navigate, token };
 };

@@ -4,8 +4,7 @@ import { Link, useLocation } from "react-router-dom";
 import { Loader } from "../../components/Loaders/Loader";
 import Cookies from "js-cookie";
 import { BreadCrumbs } from "../../components/BreakCrumbs/BreadCrumbs";
-import "./FlipCardPage.scss";
-import { FlipCardLayout } from "./FlipCardLayout";
+import { FlipCardLayout } from "./QuizGameLayout";
 import { QuizAnswer } from "../../components/QuizAnswer/QuizAnswer";
 import { useCards } from "../../hooks/useCards";
 

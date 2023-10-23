@@ -11,7 +11,7 @@ import {
 } from "./data/constants";
 import { GamePage } from "./pages/GamePage/GamePage";
 import { HomePage } from "./pages/Home/HomePage";
-import { FlipCardPage } from "./pages/CardsPage/FlipCardPage";
+import { FlipCardPage } from "./pages/QuizGamePage/QuizGamePage";
 import { ChangeDeck } from "./pages/UserDecks/ChangeDeck/ChangeDeck";
 import "./App.scss";
 import { Header } from "./components/Header/Header";
@@ -32,10 +32,10 @@ function App() {
 
   return (
     <div className="App">
+      {isLoading && <GlobalLoader />}
       <div className="wrapper flex flex-col text-white min-h-screen">
         {showHeader && <Header />}
         <main className="grid__main min-h-screen grow">
-          {isLoading && <GlobalLoader />}
           <Routes>
             <Route path={ROUTE_HOME} element={<HomePage />} />
             <Route path={ROUTE_CARD_GAME} element={<GamePage />} />

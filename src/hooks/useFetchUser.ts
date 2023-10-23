@@ -11,10 +11,6 @@ export const useFetchUser = () => {
 
   useEffect(() => {
     const fetchUser = async () => {
-      if (!token) {
-        return;
-      }
-
       setIsLoading(true);
       try {
         const userData = await getUser(token);
@@ -24,7 +20,7 @@ export const useFetchUser = () => {
       } finally {
         setTimeout(() => {
           setIsLoading(false);
-        }, 1500);
+        }, 500);
       }
     };
 

@@ -3,7 +3,9 @@ import { HeaderAuthLinks } from "./HeaderAuthLinks";
 import { UserAvatar } from "./UserAvatar";
 
 export const HeaderRightPiece = () => {
-  const { user } = useAppSelector((state) => state.user);
+  const { user, isLoading } = useAppSelector((state) => state.user);
+
+  if (isLoading) return null;
 
   if (user) {
     return (

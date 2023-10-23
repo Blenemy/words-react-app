@@ -1,28 +1,21 @@
 import { useState } from "react";
 import Cookies from "js-cookie";
-import { ROUTE_CARD_GAME, ROUTE_USER_DECKS } from "../../data/constants";
-import { UserDeckPreview } from "./UserDeckPreview/UserDeckPreview";
+import { ROUTE_CARD_GAME } from "../../data/constants";
 import FileDropZone from "../../components/FileDropZone/FileDropZone";
 import { CustomInput } from "../../components/CustomInput/CustomInput";
 import { handleInputChange } from "../../utils/helpers";
 import { UserAccountButton } from "../UserAccount/UserAccountButton";
-import { useNavigate } from "react-router-dom";
-import { handleSumbitDeck } from "../../api/handleSubmitDeck";
 import { BreadCrumbs } from "../../components/BreakCrumbs/BreadCrumbs";
 import { useGetUserDecks } from "../../hooks/useGetUserDecks";
 import { useAddDeck } from "../../hooks/useAddDeck";
+import { UserDeckList } from "./UserDeckList/UserDeckList";
 
 export const UserDecksPage = () => {
-  const navigate = useNavigate();
   const token = Cookies.get("token");
   const [fileError, setFileError] = useState<string>("");
 
   const handleDragError = (payload: string) => {
     setFileError(payload);
-  };
-
-  const redirectToDeck = (deckId: number) => {
-    navigate(ROUTE_USER_DECKS + `/${deckId}`);
   };
 
   const { decks, setDecks } = useGetUserDecks(token);
@@ -42,19 +35,14 @@ export const UserDecksPage = () => {
 
       <div className="flex gap-32">
         <div className="flex flex-wrap gap-6 basis-2/3">
-          {decks &&
-            decks.map((deck) => (
-              <UserDeckPreview
-                deck={deck}
-                key={deck.id}
-                redirectFunc={redirectToDeck}
-                handleSumbitDeck={() =>
-                  handleSumbitDeck(deck.id, token, navigate)
-                }
-              />
-            ))}
+          {!!decks?.length ? (
+            <UserDeckList decks={decks} />
+          ) : (
+            <div className="text-primary ">There are no decks here :(</div>
+          )}
         </div>
         <form className="basis-1/3 text-black flex flex-col gap-10">
+          <h3 className="text-primary text-center text-xl">Add you deck</h3>
           <FileDropZone
             onFileUpload={(file) => {
               const reader = new FileReader();
