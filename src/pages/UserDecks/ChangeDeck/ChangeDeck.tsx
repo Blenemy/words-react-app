@@ -18,7 +18,7 @@ export const ChangeDeck = () => {
       </div>
 
       <div className="flex gap-32">
-        <div className="flex flex-wrap gap-4 basis-3/4">
+        <div className="flex flex-wrap gap-4 basis-8/12">
           {!!cardInDeck?.length ? (
             <>
               {cardInDeck.map((card) => (
@@ -34,7 +34,7 @@ export const ChangeDeck = () => {
           )}
         </div>
         {deckId && (
-          <div className="basis-1/4">
+          <div className="basis-4/12 shrink-0 grow">
             <AddCard deckId={+deckId} />
           </div>
         )}

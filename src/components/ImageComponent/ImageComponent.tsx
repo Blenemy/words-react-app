@@ -25,7 +25,7 @@ export const ImageComponent: React.FC<Props> = ({
     img.onload = () => {
       setTimeout(() => {
         setImageIsLoaded(true);
-      }, 100);
+      }, 200);
     };
 
     img.src = ImageBundlePath.image;
@@ -45,11 +45,12 @@ export const ImageComponent: React.FC<Props> = ({
       <div
         style={{ display: imageIsLoaded ? "none" : "inline" }}
         ref={blurhashRef}
+        className={`${!mainImage && "h-[230px]"}`}
       >
         <Blurhash
           hash={ImageBundlePath.image_hash}
           width="100%"
-          height={mainImage ? 524 : 230}
+          height={mainImage ? 512 : 230}
           resolutionX={32}
           resolutionY={32}
           punch={1}

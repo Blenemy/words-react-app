@@ -54,7 +54,7 @@ export const UserDecksPage = () => {
               />
             ))}
         </div>
-        <div className="basis-1/3 text-black flex flex-col gap-10">
+        <form className="basis-1/3 text-black flex flex-col gap-10">
           <FileDropZone
             onFileUpload={(file) => {
               const reader = new FileReader();
@@ -89,7 +89,7 @@ export const UserDecksPage = () => {
             color="violetStroke"
             handleOnClick={handleOnClick}
           />
-        </div>
+        </form>
       </div>
     </div>
   );

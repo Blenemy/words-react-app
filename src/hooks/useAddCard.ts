@@ -10,7 +10,6 @@ export const useAddCart = (deckId: number | undefined) => {
   const [previewImage, setPreviewImage] = useState<string | null>(null);
   const [error, setError] = useState<null | string>(null);
   const [formData, setFormData] = useState<AddCardType>({
-    deck: deckId,
     word: "",
     translation: "",
     description: "",
@@ -36,7 +35,6 @@ export const useAddCart = (deckId: number | undefined) => {
       onSuccess: () => {
         queryClient.invalidateQueries([`deck${deckId}`]);
         setFormData({
-          deck: deckId,
           word: "",
           translation: "",
           description: "",

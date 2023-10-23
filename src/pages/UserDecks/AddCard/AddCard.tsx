@@ -4,7 +4,7 @@ import FileDropZone from "../../../components/FileDropZone/FileDropZone";
 import { CustomInput } from "../../../components/CustomInput/CustomInput";
 import { UserAccountButton } from "../../UserAccount/UserAccountButton";
 import { useState } from "react";
-import { Loader } from "../../../components/Loader/Loader";
+import { Loader } from "../../../components/Loaders/Loader";
 
 export const AddCard = ({ deckId }: { deckId: number | undefined }) => {
   const [fileError, setFileError] = useState<string>("");
@@ -33,18 +33,9 @@ export const AddCard = ({ deckId }: { deckId: number | undefined }) => {
             className="flex flex-col gap-4"
             onSubmit={handleAddCardOnSubmit}
           >
-            <CustomInput
-              placeholder="Deck"
-              disabled
-              name={"deck"}
-              type={"number"}
-              classname="text-black"
-              value={formData.deck}
-              onChangeHandler={(event: Event) =>
-                handleInputChange(event, setFormData)
-              }
-              autoComplete="off"
-            />
+            <h3 className="text-primary text-xl text-center">
+              Add you own card to this deck
+            </h3>
             <CustomInput
               placeholder="Word in English"
               required
