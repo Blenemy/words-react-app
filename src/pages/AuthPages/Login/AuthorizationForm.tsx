@@ -8,7 +8,7 @@ export const AuthorizationForm = () => {
   return (
     <form
       onSubmit={handleOnSubmit}
-      className="flex flex-col font-['Roboto_flex'] mb-8"
+      className="flex flex-col font-['Roboto_flex'] mb-8 w-[424px]"
     >
       <h3 className="mb-[52px] text-3xl text-center font-medium">Sign in</h3>
       <div className="flex flex-col gap-8 mb-[52px]">

@@ -9,7 +9,7 @@ export const RegistrationForm = () => {
   return (
     <form
       onSubmit={handleOnSubmit}
-      className="flex flex-col font-['Roboto_flex'] mb-8"
+      className="flex flex-col font-['Roboto_flex'] mb-8 w-[424px]"
     >
       <h3 className="mb-[52px] text-3xl text-center font-medium">
         Create an account
@@ -25,6 +25,7 @@ export const RegistrationForm = () => {
             handleInputChange(event, setFormData)
           }
           autoComplete="off"
+          classname="w-[424px]"
         />
         <CustomInput
           placeholder="Email"
@@ -36,6 +37,7 @@ export const RegistrationForm = () => {
             handleInputChange(event, setFormData)
           }
           autoComplete="off"
+          classname="w-[424px]"
           error={fieldErrors.email}
         />
         <CustomInput
@@ -48,6 +50,7 @@ export const RegistrationForm = () => {
             handleInputChange(event, setFormData)
           }
           autoComplete="off"
+          classname="w-[424px]"
           error={fieldErrors.password}
         />
         <CustomInput
@@ -60,6 +63,7 @@ export const RegistrationForm = () => {
             handleInputChange(event, setFormData)
           }
           autoComplete="off"
+          classname="w-[424px]"
           error={fieldErrors.password}
         />
       </div>
