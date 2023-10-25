@@ -1,5 +1,5 @@
-import { useAppSelector } from "../../app/hooks";
-import progress from "../../assets/progress.png";
+import { useAppSelector } from "../../../app/hooks";
+import progress from "../../../assets/progress.png";
 
 export const DailyActivity = () => {
   const { user } = useAppSelector((state) => state.user);

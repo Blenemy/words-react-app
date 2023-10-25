@@ -1,6 +1,6 @@
-import { UserFromServer } from "../../types/UserFromServer";
-import userDefault from "../../assets/user-acc.svg";
-import camera from "../../assets/camera.svg";
+import { UserFromServer } from "../../../types/UserFromServer";
+import userDefault from "../../../assets/user-acc.svg";
+import camera from "../../../assets/camera.svg";
 
 type UserPhotoProps = {
   user: UserFromServer | null;

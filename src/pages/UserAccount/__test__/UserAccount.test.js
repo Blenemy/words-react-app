@@ -1,7 +1,7 @@
 import { render, screen, fireEvent } from "@testing-library/react";
 import "@testing-library/jest-dom/extend-expect";
 import { HashRouter } from "react-router-dom";
-import { UserAccountForm } from "../UserAccountForm";
+import { UserAccountForm } from "../UserAccountLayout/UserAccountForm";
 
 const mockFormData = {
   first_name: "John",

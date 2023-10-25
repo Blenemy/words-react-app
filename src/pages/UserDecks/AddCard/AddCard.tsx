@@ -2,7 +2,7 @@ import { handleInputChange } from "../../../utils/helpers";
 import { useAddCart } from "../../../hooks/useAddCard";
 import FileDropZone from "../../../components/FileDropZone/FileDropZone";
 import { CustomInput } from "../../../components/CustomInput/CustomInput";
-import { UserAccountButton } from "../../UserAccount/UserAccountButton";
+import { UserAccountButton } from "../../UserAccount/UserAccountLayout/UserAccountButton";
 import { useState } from "react";
 import { Loader } from "../../../components/Loaders/Loader";
 

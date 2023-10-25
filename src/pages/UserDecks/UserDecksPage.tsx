@@ -4,7 +4,7 @@ import { ROUTE_CARD_GAME } from "../../data/constants";
 import FileDropZone from "../../components/FileDropZone/FileDropZone";
 import { CustomInput } from "../../components/CustomInput/CustomInput";
 import { handleInputChange } from "../../utils/helpers";
-import { UserAccountButton } from "../UserAccount/UserAccountButton";
+import { UserAccountButton } from "../UserAccount/UserAccountLayout/UserAccountButton";
 import { BreadCrumbs } from "../../components/BreakCrumbs/BreadCrumbs";
 import { useGetUserDecks } from "../../hooks/useGetUserDecks";
 import { useAddDeck } from "../../hooks/useAddDeck";

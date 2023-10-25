@@ -1,7 +1,7 @@
-import { CustomInput } from "../../components/CustomInput/CustomInput";
-import { handleInputChange } from "../../utils/helpers";
+import { CustomInput } from "../../../components/CustomInput/CustomInput";
+import { handleInputChange } from "../../../utils/helpers";
+import { UserAccountFormType } from "../UserAccountPage";
 import { UserAccountButton } from "./UserAccountButton";
-import { UserAccountFormType } from "./UserAccountPage";
 
 type UserAccountFormProps = {
   formData: UserAccountFormType;

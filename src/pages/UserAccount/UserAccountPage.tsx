@@ -2,11 +2,11 @@ import { useEffect } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import { ROUTE_AUTHORIZATION } from "../../data/constants";
 import { Loader } from "../../components/Loaders/Loader";
-import { UserPhoto } from "./UserPhoto";
-import { DailyActivity } from "./DailyActivity";
-import { UserAccountForm } from "./UserAccountForm";
+import { UserPhoto } from "./UserAccountLayout/UserPhoto";
+import { DailyActivity } from "./UserAccountLayout/DailyActivity";
+import { UserAccountForm } from "./UserAccountLayout/UserAccountForm";
 import { useUserProfile } from "../../hooks/useUserProfile";
-import { UserStatisctics } from "./UserStatistics";
+import { UserStatisctics } from "./UserAccountLayout/UserStatistics";
 import { useLogout } from "../../hooks/useLogout";
 import { useAppSelector } from "../../app/hooks";
 
