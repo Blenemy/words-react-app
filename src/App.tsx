@@ -32,27 +32,30 @@ function App() {
 
   return (
     <div className="App">
-      {isLoading && <GlobalLoader />}
-      <div className="wrapper flex flex-col text-white min-h-screen">
-        {showHeader && <Header />}
-        <main className="grid__main min-h-screen grow">
-          <Routes>
-            <Route path={ROUTE_HOME} element={<HomePage />} />
-            <Route path={ROUTE_CARD_GAME} element={<GamePage />} />
-            <Route path={ROUTE_REGISTRATION} element={<Registration />} />
-            <Route path={ROUTE_AUTHORIZATION} element={<Authorization />} />
-            <Route path={ROUTE_PROFILE} element={<UserAccountPage />} />
-            <Route path={ROUTE_FLIP_CARD}>
-              <Route index element={<FlipCardPage />} />
-            </Route>
-            <Route path={ROUTE_USER_DECKS}>
-              <Route index element={<UserDecksPage />} />
-              <Route path=":deckId" element={<ChangeDeck />} />
-            </Route>
-          </Routes>
-        </main>
-        <Footer />
-      </div>
+      {isLoading ? (
+        <GlobalLoader />
+      ) : (
+        <div className="wrapper flex flex-col text-white min-h-screen">
+          {showHeader && <Header />}
+          <main className="grid__main min-h-screen grow">
+            <Routes>
+              <Route path={ROUTE_HOME} element={<HomePage />} />
+              <Route path={ROUTE_CARD_GAME} element={<GamePage />} />
+              <Route path={ROUTE_REGISTRATION} element={<Registration />} />
+              <Route path={ROUTE_AUTHORIZATION} element={<Authorization />} />
+              <Route path={ROUTE_PROFILE} element={<UserAccountPage />} />
+              <Route path={ROUTE_FLIP_CARD}>
+                <Route index element={<FlipCardPage />} />
+              </Route>
+              <Route path={ROUTE_USER_DECKS}>
+                <Route index element={<UserDecksPage />} />
+                <Route path=":deckId" element={<ChangeDeck />} />
+              </Route>
+            </Routes>
+          </main>
+          <Footer />
+        </div>
+      )}
     </div>
   );
 }

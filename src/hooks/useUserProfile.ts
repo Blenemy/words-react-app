@@ -1,23 +1,24 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { UserFromServer } from "../types/UserFromServer";
 import { useAppDispatch } from "../app/hooks";
 import { setUser } from "../features/userSlice";
 import Cookies from "js-cookie";
 import { UserAccountFormType } from "../pages/UserAccount/UserAccountPage";
-import { useMutation } from "@tanstack/react-query";
+import { useMutation, useQuery } from "@tanstack/react-query";
 import { updateuserInfo } from "../api/updateUserInfo";
+import { getUser } from "../api/getUser";
 
 export const useUserProfile = (
   token: string | undefined,
   user: UserFromServer | null
 ) => {
+  const dispatch = useAppDispatch();
   const [formData, setFormData] = useState<UserAccountFormType>({
     first_name: "",
     last_name: "",
     email: "",
     password: "",
   });
-  const dispatch = useAppDispatch();
 
   const handleFileChange = (event: any) => {
     const data = new FileReader();
@@ -65,16 +66,18 @@ export const useUserProfile = (
     }));
   };
 
-  useEffect(() => {
-    if (user) {
+  const { isLoading } = useQuery({
+    queryFn: () => getUser(token),
+    onSuccess: (payload) => {
+      dispatch(setUser(payload));
       setFormData((prev) => ({
         ...prev,
-        first_name: user.first_name,
-        last_name: user.last_name,
-        email: user.email,
+        first_name: payload.first_name,
+        last_name: payload.last_name,
+        email: payload.email,
       }));
-    }
-  }, [user]);
+    },
+  });
 
   return {
     formData,
@@ -83,5 +86,6 @@ export const useUserProfile = (
     handleFileChange,
     isUserUpdated,
     handleOnCancel,
+    isLoading,
   };
 };
