@@ -14,6 +14,8 @@ export const FlipCard: React.FC<Props> = React.memo(({ card }) => {
     setClicked((prev) => !prev);
   };
 
+  console.log(card?.image_hash);
+
   if (!card) {
     return null;
   }

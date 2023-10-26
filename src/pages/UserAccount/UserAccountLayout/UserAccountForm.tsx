@@ -1,3 +1,4 @@
+import { memo } from "react";
 import { CustomInput } from "../../../components/CustomInput/CustomInput";
 import { handleInputChange } from "../../../utils/helpers";
 import { UserAccountFormType } from "../UserAccountPage";
@@ -10,7 +11,7 @@ type UserAccountFormProps = {
   handleOnCancel: () => void;
 };
 
-export const UserAccountForm: React.FC<UserAccountFormProps> = (props) => {
+export const UserAccountForm: React.FC<UserAccountFormProps> = memo((props) => {
   const { formData, setFormData, handleOnSubmit, handleOnCancel } = props;
 
   const commonInputProps = {
@@ -70,4 +71,4 @@ export const UserAccountForm: React.FC<UserAccountFormProps> = (props) => {
       </div>
     </form>
   );
-};
+});

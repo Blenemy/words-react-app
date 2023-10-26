@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useCallback, useState } from "react";
 import { UserFromServer } from "../types/UserFromServer";
 import { useAppDispatch } from "../app/hooks";
 import { setUser } from "../features/userSlice";
@@ -19,14 +19,6 @@ export const useUserProfile = (
     email: "",
     password: "",
   });
-
-  const handleFileChange = (event: any) => {
-    const data = new FileReader();
-    data.addEventListener("load", () => {
-      mutateAsync({ token, base64: data.result });
-    });
-    data.readAsDataURL(event.target.files[0]);
-  };
 
   const { isLoading: isUserUpdated, mutateAsync } = useMutation({
     mutationFn: (data: {
@@ -57,15 +49,6 @@ export const useUserProfile = (
     mutateAsync({ token, formData: dataToSend });
   };
 
-  const handleOnCancel = () => {
-    setFormData((prev) => ({
-      ...prev,
-      first_name: user?.first_name || "",
-      last_name: user?.last_name || "",
-      email: user?.email || "",
-    }));
-  };
-
   const { isLoading } = useQuery({
     queryFn: () => getUser(token),
     onSuccess: (payload) => {
@@ -78,6 +61,26 @@ export const useUserProfile = (
       }));
     },
   });
+
+  const handleFileChange = useCallback(
+    (event: any) => {
+      const data = new FileReader();
+      data.addEventListener("load", () => {
+        mutateAsync({ token, base64: data.result });
+      });
+      data.readAsDataURL(event.target.files[0]);
+    },
+    [token, mutateAsync]
+  );
+
+  const handleOnCancel = useCallback(() => {
+    setFormData((prev) => ({
+      ...prev,
+      first_name: user?.first_name || "",
+      last_name: user?.last_name || "",
+      email: user?.email || "",
+    }));
+  }, [user]);
 
   return {
     formData,

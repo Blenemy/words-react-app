@@ -1,5 +1,6 @@
 import { ReactNode, useEffect, useRef, useState } from "react";
 import { Blurhash } from "react-blurhash";
+import { DEFAULT_HASH_SRC } from "../../data/constants";
 
 export type ImageBundlePath = {
   image: string;
@@ -19,6 +20,8 @@ export const ImageComponent: React.FC<Props> = ({
 }) => {
   const [imageIsLoaded, setImageIsLoaded] = useState(false);
   const blurhashRef = useRef<HTMLDivElement>(null);
+
+  console.log(ImageBundlePath);
 
   useEffect(() => {
     const img = new Image();
@@ -48,7 +51,7 @@ export const ImageComponent: React.FC<Props> = ({
         className={`${!mainImage && "h-[230px]"}`}
       >
         <Blurhash
-          hash={ImageBundlePath.image_hash}
+          hash={ImageBundlePath.image_hash || DEFAULT_HASH_SRC}
           width="100%"
           height={mainImage ? 512 : 230}
           resolutionX={32}

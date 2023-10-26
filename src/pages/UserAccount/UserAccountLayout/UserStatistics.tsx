@@ -8,20 +8,23 @@ import {
   ResponsiveContainer,
 } from "recharts";
 import { useAppSelector } from "../../../app/hooks";
+import { memo, useMemo } from "react";
 
-export const UserStatisctics = () => {
+export const UserStatisctics = memo(() => {
   const { user } = useAppSelector((state) => state.user);
+
+  const formattedData = useMemo(() => {
+    return Object.keys(user?.progress)
+      .sort()
+      .map((date) => ({
+        date,
+        progress: user?.progress[date],
+      }));
+  }, [user?.progress]);
 
   if (!user) {
     return <div>something went wrong</div>;
   }
-
-  const formattedData = Object.keys(user.progress)
-    .sort()
-    .map((date) => ({
-      date,
-      progress: user.progress[date],
-    }));
 
   return (
     <div className="text-primary basis-3/5">
@@ -42,4 +45,4 @@ export const UserStatisctics = () => {
       </ResponsiveContainer>
     </div>
   );
-};
+});
