@@ -91,7 +91,11 @@ export const AddCard = ({ deckId }: { deckId: number | undefined }) => {
             <UserAccountButton
               type="submit"
               text="Add a card"
-              color="violetStroke"
+              borderColor="violetStroke"
+              backgroundColor="transparent"
+              hoverText="primary"
+              hoverBorder="primary"
+              hoverBackground="lilackButton"
             />
             {error && <div className="text-[14px] text-red-500">{error}</div>}
           </form>
