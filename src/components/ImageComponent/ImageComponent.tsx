@@ -12,13 +12,13 @@ import { ImageBundlePath } from "../../types/BundlePath";
  * @returns {JSX.Element} - JSX элемент для изображения.
  */
 
-type Props = {
+type ImageComponentProps = {
   ImageBundlePath: ImageBundlePath;
   children: ReactNode;
   mainImage?: boolean;
 };
 
-export const ImageComponent: React.FC<Props> = ({
+export const ImageComponent: React.FC<ImageComponentProps> = ({
   ImageBundlePath,
   children,
   mainImage = false,

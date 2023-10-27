@@ -2,6 +2,13 @@ import axios from "axios";
 import { BASE_URL } from "../data/constants";
 import Cookies from "js-cookie";
 
+/**
+ * Получить авторизационные данные пользователя с использованием токена Google.
+ *
+ * @param {string | undefined} googleCredential - Токен Google.
+ * @returns {Promise<any>} - Обещание с данными пользователя.
+ */
+
 export const getGoogleAuthCredentials = async (
   googleCrenedtial: string | undefined
 ) => {

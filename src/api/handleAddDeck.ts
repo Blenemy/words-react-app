@@ -1,6 +1,14 @@
 import axios from "axios";
 import { BASE_URL } from "../data/constants";
 
+/**
+ * Добавить колоду.
+ *
+ * @param {Object} formData - Данные для создания колоды.
+ * @param {string | undefined} token - Токен пользователя.
+ * @returns {Promise<any>} - Обещание с данными созданной колоды.
+ */
+
 export const handleAddDeck = async (
   formData: any,
   token: string | undefined

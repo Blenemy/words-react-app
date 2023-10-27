@@ -5,17 +5,27 @@ import { useChangeCard } from "../../hooks/useChangeCard";
 import { useState } from "react";
 import { FileDropZone } from "../FileDropZone/FileDropZone";
 
-type Props = {
+/**
+ * Модальное окно для редактирования карточки.
+ *
+ * @param {object} props - Свойства компонента Modal.
+ * @param {boolean} props.showModal - Отображение/скрытие модального окна.
+ * @param {(payload: boolean) => void} props.handleShowModal - Функция для управления отображением модального окна.
+ * @param {CardFromServer} props.card - Исходная карточка для редактирования.
+ * @returns {JSX.Element | null} - JSX элемент модального окна.
+ */
+
+type ModalProps = {
   showModal?: boolean;
   handleShowModal: (payload: boolean) => void;
   card: CardFromServer;
 };
 
-export const Modal: React.FC<Props> = ({
+export const Modal: React.FC<ModalProps> = ({
   showModal,
   handleShowModal,
   card,
-}) => {
+}): JSX.Element | null => {
   const [previewImage, setPreviewImage] = useState<string | null>(card.image);
 
   const { formData, setFormData, handleOnSubmit } = useChangeCard(card, () =>

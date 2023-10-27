@@ -2,6 +2,14 @@ import { NavigateFunction } from "react-router-dom";
 import { BASE_URL, ROUTE_FLIP_CARD } from "../data/constants";
 import axios from "axios";
 
+/**
+ * Отправить колоду на изучение.
+ *
+ * @param {number} deck - Идентификатор колоды.
+ * @param {string | undefined} token - Токен пользователя.
+ * @param {NavigateFunction} navigate - Функция навигации для перехода на другую страницу.
+ */
+
 export const handleSumbitDeck = async (
   deck: number,
   token: string | undefined,

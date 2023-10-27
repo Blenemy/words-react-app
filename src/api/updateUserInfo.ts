@@ -2,6 +2,15 @@ import axios from "axios";
 import { BASE_URL } from "../data/constants";
 import { UserAccountFormType } from "../pages/UserAccount/UserAccountPage";
 
+/**
+ * Обновить информацию пользователя.
+ *
+ * @param {string | undefined} token - Токен пользователя.
+ * @param {string | ArrayBuffer | null} base64 - Данные аватара пользователя в формате base64.
+ * @param {UserAccountFormType} formData - Дополнительные данные пользователя.
+ * @returns {Promise} Промис с обновленной информацией пользователя.
+ */
+
 export const updateuserInfo = async (
   token: string | undefined,
   base64?: string | ArrayBuffer | null,
