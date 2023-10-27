@@ -74,9 +74,8 @@ export const UserDecksPage = () => {
           <UserAccountButton
             type="submit"
             text="Add a deck"
-            borderColor="violetStroke"
             handleOnClick={handleOnClick}
-            backgroundColor="transparent"
+            variant="secondary"
           />
         </form>
       </div>

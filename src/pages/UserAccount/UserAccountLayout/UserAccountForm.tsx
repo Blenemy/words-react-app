@@ -60,24 +60,12 @@ export const UserAccountForm: React.FC<UserAccountFormProps> = memo((props) => {
         {...commonInputProps}
       />
       <div className="flex gap-[40px]">
-        <UserAccountButton
-          type="submit"
-          text="Save"
-          borderColor="primary"
-          backgroundColor="lilackButton"
-          hoverText="violetStroke"
-          hoverBorder="violetStroke"
-          hoverBackground="transparent"
-        />
+        <UserAccountButton type="submit" text="Save" variant="primary" />
         <UserAccountButton
           type="reset"
           text="Cancel"
-          borderColor="violetStroke"
           handleOnClick={handleOnCancel}
-          backgroundColor="transparent"
-          hoverText="primary"
-          hoverBorder="primary"
-          hoverBackground="lilackButton"
+          variant="secondary"
         />
       </div>
     </form>

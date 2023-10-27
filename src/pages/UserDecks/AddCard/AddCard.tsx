@@ -33,7 +33,7 @@ export const AddCard = ({ deckId }: { deckId: number | undefined }) => {
             className="flex flex-col gap-4"
             onSubmit={handleAddCardOnSubmit}
           >
-            <h3 className="text-primary text-xl text-center">
+            <h3 className="text-primary text-xl text-center font-['Roboto_flex']">
               Add you own card to this deck
             </h3>
             <CustomInput
@@ -91,11 +91,7 @@ export const AddCard = ({ deckId }: { deckId: number | undefined }) => {
             <UserAccountButton
               type="submit"
               text="Add a card"
-              borderColor="violetStroke"
-              backgroundColor="transparent"
-              hoverText="primary"
-              hoverBorder="primary"
-              hoverBackground="lilackButton"
+              variant="secondary"
             />
             {error && <div className="text-[14px] text-red-500">{error}</div>}
           </form>
