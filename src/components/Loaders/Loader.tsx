@@ -1,14 +1,13 @@
 import { BeatLoader } from "react-spinners";
 
-export const Loader = () => (
-  <div
-    style={{
-      display: "flex",
-      width: "100%",
-      justifyContent: "center",
-      alignItems: "center",
-    }}
-  >
+/**
+ * Компонент загрузки с анимацией.
+ *
+ * @returns {JSX.Element} - JSX элемент для отображения анимированной загрузки.
+ */
+
+export const Loader = (): JSX.Element => (
+  <div className="flex w-full justify-center items-center">
     <BeatLoader size={15} color="#D63636" />
   </div>
 );

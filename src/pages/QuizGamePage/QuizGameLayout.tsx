@@ -4,11 +4,9 @@ import { CardFromServer } from "../../types/CardFromServer";
 import firstFiller from "../../assets/imageFiller.png";
 import firstFillerSecond from "../../assets/imageFillerSecond.png";
 import firstFillerThird from "../../assets/imageFiller3.png";
-import {
-  ImageComponent,
-  ImageBundlePath,
-} from "../../components/ImageComponent/ImageComponent";
+import { ImageComponent } from "../../components/ImageComponent/ImageComponent";
 import { DEFAULT_HASH_SRC } from "../../data/constants";
+import { ImageBundlePath } from "../../types/BundlePath";
 
 type Props = {
   currentCard: CardFromServer | null;

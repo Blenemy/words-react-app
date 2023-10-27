@@ -1,5 +1,5 @@
 import { ROUTE_USER_DECKS } from "../../data/constants";
-import { BreadCrumbs } from "../../components/BreakCrumbs/BreadCrumbs";
+import { BreadCrumbs } from "../../components/BreadCrumbs/BreadCrumbs";
 import { useGamePageDecks } from "../../hooks/useGamePageDecks";
 import { DefaultDecksList } from "./DefaultDecksList/DefaultDecksList";
 

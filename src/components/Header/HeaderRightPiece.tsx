@@ -1,11 +1,14 @@
 import { useAppSelector } from "../../app/hooks";
-import { HeaderAuthLinks } from "./HeaderAuthLinks";
+import { HeaderAuthLink } from "./HeaderAuthLinks";
 import { UserAvatar } from "./UserAvatar";
 
-export const HeaderRightPiece = () => {
-  const { user, isLoading } = useAppSelector((state) => state.user);
-
-  if (isLoading) return null;
+/**
+ * Компонент для отображения правой части хедера.
+ *
+ * @returns {JSX.Element} - JSX элемент для правой части хедера.
+ */
+export const HeaderRightPiece = (): JSX.Element => {
+  const { user } = useAppSelector((state) => state.user);
 
   if (user) {
     return (
@@ -17,7 +20,8 @@ export const HeaderRightPiece = () => {
 
   return (
     <div className='flex font-["Roboto_flex"] font-medium'>
-      <HeaderAuthLinks />
+      <HeaderAuthLink variant="primary" />
+      <HeaderAuthLink variant="secondary" />
     </div>
   );
 };

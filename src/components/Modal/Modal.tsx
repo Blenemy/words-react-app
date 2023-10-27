@@ -2,8 +2,8 @@ import { CardFromServer } from "../../types/CardFromServer";
 import { CustomInput } from "../CustomInput/CustomInput";
 import { handleInputChange } from "../../utils/helpers";
 import { useChangeCard } from "../../hooks/useChangeCard";
-import FileDropZone from "../FileDropZone/FileDropZone";
 import { useState } from "react";
+import { FileDropZone } from "../FileDropZone/FileDropZone";
 
 type Props = {
   showModal?: boolean;

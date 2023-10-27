@@ -2,7 +2,12 @@ import "./Header.scss";
 import { HeaderLeftPiece } from "./HeaderLeftPiece";
 import { HeaderRightPiece } from "./HeaderRightPiece";
 
-export const Header = () => {
+/**
+ * Компонент для отображения хедера страницы.
+ *
+ * @returns {JSX.Element} - JSX элемент для хедера.
+ */
+export const Header = (): JSX.Element => {
   return (
     <header id="header" className="header font-semibold">
       <div className="container mx-auto my-0">

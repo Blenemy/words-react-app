@@ -14,8 +14,6 @@ export const FlipCard: React.FC<Props> = React.memo(({ card }) => {
     setClicked((prev) => !prev);
   };
 
-  console.log(card?.image_hash);
-
   if (!card) {
     return null;
   }
@@ -27,12 +25,12 @@ export const FlipCard: React.FC<Props> = React.memo(({ card }) => {
           {card?.word}
         </p>
         <div
-          className="deck-card text-black h-full w-full "
+          className="cursor-pointer text-black h-full w-full "
           onClick={onCardClick}
           data-testid="flip-card"
         >
           <div
-            className={cn("front h-full", {
+            className={cn("front", {
               "active-front": isClicked,
             })}
           >
@@ -46,8 +44,7 @@ export const FlipCard: React.FC<Props> = React.memo(({ card }) => {
               <img
                 src={card?.image}
                 alt="main"
-                className="h-full rounded-3xl"
-                loading="lazy"
+                className="h-full rounded-3xl _img"
               />
             </ImageComponent>
           </div>
@@ -66,7 +63,7 @@ export const FlipCard: React.FC<Props> = React.memo(({ card }) => {
             style={{ backgroundColor: "#333", padding: "15px" }}
             data-testid="back-side"
           >
-            <div className="back-content rounded-3xl ">
+            <div className="text-[#2c3e50] rounded-3xl text-center w-full">
               <h2 className="text-2xl text-white">{card?.description}</h2>
             </div>
           </div>

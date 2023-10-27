@@ -2,7 +2,16 @@ import { ReactComponent as LogoPink } from "../../assets/pink-logo-animated-rect
 import { ReactComponent as LogoViolet } from "../../assets/violet-logo-animated-rectangle.svg";
 import { ReactComponent as LogoYellow } from "../../assets/yellow-logo-animated-rectangle.svg";
 
-export const Logo = ({ image }: { image: string }) => {
+/**
+ * Компонент логотипа с анимированными цветами.
+ *
+ * @param {string} image - Путь к изображению логотипа.
+ * @returns {JSX.Element} - JSX элемент с логотипом и анимированными цветами.
+ */
+interface LogoProps {
+  image: string;
+}
+export const Logo: React.FC<LogoProps> = ({ image }): JSX.Element => {
   return (
     <div className="relative h-6">
       <div>

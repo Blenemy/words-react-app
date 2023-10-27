@@ -3,12 +3,10 @@ import { UserFromServer } from "../types/UserFromServer";
 
 type UserState = {
   user: UserFromServer | null;
-  isLoading: boolean;
 };
 
 const InitialState: UserState = {
   user: null,
-  isLoading: false,
 };
 
 const userSlice = createSlice({

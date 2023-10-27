@@ -3,7 +3,7 @@ import { ROUTE_CARD_GAME } from "../../data/constants";
 import { Link, useLocation } from "react-router-dom";
 import { Loader } from "../../components/Loaders/Loader";
 import Cookies from "js-cookie";
-import { BreadCrumbs } from "../../components/BreakCrumbs/BreadCrumbs";
+import { BreadCrumbs } from "../../components/BreadCrumbs/BreadCrumbs";
 import { FlipCardLayout } from "./QuizGameLayout";
 import { QuizAnswer } from "../../components/QuizAnswer/QuizAnswer";
 import { useCards } from "../../hooks/useCards";

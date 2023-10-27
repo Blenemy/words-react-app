@@ -1,11 +1,16 @@
 import { ReactNode, useEffect, useRef, useState } from "react";
 import { Blurhash } from "react-blurhash";
 import { DEFAULT_HASH_SRC } from "../../data/constants";
+import { ImageBundlePath } from "../../types/BundlePath";
 
-export type ImageBundlePath = {
-  image: string;
-  image_hash: string;
-};
+/**
+ * Компонент для отображения изображения с возможностью использования Blurhash.
+ *
+ * @param {ImageBundlePath} ImageBundlePath - Объект с путями к изображению и его хэшу для Blurhash.
+ * @param {ReactNode} children - Дочерние элементы компонента.
+ * @param {boolean} mainImage - Флаг, указывающий, является ли изображение основным.
+ * @returns {JSX.Element} - JSX элемент для изображения.
+ */
 
 type Props = {
   ImageBundlePath: ImageBundlePath;
@@ -17,11 +22,9 @@ export const ImageComponent: React.FC<Props> = ({
   ImageBundlePath,
   children,
   mainImage = false,
-}) => {
+}): JSX.Element => {
   const [imageIsLoaded, setImageIsLoaded] = useState(false);
   const blurhashRef = useRef<HTMLDivElement>(null);
-
-  console.log(ImageBundlePath);
 
   useEffect(() => {
     const img = new Image();

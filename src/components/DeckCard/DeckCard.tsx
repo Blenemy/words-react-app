@@ -3,7 +3,17 @@ import { CardFromServer } from "../../types/CardFromServer";
 import { Modal } from "../Modal/Modal";
 import { ImageComponent } from "../ImageComponent/ImageComponent";
 
-export const DeckCard = ({ card }: { card: CardFromServer }) => {
+/**
+ * Компонент для отображения карточки колоды.
+ *
+ * @param {CardFromServer} card - Объект карточки из сервера.
+ * @returns {JSX.Element} - JSX элемент для отображения карточки колоды.
+ */
+interface DeckCardProps {
+  card: CardFromServer;
+}
+
+export const DeckCard: React.FC<DeckCardProps> = ({ card }): JSX.Element => {
   const [showModal, setShowModal] = useState(false);
 
   const handleShowModal = (payload: boolean) => {

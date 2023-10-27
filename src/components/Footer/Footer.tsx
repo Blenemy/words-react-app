@@ -1,7 +1,13 @@
-import { Logo } from "../../components/CustomLogo/Logo";
 import cardLingoWhite from "../../assets/cardLingoWhite.png";
 import copyright from "../../assets/copyright.svg";
+import { Logo } from "../Logo/Logo";
+import { FooterLink } from "./FooterLink";
 
+/**
+ * Компонент для отображения подвала страницы.
+ *
+ * @returns {JSX.Element} - JSX элемент для подвала.
+ */
 export const Footer = () => {
   return (
     <footer className="bg-primary">
@@ -10,12 +16,12 @@ export const Footer = () => {
           <div className="flex justify-between">
             <Logo image={cardLingoWhite} />
             <ul>
-              <FooterLink text="About Us" route="/" />
+              <FooterLink text="About Us" route="https://github.com/Blenemy" />
               <FooterLink text="Review" route="/" />
               <FooterLink text="FAQs" route="/" />
             </ul>
             <div className="flex gap-3 self-end">
-              <img src={copyright} alt="" />
+              <img src={copyright} alt="copyright" />
               <p>2023</p>
               <p>CardLingo.</p>
             </div>
@@ -23,13 +29,5 @@ export const Footer = () => {
         </div>
       </div>
     </footer>
-  );
-};
-
-const FooterLink = ({ text, route }: { text: string; route: string }) => {
-  return (
-    <li className="hover:text-wave duration-300">
-      <a href={route}>{text}</a>
-    </li>
   );
 };

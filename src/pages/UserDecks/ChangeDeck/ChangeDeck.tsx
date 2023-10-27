@@ -3,7 +3,7 @@ import { useParams } from "react-router-dom";
 import { ROUTE_USER_DECKS } from "../../../data/constants";
 import { DeckCard } from "../../../components/DeckCard/DeckCard";
 import { AddCard } from "../AddCard/AddCard";
-import { BreadCrumbs } from "../../../components/BreakCrumbs/BreadCrumbs";
+import { BreadCrumbs } from "../../../components/BreadCrumbs/BreadCrumbs";
 import { useGetDeck } from "../../../hooks/useGetDeck";
 
 export const ChangeDeck = () => {

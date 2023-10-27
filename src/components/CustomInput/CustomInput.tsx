@@ -1,6 +1,21 @@
-import { useState } from "react";
+import { HTMLAttributes, useState } from "react";
 
-type Props = {
+/**
+ * Компонент для кастомного ввода.
+ *
+ * @param {string} classname - Классы для стилизации компонента.
+ * @param {string} placeholder - Текст внутри поля ввода.
+ * @param {string} name - Имя поля ввода.
+ * @param {string} type - Тип поля ввода (например, "text" или "password").
+ * @param {boolean} required - Обязательное ли поле ввода.
+ * @param {(string | undefined | number)} value - Значение поля ввода.
+ * @param {Function} onChangeHandler - Обработчик события изменения значения поля ввода.
+ * @param {string} autoComplete - Автозаполнение для поля ввода.
+ * @param {string} error - Ошибка (если есть).
+ * @returns {JSX.Element} - JSX элемент с кастомным полем ввода.
+ */
+
+interface CustomInputProps extends HTMLAttributes<HTMLInputElement> {
   classname?: string;
   placeholder: string;
   name: string;
@@ -10,10 +25,9 @@ type Props = {
   onChangeHandler: any;
   autoComplete: string;
   error?: string;
-  disabled?: boolean;
-};
+}
 
-export const CustomInput: React.FC<Props> = ({
+export const CustomInput: React.FC<CustomInputProps> = ({
   classname,
   placeholder,
   name,
@@ -23,8 +37,8 @@ export const CustomInput: React.FC<Props> = ({
   onChangeHandler,
   autoComplete,
   error,
-  disabled,
-}) => {
+  ...props
+}): JSX.Element => {
   const [placeholderColor, setPlaceholderColor] = useState("");
   const [borderOnFocus, setBorderOnFocus] = useState("");
   const currentColor = error ? "border-red-400" : "";
@@ -51,7 +65,7 @@ export const CustomInput: React.FC<Props> = ({
       autoComplete={autoComplete}
       onFocus={handleOnFocus}
       onBlur={handleOnBlur}
-      disabled={disabled}
+      {...props}
     />
   );
 };

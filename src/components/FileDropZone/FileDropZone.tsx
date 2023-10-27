@@ -3,6 +3,17 @@ import { useDropzone } from "react-dropzone";
 import { ReactComponent as DownLoad } from "../../assets/downloadImage.svg";
 import { ReactComponent as Image } from "../../assets/Vector.svg";
 
+/**
+ * Компонент для загрузки файла с изображением.
+ *
+ * @param {Function} onFileUpload - Функция, вызываемая при успешной загрузке файла.
+ * @param {React.Dispatch<React.SetStateAction<string | null>>} setPreviewImage - Функция для установки предварительного изображения.
+ * @param {string | null} previewImage - Предварительное изображение.
+ * @param {string} fileError - Сообщение об ошибке при загрузке файла.
+ * @param {Function} handleDragError - Функция для обработки ошибок перетаскивания файла.
+ * @returns {JSX.Element} - JSX элемент для загрузки файла.
+ */
+
 interface FileDropZoneProps {
   onFileUpload?: (file: File) => void;
   setPreviewImage: React.Dispatch<React.SetStateAction<string | null>>;
@@ -11,13 +22,13 @@ interface FileDropZoneProps {
   handleDragError: (payload: string) => void;
 }
 
-const FileDropZone: React.FC<FileDropZoneProps> = ({
+export const FileDropZone: React.FC<FileDropZoneProps> = ({
   onFileUpload,
   setPreviewImage,
   previewImage,
   fileError,
   handleDragError,
-}) => {
+}): JSX.Element => {
   const onDrop = useCallback(
     (acceptedFiles: File[]) => {
       try {
@@ -86,5 +97,3 @@ const FileDropZone: React.FC<FileDropZoneProps> = ({
     </>
   );
 };
-
-export default FileDropZone;
