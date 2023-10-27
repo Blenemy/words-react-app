@@ -1,5 +1,6 @@
 module.exports = {
   content: ["./src/**/*.{js,jsx,ts,tsx}"],
+  mode: "jit",
   theme: {
     extend: {
       boxShadow: {
@@ -52,6 +53,9 @@ module.exports = {
       },
       animation: {
         animate: "animate 6s infinite linear",
+      },
+      backgroundImage: {
+        gradientBackground: "url('./assets/BackgroundGradient.png')",
       },
     },
   },

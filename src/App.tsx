@@ -36,7 +36,7 @@ function App() {
       {isLoading ? (
         <GlobalLoader />
       ) : (
-        <div className="wrapper flex flex-col text-white min-h-screen">
+        <div className="wrapper flex flex-col text-white min-h-screen  overflow-x-hidden">
           {showHeader && <Header />}
           <main className="grid__main min-h-screen grow">
             <Routes>

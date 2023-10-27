@@ -3,7 +3,13 @@ import image3 from "../../../assets/benefits-image3.png";
 import { BenefitsContentBlock } from "./BenefitsContentBlock";
 import { BenefitsImage } from "./BenefitsImageProps";
 
-export const BenefitsContent = () => {
+/**
+ * BenefitsContent component for rendering the benefits content section.
+ *
+ * @returns {JSX.Element} The rendered benefits content component.
+ */
+
+export const BenefitsContent = (): JSX.Element => {
   return (
     <div className="font-['Roboto_flex']'">
       <div className="flex gap-6">
