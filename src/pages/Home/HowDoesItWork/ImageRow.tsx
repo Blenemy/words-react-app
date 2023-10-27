@@ -3,7 +3,13 @@ import yellowReact from "../../../assets/howitworks-react-yellow.svg";
 import pinkRect from "../../../assets/howitworks-react-pink.svg";
 import waveRect from "../../../assets/howitworks-react-wave.svg";
 
-export const ImageRow = () => (
+/**
+ * ImageRow component for rendering a row of images.
+ *
+ * @returns {React.ReactElement} The rendered image row component.
+ */
+
+export const ImageRow = (): React.ReactElement => (
   <div className="mb-10">
     <div>
       <img src={arrowWhite} alt="Descriptive alt for arrow white" />
