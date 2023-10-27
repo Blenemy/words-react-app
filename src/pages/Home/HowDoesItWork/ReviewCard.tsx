@@ -20,8 +20,6 @@ export const ReviewCard: React.FC<ReviewCardProps> = ({
   const options: Intl.DateTimeFormatOptions = { month: "long", day: "numeric" };
   const formattedDate = date.toLocaleDateString("en-US", options);
 
-  console.log(avatar);
-
   return (
     <div className="basis-1/2">
       <div className="p-8 flex flex-col gap-4 text-primary">
