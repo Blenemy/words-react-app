@@ -16,11 +16,12 @@ import { ChangeDeck } from "./pages/UserDecks/ChangeDeck/ChangeDeck";
 import "./App.scss";
 import { Header } from "./components/Header/Header";
 import { Footer } from "./components/Footer/Footer";
-import { Registration } from "./pages/AuthPages/Signup/RegistrationPage";
-import { Authorization } from "./pages/AuthPages/Login/AuthorizationPage";
 import { UserDecksPage } from "./pages/UserDecks/UserDecksPage";
 import { useFetchUser } from "./hooks/useFetchUser";
 import { GlobalLoader } from "./components/Loaders/GlobalLoader";
+import { AuthorizationForm } from "./pages/AuthPage/Login/AuthorizationForm";
+import { RegistrationForm } from "./pages/AuthPage/Signup/RegistrationForm";
+import { AuthPage } from "./pages/AuthPage/AuthPage";
 
 function App() {
   const location = useLocation();
@@ -41,8 +42,28 @@ function App() {
             <Routes>
               <Route path={ROUTE_HOME} element={<HomePage />} />
               <Route path={ROUTE_CARD_GAME} element={<GamePage />} />
-              <Route path={ROUTE_REGISTRATION} element={<Registration />} />
-              <Route path={ROUTE_AUTHORIZATION} element={<Authorization />} />
+              <Route
+                path={ROUTE_REGISTRATION}
+                element={
+                  <AuthPage
+                    FormComponent={RegistrationForm}
+                    googleMessage="Already Have an account?"
+                    route={ROUTE_AUTHORIZATION}
+                    link="Sign in"
+                  />
+                }
+              />
+              <Route
+                path={ROUTE_AUTHORIZATION}
+                element={
+                  <AuthPage
+                    FormComponent={AuthorizationForm}
+                    googleMessage="Don`t have an account?"
+                    route={ROUTE_REGISTRATION}
+                    link="Create the account"
+                  />
+                }
+              />
               <Route path={ROUTE_PROFILE} element={<UserAccountPage />} />
               <Route path={ROUTE_FLIP_CARD}>
                 <Route index element={<FlipCardPage />} />

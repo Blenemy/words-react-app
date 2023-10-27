@@ -1,10 +1,10 @@
 import { Link, useNavigate } from "react-router-dom";
 import { GoogleOAuthProvider, GoogleLogin } from "@react-oauth/google";
-import { ROUTE_HOME } from "../../data/constants";
-import { useAppDispatch } from "../../app/hooks";
-import { setUser } from "../../features/userSlice";
+import { ROUTE_HOME } from "../../../data/constants";
+import { useAppDispatch } from "../../../app/hooks";
+import { setUser } from "../../../features/userSlice";
 import { useMutation } from "@tanstack/react-query";
-import { getGoogleAuthCredentials } from "../../api/getGoogleAuthCredentials";
+import { getGoogleAuthCredentials } from "../../../api/getGoogleAuthCredentials";
 
 type GoogleLayoutFormProps = {
   route: string;
