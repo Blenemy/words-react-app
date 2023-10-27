@@ -1,52 +1,55 @@
 import star from "../../../assets/star.png";
+import defaultImage from "../../../assets/User.svg";
+import { v4 as uuidv4 } from "uuid";
 
 type ReviewCardProps = {
-  name: string;
-  date: string;
-  rating: string;
-  comment: string;
-  image: string;
+  username: string;
+  created_at: string;
+  rating: number;
+  message: string;
+  avatar: string;
 };
 export const ReviewCard: React.FC<ReviewCardProps> = ({
-  name,
-  date,
+  username,
+  created_at,
   rating,
-  comment,
-  image,
+  message,
+  avatar,
 }) => {
+  const date = new Date(created_at);
+  const options: Intl.DateTimeFormatOptions = { month: "long", day: "numeric" };
+  const formattedDate = date.toLocaleDateString("en-US", options);
+
+  console.log(avatar);
+
   return (
     <div className="basis-1/2">
       <div className="p-8 flex flex-col gap-4 text-primary">
         <div className="flex justify-between items-center">
           <div className="flex gap-2">
-            <img src={image} alt="" />
+            <img
+              className="rounded-full h-[60px] w-[60px]"
+              src={avatar || defaultImage}
+              alt="user_avatar"
+            />
+
             <div className="flex flex-col">
-              <p>{name}</p>
-              <p>{date}</p>
+              <p>{username}</p>
+              <p>{formattedDate}</p>
             </div>
           </div>
           <div className="flex gap-4">
             <p>{rating}</p>
             <ul className="flex gap-2">
-              <li>
-                <img src={star} alt="" />
-              </li>
-              <li>
-                <img src={star} alt="" />
-              </li>
-              <li>
-                <img src={star} alt="" />
-              </li>
-              <li>
-                <img src={star} alt="" />
-              </li>
-              <li>
-                <img src={star} alt="" />
-              </li>
+              {Array.from({ length: rating }).map((_) => (
+                <li key={uuidv4()}>
+                  <img src={star} alt="star" />
+                </li>
+              ))}
             </ul>
           </div>
         </div>
-        <div>{comment}</div>
+        <div>{message}</div>
       </div>
     </div>
   );
