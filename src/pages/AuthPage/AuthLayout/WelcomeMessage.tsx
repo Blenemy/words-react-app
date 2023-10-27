@@ -1,4 +1,10 @@
-export const WelcomeMessage = () => {
+/**
+ * WelcomeMessage component for displaying a welcome message.
+ *
+ * @returns {React.ReactElement} The rendered welcome message component.
+ */
+
+export const WelcomeMessage = (): JSX.Element => {
   return (
     <div className="bg-violetStroke border-2 border-primary rounded-3xl col-start-item-3 row-start-item-3 col-end-item-3 row-end-item-3">
       <div className="py-16 px-8 flex flex-col items-center justify-center font-['Roboto_flex']">

@@ -1,10 +1,10 @@
-import { Link } from "react-router-dom";
-import { ROUTE_CARD_GAME } from "../../../data/constants";
 import image1 from "../../../assets/frontpage-list-image1.png";
 import image2 from "../../../assets/frontpage-list-image2.png";
 import image3 from "../../../assets/frontpage-list-image3.png";
 import image4 from "../../../assets/frontpage-list-image4.png";
 import { TextList } from "./TextList";
+import { ImageList } from "./ImageList";
+import { ButtonLink } from "./ButtonLink";
 
 export const MainContent = () => {
   const words = ["Learn", "Words", "Online", "Using", "Cards"];
@@ -47,22 +47,3 @@ export const MainContent = () => {
     </div>
   );
 };
-
-const ButtonLink = ({ text }: { text: string }) => (
-  <Link
-    to={ROUTE_CARD_GAME}
-    className="bg-lilackButton px-8 py-4 rounded-3xl text-[18px] w-[312px] h-[38px] flex items-center justify-center text-black border-black border-2 hover:bg-wave duration-300 font-medium"
-  >
-    {text}
-  </Link>
-);
-
-const ImageList = ({ images }: { images: string[] }) => (
-  <ul className="flex px-4 py-2 bg-[rgba(255,255,254,0.24)] w-fit rounded-3xl">
-    {images.map((img, idx) => (
-      <li key={`${img}-${idx}`} className={idx !== 0 ? "ml-[-10px]" : ""}>
-        <img src={img} alt={`Front Page ${idx + 1}`} />
-      </li>
-    ))}
-  </ul>
-);
