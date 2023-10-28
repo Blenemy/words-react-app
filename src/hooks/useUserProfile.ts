@@ -34,23 +34,27 @@ export const useUserProfile = (
     },
   });
 
-  const handleOnSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
-    event?.preventDefault();
+  const handleOnSubmit = useCallback(
+    async (event: React.FormEvent<HTMLFormElement>) => {
+      event?.preventDefault();
 
-    const { first_name, last_name, email } = user || {};
+      const { first_name, last_name, email } = user || {};
 
-    const dataToSend: UserAccountFormType = {
-      first_name: formData.first_name || first_name,
-      last_name: formData.last_name || last_name,
-      email: formData.email || email,
-      password: formData.password ? formData.password : undefined,
-    };
+      const dataToSend: UserAccountFormType = {
+        first_name: formData.first_name || first_name,
+        last_name: formData.last_name || last_name,
+        email: formData.email || email,
+        password: formData.password ? formData.password : undefined,
+      };
 
-    mutateAsync({ token, formData: dataToSend });
-  };
+      mutateAsync({ token, formData: dataToSend });
+    },
+    [formData, user, token, mutateAsync]
+  );
 
   const { isLoading } = useQuery({
     queryFn: () => getUser(token),
+    queryKey: ["user"],
     onSuccess: (payload) => {
       dispatch(setUser(payload));
       setFormData((prev) => ({
