@@ -17,7 +17,7 @@ export const Review = () => {
   });
 
   return (
-    <div className="flex gap-6 font-['Roboto_flex']">
+    <div className="flex font-['Roboto_flex'] flex-wrap">
       {comments.map((comment) => (
         <ReviewCard
           username={comment.username}

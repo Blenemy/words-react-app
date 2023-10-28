@@ -8,24 +8,55 @@ import cn from "classnames";
  */
 
 import { FormEvent, memo, useState } from "react";
+import axios from "axios";
+import { BASE_URL } from "../../data/constants";
+import Cookies from "js-cookie";
+import { Alert } from "../Alert/Alert";
 
 const ratings = [1, 2, 3, 4, 5];
 
 export const Feedback = memo((): JSX.Element => {
-  const [selectedRating, setSelectedRating] = useState<number>(1);
+  const [selectedRating, setSelectedRating] = useState<number>(3);
   const [inputValue, setInputValue] = useState<string>("");
   const [error, setError] = useState<boolean>(false);
+  const [isShowAlert, setShowAlert] = useState(false);
+  const token = Cookies.get("token");
 
   const handleRatingClick = (rating: number) => {
     setSelectedRating(rating);
   };
 
-  const handleOnSubmit = (e: FormEvent<HTMLFormElement>) => {
+  const handleOnSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
     if (inputValue.length < 10) {
       setError(true);
       return;
+    }
+
+    try {
+      const response = axios.post(
+        BASE_URL + "/social/comments/",
+        {
+          rating: selectedRating,
+          message: inputValue,
+        },
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      );
+
+      setError(false);
+      setShowAlert(true);
+
+      console.log(response);
+    } catch (error) {
+      console.log(error);
+    } finally {
+      setSelectedRating(3);
+      setInputValue("");
     }
   };
 
@@ -97,6 +128,7 @@ export const Feedback = memo((): JSX.Element => {
           </p>
         </div>
       </div>
+      {isShowAlert && <Alert />}
     </form>
   );
 });
