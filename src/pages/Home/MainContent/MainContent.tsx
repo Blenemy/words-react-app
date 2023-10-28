@@ -5,23 +5,10 @@ import image4 from "../../../assets/frontpage-list-image4.png";
 import { TextList } from "./TextList";
 import { ImageList } from "./ImageList";
 import { ButtonLink } from "./ButtonLink";
-import { useLayoutEffect, useState } from "react";
+import { useUpdateHeight } from "../../../hooks/useUpdateHight";
 
 export const MainContent = () => {
-  const [viewportHeight, setViewportHeight] = useState(0);
-
-  useLayoutEffect(() => {
-    const updateHeight = () => {
-      const header = document.getElementById("header");
-      const headerHeight = header ? header.getBoundingClientRect().height : 0;
-      setViewportHeight(window.innerHeight - headerHeight);
-    };
-
-    window.addEventListener("resize", updateHeight);
-    updateHeight();
-
-    return () => window.removeEventListener("resize", updateHeight);
-  }, []);
+  const { viewportHeight } = useUpdateHeight();
 
   const words = ["Learn", "Words", "Online", "Using", "Cards"];
   const images = [image1, image2, image3, image4];

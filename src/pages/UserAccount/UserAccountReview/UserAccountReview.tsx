@@ -7,6 +7,7 @@ import { UserPhoto } from "../UserAccountLayout/UserPhoto";
 import { UserStatisctics } from "../UserAccountLayout/UserStatistics";
 import { UserAccountFormType } from "../UserAccountPage";
 import { useLogout } from "../../../hooks/useLogout";
+import { useUpdateHeight } from "../../../hooks/useUpdateHight";
 
 interface UserAccountReviewProps {
   handleFileChange: (event: any) => void;
@@ -28,11 +29,14 @@ export const UserAccountReview: React.FC<UserAccountReviewProps> = memo(
   }) => {
     const { user } = useAppSelector((state) => state.user);
     const { handleLogOut } = useLogout();
-    console.log(1);
+    const { viewportHeight } = useUpdateHeight();
 
     return (
       <section>
-        <div className="container my-0 mx-auto mb-10 min-h-screen">
+        <div
+          className="container my-0 mx-auto"
+          style={{ minHeight: viewportHeight }}
+        >
           <div className="py-6">
             <div className="flex justify-between px-24 mb-3 items-center">
               <UserPhoto user={user} handleFileChange={handleFileChange} />

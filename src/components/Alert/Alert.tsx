@@ -8,7 +8,7 @@ export const Alert: React.FC<AlertProps> = ({ setShowAlert }): JSX.Element => {
   return (
     <div
       id="alert-additional-content-3"
-      className="p-4 mb-4 text-green-800 border absolute bottom-0 right-0 w-80 border-green-300 rounded-lg bg-green-50 dark:bg-gray-800 dark:text-green-400 dark:border-green-800"
+      className="p-4 text-green-800 border fixed top-10 right-0 w-80 border-green-300 rounded-lg bg-green-50 dark:bg-gray-800 dark:text-green-400 dark:border-green-800"
       role="alert"
     >
       <div className="flex items-center">

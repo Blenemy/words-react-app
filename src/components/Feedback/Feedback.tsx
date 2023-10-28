@@ -7,7 +7,7 @@ import cn from "classnames";
  * @returns {JSX.Element} - JSX элемент для формы обратной связи.
  */
 
-import { FormEvent, memo, useState } from "react";
+import { FormEvent, memo, useEffect, useState } from "react";
 import axios from "axios";
 import { BASE_URL } from "../../data/constants";
 import Cookies from "js-cookie";
@@ -59,6 +59,14 @@ export const Feedback = memo((): JSX.Element => {
       setInputValue("");
     }
   };
+
+  useEffect(() => {
+    const timeoutId = setTimeout(() => {
+      setShowAlert(false);
+    }, 5000);
+
+    return () => clearTimeout(timeoutId);
+  }, [isShowAlert]);
 
   return (
     <form
@@ -120,12 +128,6 @@ export const Feedback = memo((): JSX.Element => {
               Text must be at leat 10 characters
             </span>
           </div>
-        </div>
-        <div className="flex justify-between mt-8">
-          <p className="text-white text-lg font-semibold">3 Reviews</p>
-          <p className="text-white text-lg font-semibold">
-            Average Rating: 8.7
-          </p>
         </div>
       </div>
       {isShowAlert && <Alert setShowAlert={setShowAlert} />}
