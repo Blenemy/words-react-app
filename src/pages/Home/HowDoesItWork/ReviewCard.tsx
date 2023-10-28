@@ -22,7 +22,7 @@ export const ReviewCard: React.FC<ReviewCardProps> = ({
   const formattedDate = date.toLocaleDateString("en-US", options);
 
   return (
-    <div className="basis-1/3 min-h-[236px]">
+    <div className="basis-1/2 min-h-[236px]">
       <div className="p-8 flex flex-col gap-4 text-primary">
         <div className="flex justify-between items-center">
           <div className="flex gap-2">

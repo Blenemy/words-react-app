@@ -62,7 +62,7 @@ export const Feedback = memo((): JSX.Element => {
 
   return (
     <form
-      className="flex-col items-center bg-gray-700 pb-14"
+      className="flex-col items-center bg-gray-700 pb-14 relative"
       onSubmit={handleOnSubmit}
     >
       <header className="w-full bg-gray-800">
@@ -128,7 +128,7 @@ export const Feedback = memo((): JSX.Element => {
           </p>
         </div>
       </div>
-      {isShowAlert && <Alert />}
+      {isShowAlert && <Alert setShowAlert={setShowAlert} />}
     </form>
   );
 });
