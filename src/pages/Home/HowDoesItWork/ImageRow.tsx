@@ -14,7 +14,7 @@ export const ImageRow = (): React.ReactElement => (
     <div>
       <img src={arrowWhite} alt="Descriptive alt for arrow white" />
       <div className="flex justify-between w-1/2">
-        <img src={yellowReact} alt="Descriptive alt for yellow react" />
+        <img src={yellowReact} alt="Descriptive alt for yellow rectangle" />
         <img src={pinkRect} alt="Descriptive alt for pink rectangle" />
         <img src={waveRect} alt="Descriptive alt for wave rectangle" />
       </div>
