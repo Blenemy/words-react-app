@@ -18,13 +18,13 @@ export const useGamePageDecks = () => {
     }
   }, [token, navigate, location.pathname]);
 
-  const query = useQuery({
+  const { data: defaultDecks } = useQuery({
     queryFn: () => getDecks(token),
     queryKey: ["deck"],
   });
 
-  const defaultDecks: DeckFromServer[] =
-    query.data?.filter((deck: DeckFromServer) => deck.default) || null;
+  // const defaultDecks: DeckFromServer[] =
+  //   query.data?.filter((deck: DeckFromServer) => deck.default) || null;
 
   return { defaultDecks, navigate, token };
 };

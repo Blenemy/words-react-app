@@ -17,7 +17,7 @@ export const StackOfDecks: React.FC<Props> = ({
   }
 
   return (
-    <div onClick={onDeckClick}>
+    <>
       <div className="relative flex items-center justify-center">
         <h3 className="text-primary mb-20 title-decorator text-center w-[182px]">
           {deckTitle}
@@ -28,7 +28,10 @@ export const StackOfDecks: React.FC<Props> = ({
           className="absolute left-1/2 top-[-20px] -translate-x-1/2"
         />
       </div>
-      <div className="stack relative">
+      <div
+        className="stack relative hover:scale-105 duration-300"
+        onClick={onDeckClick}
+      >
         <div className="card w-full h-[329px] absolute rounded-3xl bg-primary" />
         <div className="card w-full h-[329px] absolute rounded-3xl bg-secondary" />
         <img
@@ -37,6 +40,6 @@ export const StackOfDecks: React.FC<Props> = ({
           className="card w-full h-[329px] absolute rounded-3xl"
         />
       </div>
-    </div>
+    </>
   );
 };

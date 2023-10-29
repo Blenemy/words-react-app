@@ -17,9 +17,9 @@ export const DefaultDecksList: React.FC<Props> = ({
   return (
     <>
       {defaultDecks?.map((deck) => (
-        <div key={deck.id} className="basis-1/3">
+        <div key={deck.id} className="basis-1/3 min-h-[500px] px-6">
           <StackOfDecks
-            frontImage={deck.preview![0]}
+            frontImage={deck.image}
             onDeckClick={() => handleSumbitDeck(deck.id, token, navigateFunc)}
             deckTitle={deck.title}
           />

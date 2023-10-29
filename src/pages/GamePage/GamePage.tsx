@@ -24,7 +24,7 @@ export const GamePage = () => {
               </h2>
             </div>
           </div>
-          <div className="flex gap-6 relative">
+          <div className="flex relative flex-wrap mx-[-24px]">
             <DefaultDecksList
               defaultDecks={defaultDecks}
               navigateFunc={navigate}
