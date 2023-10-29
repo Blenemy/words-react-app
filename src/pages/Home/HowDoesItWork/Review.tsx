@@ -47,7 +47,7 @@ export const Review = () => {
           <button
             onClick={() => setShowAll(!showAll)}
             type="button"
-            className="text-black"
+            className="text-black underline"
           >
             {showAll ? "See Less" : "See All"}
           </button>
