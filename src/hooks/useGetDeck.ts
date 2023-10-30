@@ -15,6 +15,7 @@ export const useGetDeck = (
     onSuccess: (payload) => {
       setCardInDeck(payload.cards);
     },
+    staleTime: 1000 * 60 * 5, // 5 minutes
   });
 
   return { cardInDecks, isLoading };

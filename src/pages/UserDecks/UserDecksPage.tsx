@@ -11,7 +11,6 @@ import { UserDeckList } from "./UserDeckList/UserDeckList";
 import { FileDropZone } from "../../components/FileDropZone/FileDropZone";
 import { NoResluts } from "../../components/NoResults/NoResluts";
 import { GlobalLoader } from "../../components/Loaders/GlobalLoader";
-import { DeckFromServer } from "../../types/DeckFromServer";
 
 export const UserDecksPage = () => {
   const token = Cookies.get("token");
@@ -21,7 +20,8 @@ export const UserDecksPage = () => {
     setFileError(payload);
   };
 
-  const { data } = useGetUserDecks(token);
+  const { userDecks } = useGetUserDecks(token);
+
   const {
     handleOnSubmit,
     previewImage,
@@ -30,6 +30,17 @@ export const UserDecksPage = () => {
     setPreviewImage,
     addDeckLoading,
   } = useAddDeck();
+
+  const onFileDrop = (file: File) => {
+    const reader = new FileReader();
+    reader.addEventListener("load", () => {
+      setFormData((prevData) => ({
+        ...prevData,
+        image: reader.result as string,
+      }));
+    });
+    reader.readAsDataURL(file);
+  };
 
   if (addDeckLoading) {
     return <GlobalLoader />;
@@ -43,10 +54,8 @@ export const UserDecksPage = () => {
 
       <div className="flex gap-32">
         <div className="flex flex-wrap mx-[-24px] gap-y-6 basis-2/3">
-          {!!data.filter((item: DeckFromServer) => !item.default).length ? (
-            <UserDeckList
-              decks={data.filter((item: DeckFromServer) => !item.default)}
-            />
+          {!!userDecks?.length ? (
+            <UserDeckList decks={userDecks} />
           ) : (
             <NoResluts highlightedText="a new custom deck" />
           )}
@@ -55,18 +64,9 @@ export const UserDecksPage = () => {
           className="basis-1/3 text-black flex flex-col gap-10"
           onSubmit={handleOnSubmit}
         >
-          <h3 className="text-primary text-center text-xl">Add you deck</h3>
+          <h3 className="text-center text-2xl text-red-600">Add you deck</h3>
           <FileDropZone
-            onFileUpload={(file) => {
-              const reader = new FileReader();
-              reader.addEventListener("load", () => {
-                setFormData((prevData) => ({
-                  ...prevData,
-                  image: reader.result as string,
-                }));
-              });
-              reader.readAsDataURL(file);
-            }}
+            onFileUpload={onFileDrop}
             setPreviewImage={setPreviewImage}
             previewImage={previewImage}
             handleDragError={handleDragError}
