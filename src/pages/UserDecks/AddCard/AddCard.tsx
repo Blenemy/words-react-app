@@ -13,6 +13,17 @@ export const AddCard = ({ deckId }: { deckId: number | undefined }) => {
     setFileError(payload);
   };
 
+  const handleFileUpload = (file: File) => {
+    const reader = new FileReader();
+    reader.addEventListener("load", () => {
+      setFormData((prevData) => ({
+        ...prevData,
+        image: reader.result as string,
+      }));
+    });
+    reader.readAsDataURL(file);
+  };
+
   const {
     formData,
     setFormData,
@@ -69,16 +80,7 @@ export const AddCard = ({ deckId }: { deckId: number | undefined }) => {
             autoComplete="off"
           />
           <FileDropZone
-            onFileUpload={(file) => {
-              const reader = new FileReader();
-              reader.addEventListener("load", () => {
-                setFormData((prevData) => ({
-                  ...prevData,
-                  image: reader.result as string,
-                }));
-              });
-              reader.readAsDataURL(file);
-            }}
+            onFileUpload={handleFileUpload}
             setPreviewImage={setPreviewImage}
             previewImage={previewImage}
             fileError={fileError}

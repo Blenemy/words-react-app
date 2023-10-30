@@ -15,10 +15,10 @@ import { ReactComponent as Image } from "../../assets/Vector.svg";
  */
 
 interface FileDropZoneProps {
-  onFileUpload?: (file: File) => void;
+  onFileUpload: (file: File) => void;
   setPreviewImage: React.Dispatch<React.SetStateAction<string | null>>;
   previewImage: string | null;
-  fileError?: string;
+  fileError: string;
   handleDragError: (payload: string) => void;
 }
 
@@ -32,20 +32,13 @@ export const FileDropZone: React.FC<FileDropZoneProps> = memo(
   }): JSX.Element => {
     const onDrop = useCallback(
       (acceptedFiles: File[]) => {
-        try {
-          const file = acceptedFiles[0];
-          const objectURL = URL.createObjectURL(file);
-          setPreviewImage(objectURL);
+        const file = acceptedFiles[0];
+        if (!file) return handleDragError("File not accepted.");
 
-          if (onFileUpload) {
-            onFileUpload(file);
-            handleDragError("");
-          }
-        } catch (error) {
-          handleDragError(
-            "Overload resolution failed. The maximum size of an image is 30mb"
-          );
-        }
+        const objectURL = URL.createObjectURL(file);
+        setPreviewImage(objectURL);
+        onFileUpload(file);
+        handleDragError("");
       },
       [onFileUpload, setPreviewImage, handleDragError]
     );
