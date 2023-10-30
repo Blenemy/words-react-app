@@ -5,11 +5,17 @@ import { DeckCard } from "../../../components/DeckCard/DeckCard";
 import { AddCard } from "../AddCard/AddCard";
 import { BreadCrumbs } from "../../../components/BreadCrumbs/BreadCrumbs";
 import { useGetDeck } from "../../../hooks/useGetDeck";
+import { NoResluts } from "../../../components/NoResults/NoResluts";
+import { GlobalLoader } from "../../../components/Loaders/GlobalLoader";
 
 export const ChangeDeck = () => {
   const { deckId } = useParams();
   const token = Cookies.get("token");
-  const { cardInDeck } = useGetDeck(deckId, token);
+  const { cardInDecks, isLoading } = useGetDeck(deckId, token);
+
+  if (isLoading) {
+    return <GlobalLoader />;
+  }
 
   return (
     <div className="p-16">
@@ -19,18 +25,16 @@ export const ChangeDeck = () => {
 
       <div className="flex gap-32">
         <div className="flex flex-wrap gap-4 basis-8/12">
-          {!!cardInDeck?.length ? (
+          {!!cardInDecks?.length ? (
             <>
-              {cardInDeck.map((card) => (
+              {cardInDecks.map((card) => (
                 <div key={card.id} style={{ flexBasis: "calc(33.33% - 1rem)" }}>
                   <DeckCard card={card} />
                 </div>
               ))}
             </>
           ) : (
-            <>
-              <div>'There are no cards in this deck'</div>
-            </>
+            <NoResluts highlightedText="a new custom card" />
           )}
         </div>
         {deckId && (

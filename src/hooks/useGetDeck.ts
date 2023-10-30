@@ -7,9 +7,9 @@ export const useGetDeck = (
   deckId: string | undefined,
   token: string | undefined
 ) => {
-  const [cardInDeck, setCardInDeck] = useState<CardFromServer[]>();
+  const [cardInDecks, setCardInDeck] = useState<CardFromServer[]>();
 
-  useQuery({
+  const { isLoading } = useQuery({
     queryFn: () => getDeckInfo(deckId, token),
     queryKey: [`deck${deckId}`],
     onSuccess: (payload) => {
@@ -17,5 +17,5 @@ export const useGetDeck = (
     },
   });
 
-  return { cardInDeck };
+  return { cardInDecks, isLoading };
 };

@@ -16,18 +16,6 @@ export const useAddCart = (deckId: number | undefined) => {
     image: "",
   });
 
-  const onDrop = (acceptedFiles: File[]) => {
-    const file = acceptedFiles[0];
-    const reader = new FileReader();
-    reader.addEventListener("load", () => {
-      setFormData((prevData) => ({
-        ...prevData,
-        image: reader.result,
-      }));
-    });
-    reader.readAsDataURL(file);
-  };
-
   const { mutateAsync, isLoading } = useMutation(
     (data: { dataToSend: Object; token: string | undefined }) =>
       handleAddCard(data.dataToSend, data.token),
@@ -68,7 +56,6 @@ export const useAddCart = (deckId: number | undefined) => {
     formData,
     setFormData,
     handleAddCardOnSubmit,
-    onDrop,
     error,
     previewImage,
     setPreviewImage,

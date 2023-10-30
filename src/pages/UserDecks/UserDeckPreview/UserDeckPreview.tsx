@@ -18,7 +18,7 @@ export const UserDeckPreview: React.FC<Props> = ({
 
   return (
     <div
-      className="relative w-[424px] h-[220px] rounded-3xl hover:cursor-pointer"
+      className="relative basis-1/2 h-[220px] rounded-3xl hover:cursor-pointer px-3 hover:scale-105 duration-300"
       onClick={() => redirectFunc(deck.id)}
     >
       <ImageComponent
@@ -34,7 +34,7 @@ export const UserDeckPreview: React.FC<Props> = ({
         {deck.title}
       </h3>
       <button
-        className="absolute top-0 right-0 text-black py-2 px-7 rounded-3xl blured-image font-['Roboto_flex'] text-xl hover:text-violetStroke duration-300"
+        className="absolute top-0 right-3 text-black py-2 px-7 rounded-3xl blured-image font-['Roboto_flex'] text-xl hover:text-violetStroke duration-300"
         onClick={(event) => {
           event.stopPropagation();
           handleSumbitDeck(deck.id);

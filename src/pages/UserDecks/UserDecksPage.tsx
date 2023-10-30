@@ -9,6 +9,9 @@ import { useGetUserDecks } from "../../hooks/useGetUserDecks";
 import { useAddDeck } from "../../hooks/useAddDeck";
 import { UserDeckList } from "./UserDeckList/UserDeckList";
 import { FileDropZone } from "../../components/FileDropZone/FileDropZone";
+import { NoResluts } from "../../components/NoResults/NoResluts";
+import { GlobalLoader } from "../../components/Loaders/GlobalLoader";
+import { DeckFromServer } from "../../types/DeckFromServer";
 
 export const UserDecksPage = () => {
   const token = Cookies.get("token");
@@ -18,14 +21,19 @@ export const UserDecksPage = () => {
     setFileError(payload);
   };
 
-  const { decks, setDecks } = useGetUserDecks(token);
+  const { data } = useGetUserDecks(token);
   const {
-    handleOnClick,
+    handleOnSubmit,
     previewImage,
     formData,
     setFormData,
     setPreviewImage,
-  } = useAddDeck(token, setDecks, decks);
+    addDeckLoading,
+  } = useAddDeck();
+
+  if (addDeckLoading) {
+    return <GlobalLoader />;
+  }
 
   return (
     <div className="p-16">
@@ -34,14 +42,19 @@ export const UserDecksPage = () => {
       </div>
 
       <div className="flex gap-32">
-        <div className="flex flex-wrap gap-6 basis-2/3">
-          {!!decks?.length ? (
-            <UserDeckList decks={decks} />
+        <div className="flex flex-wrap mx-[-24px] gap-y-6 basis-2/3">
+          {!!data.filter((item: DeckFromServer) => !item.default).length ? (
+            <UserDeckList
+              decks={data.filter((item: DeckFromServer) => !item.default)}
+            />
           ) : (
-            <div className="text-primary ">There are no decks here :(</div>
+            <NoResluts highlightedText="a new custom deck" />
           )}
         </div>
-        <form className="basis-1/3 text-black flex flex-col gap-10">
+        <form
+          className="basis-1/3 text-black flex flex-col gap-10"
+          onSubmit={handleOnSubmit}
+        >
           <h3 className="text-primary text-center text-xl">Add you deck</h3>
           <FileDropZone
             onFileUpload={(file) => {
@@ -74,7 +87,6 @@ export const UserDecksPage = () => {
           <UserAccountButton
             type="submit"
             text="Add a deck"
-            handleOnClick={handleOnClick}
             variant="secondary"
           />
         </form>

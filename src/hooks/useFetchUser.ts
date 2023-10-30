@@ -2,14 +2,19 @@ import { useState, useEffect } from "react";
 import { getUser } from "../api/getUser";
 import Cookies from "js-cookie";
 import { setUser } from "../features/userSlice";
-import { useAppDispatch } from "../app/hooks";
+import { useAppDispatch, useAppSelector } from "../app/hooks";
 
 export const useFetchUser = () => {
   const [isLoading, setIsLoading] = useState(false);
+  const { user } = useAppSelector((state) => state.user);
   const token = Cookies.get("token");
   const dispatch = useAppDispatch();
 
   useEffect(() => {
+    if (user) {
+      return;
+    }
+
     const fetchUser = async () => {
       setIsLoading(true);
       try {
@@ -25,7 +30,7 @@ export const useFetchUser = () => {
     };
 
     fetchUser();
-  }, [token, dispatch]);
+  }, [token, dispatch, user]);
 
   return { isLoading };
 };

@@ -19,7 +19,7 @@ export const useGamePageDecks = () => {
 
   const { data: defaultDecks } = useQuery({
     queryFn: () => getDecks(token),
-    queryKey: ["deck"],
+    queryKey: ["decks"],
   });
 
   return { defaultDecks, navigate, token };

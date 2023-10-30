@@ -1,45 +1,38 @@
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { handleAddDeck } from "../api/handleAddDeck";
 import { useState } from "react";
-import { DeckFromServer } from "../types/DeckFromServer";
+import Cookies from "js-cookie";
 
-export const useAddDeck = (
-  token: string | undefined,
-  setDecks: React.Dispatch<React.SetStateAction<DeckFromServer[] | null>>,
-  decks: DeckFromServer[] | null
-) => {
+export const useAddDeck = () => {
+  const queryClient = useQueryClient();
+  const token = Cookies.get("token");
   const [formData, setFormData] = useState({ name: "", image: "" });
   const [previewImage, setPreviewImage] = useState<string | null>(null);
-  const queryClient = useQueryClient();
 
-  const { mutateAsync } = useMutation(
+  const { mutateAsync, isLoading: addDeckLoading } = useMutation(
     ({ formData, token }: { formData: any; token: string | undefined }) =>
       handleAddDeck(formData, token),
     {
-      onSuccess: (payload) => {
+      onSuccess: () => {
+        queryClient.invalidateQueries(["user-decks"]);
         setFormData({ name: "", image: "" });
         setPreviewImage(null);
-
-        if (decks) {
-          setDecks((prev) => [...prev!, payload]);
-        } else {
-          setDecks([payload]);
-        }
-
-        queryClient.invalidateQueries(["decks"]);
       },
     }
   );
 
-  const handleOnClick = async () => {
+  const handleOnSubmit = async (event: any) => {
+    event.preventDefault();
+
     await mutateAsync({ formData, token });
   };
 
   return {
-    handleOnClick,
+    handleOnSubmit,
     previewImage,
     formData,
     setFormData,
     setPreviewImage,
+    addDeckLoading,
   };
 };

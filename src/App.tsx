@@ -1,4 +1,4 @@
-import { Routes, Route, useLocation } from "react-router-dom";
+import { Routes, Route } from "react-router-dom";
 import { UserAccountPage } from "./pages/UserAccount/UserAccountPage";
 import {
   ROUTE_AUTHORIZATION,
@@ -24,11 +24,6 @@ import { RegistrationForm } from "./pages/AuthPage/Signup/RegistrationForm";
 import { AuthPage } from "./pages/AuthPage/AuthPage";
 
 function App() {
-  const location = useLocation();
-  const showHeader = ![ROUTE_REGISTRATION, ROUTE_AUTHORIZATION].includes(
-    location.pathname
-  );
-
   const { isLoading } = useFetchUser();
 
   return (
@@ -37,7 +32,7 @@ function App() {
         <GlobalLoader />
       ) : (
         <div className="wrapper flex flex-col text-white min-h-screen  overflow-x-hidden">
-          {showHeader && <Header />}
+          {<Header />}
           <main className="grid__main min-h-screen grow">
             <Routes>
               <Route path={ROUTE_HOME} element={<HomePage />} />
