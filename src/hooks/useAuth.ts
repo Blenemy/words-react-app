@@ -16,7 +16,7 @@ export const useAuth = () => {
   const navigate = useNavigate();
   const queryClient = useQueryClient();
 
-  const loginUserMutation = useMutation(loginUser, {
+  const { mutate, isLoading } = useMutation(loginUser, {
     onSuccess: async ({ token }) => {
       Cookies.set("token", token, { expires: 1 });
       const userData = await queryClient.fetchQuery(
@@ -39,8 +39,8 @@ export const useAuth = () => {
   const handleOnSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event?.preventDefault();
     const { username, password } = formData;
-    loginUserMutation.mutate({ username, password });
+    mutate({ username, password });
   };
 
-  return { handleOnSubmit, formData, setFormData, error };
+  return { handleOnSubmit, formData, setFormData, error, isLoading };
 };

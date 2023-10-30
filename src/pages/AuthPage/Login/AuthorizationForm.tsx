@@ -1,9 +1,14 @@
 import { CustomInput } from "../../../components/CustomInput/CustomInput";
+import { GlobalLoader } from "../../../components/Loaders/GlobalLoader";
 import { useAuth } from "../../../hooks/useAuth";
 import { handleInputChange } from "../../../utils/helpers";
 
 export const AuthorizationForm = () => {
-  const { formData, setFormData, handleOnSubmit, error } = useAuth();
+  const { formData, setFormData, handleOnSubmit, error, isLoading } = useAuth();
+
+  if (isLoading) {
+    return <GlobalLoader />;
+  }
 
   return (
     <form
