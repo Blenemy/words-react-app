@@ -4,6 +4,7 @@ import { useLocation, useNavigate } from "react-router-dom";
 import { ROUTE_AUTHORIZATION } from "../data/constants";
 import { getDecks } from "../api/getDeck";
 import Cookies from "js-cookie";
+import { DeckFromServer } from "../types/DeckFromServer";
 
 export const useGamePageDecks = () => {
   const token = Cookies.get("token");
@@ -17,10 +18,12 @@ export const useGamePageDecks = () => {
     }
   }, [token, navigate, location.pathname]);
 
-  const { data: defaultDecks } = useQuery({
+  const { data } = useQuery({
     queryFn: () => getDecks(token),
     queryKey: ["decks"],
   });
+
+  const defaultDecks = data.filter((deck: DeckFromServer) => deck.default);
 
   return { defaultDecks, navigate, token };
 };
