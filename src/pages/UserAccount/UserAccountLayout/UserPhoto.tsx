@@ -31,6 +31,7 @@ export const UserPhoto: React.FC<UserPhotoProps> = memo(
               id="avatarInput"
               onChange={handleFileChange}
               className="hidden"
+              accept="image/*"
             />
           </div>
           <div>
