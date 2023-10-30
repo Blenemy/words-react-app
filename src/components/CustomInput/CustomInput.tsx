@@ -1,4 +1,5 @@
 import { HTMLAttributes, useState } from "react";
+import show_pass_icon from "../../assets/showPassIcon.svg";
 
 /**
  * Компонент для кастомного ввода.
@@ -24,7 +25,8 @@ interface CustomInputProps extends HTMLAttributes<HTMLInputElement> {
   value: string | undefined | number;
   onChangeHandler: any;
   autoComplete: string;
-  error?: string;
+  showPassIcon?: boolean;
+  error?: string | false | undefined;
 }
 
 export const CustomInput: React.FC<CustomInputProps> = ({
@@ -37,10 +39,12 @@ export const CustomInput: React.FC<CustomInputProps> = ({
   onChangeHandler,
   autoComplete,
   error,
+  showPassIcon,
   ...props
 }): JSX.Element => {
   const [placeholderColor, setPlaceholderColor] = useState("");
   const [borderOnFocus, setBorderOnFocus] = useState("");
+  const [showPassword, setShowPassword] = useState(false);
   const currentColor = error ? "border-red-400" : "";
 
   const handleOnFocus = () => {
@@ -53,19 +57,35 @@ export const CustomInput: React.FC<CustomInputProps> = ({
     setBorderOnFocus("");
   };
 
+  const togglePasswordVisibility = () => {
+    setShowPassword(!showPassword);
+  };
+
   return (
-    <input
-      placeholder={placeholder}
-      name={name}
-      type={type}
-      className={`border-b ${currentColor} ${placeholderColor} ${borderOnFocus} placeholder:font-medium focus:outline-none px-4 py-2 w-full ${classname} font-['Roboto_flex']`}
-      required={required}
-      value={value}
-      onChange={onChangeHandler}
-      autoComplete={autoComplete}
-      onFocus={handleOnFocus}
-      onBlur={handleOnBlur}
-      {...props}
-    />
+    <div className="relative">
+      <input
+        placeholder={placeholder}
+        name={name}
+        type={showPassword ? "text" : type}
+        className={`border-b ${currentColor} ${placeholderColor} ${borderOnFocus} placeholder:font-medium focus:outline-none px-4 py-2 w-full ${classname} font-['Roboto_flex']`}
+        required={required}
+        value={value}
+        onChange={onChangeHandler}
+        autoComplete={autoComplete}
+        onFocus={handleOnFocus}
+        onBlur={handleOnBlur}
+        {...props}
+      />
+      {showPassIcon && (
+        <img
+          className="absolute top-0 right-0 translate-y-[15px] hover:cursor-pointer"
+          src={show_pass_icon}
+          alt="show pass icon"
+          onClick={togglePasswordVisibility}
+        />
+      )}
+
+      {error && <div className="text-sm text-red-500 mt-1 pl-1">{error}</div>}
+    </div>
   );
 };

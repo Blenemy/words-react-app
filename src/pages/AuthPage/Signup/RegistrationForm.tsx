@@ -1,14 +1,14 @@
 import { CustomInput } from "../../../components/CustomInput/CustomInput";
+import { RedirectNotification } from "../../../components/RedirectNotification/RedirectNotification";
+import { ROUTE_AUTHORIZATION } from "../../../data/constants";
 import { useRegistration } from "../../../hooks/useRegistration";
-import { handleInputChange } from "../../../utils/helpers";
 
 export const RegistrationForm = () => {
-  const { formData, setFormData, handleOnSubmit, fieldErrors } =
-    useRegistration();
+  const { formik, showAlert, isLoading } = useRegistration();
 
   return (
     <form
-      onSubmit={handleOnSubmit}
+      onSubmit={formik.handleSubmit}
       className="flex flex-col font-['Roboto_flex'] mb-8 w-[424px]"
     >
       <h3 className="mb-[52px] text-3xl text-center font-medium">
@@ -19,61 +19,61 @@ export const RegistrationForm = () => {
           placeholder="Username"
           name={"username"}
           type={"text"}
-          required
-          value={formData.username}
-          onChangeHandler={(event: Event) =>
-            handleInputChange(event, setFormData)
-          }
+          value={formik.values.username}
+          onChangeHandler={formik.handleChange}
+          onBlur={formik.handleBlur}
           autoComplete="off"
           classname="w-[424px]"
+          error={formik.touched.username && formik.errors.username}
         />
         <CustomInput
           placeholder="Email"
           name={"email"}
           type={"email"}
-          required
-          value={formData.email}
-          onChangeHandler={(event: Event) =>
-            handleInputChange(event, setFormData)
-          }
+          value={formik.values.email}
+          onChangeHandler={formik.handleChange}
+          onBlur={formik.handleBlur}
           autoComplete="off"
           classname="w-[424px]"
-          error={fieldErrors.email}
+          error={formik.touched.email && formik.errors.email}
         />
         <CustomInput
           placeholder="Password"
           name={"password"}
           type={"password"}
-          required
-          value={formData.password}
-          onChangeHandler={(event: Event) =>
-            handleInputChange(event, setFormData)
-          }
+          value={formik.values.password}
+          onChangeHandler={formik.handleChange}
+          onBlur={formik.handleBlur}
           autoComplete="off"
           classname="w-[424px]"
-          error={fieldErrors.password}
+          error={formik.touched.password && formik.errors.password}
+          showPassIcon
         />
         <CustomInput
           placeholder="Confirm password"
           name={"confirmPassword"}
           type={"password"}
-          required
-          value={formData.confirmPassword}
-          onChangeHandler={(event: Event) =>
-            handleInputChange(event, setFormData)
-          }
+          value={formik.values.confirmPassword}
+          onChangeHandler={formik.handleChange}
+          onBlur={formik.handleBlur}
           autoComplete="off"
           classname="w-[424px]"
-          error={fieldErrors.password}
+          error={
+            formik.touched.confirmPassword && formik.errors.confirmPassword
+          }
+          showPassIcon
         />
       </div>
       <button
         type="submit"
-        className="bg-lilackButton rounded-3xl w-full py-2 text-primary font-semibold border-2 border-primary"
+        className="bg-lilackButton rounded-3xl w-full py-2 text-primary font-semibold border-2 border-primary mb-3"
+        disabled={isLoading}
       >
-        Sign up
+        {isLoading ? "Processing..." : "Sign up"}
       </button>
-      {fieldErrors.message && <div>{fieldErrors.message}</div>}
+      {showAlert && (
+        <RedirectNotification seconds={5} redirectTo={ROUTE_AUTHORIZATION} />
+      )}
     </form>
   );
 };

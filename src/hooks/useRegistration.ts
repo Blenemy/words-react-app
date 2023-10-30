@@ -1,86 +1,57 @@
-import { useState } from "react";
-import axios from "axios";
-import { BASE_URL, ROUTE_HOME } from "../data/constants";
-import { useNavigate } from "react-router-dom";
-import { UserData } from "../types/UserData";
 import { useMutation } from "@tanstack/react-query";
-
-type FieldsErrors = {
-  username?: string;
-  email?: string;
-  password?: string;
-  message?: string;
-};
+import axios from "axios";
+import { useFormik } from "formik";
+import * as Yup from "yup";
+import { BASE_URL } from "../data/constants";
+import { UserData } from "../types/UserData";
+import { useState } from "react";
 
 export const useRegistration = () => {
-  const navigate = useNavigate();
-  const [formData, setFormData] = useState<UserData>({
-    username: "",
-    email: "",
-    password: "",
-    confirmPassword: "",
-  });
-  const [fieldErrors, setFieldErrors] = useState<FieldsErrors>({});
+  const [showAlert, setShowAlert] = useState(false);
 
   const registerUser = (data: UserData) =>
     axios.post(BASE_URL + "/user/register/", data);
 
-  const mutation = useMutation(registerUser, {
-    onSuccess: () => {
-      setFormData({
-        username: "",
-        email: "",
-        password: "",
-        confirmPassword: "",
-      });
-      navigate(ROUTE_HOME);
-    },
-    onError: (error: any) => {
-      const emailError = error.response.data.email[0];
-      setFieldErrors((prev) => ({
-        ...prev,
-        email: emailError,
-        message: emailError,
-      }));
-    },
+  const { isLoading, mutate } = useMutation({
+    mutationFn: registerUser,
   });
 
-  const handleOnSubmit = (event: React.FormEvent<HTMLFormElement>) => {
-    event.preventDefault();
-    setFieldErrors({
+  const formik = useFormik({
+    initialValues: {
       username: "",
       email: "",
       password: "",
-    });
-    let errors: FieldsErrors = {};
+      confirmPassword: "",
+    },
+    validationSchema: Yup.object({
+      username: Yup.string()
+        .required("required field")
+        .min(4, "Username must be at least 4 characters"),
+      email: Yup.string()
+        .test("domain", "Корабель там 🖕", (value) => {
+          return !value?.endsWith(".ru") && !value?.endsWith(".by");
+        })
+        .matches(
+          /^[a-zA-Z0-9._+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/,
+          "enter valid email"
+        )
+        .required("required field"),
+      password: Yup.string()
+        .required("required field")
+        .min(4, "Password must be at least 4 characters"),
+      confirmPassword: Yup.string()
+        .oneOf([Yup.ref("password"), null as any], "Passwords don't match")
+        .required("required field"),
+    }),
+    onSubmit: (values, { resetForm }) => {
+      mutate(values, {
+        onSuccess: () => {
+          resetForm();
+          setShowAlert(true);
+        },
+      });
+    },
+  });
 
-    if (formData.password !== formData.confirmPassword) {
-      errors.password = "Passwords don't match";
-      errors.message = "Passwords don't match";
-    }
-
-    const emailPattern =
-      /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
-    const isValidEmail = emailPattern.test(formData.email!);
-
-    if (!isValidEmail) {
-      errors.email = "Please enter a valid email";
-      errors.message = "Please enter a valid email";
-    }
-
-    if (Object.keys(errors).length > 0) {
-      setFieldErrors(errors);
-      return;
-    }
-
-    const dataToSend = {
-      username: formData.username,
-      password: formData.password,
-      email: formData.email,
-    };
-
-    mutation.mutate(dataToSend);
-  };
-
-  return { handleOnSubmit, formData, setFormData, fieldErrors };
+  return { formik, showAlert, isLoading };
 };
