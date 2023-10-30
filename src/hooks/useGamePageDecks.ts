@@ -23,7 +23,7 @@ export const useGamePageDecks = () => {
     queryKey: ["decks"],
   });
 
-  const defaultDecks = data.filter((deck: DeckFromServer) => deck.default);
+  const defaultDecks = data?.filter((deck: DeckFromServer) => deck.default);
 
   return { defaultDecks, navigate, token };
 };
