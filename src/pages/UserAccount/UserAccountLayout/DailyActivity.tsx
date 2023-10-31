@@ -29,7 +29,7 @@ export const DailyActivity = () => {
         className="rounded-[50%] object-cover h-[84px] w-[84px] self-center"
       />
       <p className="text-primary">
-        {user.progress[formattedDate]} learned words today{" "}
+        {user.progress[formattedDate] || 0} learned words today{" "}
       </p>
     </div>
   );
