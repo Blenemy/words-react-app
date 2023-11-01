@@ -48,9 +48,7 @@ export const AuthorizationForm = () => {
         <RedirectNotification seconds={5} redirectTo={ROUTE_HOME} />
       )}
       {error && error.response && (
-        <div className="text-red-500">
-          {(error.response.data as { error: string }).error}
-        </div>
+        <div className="text-red-500">{error.response.data.error}</div>
       )}
     </form>
   );

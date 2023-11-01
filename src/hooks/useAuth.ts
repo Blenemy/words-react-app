@@ -18,13 +18,17 @@ type LoginOutput = {
   token: string;
 };
 
+type ServerError = {
+  error: string[];
+};
+
 export const useAuth = () => {
   const [showAlert, setShowAlert] = useState(false);
   const dispatch = useAppDispatch();
 
   const { isLoading, mutate, error } = useMutation<
     LoginOutput,
-    AxiosError,
+    AxiosError<ServerError>,
     LoginInput
   >(loginUser, {
     onSuccess: async ({ token }) => {
