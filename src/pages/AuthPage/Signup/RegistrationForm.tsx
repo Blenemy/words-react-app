@@ -4,7 +4,7 @@ import { ROUTE_AUTHORIZATION } from "../../../data/constants";
 import { useRegistration } from "../../../hooks/useRegistration";
 
 export const RegistrationForm = () => {
-  const { formik, showAlert, isLoading } = useRegistration();
+  const { formik, showAlert, isLoading, error } = useRegistration();
 
   return (
     <form
@@ -73,6 +73,9 @@ export const RegistrationForm = () => {
       </button>
       {showAlert && (
         <RedirectNotification seconds={5} redirectTo={ROUTE_AUTHORIZATION} />
+      )}
+      {error && error.response && (
+        <div className="text-red-500">{error.response.data.email}</div>
       )}
     </form>
   );
