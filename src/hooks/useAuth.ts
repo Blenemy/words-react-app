@@ -7,12 +7,26 @@ import { loginUser } from "../api/loginUser";
 import { getUser } from "../api/getUser";
 import { useFormik } from "formik";
 import { authentificationSchema } from "../validationSchemas/authentificationSchema";
+import { AxiosError } from "axios";
+
+type LoginInput = {
+  username: string;
+  password: string;
+};
+
+type LoginOutput = {
+  token: string;
+};
 
 export const useAuth = () => {
   const [showAlert, setShowAlert] = useState(false);
   const dispatch = useAppDispatch();
 
-  const { isLoading, mutate } = useMutation(loginUser, {
+  const { isLoading, mutate, error } = useMutation<
+    LoginOutput,
+    AxiosError,
+    LoginInput
+  >(loginUser, {
     onSuccess: async ({ token }) => {
       Cookies.set("token", token, { expires: 1 });
       const userData = await getUser(token);
@@ -36,5 +50,5 @@ export const useAuth = () => {
     },
   });
 
-  return { isLoading, formik, showAlert };
+  return { isLoading, formik, showAlert, error };
 };

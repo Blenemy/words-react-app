@@ -4,7 +4,7 @@ import { ROUTE_HOME } from "../../../data/constants";
 import { useAuth } from "../../../hooks/useAuth";
 
 export const AuthorizationForm = () => {
-  const { isLoading, formik, showAlert } = useAuth();
+  const { isLoading, formik, showAlert, error } = useAuth();
 
   return (
     <form
@@ -47,7 +47,11 @@ export const AuthorizationForm = () => {
       {showAlert && (
         <RedirectNotification seconds={5} redirectTo={ROUTE_HOME} />
       )}
-      {/* {error && <div className="text-red-500">{error}</div>} */}
+      {error && error.response && (
+        <div className="text-red-500">
+          {(error.response.data as { error: string }).error}
+        </div>
+      )}
     </form>
   );
 };
