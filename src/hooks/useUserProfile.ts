@@ -55,6 +55,7 @@ export const useUserProfile = (
   const { isLoading } = useQuery({
     queryFn: () => getUser(token),
     queryKey: ["user"],
+    enabled: !!token,
     onSuccess: (payload) => {
       dispatch(setUser(payload));
       setFormData((prev) => ({

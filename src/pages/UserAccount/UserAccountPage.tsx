@@ -1,6 +1,6 @@
 import { useEffect } from "react";
-import { useLocation, useNavigate } from "react-router-dom";
-import { ROUTE_AUTHORIZATION } from "../../data/constants";
+import { useNavigate } from "react-router-dom";
+import { ROUTE_NOT_AVAILABLE } from "../../data/constants";
 import { useLogout } from "../../hooks/useLogout";
 import { UserAccountReview } from "./UserAccountReview/UserAccountReview";
 import { Feedback } from "../../components/Feedback/Feedback";
@@ -17,8 +17,14 @@ export type UserAccountFormType = {
 export const UserAccountPage = () => {
   const { token } = useLogout();
   const navigate = useNavigate();
-  const location = useLocation();
   const { user } = useAppSelector((state) => state.user);
+
+  useEffect(() => {
+    if (!user) {
+      navigate(ROUTE_NOT_AVAILABLE, { replace: true });
+    }
+  }, [user, navigate]);
+
   const {
     formData,
     setFormData,
@@ -28,12 +34,6 @@ export const UserAccountPage = () => {
     handleOnCancel,
     isLoading,
   } = useUserProfile(token, user);
-
-  useEffect(() => {
-    if (!token) {
-      navigate(ROUTE_AUTHORIZATION, { state: { from: location.pathname } });
-    }
-  }, [navigate, token, location.pathname]);
 
   if (isLoading) {
     return null;

@@ -1,10 +1,11 @@
-import { Routes, Route } from "react-router-dom";
+import { Routes, Route, useLocation } from "react-router-dom";
 import { UserAccountPage } from "./pages/UserAccount/UserAccountPage";
 import {
   ROUTE_AUTHORIZATION,
   ROUTE_CARD_GAME,
   ROUTE_FLIP_CARD,
   ROUTE_HOME,
+  ROUTE_NOT_AVAILABLE,
   ROUTE_PROFILE,
   ROUTE_REGISTRATION,
   ROUTE_USER_DECKS,
@@ -22,9 +23,12 @@ import { GlobalLoader } from "./components/Loaders/GlobalLoader";
 import { AuthorizationForm } from "./pages/AuthPage/Login/AuthorizationForm";
 import { RegistrationForm } from "./pages/AuthPage/Signup/RegistrationForm";
 import { AuthPage } from "./pages/AuthPage/AuthPage";
+import { NotAvailable } from "./components/NotAvailable/NotAvailable";
 
 function App() {
   const { isLoading } = useFetchUser();
+  const location = useLocation();
+  const showHeaderAndFooter = location.pathname !== ROUTE_NOT_AVAILABLE;
 
   return (
     <div className="App">
@@ -32,7 +36,7 @@ function App() {
         <GlobalLoader />
       ) : (
         <div className="wrapper flex flex-col text-white min-h-screen  overflow-x-hidden">
-          {<Header />}
+          {showHeaderAndFooter && <Header />}
           <main className="grid__main min-h-screen grow">
             <Routes>
               <Route path={ROUTE_HOME} element={<HomePage />} />
@@ -67,9 +71,10 @@ function App() {
                 <Route index element={<UserDecksPage />} />
                 <Route path=":deckId" element={<ChangeDeck />} />
               </Route>
+              <Route path={ROUTE_NOT_AVAILABLE} element={<NotAvailable />} />
             </Routes>
           </main>
-          <Footer />
+          {showHeaderAndFooter && <Footer />}
         </div>
       )}
     </div>

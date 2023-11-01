@@ -8,6 +8,7 @@ export const ROUTE_BOOK_CARD = "/book-card";
 export const ROUTE_ADD_CARD = "/add-card";
 export const ROUTE_USER_DECKS = "/user-decks";
 export const ROUTE_CHANGE_CARD = "/change-card";
+export const ROUTE_NOT_AVAILABLE = "/not-available";
 
 export const BASE_URL = "https://langcards.fun";
 

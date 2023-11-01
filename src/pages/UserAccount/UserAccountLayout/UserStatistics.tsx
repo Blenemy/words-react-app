@@ -14,17 +14,15 @@ export const UserStatisctics = memo(() => {
   const { user } = useAppSelector((state) => state.user);
 
   const formattedData = useMemo(() => {
-    return Object.keys(user?.progress)
-      .sort()
-      .map((date) => ({
-        date,
-        progress: user?.progress[date],
-      }));
-  }, [user?.progress]);
-
-  if (!user) {
-    return <div>something went wrong</div>;
-  }
+    if (user) {
+      return Object.keys(user?.progress)
+        .sort()
+        .map((date) => ({
+          date,
+          progress: user?.progress[date],
+        }));
+    }
+  }, [user]);
 
   return (
     <div className="text-primary basis-3/5">
