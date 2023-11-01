@@ -2,12 +2,12 @@ import axios from "axios";
 import { BASE_URL } from "../data/constants";
 
 /**
- * Войти в систему с использованием имени пользователя и пароля.
+ * Log in to the system using a username and password.
  *
- * @param {Object} credentials - Учетные данные пользователя.
- * @param {string} credentials.username - Имя пользователя.
- * @param {string} credentials.password - Пароль пользователя.
- * @returns {Promise} Промис с данными пользователя.
+ * @param {Object} credentials - User credentials.
+ * @param {string} credentials.username - Username.
+ * @param {string} credentials.password - User password.
+ * @returns {Promise<Object>} Promise resolving to user data.
  */
 
 export const loginUser = async ({

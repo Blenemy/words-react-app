@@ -1,18 +1,14 @@
 import { CustomInput } from "../../../components/CustomInput/CustomInput";
-import { GlobalLoader } from "../../../components/Loaders/GlobalLoader";
+import { RedirectNotification } from "../../../components/RedirectNotification/RedirectNotification";
+import { ROUTE_HOME } from "../../../data/constants";
 import { useAuth } from "../../../hooks/useAuth";
-import { handleInputChange } from "../../../utils/helpers";
 
 export const AuthorizationForm = () => {
-  const { formData, setFormData, handleOnSubmit, error, isLoading } = useAuth();
-
-  if (isLoading) {
-    return <GlobalLoader />;
-  }
+  const { isLoading, formik, showAlert } = useAuth();
 
   return (
     <form
-      onSubmit={handleOnSubmit}
+      onSubmit={formik.handleSubmit}
       className="flex flex-col font-['Roboto_flex'] mb-8 w-[424px]"
     >
       <h3 className="mb-[52px] text-3xl text-center font-medium">Sign in</h3>
@@ -21,32 +17,37 @@ export const AuthorizationForm = () => {
           placeholder="Username"
           name={"username"}
           type={"text"}
-          required
-          value={formData.username}
-          onChangeHandler={(event: Event) =>
-            handleInputChange(event, setFormData)
-          }
+          value={formik.values.username}
+          onChangeHandler={formik.handleChange}
+          onBlur={formik.handleBlur}
           autoComplete="off"
+          classname="w-[424px]"
+          error={formik.touched.username && formik.errors.username}
         />
         <CustomInput
           placeholder="Password"
           name={"password"}
           type={"password"}
-          required
-          value={formData.password}
-          onChangeHandler={(event: Event) =>
-            handleInputChange(event, setFormData)
-          }
+          value={formik.values.password}
+          onChangeHandler={formik.handleChange}
+          onBlur={formik.handleBlur}
           autoComplete="off"
+          classname="w-[424px]"
+          error={formik.touched.password && formik.errors.password}
+          showPassIcon
         />
       </div>
       <button
         type="submit"
         className="bg-lilackButton rounded-3xl w-full py-2 text-primary font-semibold border-2 border-primary"
+        disabled={isLoading}
       >
-        Sign in
+        {isLoading ? "Processing..." : "Sign in"}
       </button>
-      {error && <div className="text-red-500">{error}</div>}
+      {showAlert && (
+        <RedirectNotification seconds={5} redirectTo={ROUTE_HOME} />
+      )}
+      {/* {error && <div className="text-red-500">{error}</div>} */}
     </form>
   );
 };
