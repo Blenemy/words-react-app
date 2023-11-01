@@ -21,8 +21,7 @@ export const GoogleLayoutForm: React.FC<GoogleLayoutFormProps> = ({
   const dispatch = useAppDispatch();
 
   const googleAuthMutation = useMutation({
-    mutationFn: (googleCredential: string | undefined) =>
-      getGoogleAuthCredentials(googleCredential),
+    mutationFn: getGoogleAuthCredentials,
     onSuccess: (data) => {
       dispatch(setUser(data));
       navigate(ROUTE_HOME);

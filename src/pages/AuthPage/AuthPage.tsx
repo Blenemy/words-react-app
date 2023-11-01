@@ -27,10 +27,8 @@ export const AuthPage: React.FC<AuthPageProps> = ({
 }): React.ReactElement => {
   return (
     <AuthLayout>
-      <div>
-        <FormComponent />
-        <GoogleLayoutForm message={googleMessage} route={route} link={link} />
-      </div>
+      <FormComponent />
+      <GoogleLayoutForm message={googleMessage} route={route} link={link} />
     </AuthLayout>
   );
 };
