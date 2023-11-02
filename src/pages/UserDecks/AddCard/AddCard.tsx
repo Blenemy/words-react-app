@@ -1,4 +1,4 @@
-import { handleInputChange } from "../../../utils/helpers";
+import { handleFileUpload, handleInputChange } from "../../../utils/helpers";
 import { useAddCart } from "../../../hooks/useAddCard";
 import { CustomInput } from "../../../components/CustomInput/CustomInput";
 import { UserAccountButton } from "../../UserAccount/UserAccountLayout/UserAccountButton";
@@ -15,17 +15,6 @@ export const AddCard: React.FC<AddCardType> = ({ deckId }) => {
 
   const handleDragError = (payload: string) => {
     setFileError(payload);
-  };
-
-  const handleFileUpload = (file: File) => {
-    const reader = new FileReader();
-    reader.addEventListener("load", () => {
-      setFormData((prevData) => ({
-        ...prevData,
-        image: reader.result as string,
-      }));
-    });
-    reader.readAsDataURL(file);
   };
 
   const {
@@ -88,7 +77,7 @@ export const AddCard: React.FC<AddCardType> = ({ deckId }) => {
               autoComplete="off"
             />
             <FileDropZone
-              onFileUpload={handleFileUpload}
+              onFileUpload={(file: File) => handleFileUpload(file, setFormData)}
               setPreviewImage={setPreviewImage}
               previewImage={previewImage}
               fileError={fileError}

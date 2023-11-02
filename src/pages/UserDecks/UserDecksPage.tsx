@@ -2,7 +2,7 @@ import { useState } from "react";
 import Cookies from "js-cookie";
 import { ROUTE_CARD_GAME } from "../../data/constants";
 import { CustomInput } from "../../components/CustomInput/CustomInput";
-import { handleInputChange } from "../../utils/helpers";
+import { handleFileUpload, handleInputChange } from "../../utils/helpers";
 import { UserAccountButton } from "../UserAccount/UserAccountLayout/UserAccountButton";
 import { BreadCrumbs } from "../../components/BreadCrumbs/BreadCrumbs";
 import { useGetUserDecks } from "../../hooks/useGetUserDecks";
@@ -31,17 +31,6 @@ export const UserDecksPage = () => {
     addDeckLoading,
   } = useAddDeck();
 
-  const onFileDrop = (file: File) => {
-    const reader = new FileReader();
-    reader.addEventListener("load", () => {
-      setFormData((prevData) => ({
-        ...prevData,
-        image: reader.result as string,
-      }));
-    });
-    reader.readAsDataURL(file);
-  };
-
   if (addDeckLoading || isLoading) {
     return <GlobalLoader />;
   }
@@ -66,7 +55,7 @@ export const UserDecksPage = () => {
         >
           <h3 className="text-center text-2xl text-red-600">Add you deck</h3>
           <FileDropZone
-            onFileUpload={onFileDrop}
+            onFileUpload={(file: File) => handleFileUpload(file, setFormData)}
             setPreviewImage={setPreviewImage}
             previewImage={previewImage}
             handleDragError={handleDragError}
