@@ -6,7 +6,11 @@ import { useState } from "react";
 import { FileDropZone } from "../../../components/FileDropZone/FileDropZone";
 import { GlobalLoader } from "../../../components/Loaders/GlobalLoader";
 
-export const AddCard = ({ deckId }: { deckId: number | undefined }) => {
+interface AddCardType {
+  deckId: number | undefined;
+}
+
+export const AddCard: React.FC<AddCardType> = ({ deckId }) => {
   const [fileError, setFileError] = useState<string>("");
 
   const handleDragError = (payload: string) => {

@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { CardFromServer } from "../../types/CardFromServer";
-import { Modal } from "../Modal/Modal";
+import { UpdateCardWindow } from "../../pages/UserDecks/AddCard/UpdateCardWindow/UpdateCardWindow";
 import { ImageComponent } from "../ImageComponent/ImageComponent";
 
 /**
@@ -11,9 +11,13 @@ import { ImageComponent } from "../ImageComponent/ImageComponent";
  */
 interface DeckCardProps {
   card: CardFromServer;
+  deckId: string | undefined;
 }
 
-export const DeckCard: React.FC<DeckCardProps> = ({ card }): JSX.Element => {
+export const DeckCard: React.FC<DeckCardProps> = ({
+  card,
+  deckId,
+}): JSX.Element => {
   const [showModal, setShowModal] = useState(false);
 
   const handleShowModal = (payload: boolean) => {
@@ -39,10 +43,11 @@ export const DeckCard: React.FC<DeckCardProps> = ({ card }): JSX.Element => {
           {card.word}
         </h3>
       </div>
-      <Modal
+      <UpdateCardWindow
         showModal={showModal}
         handleShowModal={() => handleShowModal(false)}
         card={card}
+        deckId={deckId}
       />
     </>
   );

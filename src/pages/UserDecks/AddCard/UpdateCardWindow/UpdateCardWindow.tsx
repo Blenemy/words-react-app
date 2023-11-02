@@ -1,9 +1,9 @@
-import { CardFromServer } from "../../types/CardFromServer";
-import { CustomInput } from "../CustomInput/CustomInput";
-import { handleInputChange } from "../../utils/helpers";
-import { useChangeCard } from "../../hooks/useChangeCard";
+import { CardFromServer } from "../../../../types/CardFromServer";
+import { CustomInput } from "../../../../components/CustomInput/CustomInput";
+import { handleInputChange } from "../../../../utils/helpers";
+import { useChangeCard } from "../../../../hooks/useChangeCard";
 import { useState } from "react";
-import { FileDropZone } from "../FileDropZone/FileDropZone";
+import { FileDropZone } from "../../../../components/FileDropZone/FileDropZone";
 
 /**
  * Модальное окно для редактирования карточки.
@@ -15,21 +15,25 @@ import { FileDropZone } from "../FileDropZone/FileDropZone";
  * @returns {JSX.Element | null} - JSX элемент модального окна.
  */
 
-type ModalProps = {
+type UpdateCardWindowProps = {
   showModal?: boolean;
   handleShowModal: (payload: boolean) => void;
   card: CardFromServer;
+  deckId: string | undefined;
 };
 
-export const Modal: React.FC<ModalProps> = ({
+export const UpdateCardWindow: React.FC<UpdateCardWindowProps> = ({
   showModal,
   handleShowModal,
   card,
+  deckId,
 }): JSX.Element | null => {
   const [previewImage, setPreviewImage] = useState<string | null>(card.image);
 
-  const { formData, setFormData, handleOnSubmit } = useChangeCard(card, () =>
-    handleShowModal(false)
+  const { formData, setFormData, handleOnSubmit } = useChangeCard(
+    card,
+    () => handleShowModal(false),
+    deckId
   );
   const [fileError, setFileError] = useState<string>("");
 
