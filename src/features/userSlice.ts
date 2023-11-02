@@ -19,11 +19,8 @@ const userSlice = createSlice({
       state.user = action.payload;
       state.isLoading = false;
     },
-    setLoading: (state, action: PayloadAction<boolean>) => {
-      state.isLoading = action.payload;
-    },
   },
 });
 
 export default userSlice.reducer;
-export const { setUser, setLoading } = userSlice.actions;
+export const { setUser } = userSlice.actions;
