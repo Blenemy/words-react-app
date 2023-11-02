@@ -24,11 +24,11 @@ export const ChangeDeck = () => {
       </div>
 
       <div className="flex gap-32">
-        <div className="flex flex-wrap gap-4 basis-8/12">
+        <div className="flex flex-wrap basis-8/12 -mx-4">
           {!!cardInDecks?.length ? (
             <>
               {cardInDecks.map((card) => (
-                <div key={card.id} style={{ flexBasis: "calc(33.33% - 1rem)" }}>
+                <div key={card.id} className="basis-1/3 px-4">
                   <DeckCard card={card} />
                 </div>
               ))}

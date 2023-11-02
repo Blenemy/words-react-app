@@ -20,7 +20,7 @@ export const UserDecksPage = () => {
     setFileError(payload);
   };
 
-  const { userDecks } = useGetUserDecks(token);
+  const { userDecks, isLoading } = useGetUserDecks(token);
 
   const {
     handleOnSubmit,
@@ -42,7 +42,7 @@ export const UserDecksPage = () => {
     reader.readAsDataURL(file);
   };
 
-  if (addDeckLoading) {
+  if (addDeckLoading || isLoading) {
     return <GlobalLoader />;
   }
 
