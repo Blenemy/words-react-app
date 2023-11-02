@@ -5,6 +5,7 @@ import { useAppDispatch } from "../../../app/hooks";
 import { setUser } from "../../../features/userSlice";
 import { useMutation } from "@tanstack/react-query";
 import { getGoogleAuthCredentials } from "../../../api/getGoogleAuthCredentials";
+import { GlobalLoader } from "../../../components/Loaders/GlobalLoader";
 
 type GoogleLayoutFormProps = {
   route: string;
@@ -20,13 +21,17 @@ export const GoogleLayoutForm: React.FC<GoogleLayoutFormProps> = ({
   const navigate = useNavigate();
   const dispatch = useAppDispatch();
 
-  const googleAuthMutation = useMutation({
+  const { mutate, isLoading } = useMutation({
     mutationFn: getGoogleAuthCredentials,
     onSuccess: (data) => {
       dispatch(setUser(data));
       navigate(ROUTE_HOME);
     },
   });
+
+  if (isLoading) {
+    return <GlobalLoader />;
+  }
 
   return (
     <div className="flex flex-col items-center justify-center gap-8">
@@ -36,7 +41,7 @@ export const GoogleLayoutForm: React.FC<GoogleLayoutFormProps> = ({
       <GoogleOAuthProvider clientId={process.env.REACT_APP_GOOGLE_CLIENT_ID!}>
         <GoogleLogin
           onSuccess={(credentialResponse) => {
-            googleAuthMutation.mutate(credentialResponse.credential);
+            mutate(credentialResponse.credential);
           }}
           onError={() => {
             console.log("Login Failed");

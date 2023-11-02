@@ -20,10 +20,10 @@ export const UserAccountPage = () => {
   const { user } = useAppSelector((state) => state.user);
 
   useEffect(() => {
-    if (!user) {
+    if (!token && !user) {
       navigate(ROUTE_NOT_AVAILABLE, { replace: true });
     }
-  }, [user, navigate]);
+  }, [user, navigate, token]);
 
   const {
     formData,

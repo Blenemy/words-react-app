@@ -18,17 +18,17 @@ import "./App.scss";
 import { Header } from "./components/Header/Header";
 import { Footer } from "./components/Footer/Footer";
 import { UserDecksPage } from "./pages/UserDecks/UserDecksPage";
-import { useFetchUser } from "./hooks/useFetchUser";
 import { GlobalLoader } from "./components/Loaders/GlobalLoader";
 import { AuthorizationForm } from "./pages/AuthPage/Login/AuthorizationForm";
 import { RegistrationForm } from "./pages/AuthPage/Signup/RegistrationForm";
 import { AuthPage } from "./pages/AuthPage/AuthPage";
 import { NotAvailable } from "./components/NotAvailable/NotAvailable";
+import { useFetchUser } from "./hooks/useFetchUser";
 
 function App() {
-  const { isLoading } = useFetchUser();
   const location = useLocation();
   const showHeaderAndFooter = location.pathname !== ROUTE_NOT_AVAILABLE;
+  const { isLoading } = useFetchUser();
 
   return (
     <div className="App">

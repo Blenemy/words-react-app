@@ -13,11 +13,10 @@ export const useGamePageDecks = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    if (!user) {
+    if (!token && !user) {
       navigate(ROUTE_NOT_AVAILABLE, { replace: true });
-      return;
     }
-  }, [user, navigate]);
+  }, [user, navigate, token]);
 
   const { data } = useQuery({
     queryFn: () => getDecks(token),
