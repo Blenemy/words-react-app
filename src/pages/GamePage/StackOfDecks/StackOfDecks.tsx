@@ -1,4 +1,3 @@
-import "./StackOfDecks.scss";
 import titleDecorator from "../../../assets/gamePageDecksDecorator.png";
 
 type Props = {
@@ -32,12 +31,12 @@ export const StackOfDecks: React.FC<Props> = ({
         className="stack relative hover:scale-105 duration-300"
         onClick={onDeckClick}
       >
-        <div className="card w-full h-[329px] absolute rounded-3xl bg-primary" />
-        <div className="card w-full h-[329px] absolute rounded-3xl bg-secondary" />
+        <div className="w-full h-[329px] absolute rounded-3xl bg-primary min-h-[40%] items-center justify-center text-[10rem] duration-300 cursor-pointer z-10 text-primary" />
+        <div className="w-full h-[329px] absolute rounded-3xl bg-secondary min-h-[40%] items-center justify-center text-[10rem] duration-300 cursor-pointer z-10 text-primary translate-y-2" />
         <img
           src={frontImage}
           alt="Description"
-          className="card w-full h-[329px] absolute rounded-3xl"
+          className="w-full h-[329px] absolute rounded-3xl min-h-[40%] items-center justify-center text-[10rem] duration-300 cursor-pointer z-10 text-primary translate-y-4"
         />
       </div>
     </>

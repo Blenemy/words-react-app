@@ -1,11 +1,18 @@
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { GoogleOAuthProvider, GoogleLogin } from "@react-oauth/google";
-import { ROUTE_HOME } from "../../../data/constants";
-import { useAppDispatch } from "../../../app/hooks";
-import { setUser } from "../../../features/userSlice";
-import { useMutation } from "@tanstack/react-query";
-import { getGoogleAuthCredentials } from "../../../api/getGoogleAuthCredentials";
 import { GlobalLoader } from "../../../components/Loaders/GlobalLoader";
+import { useGoogleAuthentification } from "../../../hooks/useGoogleAuthentification";
+
+/**
+ * Component to render the layout for Google authentication including the button for Google Login and additional info.
+ *
+ * @component
+ * @param {GoogleLayoutFormProps} props - Props for Google layout form
+ * @param {string} props.route - The route path for navigation
+ * @param {string} props.message - Message to display next to the navigation link
+ * @param {string} props.link - The text for the navigation link
+ * @returns {React.ReactElement} A Google OAuth layout form component
+ */
 
 type GoogleLayoutFormProps = {
   route: string;
@@ -18,16 +25,7 @@ export const GoogleLayoutForm: React.FC<GoogleLayoutFormProps> = ({
   message,
   link,
 }) => {
-  const navigate = useNavigate();
-  const dispatch = useAppDispatch();
-
-  const { mutate, isLoading } = useMutation({
-    mutationFn: getGoogleAuthCredentials,
-    onSuccess: (data) => {
-      dispatch(setUser(data));
-      navigate(ROUTE_HOME);
-    },
-  });
+  const { isLoading, mutate } = useGoogleAuthentification();
 
   if (isLoading) {
     return <GlobalLoader />;

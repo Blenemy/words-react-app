@@ -3,6 +3,16 @@ import { RedirectNotification } from "../../../components/RedirectNotification/R
 import { ROUTE_AUTHORIZATION } from "../../../data/constants";
 import { useRegistration } from "../../../hooks/useRegistration";
 
+/**
+ * Component for handling the user registration process.
+ *
+ * Contains form inputs for username, email, password, and password confirmation.
+ * Uses the `useRegistration` hook for form state management and submits the registration form.
+ * On successful registration, a redirect notification is shown.
+ *
+ * @returns {React.ReactElement} The registration form component.
+ */
+
 export const RegistrationForm = () => {
   const { formik, showAlert, isLoading, error } = useRegistration();
 

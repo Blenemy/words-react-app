@@ -3,6 +3,15 @@ import { RedirectNotification } from "../../../components/RedirectNotification/R
 import { ROUTE_HOME } from "../../../data/constants";
 import { useAuth } from "../../../hooks/useAuth";
 
+/**
+ * Component that renders the authorization form for signing in.
+ *
+ * Utilizes formik for form state management and validation, a custom input component,
+ * and a notification component to redirect after successful login.
+ *
+ * @returns {React.ReactElement} The authorization form component.
+ */
+
 export const AuthorizationForm = () => {
   const { isLoading, formik, showAlert, error } = useAuth();
 
