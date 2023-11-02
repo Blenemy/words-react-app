@@ -8,6 +8,7 @@ type ReturnType = {
   formData: any;
   setFormData: React.Dispatch<React.SetStateAction<any>>;
   handleOnSubmit: (event: React.FormEvent<HTMLFormElement>) => void;
+  isLoading: boolean;
 };
 
 export const useChangeCard = (
@@ -25,7 +26,7 @@ export const useChangeCard = (
   });
   const token = Cookies.get("token");
 
-  const { mutate } = useMutation(
+  const { mutate, isLoading } = useMutation(
     async (dataToSend: any) => {
       return await updateCard(card.id, dataToSend, token);
     },
@@ -64,5 +65,6 @@ export const useChangeCard = (
     formData,
     setFormData,
     handleOnSubmit,
+    isLoading,
   };
 };

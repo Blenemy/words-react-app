@@ -1,13 +1,12 @@
 import Cookies from "js-cookie";
 import { useParams } from "react-router-dom";
 import { ROUTE_USER_DECKS } from "../../../data/constants";
-import { DeckCard } from "../../../components/DeckCard/DeckCard";
 import { AddCard } from "../AddCard/AddCard";
 import { BreadCrumbs } from "../../../components/BreadCrumbs/BreadCrumbs";
 import { useGetDeck } from "../../../hooks/useGetDeck";
 import { NoResluts } from "../../../components/NoResults/NoResluts";
 import { GlobalLoader } from "../../../components/Loaders/GlobalLoader";
-import { CardFromServer } from "../../../types/CardFromServer";
+import { DeckCardsList } from "../DeckCardsList/DeckCardsList";
 
 export const ChangeDeck = () => {
   const { deckId } = useParams();
@@ -26,23 +25,13 @@ export const ChangeDeck = () => {
 
       <div className="flex gap-32">
         <div className="flex flex-wrap basis-8/12 -mx-2 gap-y-4">
-          {!!cardInDecks?.length ? (
-            <>
-              {cardInDecks.map((card: CardFromServer) => (
-                <div key={card.id} className="basis-1/3 px-2">
-                  <DeckCard card={card} deckId={deckId} />
-                </div>
-              ))}
-            </>
+          {!!cardInDecks.length ? (
+            <DeckCardsList deckCards={cardInDecks} deckId={deckId} />
           ) : (
             <NoResluts highlightedText="a new custom card" />
           )}
         </div>
-        {deckId && (
-          <div className="basis-4/12 shrink-0 grow">
-            <AddCard deckId={+deckId} />
-          </div>
-        )}
+        {deckId && <AddCard deckId={+deckId} />}
       </div>
     </div>
   );

@@ -25,7 +25,7 @@ export const DeckCard: React.FC<DeckCardProps> = ({
   };
 
   return (
-    <>
+    <div className="basis-1/3 px-2">
       <div
         className="flex flex-col text-black hover:cursor-pointer relative"
         onClick={() => handleShowModal(true)}
@@ -49,6 +49,6 @@ export const DeckCard: React.FC<DeckCardProps> = ({
         card={card}
         deckId={deckId}
       />
-    </>
+    </div>
   );
 };
