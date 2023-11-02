@@ -7,6 +7,7 @@ import { BreadCrumbs } from "../../../components/BreadCrumbs/BreadCrumbs";
 import { useGetDeck } from "../../../hooks/useGetDeck";
 import { NoResluts } from "../../../components/NoResults/NoResluts";
 import { GlobalLoader } from "../../../components/Loaders/GlobalLoader";
+import { CardFromServer } from "../../../types/CardFromServer";
 
 export const ChangeDeck = () => {
   const { deckId } = useParams();
@@ -27,7 +28,7 @@ export const ChangeDeck = () => {
         <div className="flex flex-wrap basis-8/12 -mx-2 gap-y-4">
           {!!cardInDecks?.length ? (
             <>
-              {cardInDecks.map((card) => (
+              {cardInDecks.map((card: CardFromServer) => (
                 <div key={card.id} className="basis-1/3 px-2">
                   <DeckCard card={card} deckId={deckId} />
                 </div>

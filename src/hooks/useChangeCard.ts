@@ -32,6 +32,7 @@ export const useChangeCard = (
     {
       onSuccess: () => {
         closeModal();
+        queryClient.invalidateQueries([`deck${deckId}`]);
       },
       onError: (error: any) => {
         if (error.response) {
@@ -54,7 +55,6 @@ export const useChangeCard = (
 
     if (Object.keys(dataToSend).length > 0) {
       mutate(dataToSend);
-      queryClient.invalidateQueries([`deck${deckId}`]);
     } else {
       closeModal();
     }

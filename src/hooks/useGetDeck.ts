@@ -1,5 +1,3 @@
-import { useState } from "react";
-import { CardFromServer } from "../types/CardFromServer";
 import { useQuery } from "@tanstack/react-query";
 import { getDeckInfo } from "../api/getDeck";
 
@@ -7,15 +5,12 @@ export const useGetDeck = (
   deckId: string | undefined,
   token: string | undefined
 ) => {
-  const [cardInDecks, setCardInDeck] = useState<CardFromServer[]>();
-
-  const { isLoading } = useQuery({
+  const { isLoading, data } = useQuery({
     queryFn: () => getDeckInfo(deckId, token),
     queryKey: [`deck${deckId}`],
-    onSuccess: (payload) => {
-      setCardInDeck(payload.cards);
-    },
   });
+
+  const cardInDecks = data?.cards;
 
   return { cardInDecks, isLoading };
 };
