@@ -7,6 +7,8 @@ import { BreadCrumbs } from "../../components/BreadCrumbs/BreadCrumbs";
 import { FlipCardLayout } from "./QuizGameLayout";
 import { QuizAnswer } from "../../components/QuizAnswer/QuizAnswer";
 import { useCards } from "../../hooks/useCards";
+import { GameSuccess } from "../../components/GameSuccess/GameSuccess";
+import { Feedback } from "../../components/Feedback/Feedback";
 
 export const FlipCardPage: React.FC = () => {
   const location = useLocation();
@@ -28,9 +30,12 @@ export const FlipCardPage: React.FC = () => {
     <div className="flex flex-col text-primary">
       <div className="container mx-auto my-0 relative">
         <div className="py-14 flex flex-col">
-          <div className="mb-10">
-            <BreadCrumbs text={"Back to GamePage"} route={ROUTE_CARD_GAME} />
-          </div>
+          {!successMessage && (
+            <div className="mb-10">
+              <BreadCrumbs text={"Back to GamePage"} route={ROUTE_CARD_GAME} />
+            </div>
+          )}
+
           {currentCard && (
             <>
               <FlipCardLayout currentCard={currentCard} />
@@ -50,12 +55,10 @@ export const FlipCardPage: React.FC = () => {
           )}
           {successMessage && (
             <>
-              <div className="text-2xl mb-4 text-green-500">
-                Good Job! You've passed all the tests!
+              <div className="flex flex-col gap-8">
+                <GameSuccess />
+                <Feedback />
               </div>
-              <Link to={ROUTE_CARD_GAME} className="text-blue-400">
-                Return to the game page
-              </Link>
             </>
           )}
           <div className="self-center">
