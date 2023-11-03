@@ -1,5 +1,6 @@
 import { HTMLAttributes, useState } from "react";
-import show_pass_icon from "../../assets/showPassIcon.svg";
+import hidden_password from "../../assets/showPassIcon.svg";
+import visible_password from "../../assets/visible-password.svg";
 
 /**
  * Компонент для кастомного ввода.
@@ -78,8 +79,8 @@ export const CustomInput: React.FC<CustomInputProps> = ({
       />
       {showPassIcon && (
         <img
-          className="absolute top-0 right-0 translate-y-[15px] hover:cursor-pointer"
-          src={show_pass_icon}
+          className="absolute top-0 right-0 translate-y-[15px] hover:cursor-pointer w-[20px] h-[12px]"
+          src={showPassword ? visible_password : hidden_password}
           alt="show pass icon"
           onClick={togglePasswordVisibility}
         />

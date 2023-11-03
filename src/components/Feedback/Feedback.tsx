@@ -35,7 +35,7 @@ export const Feedback = memo((): JSX.Element => {
     }
 
     try {
-      const response = axios.post(
+      axios.post(
         BASE_URL + "/social/comments/",
         {
           rating: selectedRating,
@@ -50,8 +50,6 @@ export const Feedback = memo((): JSX.Element => {
 
       setError(false);
       setShowAlert(true);
-
-      console.log(response);
     } catch (error) {
       console.log(error);
     } finally {
