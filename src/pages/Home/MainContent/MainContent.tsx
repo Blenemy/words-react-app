@@ -7,6 +7,15 @@ import { ImageList } from "./ImageList";
 import { ButtonLink } from "./ButtonLink";
 import { useUpdateHeight } from "../../../hooks/useUpdateHight";
 
+/**
+ * MainContent component serves as the main section of the homepage.
+ * It uses a custom hook to set the height and displays a collection
+ * of components including a title, subtitle, ButtonLink, TextList,
+ * and ImageList.
+ *
+ * @returns {JSX.Element} The rendered main content section with dynamic style and content.
+ */
+
 export const MainContent = () => {
   const { viewportHeight } = useUpdateHeight();
 

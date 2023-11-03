@@ -11,6 +11,15 @@ import { GameSuccess } from "../../components/GameSuccess/GameSuccess";
 import { Feedback } from "../../components/Feedback/Feedback";
 import { v4 as uuidv4 } from "uuid";
 
+/**
+ * FlipCardPage is a React functional component that renders the game page for the flip card quiz.
+ * It handles the game flow, displays the loader, breadcrumbs, flip cards, answers, and success or feedback
+ * components based on the game state. It also manages the deck of cards for the game using a custom hook.
+ *
+ * @component
+ * @returns {JSX.Element} The complete page layout for the flip card quiz game.
+ */
+
 export const FlipCardPage: React.FC = () => {
   const location = useLocation();
   const { deckId } = location.state;

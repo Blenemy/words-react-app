@@ -5,6 +5,17 @@ import {
   ROUTE_REGISTRATION,
 } from "../../data/constants";
 
+/**
+ * NotAvailable Component
+ *
+ * Renders a 403 Access Denied page with links to Home, Sign In, and Sign Up.
+ *
+ * @component
+ *
+ * @example
+ * return (<NotAvailable />)
+ */
+
 export const NotAvailable = () => {
   return (
     <div className="w-full h-screen flex flex-col lg:flex-row items-center justify-center space-y-16 lg:space-y-0 space-x-8 2xl:space-x-0">
