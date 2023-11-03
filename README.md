@@ -1,46 +1,57 @@
-# Getting Started with Create React App
+## Developers
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+- **Front-end**: Denys Topchyi, www.linkedin.com/in/denys-topchyi-4665a4188
+- **Back-end**: Kirill Horodiskiy, https://www.linkedin.com/in/kirill-horodiskyi-6324ab1b2/
+- **UI/UX Design Web design**: Anastasiia Untilova, https://www.linkedin.com/in/anastasiia-untilova-a4332b231/
 
-## Available Scripts
+# Ukrainian to English Word Learning SP Application
 
-In the project directory, you can run:
+## Overview
 
-### `npm start`
+This application is designed for learners to study and reinforce their vocabulary skills by translating words from Ukrainian to English. Through an interactive quiz format, users are presented with a word alongside supporting images and an English description. They then select from three possible translations, enhancing retention and engagement.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+## Features
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+- **Quiz System**: Each question provides three possible answers, aiding in knowledge reinforcement.
+- **Visual Aids**: Every word is paired with relevant images and an English description, offering contextual cues and enhancing the learning experience.
+- **Deck System**: Words are grouped into decks based on themes or difficulty levels, allowing users to target specific vocabulary sets.
+- **User Statistics**: Track your progress! Every registered user has access to their personal performance statistics.
+- **User Registration**: To avail all features and track progress, users need to register.
+- **Comments**: Users can leave comments, fostering a community feel and shared learning experience. These are displayed on the main page.
+- **Custom Decks and Cards**: Personalization at its best! Users can create their own decks and cards. They have the ability to upload images, crafting their personal learning journey.
+- **Daily Deck Limit**: Users can only complete a deck once a day to ensure effective learning.
 
-### `npm test`
+## Viewing Recommendations
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+The project is not optimized for mobile view. For the best user experience, it's recommended to view the website on a PC with a screen width of 1440 pixels.
 
-### `npm run build`
+## Registration and Authentication
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+To ensure a seamless user experience and maintain user data, our application is hosted on a dedicated server with its own domain. This allows us to provide constant uptime and reliable service.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+### Authentication Methods:
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+- **Google Account**: For users who prefer a quicker registration process, they can simply sign in using their Google accounts. This utilizes OAuth2.0, ensuring data security and swift access.
+- **Manual Registration**: For users who prefer traditional registration methods, they can opt for the manual input of their data. This includes providing an email address, setting a password, and verifying their email.
 
-### `npm run eject`
+### Security:
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+All user data, including passwords, are securely stored and encrypted to prevent unauthorized access.
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+## Technologies Used
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+### Front-end
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
+- **React.js**: Powers the user interface through its component-based architecture.
+- **Redux Toolkit**: Simplifies complex state logic, improves maintainability and optimizes performance.
+- **React Router**: Implemented hash routing to enable client-side navigation without full page reloads.
+- **Typescript**: Brings static typing to JavaScript for better linting and error checking.
+- **HTML**: Structures the content on the application.
+- **Tailwind CSS**: Offers utility-first CSS framework for rapid UI development.
+- **Material/UI components**: Provides React components for faster and simpler web development.
+- **Recharts**: Utilized for creating interactive charts.
+- **Google Auth**: Allows users to log in using their Google accounts.
+- **BlurHash**: Provides smooth image placeholders before the actual image loads.
+- **External API for Image Search**: Searches for images based on keywords.
+- **REST API**: Fetches and manipulates data from a server, decoupling the frontend and backend.
+- **Formik**: Used for handling form state and providing validations for the registration form.
