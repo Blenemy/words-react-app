@@ -1,6 +1,6 @@
 import React from "react";
 import { ROUTE_CARD_GAME } from "../../data/constants";
-import { Link, useLocation } from "react-router-dom";
+import { useLocation } from "react-router-dom";
 import { Loader } from "../../components/Loaders/Loader";
 import Cookies from "js-cookie";
 import { BreadCrumbs } from "../../components/BreadCrumbs/BreadCrumbs";
