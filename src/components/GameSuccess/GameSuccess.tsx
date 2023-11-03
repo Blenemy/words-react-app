@@ -24,7 +24,7 @@ export const GameSuccess = () => {
           </span>
         </div>
         <h2 className="text-2xl font-bold text-center mb-4">Good Job!</h2>
-        <p className="text-center mb-6">You've passed all the tests!</p>
+        <p className="text-center mb-6">You've completed this deck already</p>
         <Link
           to={ROUTE_CARD_GAME}
           className="block w-full text-center bg-blue-500 hover:bg-blue-600 text-white p-2 rounded"

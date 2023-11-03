@@ -13,9 +13,18 @@ interface QuizAnswerProps {
 export const QuizAnswer: React.FC<QuizAnswerProps> = ({
   isCorrect,
 }): JSX.Element => {
+  if (!isCorrect) {
+    return (
+      <div className="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative flex gap-1">
+        <strong className="font-bold">Incorrect!</strong>
+        <span className="block sm:inline">You'll see this card later on</span>
+      </div>
+    );
+  }
   return (
-    <div className={`${isCorrect ? "text-green-500" : "text-red-500"}`}>
-      {isCorrect ? <div>Правильно!</div> : <div>Невірно : &#40; </div>}
+    <div className="bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded relative flex gap-1">
+      <strong className="font-bold">Correct!</strong>
+      <span className="block sm:inline">Keep it up! Onto the next one.</span>
     </div>
   );
 };

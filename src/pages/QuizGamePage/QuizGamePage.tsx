@@ -9,6 +9,7 @@ import { QuizAnswer } from "../../components/QuizAnswer/QuizAnswer";
 import { useCards } from "../../hooks/useCards";
 import { GameSuccess } from "../../components/GameSuccess/GameSuccess";
 import { Feedback } from "../../components/Feedback/Feedback";
+import { v4 as uuidv4 } from "uuid";
 
 export const FlipCardPage: React.FC = () => {
   const location = useLocation();
@@ -41,7 +42,7 @@ export const FlipCardPage: React.FC = () => {
               <FlipCardLayout currentCard={currentCard} />
               <div className="flex gap-5 justify-center mb-8">
                 {currentCard?.answers?.map((answer, idx) => (
-                  <React.Fragment key={`${answer}-${idx}`}>
+                  <React.Fragment key={uuidv4()}>
                     <button
                       className='w-[151px] h-[46px] rounded-3xl quiz-button font-["Roboto_flex"] font-semibold'
                       onClick={() => triggerNextCard(answer)}
