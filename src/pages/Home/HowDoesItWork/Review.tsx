@@ -1,23 +1,23 @@
-import { useQuery } from "@tanstack/react-query";
 import { ReviewCard } from "./ReviewCard";
-import { getReviews } from "../../../api/getReviews";
 import { useState } from "react";
-import { CommentType } from "../../../types/Comments";
 import { CSSTransition, TransitionGroup } from "react-transition-group";
 import "./Review.scss";
+import { useGetReviews } from "../../../hooks/useGetReviews";
+
+/**
+ * Review component for displaying a list of comments/reviews.
+ * The component uses transition animations for displaying comments.
+ *
+ * It shows only 2 comments by default and provides an option
+ * to expand and view all comments or collapse back to viewing only two.
+ *
+ * @returns {React.ReactElement} The rendered Review component.
+ */
 
 export const Review = () => {
-  const [comments, setComments] = useState<CommentType[] | []>([]);
   const [showAll, setShowAll] = useState(false);
 
-  useQuery({
-    queryFn: () => getReviews(),
-    queryKey: ["Reviews"],
-    onSuccess: (payload) => {
-      setComments(payload.results);
-    },
-    retry: 1,
-  });
+  const { comments } = useGetReviews();
 
   const displayedComments = showAll ? comments : comments.slice(0, 2);
 

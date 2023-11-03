@@ -45,13 +45,17 @@ All user data, including passwords, are securely stored and encrypted to prevent
 - **React.js**: Powers the user interface through its component-based architecture.
 - **Redux Toolkit**: Simplifies complex state logic, improves maintainability and optimizes performance.
 - **React Router**: Implemented hash routing to enable client-side navigation without full page reloads.
+- **Tanstack Query/Mutation**: Utilized for efficiently managing, caching, and syncing asynchronous and remote data. This tool enabled streamlined API requests to the backend, offering features like auto-refetching, background synchronization, and enhanced user experience in data-fetching scenarios.
 - **Typescript**: Brings static typing to JavaScript for better linting and error checking.
-- **HTML**: Structures the content on the application.
 - **Tailwind CSS**: Offers utility-first CSS framework for rapid UI development.
 - **Material/UI components**: Provides React components for faster and simpler web development.
+- **Formik**: Used for handling form state and providing validations for the registration form.
+- **DropZone**: was employed to facilitate the process of users uploading images to the backend. This ensures an enhanced user experience, allowing users to visually confirm their selections before proceeding with the upload.
+- **TransitionGroup/CSSTransition**: Implemented for animating transitions. Specifically used in the application to handle the show/hide animations of comments on the main page
+- **HTML**: Structures the content on the application.
+- **SCSS**: Used in specific cases for handling animations and to leverage its advanced features for more intricate styling tasks.
 - **Recharts**: Utilized for creating interactive charts.
 - **Google Auth**: Allows users to log in using their Google accounts.
 - **BlurHash**: Provides smooth image placeholders before the actual image loads.
 - **External API for Image Search**: Searches for images based on keywords.
 - **REST API**: Fetches and manipulates data from a server, decoupling the frontend and backend.
-- **Formik**: Used for handling form state and providing validations for the registration form.

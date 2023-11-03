@@ -3,6 +3,12 @@ import { BreadCrumbs } from "../../components/BreadCrumbs/BreadCrumbs";
 import { useGamePageDecks } from "../../hooks/useGamePageDecks";
 import { DefaultDecksList } from "./DefaultDecksList/DefaultDecksList";
 
+/**
+ * GamePage component for rendering the main game page, allowing users to select and play with decks.
+ *
+ * @returns {React.ReactElement} The rendered GamePage component.
+ */
+
 export const GamePage = () => {
   const { defaultDecks, navigate, token } = useGamePageDecks();
 

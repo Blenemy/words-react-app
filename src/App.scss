@@ -8,17 +8,69 @@
   font-style: normal;
 }
 
-._img {
-  object-fit: cover;
-  height: 100%;
-  width: 100%;
-}
-
 .blured-image {
   background-color: rgba(228, 228, 228, 0.5);
   backdrop-filter: blur(5px);
 }
 
-.quiz-button {
-  background: url("./assets/BackgroundGradient.png") 0 0 / cover no-repeat;
+/* 
+  NOTE: This code is hard to recreate via Tailwind 
+*/
+
+// #region rest classes
+
+@keyframes moveUpDownWithoutRotate {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
 }
+
+@mixin moveUpDownAnimation($delay: 0s) {
+  animation: moveUpDownWithoutRotate 2s linear infinite $delay;
+}
+
+.animation-words {
+  li:nth-child(1) p {
+    @include moveUpDownAnimation();
+  }
+
+  li:nth-child(2) p {
+    @include moveUpDownAnimation(0.4s);
+  }
+
+  li:nth-child(3) p {
+    @include moveUpDownAnimation(0.8s);
+  }
+
+  li:nth-child(4) p {
+    @include moveUpDownAnimation(1.2s);
+  }
+
+  li:nth-child(5) p {
+    @include moveUpDownAnimation(1.6s);
+  }
+}
+
+@mixin background-cover($url, $position: center, $size: cover) {
+  background: url($url) $position / $size no-repeat;
+}
+
+.heart-bg {
+  @include background-cover("./assets/heart-front-page.svg", 70% 85%, contain);
+  background-size: 30%;
+}
+
+.arrow-bg {
+  @include background-cover("./assets/arrow-bg.svg", 50% 90%);
+  background-size: 15%;
+}
+
+.homepage-section-one {
+  @include background-cover("./assets/BackgroundGradient.png", 0% 100%);
+}
+
+// #endregion

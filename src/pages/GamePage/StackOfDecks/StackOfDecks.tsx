@@ -1,5 +1,15 @@
 import titleDecorator from "../../../assets/gamePageDecksDecorator.png";
 
+/**
+ * StackOfDecks component for rendering a visual stack of decks.
+ *
+ * @param {Props} props - The component's props.
+ * @param {string|undefined} props.frontImage - The image that represents the front of the deck.
+ * @param {() => void} props.onDeckClick - A callback function triggered upon clicking the deck.
+ * @param {string} props.deckTitle - The title of the deck.
+ * @returns {React.ReactElement} The rendered StackOfDecks component.
+ */
+
 type Props = {
   frontImage: string | undefined;
   onDeckClick: () => void;

@@ -44,7 +44,7 @@ export const FlipCardPage: React.FC = () => {
                 {currentCard?.answers?.map((answer, idx) => (
                   <React.Fragment key={uuidv4()}>
                     <button
-                      className='w-[151px] h-[46px] rounded-3xl quiz-button font-["Roboto_flex"] font-semibold'
+                      className='w-[151px] h-[46px] rounded-3xl quiz-button font-["Roboto_flex"] font-semibold bg-gradientBackground bg-no-repeat bg-cover quiz-button'
                       onClick={() => triggerNextCard(answer)}
                     >
                       {answer}

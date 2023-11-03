@@ -2,6 +2,20 @@ import star from "../../../assets/star.png";
 import defaultImage from "../../../assets/User.svg";
 import { v4 as uuidv4 } from "uuid";
 
+/**
+ * ReviewCard component for displaying individual user reviews.
+ * Each review card displays the user's avatar, username, review creation date,
+ * star rating, and the message/content of the review.
+ *
+ * @param {ReviewCardProps} props - The component's props.
+ * @param {string} props.username - The username of the reviewer.
+ * @param {string} props.created_at - The creation date of the review.
+ * @param {number} props.rating - The star rating given by the reviewer (out of 5).
+ * @param {string} props.message - The content/message of the review.
+ * @param {string} props.avatar - The avatar of the reviewer.
+ * @returns {React.ReactElement} The rendered ReviewCard component.
+ */
+
 type ReviewCardProps = {
   username: string;
   created_at: string;

@@ -13,7 +13,7 @@ export const HowDoesItWork = (): React.ReactElement => {
     <section className="homepage-section-three bg-white relative">
       <div className="container mx-auto my-0">
         <div className="px-12 pb-36">
-          <div className="flex flex-col items-center justify-center gap-6 circle-border w-[420px] p-2 pt-4 mb-12 text-primary font-['Roboto_flex']'">
+          <div className="flex flex-col items-center justify-center gap-6 relative top-[-50px] left-1/2 -translate-x-1/2 w-[420px] p-2 pt-4 mb-12 text-primary font-['Roboto_flex']' z-[101] bg-white rounded-t-[84px]">
             <h2 className="text-6xl font-['Magilio']">How</h2>
             <p className="font-['Roboto_flex'] w-[392px] h-[52px] bg-wave rounded-3xl flex justify-center items-center border-2 border-primary text-3xl font-medium -rotate-6 mb-5">
               Does it Work?

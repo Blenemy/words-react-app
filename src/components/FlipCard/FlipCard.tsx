@@ -44,7 +44,7 @@ export const FlipCard: React.FC<Props> = React.memo(({ card }) => {
               <img
                 src={card?.image}
                 alt="main"
-                className="h-full rounded-3xl _img"
+                className="h-full rounded-3xl w-full object-cover"
               />
             </ImageComponent>
           </div>

@@ -44,14 +44,14 @@ export const FlipCardLayout: React.FC<Props> = ({ currentCard }) => {
           <img
             src={getImageAndHash(0).image}
             alt="description of the word"
-            className="_img max-h-[230px] rounded-3xl min-h-[230px]"
+            className="w-full h-full object-cover max-h-[230px] rounded-3xl min-h-[230px]"
           />
         </ImageComponent>
         <ImageComponent ImageBundlePath={getImageAndHash(1)}>
           <img
             src={getImageAndHash(1).image}
             alt="description of the word"
-            className="_img max-h-[230px] rounded-3xl min-h-[230px]"
+            className="w-full h-full object-cover max-h-[230px] rounded-3xl min-h-[230px]"
           />
         </ImageComponent>
       </div>
@@ -68,14 +68,14 @@ export const FlipCardLayout: React.FC<Props> = ({ currentCard }) => {
           <img
             src={getImageAndHash(2).image}
             alt="description of the word"
-            className="_img max-h-[230px] rounded-3xl min-h-[230px]"
+            className="w-full h-full object-cover max-h-[230px] rounded-3xl min-h-[230px]"
           />
         </ImageComponent>
         <ImageComponent ImageBundlePath={getImageAndHash(3)}>
           <img
             src={getImageAndHash(3).image}
             alt="description of the word"
-            className="_img max-h-[230px] rounded-3xl min-h-[230px]"
+            className="w-full h-full object-cover max-h-[230px] rounded-3xl min-h-[230px]"
           />
         </ImageComponent>
       </div>

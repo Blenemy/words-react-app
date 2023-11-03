@@ -9,7 +9,10 @@ import { HeaderRightPiece } from "./HeaderRightPiece";
  */
 export const Header = (): JSX.Element => {
   return (
-    <header id="header" className="header font-semibold">
+    <header
+      id="header"
+      className="header font-semibold relative overflow-hidden h-[71px]"
+    >
       <div className="container mx-auto my-0">
         <div className="header__content flex items-center justify-between h-[71px]">
           <HeaderLeftPiece />
