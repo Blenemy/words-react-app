@@ -28,6 +28,7 @@ export const ImageComponent: React.FC<ImageComponentProps> = ({
 
   useEffect(() => {
     const img = new Image();
+
     img.onload = () => {
       setImageIsLoaded(true);
     };
