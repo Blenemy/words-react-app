@@ -29,9 +29,7 @@ export const ImageComponent: React.FC<ImageComponentProps> = ({
   useEffect(() => {
     const img = new Image();
     img.onload = () => {
-      setTimeout(() => {
-        setImageIsLoaded(true);
-      }, 200);
+      setImageIsLoaded(true);
     };
 
     img.src = ImageBundlePath.image;
