@@ -4,6 +4,14 @@ import { handleInputChange } from "../../../utils/helpers";
 import { UserAccountFormType } from "../UserAccountPage";
 import { UserAccountButton } from "./UserAccountButton";
 
+/**
+ * UserAccountForm component for user account management.
+ *
+ * @component
+ * @param {UserAccountFormProps} props - The props for the component.
+ * @returns {JSX.Element} A memoized form component for user account data.
+ */
+
 type UserAccountFormProps = {
   formData: UserAccountFormType;
   setFormData: React.Dispatch<React.SetStateAction<UserAccountFormType>>;

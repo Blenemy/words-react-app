@@ -8,6 +8,13 @@ import { NoResluts } from "../../../components/NoResults/NoResluts";
 import { GlobalLoader } from "../../../components/Loaders/GlobalLoader";
 import { DeckCardsList } from "../DeckCardsList/DeckCardsList";
 
+/**
+ * Component for managing a deck's details and adding new cards to it.
+ *
+ * @component
+ * @returns The ChangeDeck component with deck details and add card functionality.
+ */
+
 export const ChangeDeck = () => {
   const { deckId } = useParams();
   const token = Cookies.get("token");

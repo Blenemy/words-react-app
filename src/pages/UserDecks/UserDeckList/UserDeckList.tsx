@@ -6,10 +6,18 @@ import Cookies from "js-cookie";
 import { useNavigate } from "react-router-dom";
 import { ROUTE_USER_DECKS } from "../../../data/constants";
 
-type Props = {
+/**
+ * Renders a list of user decks.
+ *
+ * @param {Props} props - The props for the UserDeckList component.
+ * @returns A list of UserDeckPreview components.
+ */
+
+type UserDeckListProps = {
   decks: DeckFromServer[];
 };
-export const UserDeckList: FC<Props> = ({ decks }) => {
+
+export const UserDeckList: FC<UserDeckListProps> = ({ decks }) => {
   const navigate = useNavigate();
   const token = Cookies.get("token");
 

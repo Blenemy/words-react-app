@@ -6,6 +6,14 @@ import { useState } from "react";
 import { FileDropZone } from "../../../components/FileDropZone/FileDropZone";
 import { GlobalLoader } from "../../../components/Loaders/GlobalLoader";
 
+/**
+ * Component for adding a new card to a deck.
+ *
+ * @component
+ * @param {AddCardType} props - Props containing the deck ID.
+ * @returns The AddCard component.
+ */
+
 interface AddCardType {
   deckId: number | undefined;
 }
@@ -37,7 +45,7 @@ export const AddCard: React.FC<AddCardType> = ({ deckId }) => {
             className="flex flex-col gap-4"
             onSubmit={handleAddCardOnSubmit}
           >
-            <h3 className="text-primary text-xl text-center font-['Roboto_flex']">
+            <h3 className="text-center text-2xl text-red-600">
               Add you own card to this deck
             </h3>
             <CustomInput

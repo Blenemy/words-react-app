@@ -7,6 +7,14 @@ import { Feedback } from "../../components/Feedback/Feedback";
 import { useUserProfile } from "../../hooks/useUserProfile";
 import { useAppSelector } from "../../app/hooks";
 
+/**
+ * UserAccountPage component that renders the user's account page.
+ *
+ * @component
+ * @returns {JSX.Element | null} The UserAccountPage component, which provides an interface
+ * for a user to review and update their account details, or redirects to a not available route if no user is authenticated.
+ */
+
 export type UserAccountFormType = {
   first_name: string | undefined;
   last_name: string | undefined;

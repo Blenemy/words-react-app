@@ -1,13 +1,20 @@
 import { ImageComponent } from "../../../components/ImageComponent/ImageComponent";
 import { DeckFromServer } from "../../../types/DeckFromServer";
 
-type Props = {
+/**
+ * Represents a preview of a user's deck with functionality to play or select the deck.
+ *
+ * @param {UserDeckPreviewProps} props - The props for the UserDeckPreview component.
+ * @returns A JSX element representing a single deck preview or null if the deck is not provided.
+ */
+
+type UserDeckPreviewProps = {
   deck: DeckFromServer | null;
   handleSumbitDeck: (deck: number) => Promise<void>;
   redirectFunc: (deckId: number) => void;
 };
 
-export const UserDeckPreview: React.FC<Props> = ({
+export const UserDeckPreview: React.FC<UserDeckPreviewProps> = ({
   deck,
   handleSumbitDeck,
   redirectFunc,

@@ -10,6 +10,14 @@ import {
 import { useAppSelector } from "../../../app/hooks";
 import { memo, useMemo } from "react";
 
+/**
+ * UserStatistics component to display a line chart of the user's learning progress.
+ *
+ * @component
+ * @returns {JSX.Element} A memoized component that renders a responsive line chart
+ * based on the user's progress data retrieved from the application state.
+ */
+
 export const UserStatisctics = memo(() => {
   const { user } = useAppSelector((state) => state.user);
 

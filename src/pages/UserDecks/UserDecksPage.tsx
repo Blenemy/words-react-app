@@ -12,6 +12,12 @@ import { FileDropZone } from "../../components/FileDropZone/FileDropZone";
 import { NoResluts } from "../../components/NoResults/NoResluts";
 import { GlobalLoader } from "../../components/Loaders/GlobalLoader";
 
+/**
+ * The UserDecksPage component for displaying user decks and adding new ones.
+ *
+ * @returns The UserDecksPage component.
+ */
+
 export const UserDecksPage = () => {
   const token = Cookies.get("token");
   const [fileError, setFileError] = useState<string>("");

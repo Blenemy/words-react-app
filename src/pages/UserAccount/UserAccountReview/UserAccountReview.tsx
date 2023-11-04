@@ -9,6 +9,15 @@ import { UserAccountFormType } from "../UserAccountPage";
 import { useLogout } from "../../../hooks/useLogout";
 import { useUpdateHeight } from "../../../hooks/useUpdateHight";
 
+/**
+ * UserAccountReview component that aggregates user account components.
+ *
+ * @component
+ * @param {UserAccountReviewProps} props - The props for the component.
+ * @returns {JSX.Element} A memoized component that renders user photo, daily activity,
+ * user statistics chart, and account form for the user to review and update their account information.
+ */
+
 interface UserAccountReviewProps {
   handleFileChange: (event: any) => void;
   formData: UserAccountFormType;

@@ -1,6 +1,14 @@
 import { useAppSelector } from "../../../app/hooks";
 import progress from "../../../assets/progress.png";
 
+/**
+ * DailyActivity component displaying the user's daily progress.
+ *
+ * @component
+ * @returns {JSX.Element} A React component that shows the user's daily
+ * learning progress with a progress image and the number of learned words today.
+ */
+
 export const DailyActivity = () => {
   const { user } = useAppSelector((state) => state.user);
 

@@ -4,7 +4,16 @@ type UserAccountButtonProps = {
   handleOnClick?: () => void;
   variant: "primary" | "secondary";
   disabled?: boolean;
+
+  /**
+   * UserAccountButton component which renders a button based on the provided props.
+   *
+   * @component
+   * @param {UserAccountButtonProps} props - The props for the component.
+   * @returns {JSX.Element} A button element with custom styles and functionality.
+   */
 };
+
 export const UserAccountButton: React.FC<UserAccountButtonProps> = (props) => {
   const { type, text, handleOnClick, variant, disabled = false } = props;
 

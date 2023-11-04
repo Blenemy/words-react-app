@@ -1,7 +1,7 @@
 import { ReactNode, useEffect, useRef, useState } from "react";
 import { Blurhash } from "react-blurhash";
 import { DEFAULT_HASH_SRC } from "../../data/constants";
-import { ImageBundlePath } from "../../types/BundlePath";
+import { ImageBundlePath } from "../../types/ImageBundlePath";
 
 /**
  * Компонент для отображения изображения с возможностью использования Blurhash.

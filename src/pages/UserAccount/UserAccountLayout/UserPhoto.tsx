@@ -3,6 +3,17 @@ import userDefault from "../../../assets/user-acc.svg";
 import camera from "../../../assets/camera.svg";
 import { memo } from "react";
 
+/**
+ * UserPhoto component for displaying and updating the user's profile photo.
+ *
+ * @component
+ * @param {UserPhotoProps} {
+ *   user - The user information from the server, may be null.
+ *   handleFileChange - Function to handle file input changes for profile photo update.
+ * }
+ * @returns {JSX.Element} A memoized component showing the user's photo and information.
+ */
+
 type UserPhotoProps = {
   user: UserFromServer | null;
   handleFileChange: (event: any) => void;
