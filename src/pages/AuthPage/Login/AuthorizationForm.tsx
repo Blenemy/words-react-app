@@ -54,7 +54,7 @@ export const AuthorizationForm = () => {
         {isLoading ? "Processing..." : "Sign in"}
       </button>
       {showAlert && (
-        <RedirectNotification seconds={5} redirectTo={ROUTE_HOME} />
+        <RedirectNotification seconds={3} redirectTo={ROUTE_HOME} />
       )}
       {error && error.response && (
         <div className="text-red-500">{error.response.data.error}</div>

@@ -1,5 +1,5 @@
+import { Breadcrumbs } from "../../components/Breadcrumbs/Breadcrumbs";
 import { ROUTE_USER_DECKS } from "../../data/constants";
-import { BreadCrumbs } from "../../components/BreadCrumbs/BreadCrumbs";
 import { useGamePageDecks } from "../../hooks/useGamePageDecks";
 import { DefaultDecksList } from "./DefaultDecksList/DefaultDecksList";
 
@@ -17,7 +17,10 @@ export const GamePage = () => {
       <div className="container mx-auto my-0">
         <div className="py-14">
           <div className="mb-8">
-            <BreadCrumbs text={"My Decks"} route={ROUTE_USER_DECKS} />
+            <Breadcrumbs
+              crumbs={[{ text: "Go to my decks", path: ROUTE_USER_DECKS }]}
+              current="Game Page"
+            />
           </div>
           <div className="mb-16">
             <div className="flex gap-3 items-center justify-between">

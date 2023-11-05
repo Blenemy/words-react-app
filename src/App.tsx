@@ -12,7 +12,6 @@ import {
 } from "./data/constants";
 import { GamePage } from "./pages/GamePage/GamePage";
 import { HomePage } from "./pages/Home/HomePage";
-import { FlipCardPage } from "./pages/QuizGamePage/QuizGamePage";
 import { ChangeDeck } from "./pages/UserDecks/ChangeDeck/ChangeDeck";
 import "./App.scss";
 import { Header } from "./components/Header/Header";
@@ -24,6 +23,7 @@ import { RegistrationForm } from "./pages/AuthPage/Signup/RegistrationForm";
 import { AuthPage } from "./pages/AuthPage/AuthPage";
 import { NotAvailable } from "./components/NotAvailable/NotAvailable";
 import { useFetchUser } from "./hooks/useFetchUser";
+import { QuizGamePage } from "./pages/QuizGamePage/QuizGamePage";
 
 function App() {
   const location = useLocation();
@@ -65,7 +65,7 @@ function App() {
               />
               <Route path={ROUTE_PROFILE} element={<UserAccountPage />} />
               <Route path={ROUTE_FLIP_CARD}>
-                <Route index element={<FlipCardPage />} />
+                <Route index element={<QuizGamePage />} />
               </Route>
               <Route path={ROUTE_USER_DECKS}>
                 <Route index element={<UserDecksPage />} />

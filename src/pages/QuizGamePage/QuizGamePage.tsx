@@ -1,15 +1,13 @@
 import React from "react";
-import { ROUTE_CARD_GAME } from "../../data/constants";
+import { ROUTE_CARD_GAME, ROUTE_HOME } from "../../data/constants";
 import { useLocation } from "react-router-dom";
 import { Loader } from "../../components/Loaders/Loader";
 import Cookies from "js-cookie";
-import { BreadCrumbs } from "../../components/BreadCrumbs/BreadCrumbs";
-import { FlipCardLayout } from "./QuizGameLayout";
-import { QuizAnswer } from "../../components/QuizAnswer/QuizAnswer";
 import { useCards } from "../../hooks/useCards";
 import { GameSuccess } from "../../components/GameSuccess/GameSuccess";
 import { Feedback } from "../../components/Feedback/Feedback";
-import { v4 as uuidv4 } from "uuid";
+import { GameContent } from "./GameContent";
+import { Breadcrumbs } from "../../components/Breadcrumbs/Breadcrumbs";
 
 /**
  * FlipCardPage is a React functional component that renders the game page for the flip card quiz.
@@ -20,7 +18,7 @@ import { v4 as uuidv4 } from "uuid";
  * @returns {JSX.Element} The complete page layout for the flip card quiz game.
  */
 
-export const FlipCardPage: React.FC = () => {
+export const QuizGamePage: React.FC = () => {
   const location = useLocation();
   const { deckId } = location.state;
   const token = Cookies.get("token");
@@ -34,35 +32,35 @@ export const FlipCardPage: React.FC = () => {
     isCorrectAnswer,
   } = useCards(deckId, token!);
 
-  if (isLoading) return <Loader />;
-
   return (
     <div className="flex flex-col text-primary">
       <div className="container mx-auto my-0 relative">
         <div className="py-14 flex flex-col">
           {!successMessage && (
             <div className="mb-10">
-              <BreadCrumbs text={"Back to GamePage"} route={ROUTE_CARD_GAME} />
+              <Breadcrumbs
+                crumbs={[
+                  { text: "Home", path: ROUTE_HOME },
+                  { text: "Back to game page", path: ROUTE_CARD_GAME },
+                ]}
+                current="Quiz"
+              />
             </div>
           )}
 
-          {currentCard && (
-            <>
-              <FlipCardLayout currentCard={currentCard} />
-              <div className="flex gap-5 justify-center mb-8">
-                {currentCard?.answers?.map((answer, idx) => (
-                  <React.Fragment key={uuidv4()}>
-                    <button
-                      className='w-[151px] h-[46px] rounded-3xl quiz-button font-["Roboto_flex"] font-semibold bg-gradientBackground bg-no-repeat bg-cover quiz-button'
-                      onClick={() => triggerNextCard(answer)}
-                    >
-                      {answer}
-                    </button>
-                  </React.Fragment>
-                ))}
-              </div>
-            </>
+          {isLoading ? (
+            <Loader />
+          ) : (
+            currentCard && (
+              <GameContent
+                currentCard={currentCard}
+                triggerNextCard={triggerNextCard}
+                showPopup={showPopup}
+                isCorrectAnswer={isCorrectAnswer}
+              />
+            )
           )}
+
           {successMessage && (
             <>
               <div className="flex flex-col gap-8">
@@ -71,9 +69,6 @@ export const FlipCardPage: React.FC = () => {
               </div>
             </>
           )}
-          <div className="self-center">
-            {showPopup && <QuizAnswer isCorrect={isCorrectAnswer} />}
-          </div>
         </div>
       </div>
     </div>

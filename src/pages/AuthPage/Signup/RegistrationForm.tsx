@@ -82,7 +82,7 @@ export const RegistrationForm = () => {
         {isLoading ? "Processing..." : "Sign up"}
       </button>
       {showAlert && (
-        <RedirectNotification seconds={5} redirectTo={ROUTE_AUTHORIZATION} />
+        <RedirectNotification seconds={3} redirectTo={ROUTE_AUTHORIZATION} />
       )}
       {error && error.response && (
         <div className="text-red-500">{error.response.data.email}</div>

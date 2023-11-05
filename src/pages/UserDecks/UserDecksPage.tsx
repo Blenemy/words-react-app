@@ -1,16 +1,16 @@
 import { useState } from "react";
 import Cookies from "js-cookie";
-import { ROUTE_CARD_GAME } from "../../data/constants";
+import { ROUTE_CARD_GAME, ROUTE_HOME } from "../../data/constants";
 import { CustomInput } from "../../components/CustomInput/CustomInput";
 import { handleFileUpload, handleInputChange } from "../../utils/helpers";
 import { UserAccountButton } from "../UserAccount/UserAccountLayout/UserAccountButton";
-import { BreadCrumbs } from "../../components/BreadCrumbs/BreadCrumbs";
 import { useGetUserDecks } from "../../hooks/useGetUserDecks";
 import { useAddDeck } from "../../hooks/useAddDeck";
 import { UserDeckList } from "./UserDeckList/UserDeckList";
 import { FileDropZone } from "../../components/FileDropZone/FileDropZone";
 import { NoResluts } from "../../components/NoResults/NoResluts";
 import { GlobalLoader } from "../../components/Loaders/GlobalLoader";
+import { Breadcrumbs } from "../../components/Breadcrumbs/Breadcrumbs";
 
 /**
  * The UserDecksPage component for displaying user decks and adding new ones.
@@ -44,7 +44,13 @@ export const UserDecksPage = () => {
   return (
     <div className="p-16">
       <div className="mb-7">
-        <BreadCrumbs text={"Back to GamePage"} route={ROUTE_CARD_GAME} />
+        <Breadcrumbs
+          crumbs={[
+            { text: "Home", path: ROUTE_HOME },
+            { text: "Back to game page", path: ROUTE_CARD_GAME },
+          ]}
+          current="Your decks"
+        />
       </div>
 
       <div className="flex gap-32">

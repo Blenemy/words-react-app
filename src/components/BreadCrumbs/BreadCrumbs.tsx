@@ -1,33 +1,43 @@
 import { Link } from "react-router-dom";
-import arrowDecorator from "../../assets/gamePageVector.svg";
-import { HTMLAttributes } from "react";
+import React, { HTMLAttributes } from "react";
 
 /**
- * Компонент для хлебных крошек.
+ * Компонент для многоуровневых хлебных крошек.
  *
- * @param {string} text - Текст для отображения в крошках.
- * @param {string} route - URL-адрес для навигации по клику.
- * @returns {JSX.Element} - Возвращает JSX элемент с тегом "a" (ссылкой).
+ * @param {Array} crumbs - Массив объектов, каждый из которых содержит текст и путь для хлебных крошек.
+ * @returns {JSX.Element} - Возвращает JSX элемент, который рендерит цепочку хлебных крошек.
  */
 
-interface BreadCrumbsProps extends HTMLAttributes<HTMLAnchorElement> {
+interface BreadcrumbItem {
   text: string;
-  route: string;
+  path?: string;
 }
 
-export const BreadCrumbs: React.FC<BreadCrumbsProps> = ({
-  text,
-  route,
+interface BreadCrumbsProps extends HTMLAttributes<HTMLDivElement> {
+  crumbs: BreadcrumbItem[];
+  current: string;
+}
+
+export const Breadcrumbs: React.FC<BreadCrumbsProps> = ({
+  crumbs,
+  current,
   ...props
 }): JSX.Element => {
   return (
-    <Link
-      className="text-primary inline-flex gap-4 items-center"
-      to={route}
-      {...props}
-    >
-      <img src={arrowDecorator} alt="arrowBack" />
-      <span data-testid={"BreadCrumbsSpan"}>{text}</span>
-    </Link>
+    <div className="flex items-center text-xl gap-1" {...props}>
+      {crumbs.map((crumb, index) => (
+        <React.Fragment key={index}>
+          {index > 0 && <span className="mx-1 text-primary">/</span>}
+          <Link
+            className="text-primary hover:text-violetStroke duration-300 opacity-60"
+            to={crumb.path ? crumb.path : "/"}
+          >
+            {crumb.text}
+          </Link>
+        </React.Fragment>
+      ))}
+      <span className="mx-1 text-primary">/</span>
+      <span className="text-primary font-bold">{current}</span>
+    </div>
   );
 };
