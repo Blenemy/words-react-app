@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import React, { HTMLAttributes } from "react";
+import { v4 as uuidv4 } from "uuid";
 
 /**
  * Компонент для многоуровневых хлебных крошек.
@@ -26,7 +27,7 @@ export const Breadcrumbs: React.FC<BreadCrumbsProps> = ({
   return (
     <div className="flex items-center text-xl gap-1" {...props}>
       {crumbs.map((crumb, index) => (
-        <React.Fragment key={index}>
+        <React.Fragment key={uuidv4()}>
           {index > 0 && <span className="mx-1 text-primary">/</span>}
           <Link
             className="text-primary hover:text-violetStroke duration-300 opacity-60"
