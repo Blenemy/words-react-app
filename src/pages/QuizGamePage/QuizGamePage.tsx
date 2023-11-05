@@ -8,7 +8,7 @@ import { GameSuccess } from "../../components/GameSuccess/GameSuccess";
 import { Feedback } from "../../components/Feedback/Feedback";
 import { GameContent } from "./GameContent";
 import { Breadcrumbs } from "../../components/Breadcrumbs/Breadcrumbs";
-import { Progress, Typography } from "@material-tailwind/react";
+import { Progressbar } from "../../components/Progressbar/Progressbar";
 
 /**
  * FlipCardPage is a React functional component that renders the game page for the flip card quiz.
@@ -33,14 +33,6 @@ export const QuizGamePage: React.FC = () => {
     isCorrectAnswer,
   } = useCards(deckId, token!);
 
-  const countCurrentProgress = (
-    wordsLeft: number,
-    wordsTotal: number
-  ): number => {
-    const progress = ((wordsTotal - wordsLeft) / wordsTotal) * 100;
-    return progress;
-  };
-
   return (
     <div className="flex flex-col text-primary">
       <div className="container mx-auto my-0 relative">
@@ -58,25 +50,10 @@ export const QuizGamePage: React.FC = () => {
           )}
 
           {currentCard && (
-            <div className="mb-10">
-              <div className="mb-2 flex items-center justify-between gap-4">
-                <Typography color="blue-gray" variant="h6">
-                  Completed
-                </Typography>
-                <Typography color="blue-gray" variant="h6">
-                  {currentCard.words_total - currentCard.words_left} /
-                  {currentCard.words_total}
-                </Typography>
-              </div>
-              <Progress
-                value={countCurrentProgress(
-                  currentCard.words_left,
-                  currentCard.words_total
-                )}
-                className="h-5"
-                color="blue"
-              />
-            </div>
+            <Progressbar
+              words_left={currentCard.words_left}
+              words_total={currentCard.words_total}
+            />
           )}
 
           {isLoading ? (
