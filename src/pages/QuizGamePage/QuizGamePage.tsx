@@ -64,11 +64,8 @@ export const QuizGamePage: React.FC = () => {
                   Completed
                 </Typography>
                 <Typography color="blue-gray" variant="h6">
-                  {countCurrentProgress(
-                    currentCard.words_left,
-                    currentCard.words_total
-                  )}
-                  %
+                  {currentCard.words_total - currentCard.words_left} /
+                  {currentCard.words_total}
                 </Typography>
               </div>
               <Progress
