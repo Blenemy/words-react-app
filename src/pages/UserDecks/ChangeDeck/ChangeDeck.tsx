@@ -29,7 +29,7 @@ export const ChangeDeck = () => {
   }
 
   return (
-    <div className="p-16">
+    <div className="p-14">
       <div className="mb-7">
         <Breadcrumbs
           crumbs={[
@@ -37,7 +37,7 @@ export const ChangeDeck = () => {
             { text: "Back to game page", path: ROUTE_CARD_GAME },
             { text: "Back to my decks", path: ROUTE_USER_DECKS },
           ]}
-          current="Change your deck"
+          current="Deck customization"
         />
       </div>
 

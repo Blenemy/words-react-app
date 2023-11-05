@@ -13,6 +13,8 @@ interface GameContentProps {
 
 export const GameContent: React.FC<GameContentProps> = memo(
   ({ currentCard, triggerNextCard, showPopup, isCorrectAnswer }) => {
+    console.log(currentCard);
+
     if (!currentCard) return null;
     return (
       <>

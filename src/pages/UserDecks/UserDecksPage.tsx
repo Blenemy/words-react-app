@@ -42,7 +42,7 @@ export const UserDecksPage = () => {
   }
 
   return (
-    <div className="p-16">
+    <div className="p-14">
       <div className="mb-7">
         <Breadcrumbs
           crumbs={[

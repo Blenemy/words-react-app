@@ -8,6 +8,7 @@ import { GameSuccess } from "../../components/GameSuccess/GameSuccess";
 import { Feedback } from "../../components/Feedback/Feedback";
 import { GameContent } from "./GameContent";
 import { Breadcrumbs } from "../../components/Breadcrumbs/Breadcrumbs";
+import { Progress, Typography } from "@material-tailwind/react";
 
 /**
  * FlipCardPage is a React functional component that renders the game page for the flip card quiz.
@@ -32,18 +33,51 @@ export const QuizGamePage: React.FC = () => {
     isCorrectAnswer,
   } = useCards(deckId, token!);
 
+  const countCurrentProgress = (
+    wordsLeft: number,
+    wordsTotal: number
+  ): number => {
+    const progress = ((wordsTotal - wordsLeft) / wordsTotal) * 100;
+    return progress;
+  };
+
   return (
     <div className="flex flex-col text-primary">
       <div className="container mx-auto my-0 relative">
         <div className="py-14 flex flex-col">
           {!successMessage && (
-            <div className="mb-10">
+            <div className="mb-5">
               <Breadcrumbs
                 crumbs={[
                   { text: "Home", path: ROUTE_HOME },
                   { text: "Back to game page", path: ROUTE_CARD_GAME },
                 ]}
                 current="Quiz"
+              />
+            </div>
+          )}
+
+          {currentCard && (
+            <div className="mb-10">
+              <div className="mb-2 flex items-center justify-between gap-4">
+                <Typography color="blue-gray" variant="h6">
+                  Completed
+                </Typography>
+                <Typography color="blue-gray" variant="h6">
+                  {countCurrentProgress(
+                    currentCard.words_left,
+                    currentCard.words_total
+                  )}
+                  %
+                </Typography>
+              </div>
+              <Progress
+                value={countCurrentProgress(
+                  currentCard.words_left,
+                  currentCard.words_total
+                )}
+                className="h-5"
+                color="blue"
               />
             </div>
           )}
@@ -60,7 +94,6 @@ export const QuizGamePage: React.FC = () => {
               />
             )
           )}
-
           {successMessage && (
             <>
               <div className="flex flex-col gap-8">

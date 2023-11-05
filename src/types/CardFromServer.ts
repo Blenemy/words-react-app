@@ -8,4 +8,6 @@ export interface CardFromServer {
   image: string;
   image_hash: string;
   additional_images?: string[];
+  words_left: number;
+  words_total: number;
 }
