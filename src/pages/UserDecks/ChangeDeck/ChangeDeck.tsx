@@ -13,10 +13,10 @@ import { DeckCardsList } from "../DeckCardsList/DeckCardsList";
 import { Breadcrumbs } from "../../../components/Breadcrumbs/Breadcrumbs";
 
 /**
- * Component for managing a deck's details and adding new cards to it.
+ * Компонент для управления деталями колоды и добавления новых карточек в нее.
  *
  * @component
- * @returns The ChangeDeck component with deck details and add card functionality.
+ * @returns Компонент ChangeDeck с деталями колоды и функциональностью добавления карточек.
  */
 
 export const ChangeDeck = () => {

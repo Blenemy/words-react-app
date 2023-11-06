@@ -7,10 +7,10 @@ import { useNavigate } from "react-router-dom";
 import { ROUTE_USER_DECKS } from "../../../data/constants";
 
 /**
- * Renders a list of user decks.
+ * Отображает список колод пользователя.
  *
- * @param {Props} props - The props for the UserDeckList component.
- * @returns A list of UserDeckPreview components.
+ * @param {Props} props - Свойства компоненты UserDeckList.
+ * @returns Список компонентов UserDeckPreview.
  */
 
 type UserDeckListProps = {

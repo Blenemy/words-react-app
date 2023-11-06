@@ -13,9 +13,9 @@ import { GlobalLoader } from "../../components/Loaders/GlobalLoader";
 import { Breadcrumbs } from "../../components/Breadcrumbs/Breadcrumbs";
 
 /**
- * The UserDecksPage component for displaying user decks and adding new ones.
+ * Компонент UserDecksPage для отображения колод пользователя и добавления новых.
  *
- * @returns The UserDecksPage component.
+ * @returns Компонент UserDecksPage.
  */
 
 export const UserDecksPage = () => {

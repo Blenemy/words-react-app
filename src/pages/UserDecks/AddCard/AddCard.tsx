@@ -7,11 +7,11 @@ import { FileDropZone } from "../../../components/FileDropZone/FileDropZone";
 import { GlobalLoader } from "../../../components/Loaders/GlobalLoader";
 
 /**
- * Component for adding a new card to a deck.
+ * Компонент для добавления новой карточки в колоду.
  *
  * @component
- * @param {AddCardType} props - Props containing the deck ID.
- * @returns The AddCard component.
+ * @param {AddCardType} props - Свойства, содержащие идентификатор колоды.
+ * @returns Компонент AddCard.
  */
 
 interface AddCardType {
