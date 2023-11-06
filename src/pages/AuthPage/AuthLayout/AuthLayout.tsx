@@ -8,11 +8,11 @@ import { RenderRowOfImages } from "./RenderRowOfImages";
 import { WelcomeMessage } from "./WelcomeMessage";
 
 /**
- * AuthLayout component for rendering the authentication layout.
+ * Компонент AuthLayout для рендеринга макета аутентификации.
  *
- * @param {Object} props - The component's props.
- * @param {React.ReactNode} props.children - The child components to render within the layout.
- * @returns {React.ReactElement} The rendered authentication layout component.
+ * @param {Object} props - Пропсы компонента.
+ * @param {React.ReactNode} props.children - Дочерние компоненты для рендеринга внутри макета.
+ * @returns {React.ReactElement} Отрендеренный компонент макета аутентификации.
  *
  */
 
@@ -20,7 +20,9 @@ interface AuthLayoutProps {
   children: React.ReactNode;
 }
 
-export const AuthLayout: React.FC<AuthLayoutProps> = ({ children }): React.ReactElement => {
+export const AuthLayout: React.FC<AuthLayoutProps> = ({
+  children,
+}): React.ReactElement => {
   return (
     <section className="text-primary py-6">
       <div className="container mx-auto my-0">

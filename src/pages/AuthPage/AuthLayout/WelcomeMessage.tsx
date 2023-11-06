@@ -1,7 +1,7 @@
 /**
- * WelcomeMessage component for displaying a welcome message.
+ * Компонент WelcomeMessage для отображения приветственного сообщения.
  *
- * @returns {React.ReactElement} The rendered welcome message component.
+ * @returns {React.ReactElement} Отрендеренный компонент с приветственным сообщением.
  */
 
 export const WelcomeMessage = (): JSX.Element => {

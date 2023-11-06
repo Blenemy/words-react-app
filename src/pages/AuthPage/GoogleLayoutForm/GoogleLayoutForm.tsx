@@ -4,14 +4,14 @@ import { GlobalLoader } from "../../../components/Loaders/GlobalLoader";
 import { useGoogleAuthentification } from "../../../hooks/useGoogleAuthentification";
 
 /**
- * Component to render the layout for Google authentication including the button for Google Login and additional info.
+ * Компонент для рендеринга макета аутентификации через Google, включая кнопку для входа через Google и дополнительную информацию.
  *
  * @component
- * @param {GoogleLayoutFormProps} props - Props for Google layout form
- * @param {string} props.route - The route path for navigation
- * @param {string} props.message - Message to display next to the navigation link
- * @param {string} props.link - The text for the navigation link
- * @returns {React.ReactElement} A Google OAuth layout form component
+ * @param {GoogleLayoutFormProps} props - Пропсы для формы макета Google
+ * @param {string} props.route - Путь маршрутизации для навигации
+ * @param {string} props.message - Сообщение, отображаемое рядом со ссылкой навигации
+ * @param {string} props.link - Текст для ссылки навигации
+ * @returns {React.ReactElement} Компонент формы макета аутентификации Google
  */
 
 type GoogleLayoutFormProps = {

@@ -1,10 +1,10 @@
 import { RenderImage } from "./RenderImage";
 
 /**
- * RenderRowOfImages component for rendering a row of images.
+ * Компонент RenderRowOfImages для отрисовки ряда изображений.
  *
- * @param {RenderRowOfImagesProps} props - The component's props.
- * @returns {JSX.Element} The rendered row of images component.
+ * @param {RenderRowOfImagesProps} props - Пропсы компонента.
+ * @returns {JSX.Element} Отрендеренный компонент ряда изображений.
  */
 
 interface GridClasses {

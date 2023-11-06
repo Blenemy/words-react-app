@@ -2,14 +2,14 @@ import { AuthLayout } from "./AuthLayout/AuthLayout";
 import { GoogleLayoutForm } from "./GoogleLayoutForm/GoogleLayoutForm";
 
 /**
- * AuthPage component for rendering an authentication page.
+ * Компонент AuthPage для отрисовки страницы аутентификации.
  *
- * @param {AuthPageProps} props - The component's props.
- * @param {React.ComponentType<any>} props.FormComponent - The form component to render.
- * @param {string} props.googleMessage - The message for the Google layout form.
- * @param {string} props.route - The route for the Google layout form.
- * @param {string} props.link - The link for the Google layout form.
- * @returns {React.ReactElement} The rendered authentication page component.
+ * @param {AuthPageProps} props - Пропсы компонента.
+ * @param {React.ComponentType<any>} props.FormComponent - Компонент формы для рендера.
+ * @param {string} props.googleMessage - Сообщение для формы аутентификации через Google.
+ * @param {string} props.route - Маршрут для формы аутентификации через Google.
+ * @param {string} props.link - Ссылка для формы аутентификации через Google.
+ * @returns {React.ReactElement} Отрендеренный компонент страницы аутентификации.
  */
 
 interface AuthPageProps {

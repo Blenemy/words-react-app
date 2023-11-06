@@ -1,10 +1,10 @@
 /**
- * Props for the RenderImage component.
+ * Пропсы для компонента RenderImage.
  *
  * @interface
- * @property {string} src - The source URL of the image.
- * @property {string} [additionalClasses] - Additional CSS classes to apply to the image.
- * @returns {React.ReactElement} The rendered image component.
+ * @property {string} src - URL-источник изображения.
+ * @property {string} [additionalClasses] - Дополнительные CSS-классы, применяемые к изображению.
+ * @returns {React.ReactElement} Отрендеренный компонент изображения.
  */
 
 interface RenderImageProps extends React.HTMLAttributes<HTMLImageElement> {

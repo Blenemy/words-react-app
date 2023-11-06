@@ -4,13 +4,13 @@ import { ROUTE_AUTHORIZATION } from "../../../data/constants";
 import { useRegistration } from "../../../hooks/useRegistration";
 
 /**
- * Component for handling the user registration process.
+ * Компонент для управления процессом регистрации пользователя.
  *
- * Contains form inputs for username, email, password, and password confirmation.
- * Uses the `useRegistration` hook for form state management and submits the registration form.
- * On successful registration, a redirect notification is shown.
+ * Содержит поля формы для имени пользователя, электронной почты, пароля и подтверждения пароля.
+ * Использует хук `useRegistration` для управления состоянием формы и отправки формы регистрации.
+ * При успешной регистрации отображается уведомление с перенаправлением.
  *
- * @returns {React.ReactElement} The registration form component.
+ * @returns {React.ReactElement} Компонент формы регистрации.
  */
 
 export const RegistrationForm = () => {

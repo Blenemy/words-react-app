@@ -4,12 +4,12 @@ import { ROUTE_HOME } from "../../../data/constants";
 import { useAuth } from "../../../hooks/useAuth";
 
 /**
- * Component that renders the authorization form for signing in.
+ * Компонент, который рендерит форму авторизации для входа в систему.
  *
- * Utilizes formik for form state management and validation, a custom input component,
- * and a notification component to redirect after successful login.
+ * Использует formik для управления состоянием формы и валидации, пользовательский компонент ввода,
+ * и компонент уведомления для перенаправления после успешного входа.
  *
- * @returns {React.ReactElement} The authorization form component.
+ * @returns {React.ReactElement} Компонент формы авторизации.
  */
 
 export const AuthorizationForm = () => {
