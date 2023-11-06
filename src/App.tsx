@@ -1,4 +1,4 @@
-import { Routes, Route, useLocation } from "react-router-dom";
+import { Routes, Route } from "react-router-dom";
 import { UserAccountPage } from "./pages/UserAccount/UserAccountPage";
 import {
   ROUTE_AUTHORIZATION,
@@ -14,8 +14,6 @@ import { GamePage } from "./pages/GamePage/GamePage";
 import { HomePage } from "./pages/Home/HomePage";
 import { ChangeDeck } from "./pages/UserDecks/ChangeDeck/ChangeDeck";
 import "./App.scss";
-import { Header } from "./components/Header/Header";
-import { Footer } from "./components/Footer/Footer";
 import { UserDecksPage } from "./pages/UserDecks/UserDecksPage";
 import { GlobalLoader } from "./components/Loaders/GlobalLoader";
 import { AuthorizationForm } from "./pages/AuthPage/Login/AuthorizationForm";
@@ -24,10 +22,10 @@ import { AuthPage } from "./pages/AuthPage/AuthPage";
 import { NotAvailable } from "./components/NotAvailable/NotAvailable";
 import { useFetchUser } from "./hooks/useFetchUser";
 import { QuizGamePage } from "./pages/QuizGamePage/QuizGamePage";
+import { NotFound } from "./components/404/NotFound";
+import { Layout } from "./components/Layout/Layout";
 
 function App() {
-  const location = useLocation();
-  const showHeaderAndFooter = location.pathname !== ROUTE_NOT_AVAILABLE;
   const { isLoading } = useFetchUser();
 
   return (
@@ -36,9 +34,8 @@ function App() {
         <GlobalLoader />
       ) : (
         <div className="wrapper flex flex-col text-white min-h-screen  overflow-x-hidden">
-          {showHeaderAndFooter && <Header />}
-          <main className="grid__main min-h-screen grow">
-            <Routes>
+          <Routes>
+            <Route element={<Layout />}>
               <Route path={ROUTE_HOME} element={<HomePage />} />
               <Route path={ROUTE_CARD_GAME} element={<GamePage />} />
               <Route
@@ -71,10 +68,10 @@ function App() {
                 <Route index element={<UserDecksPage />} />
                 <Route path=":deckId" element={<ChangeDeck />} />
               </Route>
-              <Route path={ROUTE_NOT_AVAILABLE} element={<NotAvailable />} />
-            </Routes>
-          </main>
-          {showHeaderAndFooter && <Footer />}
+            </Route>
+            <Route path={ROUTE_NOT_AVAILABLE} element={<NotAvailable />} />
+            <Route path="*" element={<NotFound />} />
+          </Routes>
         </div>
       )}
     </div>
