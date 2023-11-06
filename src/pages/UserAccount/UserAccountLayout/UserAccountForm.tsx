@@ -5,11 +5,11 @@ import { UserAccountFormType } from "../UserAccountPage";
 import { UserAccountButton } from "./UserAccountButton";
 
 /**
- * UserAccountForm component for user account management.
+ * Компонент UserAccountForm для управления учетной записью пользователя.
  *
  * @component
- * @param {UserAccountFormProps} props - The props for the component.
- * @returns {JSX.Element} A memoized form component for user account data.
+ * @param {UserAccountFormProps} props - Свойства компонента.
+ * @returns {JSX.Element} Мемоизированный компонент формы для данных учетной записи пользователя.
  */
 
 type UserAccountFormProps = {

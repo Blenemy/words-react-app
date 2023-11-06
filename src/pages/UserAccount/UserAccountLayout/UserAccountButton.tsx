@@ -1,17 +1,17 @@
+/**
+ * Компонент UserAccountButton, который отображает кнопку на основе предоставленных свойств.
+ *
+ * @component
+ * @param {UserAccountButtonProps} props - Свойства компонента.
+ * @returns {JSX.Element} Элемент кнопки с настраиваемыми стилями и функциональностью.
+ */
+
 type UserAccountButtonProps = {
   type: "button" | "reset" | "submit";
   text: string;
   handleOnClick?: () => void;
   variant: "primary" | "secondary";
   disabled?: boolean;
-
-  /**
-   * UserAccountButton component which renders a button based on the provided props.
-   *
-   * @component
-   * @param {UserAccountButtonProps} props - The props for the component.
-   * @returns {JSX.Element} A button element with custom styles and functionality.
-   */
 };
 
 export const UserAccountButton: React.FC<UserAccountButtonProps> = (props) => {

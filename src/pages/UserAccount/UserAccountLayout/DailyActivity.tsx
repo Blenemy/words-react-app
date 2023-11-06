@@ -2,11 +2,11 @@ import { useAppSelector } from "../../../app/hooks";
 import progress from "../../../assets/progress.png";
 
 /**
- * DailyActivity component displaying the user's daily progress.
+ * Компонент DailyActivity, отображающий ежедневный прогресс пользователя.
  *
  * @component
- * @returns {JSX.Element} A React component that shows the user's daily
- * learning progress with a progress image and the number of learned words today.
+ * @returns {JSX.Element} Компонент React, который показывает ежедневный
+ * прогресс обучения пользователя с изображением прогресса и количеством выученных слов сегодня.
  */
 
 export const DailyActivity = () => {

@@ -10,12 +10,12 @@ import { useLogout } from "../../../hooks/useLogout";
 import { useUpdateHeight } from "../../../hooks/useUpdateHight";
 
 /**
- * UserAccountReview component that aggregates user account components.
+ * Компонент UserAccountReview, который агрегирует компоненты учетной записи пользователя.
  *
  * @component
- * @param {UserAccountReviewProps} props - The props for the component.
- * @returns {JSX.Element} A memoized component that renders user photo, daily activity,
- * user statistics chart, and account form for the user to review and update their account information.
+ * @param {UserAccountReviewProps} props - Свойства компонента.
+ * @returns {JSX.Element} Мемоизированный компонент, который отображает фотографию пользователя, ежедневную активность,
+ * график статистики пользователя и форму учетной записи для пользователей, чтобы проверить и обновить информацию о своей учетной записи.
  */
 
 interface UserAccountReviewProps {

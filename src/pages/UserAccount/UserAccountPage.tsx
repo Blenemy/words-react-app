@@ -8,11 +8,12 @@ import { useUserProfile } from "../../hooks/useUserProfile";
 import { useAppSelector } from "../../app/hooks";
 
 /**
- * UserAccountPage component that renders the user's account page.
+ * Компонент UserAccountPage, который отображает страницу учетной записи пользователя.
  *
  * @component
- * @returns {JSX.Element | null} The UserAccountPage component, which provides an interface
- * for a user to review and update their account details, or redirects to a not available route if no user is authenticated.
+ * @returns {JSX.Element | null} Компонент UserAccountPage, который предоставляет интерфейс
+ * для пользователя, чтобы просмотреть и обновить данные своей учетной записи, или перенаправляется на недоступный маршрут,
+ * если пользователь не аутентифицирован.
  */
 
 export type UserAccountFormType = {
