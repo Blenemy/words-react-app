@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/words-react-app/static/css/main.62131d54.css",
-    "main.js": "/words-react-app/static/js/main.57d6d7da.js",
+    "main.css": "/words-react-app/static/css/main.6898bd11.css",
+    "main.js": "/words-react-app/static/js/main.ab15d55a.js",
     "static/media/BackgroundGradient.png": "/words-react-app/static/media/BackgroundGradient.87f31503f8fe53709b26.png",
     "static/media/createAccountImage1.png": "/words-react-app/static/media/createAccountImage1.31e2bea9c14445a12e5e.png",
     "static/media/createAccountImage3.png": "/words-react-app/static/media/createAccountImage3.29ec94a7333076ee6722.png",
@@ -27,8 +27,8 @@
     "index.html": "/words-react-app/index.html",
     "static/media/arrow-white.svg": "/words-react-app/static/media/arrow-white.90d3d07d9b80e5a046e65a49eafc01ab.svg",
     "static/media/arrow-bg.svg": "/words-react-app/static/media/arrow-bg.f1c170dc862f5009d8b1.svg",
+    "static/media/visible-password.svg": "/words-react-app/static/media/visible-password.24be227b551caed3237a77f4f544c9da.svg",
     "static/media/downloadImage.svg": "/words-react-app/static/media/downloadImage.91fdc5adf0b31b9be111a16cdd18100d.svg",
-    "static/media/gamePageVector.svg": "/words-react-app/static/media/gamePageVector.1bd0d32320e4f8dc312949375db5a2a6.svg",
     "static/media/showPassIcon.svg": "/words-react-app/static/media/showPassIcon.805aae838d6a0716d6114f700bd7f528.svg",
     "static/media/howitworks-react-yellow.svg": "/words-react-app/static/media/howitworks-react-yellow.b67c71ff9ddc6acb91389f217506cdfb.svg",
     "static/media/howitworks-react-wave.svg": "/words-react-app/static/media/howitworks-react-wave.48300a2661f157d10e9ed26fb49890c7.svg",
@@ -36,11 +36,11 @@
     "static/media/howitworks-react-pink.svg": "/words-react-app/static/media/howitworks-react-pink.fe9c54d98fed8b106fbbbb301834fd2d.svg",
     "static/media/yellow-logo-animated-rectangle.svg": "/words-react-app/static/media/yellow-logo-animated-rectangle.de6c575b331b1828ed178155e6639ac7.svg",
     "static/media/violet-logo-animated-rectangle.svg": "/words-react-app/static/media/violet-logo-animated-rectangle.d09de536b7aaaf4b67701119c28cdcd8.svg",
-    "main.62131d54.css.map": "/words-react-app/static/css/main.62131d54.css.map",
-    "main.57d6d7da.js.map": "/words-react-app/static/js/main.57d6d7da.js.map"
+    "main.6898bd11.css.map": "/words-react-app/static/css/main.6898bd11.css.map",
+    "main.ab15d55a.js.map": "/words-react-app/static/js/main.ab15d55a.js.map"
   },
   "entrypoints": [
-    "static/css/main.62131d54.css",
-    "static/js/main.57d6d7da.js"
+    "static/css/main.6898bd11.css",
+    "static/js/main.ab15d55a.js"
   ]
 }
