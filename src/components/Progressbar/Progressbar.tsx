@@ -1,6 +1,19 @@
 import { Progress, Typography } from "@material-tailwind/react";
 import { memo } from "react";
 
+/**
+ * Компонент Progressbar
+ *
+ * Отображает прогресс-бар для отслеживания прогресса по количеству оставшихся и общему числу слов.
+ * Использует компоненты Progress и Typography из @material-tailwind/react.
+ *
+ * @component
+ * @param {object} props - Свойства, переданные компоненту.
+ * @param {number} props.words_left - Количество оставшихся слов.
+ * @param {number} props.words_total - Общее количество слов.
+ *
+ */
+
 interface ProgressbarType {
   words_left: number;
   words_total: number;

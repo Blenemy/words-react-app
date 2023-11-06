@@ -1,13 +1,12 @@
 import noResults from "../../assets/no-results.png";
 
 /**
- * `NoResluts` component displays a message when there are no search results.
+ * Компонент `NoResults` отображает сообщение, когда результаты поиска отсутствуют.
  * @component
- * @param {object} props - Properties passed to the component.
- * @param {string} props.highlightedText - The text to highlight in the no results message.
+ * @param {object} props - Свойства, переданные компоненту.
+ * @param {string} props.highlightedText - Текст для выделения в сообщении об отсутствии результатов.
  *
  * @example
- * <NoResluts highlightedText="example" />
  */
 
 interface NoResultsProps {

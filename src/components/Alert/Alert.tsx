@@ -1,5 +1,12 @@
 import { Dispatch, SetStateAction } from "react";
 
+/**
+ * Alert компонент, который отображает уведомление и предоставляет кнопку для его закрытия.
+ *
+ * @param {Dispatch<SetStateAction<boolean>>} setShowAlert - Функция, которая изменяет состояние отображения уведомления.
+ * @returns {JSX.Element} - Возвращает JSX элемент, который рендерит уведомление с кнопкой закрытия.
+ */
+
 interface AlertProps {
   setShowAlert: Dispatch<SetStateAction<boolean>>;
 }

@@ -1,6 +1,15 @@
 import { Link } from "react-router-dom";
 import { ROUTE_HOME } from "../../data/constants";
 
+/**
+ * NotFound компонент, представляющий страницу ошибки 404.
+ *
+ * Этот компонент отображает сообщение об ошибке 404 и предоставляет кнопку,
+ * которая перенаправляет пользователя на домашнюю страницу.
+ *
+ * @returns {JSX.Element} Возвращает JSX элемент, который рендерит страницу ошибки 404.
+ */
+
 export const NotFound = () => {
   return (
     <main className="h-screen w-full flex flex-col justify-center items-center bg-[#1A2238]">

@@ -4,6 +4,14 @@ import { CardFromServer } from "../../types/CardFromServer";
 import "./FlipCard.scss";
 import { ImageComponent } from "../ImageComponent/ImageComponent";
 
+/**
+ * FlipCard компонент представляет собой карточку, которая переворачивается по клику,
+ * показывая разные стороны с содержимым.
+ *
+ * @param {CardFromServer | null} card - Объект карточки, полученный от сервера, может быть null.
+ * @returns {JSX.Element | null} Возвращает JSX элемент переворачивающейся карточки или null, если карточка не предоставлена.
+ */
+
 type Props = {
   card: CardFromServer | null;
 };

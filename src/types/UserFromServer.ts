@@ -4,5 +4,9 @@ export interface UserFromServer {
   email: string;
   first_name: string;
   last_name: string;
-  progress?: any;
+  progress: Progress;
 }
+
+type Progress = {
+  [date: string]: number;
+};

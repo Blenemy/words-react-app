@@ -6,14 +6,13 @@ import {
 } from "../../data/constants";
 
 /**
- * NotAvailable Component
+ * Компонент NotAvailable
  *
- * Renders a 403 Access Denied page with links to Home, Sign In, and Sign Up.
+ * Отображает страницу с ошибкой 403 Access Denied и ссылками на Главную страницу, Вход и Регистрацию.
  *
  * @component
  *
  * @example
- * return (<NotAvailable />)
  */
 
 export const NotAvailable = () => {

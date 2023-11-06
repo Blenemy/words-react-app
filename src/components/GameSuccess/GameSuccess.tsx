@@ -1,6 +1,14 @@
 import { Link } from "react-router-dom";
 import { ROUTE_CARD_GAME } from "../../data/constants";
 
+/**
+ * GameSuccess компонент, который отображает сообщение об успешном завершении игры.
+ *
+ * Компонент включает в себя иконку с галочкой, заголовок с поздравлением и кнопку для возврата к игре.
+ *
+ * @returns {JSX.Element} Возвращает JSX элемент, который рендерит сообщение об успехе в игре.
+ */
+
 export const GameSuccess = () => {
   return (
     <div className="flex flex-col items-center justify-center">
