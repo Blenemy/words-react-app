@@ -1,10 +1,10 @@
 /**
- * HowDoesItWorkCard component for rendering a card explaining how it works.
+ * Компонент HowDoesItWorkCard для отображения карточки, объясняющей как это работает.
  *
- * @param {HowDoesItWorkCardProps} props - The component's props.
- * @param {string} props.text - The text content of the card.
- * @param {string} props.number - The card number.
- * @returns {React.ReactElement} The rendered how it works card component.
+ * @param {HowDoesItWorkCardProps} props - Свойства компонента.
+ * @param {string} props.text - Текстовое содержимое карточки.
+ * @param {string} props.number - Номер карточки.
+ * @returns {React.ReactElement} Отрисованный компонент карточки раздела "Как это работает".
  */
 interface HowDoesItWorkCardProps {
   text: string;

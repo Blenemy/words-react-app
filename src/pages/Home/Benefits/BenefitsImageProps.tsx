@@ -1,12 +1,12 @@
 import { HTMLAttributes } from "react";
 
 /**
- * BenefitsImage component for rendering an image with additional classes.
+ * Компонент BenefitsImage для отображения изображения с дополнительными классами CSS.
  *
- * @param {BenefitsImageProps} props - The component's props.
- * @param {string} props.src - The source URL of the image.
- * @param {string} props.classes - Additional CSS classes to apply to the image.
- * @returns {JSX.Element} The rendered benefits image component.
+ * @param {BenefitsImageProps} props - Свойства компонента.
+ * @param {string} props.src - URL источника изображения.
+ * @param {string} props.classes - Дополнительные классы CSS для применения к изображению.
+ * @returns {JSX.Element} Отрисованный компонент изображения преимуществ.
  */
 
 interface BenefitsImageProps extends HTMLAttributes<HTMLImageElement> {

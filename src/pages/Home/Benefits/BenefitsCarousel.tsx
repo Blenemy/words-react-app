@@ -2,9 +2,9 @@ import Marquee from "react-fast-marquee";
 import { v4 as uuidv4 } from "uuid";
 
 /**
- * BenefitsCarousel component for rendering a carousel of benefit words.
+ * Компонент BenefitsCarousel для отображения карусели с преимуществами.
  *
- * @returns {JSX.Element} The rendered benefits carousel component.
+ * @returns {JSX.Element} Отрисованный компонент карусели преимуществ.
  */
 
 export const wordsToTrackBase = [

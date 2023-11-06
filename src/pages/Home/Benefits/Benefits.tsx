@@ -5,9 +5,9 @@ import { BenefitsContent } from "./BenefitsContent";
 import { BenefitsImage } from "./BenefitsImageProps";
 
 /**
- * Benefits component for rendering a section with benefits content.
+ * Компонент Benefits для отображения раздела с контентом преимуществ.
  *
- * @returns {JSX.Element} The rendered benefits section component.
+ * @returns {JSX.Element} Отрисованный компонент раздела с преимуществами.
  */
 
 export const Benefits = (): JSX.Element => {

@@ -4,13 +4,13 @@ import { DeckFromServer } from "../../../types/DeckFromServer";
 import { StackOfDecks } from "../StackOfDecks/StackOfDecks";
 
 /**
- * DefaultDecksList component for rendering a list of default decks for users.
+ * Компонент DefaultDecksList для отображения списка стандартных колод для пользователей.
  *
- * @param {Props} props - The component's props.
- * @param {NavigateFunction} props.navigateFunc - Function from react-router-dom to navigate between routes.
- * @param {DeckFromServer[]} props.defaultDecks - An array of deck objects fetched from the server.
- * @param {string|undefined} props.token - The authentication token of the logged-in user.
- * @returns {React.ReactElement} The rendered DefaultDecksList component.
+ * @param {Props} props - Пропсы компонента.
+ * @param {NavigateFunction} props.navigateFunc - Функция из react-router-dom для навигации между маршрутами.
+ * @param {DeckFromServer[]} props.defaultDecks - Массив объектов колод, полученных с сервера.
+ * @param {string|undefined} props.token - Токен аутентификации залогиненного пользователя.
+ * @returns {React.ReactElement} Отрендеренный компонент DefaultDecksList.
  */
 
 type Props = {

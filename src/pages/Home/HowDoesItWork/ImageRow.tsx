@@ -4,9 +4,9 @@ import pinkRect from "../../../assets/howitworks-react-pink.svg";
 import waveRect from "../../../assets/howitworks-react-wave.svg";
 
 /**
- * ImageRow component for rendering a row of images.
+ * Компонент ImageRow для отображения строки изображений.
  *
- * @returns {React.ReactElement} The rendered image row component.
+ * @returns {React.ReactElement} Отрисованный компонент строки изображений.
  */
 
 export const ImageRow = (): React.ReactElement => (

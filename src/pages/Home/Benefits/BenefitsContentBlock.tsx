@@ -1,10 +1,10 @@
 /**
- * BenefitsContentBlock component for rendering a block of benefits content.
+ * Компонент BenefitsContentBlock для отображения блока контента преимуществ.
  *
- * @param {BenefitsContentBlockProps} props - The component's props.
- * @param {string} props.title - The title of the content block.
- * @param {string} props.text - The text content of the block.
- * @returns {React.ReactElement} The rendered benefits content block component.
+ * @param {BenefitsContentBlockProps} props - Свойства компонента.
+ * @param {string} props.title - Заголовок блока контента.
+ * @param {string} props.text - Текстовое содержимое блока.
+ * @returns {React.ReactElement} Отрисованный компонент блока контента преимуществ.
  */
 
 interface BenefitsContentBlockProps {

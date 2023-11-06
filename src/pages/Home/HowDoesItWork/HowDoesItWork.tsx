@@ -3,9 +3,9 @@ import { Review } from "./Review";
 import { ImageRow } from "./ImageRow";
 
 /**
- * HowDoesItWork component for rendering the section explaining how it works.
+ * Компонент HowDoesItWork для отображения раздела, объясняющего как это работает.
  *
- * @returns {React.ReactElement} The rendered how it works section component.
+ * @returns {React.ReactElement} Отрисованный компонент раздела "Как это работает".
  */
 
 export const HowDoesItWork = (): React.ReactElement => {

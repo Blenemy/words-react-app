@@ -5,13 +5,13 @@ import "./Review.scss";
 import { useGetReviews } from "../../../hooks/useGetReviews";
 
 /**
- * Review component for displaying a list of comments/reviews.
- * The component uses transition animations for displaying comments.
+ * Компонент Review для отображения списка комментариев/отзывов.
+ * Компонент использует анимацию перехода для отображения комментариев.
  *
- * It shows only 2 comments by default and provides an option
- * to expand and view all comments or collapse back to viewing only two.
+ * По умолчанию отображает только 2 комментария и предоставляет возможность
+ * развернуть и просмотреть все комментарии или свернуть обратно, чтобы видеть только два.
  *
- * @returns {React.ReactElement} The rendered Review component.
+ * @returns {React.ReactElement} Отрисованный компонент Review.
  */
 
 export const Review = () => {
