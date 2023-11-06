@@ -1,6 +1,15 @@
 import axios from "axios";
 import { BASE_URL } from "../data/constants";
 
+/**
+ * Обновить карточку на сервере.
+ *
+ * @param {number} cardId - Идентификатор карточки для обновления.
+ * @param {any} dataToSend - Данные для отправки при обновлении.
+ * @param {string | undefined} token - Токен авторизации пользователя.
+ * @returns {Promise<any>} Промис, который разрешается обновленными данными карточки.
+ */
+
 export const updateCard = async (
   cardId: number,
   dataToSend: any,

@@ -9,9 +9,6 @@ export const handleInputChange = (
   }));
 };
 
-export const delay = (ms: number) =>
-  new Promise((resolve) => setTimeout(resolve, ms));
-
 export const handleFileUpload = (
   file: File,
   setAction: React.Dispatch<React.SetStateAction<any>>
