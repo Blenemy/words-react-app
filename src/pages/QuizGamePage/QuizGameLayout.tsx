@@ -9,12 +9,13 @@ import { DEFAULT_HASH_SRC } from "../../data/constants";
 import { ImageBundlePath } from "../../types/ImageBundlePath";
 
 /**
- * The FlipCardLayout component is responsible for laying out the flip card and additional
- * images on the page. It displays a word from the current card and additional images that
- * might come with the card or default filler images if no additional images are provided.
+ * Компонент FlipCardLayout отвечает за размещение переворачивающейся карточки и дополнительных
+ * изображений на странице. Он отображает слово с текущей карточки и дополнительные изображения,
+ * которые могут поставляться с карточкой, или использует заполнительные изображения по умолчанию,
+ * если дополнительные изображения не предоставлены.
  *
- * @param {FlipCardLayoutProps} props - The props containing the current card information.
- * @returns {JSX.Element} - The component with the FlipCard and ImageComponent elements.
+ * @param {FlipCardLayoutProps} props - Свойства, содержащие информацию о текущей карточке.
+ * @returns {JSX.Element} - Компонент с элементами FlipCard и ImageComponent.
  */
 
 type Props = {

@@ -3,11 +3,11 @@ import { ROUTE_CARD_GAME } from "../../../data/constants";
 import { HTMLAttributes } from "react";
 
 /**
- * ButtonLink component for rendering a styled link button.
+ * Компонент ButtonLink для отображения стилизованной ссылочной кнопки.
  *
- * @param {ButtonLinkProps} props - The component's props.
- * @param {string} props.text - The text to display inside the button.
- * @returns {React.ReactElement} The rendered ButtonLink component.
+ * @param {ButtonLinkProps} props - Свойства компонента.
+ * @param {string} props.text - Текст, отображаемый внутри кнопки.
+ * @returns {React.ReactElement} Отрисованный компонент ButtonLink.
  */
 
 interface ButtonLinkProps extends HTMLAttributes<HTMLAnchorElement> {

@@ -4,6 +4,18 @@ import { QuizAnswer } from "../../components/QuizAnswer/QuizAnswer";
 import { v4 as uuidv4 } from "uuid";
 import { CardFromServer } from "../../types/CardFromServer";
 
+/**
+ * GameContent component for rendering the game content.
+ *
+ * @component
+ * @param {GameContentProps} props - The component's props.
+ * @param {CardFromServer} props.currentCard - The current card to display.
+ * @param {function} props.triggerNextCard - Function to trigger the next card.
+ * @param {boolean} props.showPopup - Flag to indicate if a popup should be shown.
+ * @param {boolean} props.isCorrectAnswer - Flag to indicate if the answer is correct.
+ * @returns {JSX.Element} The rendered GameContent component.
+ */
+
 interface GameContentProps {
   currentCard: CardFromServer;
   triggerNextCard: (answer: string) => void;
@@ -13,9 +25,10 @@ interface GameContentProps {
 
 export const GameContent: React.FC<GameContentProps> = memo(
   ({ currentCard, triggerNextCard, showPopup, isCorrectAnswer }) => {
-    console.log(currentCard);
+    if (!currentCard) {
+      return null;
+    }
 
-    if (!currentCard) return null;
     return (
       <>
         <FlipCardLayout currentCard={currentCard} />

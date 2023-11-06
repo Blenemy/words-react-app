@@ -3,9 +3,9 @@ import { MainContent } from "./MainContent/MainContent";
 import { HowDoesItWork } from "./HowDoesItWork/HowDoesItWork";
 
 /**
- * HomePage component for rendering the main content of the home page.
+ * Компонент HomePage для отображения основного контента домашней страницы.
  *
- * @returns {React.ReactElement} The rendered HomePage component.
+ * @returns {React.ReactElement} Отрисованный компонент HomePage.
  */
 
 export const HomePage = () => {

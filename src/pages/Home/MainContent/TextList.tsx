@@ -1,8 +1,8 @@
 /**
- * TextList Functional Component renders a list of words as an unordered list.
+ * Компонент TextList в функциональном стиле, который отображает список слов в виде неупорядоченного списка.
  * @component
- * @param {TextListProps} props - Props containing array of words.
- * @returns {JSX.Element} An unordered list of words with specific styling.
+ * @param {TextListProps} props - Свойства, содержащие массив слов.
+ * @returns {JSX.Element} Неупорядоченный список слов с определенным стилем.
  */
 
 interface TextListProps {

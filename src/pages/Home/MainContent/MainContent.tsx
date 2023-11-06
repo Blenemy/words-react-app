@@ -8,12 +8,11 @@ import { ButtonLink } from "./ButtonLink";
 import { useUpdateHeight } from "../../../hooks/useUpdateHight";
 
 /**
- * MainContent component serves as the main section of the homepage.
- * It uses a custom hook to set the height and displays a collection
- * of components including a title, subtitle, ButtonLink, TextList,
- * and ImageList.
+ * Компонент MainContent служит в качестве основного раздела главной страницы.
+ * Он использует пользовательский хук для установки высоты и отображает
+ * набор компонентов, включая заголовок, подзаголовок, ButtonLink, TextList и ImageList.
  *
- * @returns {JSX.Element} The rendered main content section with dynamic style and content.
+ * @returns {JSX.Element} Отрисованный главный раздел контента с динамическим стилем и содержанием.
  */
 
 export const MainContent = () => {

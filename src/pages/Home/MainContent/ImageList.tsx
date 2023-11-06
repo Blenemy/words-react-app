@@ -1,10 +1,10 @@
 import { v4 as uuidv4 } from "uuid";
 
 /**
- * ImageList Functional Component renders a list of images.
+ * Компонент ImageList в функциональном стиле, который отображает список изображений.
  * @component
- * @param {ImageListProps} props - Props containing array of image strings.
- * @returns {JSX.Element} A formatted unordered list of images.
+ * @param {ImageListProps} props - Свойства, содержащие массив строк с изображениями.
+ * @returns {JSX.Element} Отформатированный неупорядоченный список изображений.
  */
 
 interface ImageListProps {

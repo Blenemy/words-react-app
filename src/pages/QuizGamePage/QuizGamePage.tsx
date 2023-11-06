@@ -11,12 +11,12 @@ import { Breadcrumbs } from "../../components/Breadcrumbs/Breadcrumbs";
 import { Progressbar } from "../../components/Progressbar/Progressbar";
 
 /**
- * FlipCardPage is a React functional component that renders the game page for the flip card quiz.
- * It handles the game flow, displays the loader, breadcrumbs, flip cards, answers, and success or feedback
- * components based on the game state. It also manages the deck of cards for the game using a custom hook.
+ * Компонент FlipCardPage - это функциональный компонент React, который отображает игровую страницу для викторины с переворачивающимися картами.
+ * Он управляет игровым процессом, отображает загрузчик, хлебные крошки, переворачивающиеся карты, ответы и компоненты успешного завершения или обратной связи
+ * в зависимости от состояния игры. Он также управляет колодой карт для игры с использованием пользовательского хука.
  *
  * @component
- * @returns {JSX.Element} The complete page layout for the flip card quiz game.
+ * @returns {JSX.Element} Полноценный макет страницы для игры в викторину с переворачивающимися картами.
  */
 
 export const QuizGamePage: React.FC = () => {
@@ -32,6 +32,8 @@ export const QuizGamePage: React.FC = () => {
     showPopup,
     isCorrectAnswer,
   } = useCards(deckId, token!);
+
+  console.log(currentCard);
 
   return (
     <div className="flex flex-col text-primary">
