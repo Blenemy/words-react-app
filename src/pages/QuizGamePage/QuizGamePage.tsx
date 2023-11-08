@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import {
   ROUTE_CARD_GAME,
   ROUTE_GAME_OVER,
@@ -36,15 +36,17 @@ export const QuizGamePage: React.FC = () => {
     isCorrectAnswer,
   } = useCards(deckId, token!);
 
-  if (successMessage) {
-    navigate(ROUTE_GAME_OVER, { replace: true });
-  }
+  useEffect(() => {
+    if (successMessage) {
+      navigate(ROUTE_GAME_OVER, { replace: true });
+    }
+  }, [successMessage, navigate]);
 
   return (
     <div className="flex flex-col text-primary">
       <div className="container mx-auto my-0 relative">
         <div className="py-14 flex flex-col min-w-full">
-          {!successMessage && (
+          {currentCard && (
             <div className="mb-5">
               <Breadcrumbs
                 crumbs={[

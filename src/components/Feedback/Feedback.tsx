@@ -68,7 +68,7 @@ export const Feedback = memo((): JSX.Element => {
 
   return (
     <form
-      className="flex-col items-center bg-gray-700 pb-14 relative"
+      className="flex-col items-center bg-gray-700 pb-14 relative grow h-full"
       onSubmit={handleOnSubmit}
     >
       <header className="w-full bg-gray-800">
