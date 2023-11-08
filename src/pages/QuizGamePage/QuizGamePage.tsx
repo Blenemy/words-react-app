@@ -1,11 +1,13 @@
 import React from "react";
-import { ROUTE_CARD_GAME, ROUTE_HOME } from "../../data/constants";
-import { useLocation } from "react-router-dom";
+import {
+  ROUTE_CARD_GAME,
+  ROUTE_GAME_OVER,
+  ROUTE_HOME,
+} from "../../data/constants";
+import { useLocation, useNavigate } from "react-router-dom";
 import { Loader } from "../../components/Loaders/Loader";
 import Cookies from "js-cookie";
 import { useCards } from "../../hooks/useCards";
-import { GameSuccess } from "../../components/GameSuccess/GameSuccess";
-import { Feedback } from "../../components/Feedback/Feedback";
 import { GameContent } from "./GameContent";
 import { Breadcrumbs } from "../../components/Breadcrumbs/Breadcrumbs";
 import { Progressbar } from "../../components/Progressbar/Progressbar";
@@ -23,6 +25,7 @@ export const QuizGamePage: React.FC = () => {
   const location = useLocation();
   const { deckId } = location.state;
   const token = Cookies.get("token");
+  const navigate = useNavigate();
 
   const {
     successMessage,
@@ -32,6 +35,10 @@ export const QuizGamePage: React.FC = () => {
     showPopup,
     isCorrectAnswer,
   } = useCards(deckId, token!);
+
+  if (successMessage) {
+    navigate(ROUTE_GAME_OVER, { replace: true });
+  }
 
   return (
     <div className="flex flex-col text-primary">
@@ -67,14 +74,6 @@ export const QuizGamePage: React.FC = () => {
                 isCorrectAnswer={isCorrectAnswer}
               />
             )
-          )}
-          {successMessage && (
-            <>
-              <div className="flex flex-col gap-8">
-                <GameSuccess />
-                <Feedback />
-              </div>
-            </>
           )}
         </div>
       </div>

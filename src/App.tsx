@@ -4,6 +4,7 @@ import {
   ROUTE_AUTHORIZATION,
   ROUTE_CARD_GAME,
   ROUTE_FLIP_CARD,
+  ROUTE_GAME_OVER,
   ROUTE_HOME,
   ROUTE_NOT_AVAILABLE,
   ROUTE_PROFILE,
@@ -24,6 +25,7 @@ import { useFetchUser } from "./hooks/useFetchUser";
 import { QuizGamePage } from "./pages/QuizGamePage/QuizGamePage";
 import { NotFound } from "./components/404/NotFound";
 import { Layout } from "./components/Layout/Layout";
+import { GameOver } from "./components/GameOver/GameOver";
 
 function App() {
   const { isLoading } = useFetchUser();
@@ -49,7 +51,7 @@ function App() {
               </Route>
             </Route>
             <Route path={ROUTE_NOT_AVAILABLE} element={<NotAvailable />} />
-            <Route path="*" element={<NotFound />} />
+            <Route path={ROUTE_GAME_OVER} element={<GameOver />} />
             <Route
               path={ROUTE_REGISTRATION}
               element={
@@ -72,6 +74,7 @@ function App() {
                 />
               }
             />
+            <Route path="*" element={<NotFound />} />
           </Routes>
         </div>
       )}

@@ -11,6 +11,7 @@ export const ROUTE_ADD_CARD = "/add-card";
 export const ROUTE_USER_DECKS = "/user-decks";
 export const ROUTE_CHANGE_CARD = "/change-card";
 export const ROUTE_NOT_AVAILABLE = "/not-available";
+export const ROUTE_GAME_OVER = "/game-over";
 
 // Base url
 
