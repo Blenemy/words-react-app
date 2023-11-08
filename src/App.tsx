@@ -38,28 +38,7 @@ function App() {
             <Route element={<Layout />}>
               <Route path={ROUTE_HOME} element={<HomePage />} />
               <Route path={ROUTE_CARD_GAME} element={<GamePage />} />
-              <Route
-                path={ROUTE_REGISTRATION}
-                element={
-                  <AuthPage
-                    FormComponent={RegistrationForm}
-                    googleMessage="Already Have an account?"
-                    route={ROUTE_AUTHORIZATION}
-                    link="Sign in"
-                  />
-                }
-              />
-              <Route
-                path={ROUTE_AUTHORIZATION}
-                element={
-                  <AuthPage
-                    FormComponent={AuthorizationForm}
-                    googleMessage="Don`t have an account?"
-                    route={ROUTE_REGISTRATION}
-                    link="Create the account"
-                  />
-                }
-              />
+
               <Route path={ROUTE_PROFILE} element={<UserAccountPage />} />
               <Route path={ROUTE_FLIP_CARD}>
                 <Route index element={<QuizGamePage />} />
@@ -71,6 +50,28 @@ function App() {
             </Route>
             <Route path={ROUTE_NOT_AVAILABLE} element={<NotAvailable />} />
             <Route path="*" element={<NotFound />} />
+            <Route
+              path={ROUTE_REGISTRATION}
+              element={
+                <AuthPage
+                  FormComponent={RegistrationForm}
+                  googleMessage="Already Have an account?"
+                  route={ROUTE_AUTHORIZATION}
+                  link="Sign in"
+                />
+              }
+            />
+            <Route
+              path={ROUTE_AUTHORIZATION}
+              element={
+                <AuthPage
+                  FormComponent={AuthorizationForm}
+                  googleMessage="Don`t have an account?"
+                  route={ROUTE_REGISTRATION}
+                  link="Create the account"
+                />
+              }
+            />
           </Routes>
         </div>
       )}

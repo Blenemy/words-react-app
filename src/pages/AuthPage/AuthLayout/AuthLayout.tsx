@@ -26,7 +26,7 @@ export const AuthLayout: React.FC<AuthLayoutProps> = ({
   return (
     <section className="text-primary py-6">
       <div className="container mx-auto my-0">
-        <div className="px-10">
+        <div className="">
           <div className="flex gap-4">
             <div className="basis-1/2 flex flex-col">
               <div className="grid mb-5 grid-cols-custom12 grid-rows-custom12 gap-5">
