@@ -1,14 +1,18 @@
 {
   "files": {
-    "main.css": "/words-react-app/static/css/main.e9bd5429.css",
-    "main.js": "/words-react-app/static/js/main.db462a01.js",
+    "main.css": "/words-react-app/static/css/main.5102577a.css",
+    "main.js": "/words-react-app/static/js/main.68b0f0e3.js",
     "static/media/BackgroundGradient.png": "/words-react-app/static/media/BackgroundGradient.87f31503f8fe53709b26.png",
+    "static/media/react.png": "/words-react-app/static/media/react.6bcffb56bd0efaa47767.png",
     "static/media/createAccountImage1.png": "/words-react-app/static/media/createAccountImage1.31e2bea9c14445a12e5e.png",
     "static/media/createAccountImage3.png": "/words-react-app/static/media/createAccountImage3.29ec94a7333076ee6722.png",
     "static/media/imageFillerSecond.png": "/words-react-app/static/media/imageFillerSecond.136f7a47087caf9b353e.png",
     "static/media/imageFiller3.png": "/words-react-app/static/media/imageFiller3.9033d7c530a06328836e.png",
+    "static/media/Postgresql_elephant.svg.png": "/words-react-app/static/media/Postgresql_elephant.svg.e20228f7fb92f41cd4d2.png",
     "static/media/createAccountImage6.png": "/words-react-app/static/media/createAccountImage6.3fe8b8647417affa0c28.png",
+    "static/media/formik-icon-1024x1024-deyd4zqw.png": "/words-react-app/static/media/formik-icon-1024x1024-deyd4zqw.f47e1930a9c301f13267.png",
     "static/media/benefits-image1.png": "/words-react-app/static/media/benefits-image1.31c4798c7b72902e701e.png",
+    "static/media/typescript.png": "/words-react-app/static/media/typescript.09a344f205c3f76bb138.png",
     "static/media/createAccountImage5.png": "/words-react-app/static/media/createAccountImage5.41c775acba3a820ca67c.png",
     "static/media/createAccountImage2.png": "/words-react-app/static/media/createAccountImage2.2f71577554c3a11af28e.png",
     "static/media/question-mark-2492009_1280.webp": "/words-react-app/static/media/question-mark-2492009_1280.06ec556c557f9cc86600.webp",
@@ -18,9 +22,12 @@
     "static/media/benefits-image2.png": "/words-react-app/static/media/benefits-image2.25ba24d5740d39add404.png",
     "static/media/benefits-image3.png": "/words-react-app/static/media/benefits-image3.44435a125032a6bbf211.png",
     "static/media/MagilioRegular.otf": "/words-react-app/static/media/MagilioRegular.4bb4f911c8d1d4d8aa98.otf",
+    "static/media/react-query-logo-1340EA4CE9-seeklogo.com.png": "/words-react-app/static/media/react-query-logo-1340EA4CE9-seeklogo.com.44b0741da0239ba5838a.png",
+    "static/media/tailwind-css3232.logowik.com.webp": "/words-react-app/static/media/tailwind-css3232.logowik.com.ef65149903db065854e1.webp",
     "static/media/heart-front-page.svg": "/words-react-app/static/media/heart-front-page.dfee9fec544dc05cfd6c.svg",
     "static/media/Vector.svg": "/words-react-app/static/media/Vector.8eb59c066f0c681c55fa42459fe3ae58.svg",
     "static/media/camera.svg": "/words-react-app/static/media/camera.9938acc20ddeebf3a30b97f7ba074278.svg",
+    "static/media/redux.svg": "/words-react-app/static/media/redux.0e4fb1c819ac4c060c92343147d4ccf7.svg",
     "static/media/User.svg": "/words-react-app/static/media/User.b175257c1dee32fc39b1cb58a71d89aa.svg",
     "static/media/copyright.svg": "/words-react-app/static/media/copyright.ee23373c7afff2e943117bf980cfa0b8.svg",
     "static/media/user-acc.svg": "/words-react-app/static/media/user-acc.71e89c140d56e582ca50aa98e59de4fd.svg",
@@ -36,11 +43,11 @@
     "static/media/howitworks-react-pink.svg": "/words-react-app/static/media/howitworks-react-pink.fe9c54d98fed8b106fbbbb301834fd2d.svg",
     "static/media/yellow-logo-animated-rectangle.svg": "/words-react-app/static/media/yellow-logo-animated-rectangle.de6c575b331b1828ed178155e6639ac7.svg",
     "static/media/violet-logo-animated-rectangle.svg": "/words-react-app/static/media/violet-logo-animated-rectangle.d09de536b7aaaf4b67701119c28cdcd8.svg",
-    "main.e9bd5429.css.map": "/words-react-app/static/css/main.e9bd5429.css.map",
-    "main.db462a01.js.map": "/words-react-app/static/js/main.db462a01.js.map"
+    "main.5102577a.css.map": "/words-react-app/static/css/main.5102577a.css.map",
+    "main.68b0f0e3.js.map": "/words-react-app/static/js/main.68b0f0e3.js.map"
   },
   "entrypoints": [
-    "static/css/main.e9bd5429.css",
-    "static/js/main.db462a01.js"
+    "static/css/main.5102577a.css",
+    "static/js/main.68b0f0e3.js"
   ]
 }
