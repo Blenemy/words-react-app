@@ -3,7 +3,7 @@ import {
   ROUTE_CARD_GAME,
   ROUTE_GAME_OVER,
   ROUTE_HOME,
-} from "../../data/constants";
+} from "../../constants/routes";
 import { useLocation, useNavigate } from "react-router-dom";
 import { Loader } from "../../components/Loaders/Loader";
 import Cookies from "js-cookie";

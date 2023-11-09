@@ -5,7 +5,7 @@ import firstFiller from "../../assets/imageFiller.png";
 import firstFillerSecond from "../../assets/imageFillerSecond.png";
 import firstFillerThird from "../../assets/imageFiller3.png";
 import { ImageComponent } from "../../components/ImageComponent/ImageComponent";
-import { DEFAULT_HASH_SRC } from "../../data/constants";
+import { DEFAULT_HASH_SRC } from "../../constants/routes";
 import { ImageBundlePath } from "../../types/ImageBundlePath";
 
 /**

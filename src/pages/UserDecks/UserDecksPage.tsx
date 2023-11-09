@@ -1,6 +1,6 @@
 import { useState } from "react";
 import Cookies from "js-cookie";
-import { ROUTE_CARD_GAME, ROUTE_HOME } from "../../data/constants";
+import { ROUTE_CARD_GAME, ROUTE_HOME } from "../../constants/routes";
 import { CustomInput } from "../../components/CustomInput/CustomInput";
 import { handleFileUpload, handleInputChange } from "../../utils/helpers";
 import { UserAccountButton } from "../UserAccount/UserAccountLayout/UserAccountButton";

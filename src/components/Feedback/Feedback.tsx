@@ -9,7 +9,7 @@ import cn from "classnames";
 
 import { FormEvent, memo, useEffect, useState } from "react";
 import axios from "axios";
-import { BASE_URL } from "../../data/constants";
+import { BASE_URL } from "../../constants/routes";
 import Cookies from "js-cookie";
 import { Alert } from "../Alert/Alert";
 

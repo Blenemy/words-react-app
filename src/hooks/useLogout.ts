@@ -2,7 +2,7 @@ import { useNavigate } from "react-router-dom";
 import { useAppDispatch } from "../app/hooks";
 import Cookies from "js-cookie";
 import { setUser } from "../features/userSlice";
-import { ROUTE_AUTHORIZATION } from "../data/constants";
+import { ROUTE_AUTHORIZATION } from "../constants/routes";
 
 export const useLogout = () => {
   const dispatch = useAppDispatch();

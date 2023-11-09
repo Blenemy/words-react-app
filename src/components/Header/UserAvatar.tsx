@@ -1,6 +1,6 @@
 import userDefault from "../../assets/user-acc.svg";
 import { Link } from "react-router-dom";
-import { ROUTE_PROFILE } from "../../data/constants";
+import { ROUTE_PROFILE } from "../../constants/routes";
 import { HTMLAttributes } from "react";
 
 /**

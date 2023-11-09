@@ -1,7 +1,7 @@
 import { useMutation } from "@tanstack/react-query";
 import axios, { AxiosError } from "axios";
 import { useFormik } from "formik";
-import { BASE_URL } from "../data/constants";
+import { BASE_URL } from "../constants/routes";
 import { UserData } from "../types/UserData";
 import { useState } from "react";
 import { registrationSchema } from "../validationSchemas/registrationSchema";

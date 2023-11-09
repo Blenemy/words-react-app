@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { ROUTE_HOME } from "../../data/constants";
+import { ROUTE_HOME } from "../../constants/routes";
 
 /**
  * NotFound компонент, представляющий страницу ошибки 404.

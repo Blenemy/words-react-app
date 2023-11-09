@@ -1,5 +1,5 @@
 import { NavigateFunction } from "react-router-dom";
-import { BASE_URL, ROUTE_FLIP_CARD } from "../data/constants";
+import { BASE_URL, ROUTE_FLIP_CARD } from "../constants/routes";
 import axios from "axios";
 
 /**

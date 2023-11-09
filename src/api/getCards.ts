@@ -1,5 +1,5 @@
 import axios from "axios";
-import { BASE_URL } from "../data/constants";
+import { BASE_URL } from "../constants/routes";
 
 /**
  * Получить следующую карту для изучения из указаной колоды.

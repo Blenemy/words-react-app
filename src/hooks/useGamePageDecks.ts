@@ -1,7 +1,7 @@
 import { useQuery } from "@tanstack/react-query";
 import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import { ROUTE_NOT_AVAILABLE } from "../data/constants";
+import { ROUTE_NOT_AVAILABLE } from "../constants/routes";
 import { getDecks } from "../api/getDeck";
 import Cookies from "js-cookie";
 import { DeckFromServer } from "../types/DeckFromServer";

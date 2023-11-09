@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import { ROUTE_NOT_AVAILABLE } from "../../data/constants";
+import { ROUTE_NOT_AVAILABLE } from "../../constants/routes";
 import { useLogout } from "../../hooks/useLogout";
 import { UserAccountReview } from "./UserAccountReview/UserAccountReview";
 import { Feedback } from "../../components/Feedback/Feedback";

@@ -4,7 +4,7 @@ import { UserDeckPreview } from "../UserDeckPreview/UserDeckPreview";
 import { handleSumbitDeck } from "../../../api/handleSubmitDeck";
 import Cookies from "js-cookie";
 import { useNavigate } from "react-router-dom";
-import { ROUTE_USER_DECKS } from "../../../data/constants";
+import { ROUTE_USER_DECKS } from "../../../constants/routes";
 
 /**
  * Отображает список колод пользователя.

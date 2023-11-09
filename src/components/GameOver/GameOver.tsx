@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import { Feedback } from "../Feedback/Feedback";
-import { ROUTE_CARD_GAME } from "../../data/constants";
+import { ROUTE_CARD_GAME } from "../../constants/routes";
 
 export const GameOver = () => {
   return (

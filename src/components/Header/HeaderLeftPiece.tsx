@@ -2,7 +2,7 @@ import {
   ROUTE_CARD_GAME,
   ROUTE_HOME,
   ROUTE_PROFILE,
-} from "../../data/constants";
+} from "../../constants/routes";
 import cardLingoBlack from "../../assets/cardLingo.png";
 import { HeaderLink } from "./HeaderLink";
 import { Logo } from "../Logo/Logo";

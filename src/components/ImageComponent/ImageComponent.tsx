@@ -1,6 +1,6 @@
 import { ReactNode, useEffect, useRef, useState } from "react";
 import { Blurhash } from "react-blurhash";
-import { DEFAULT_HASH_SRC } from "../../data/constants";
+import { DEFAULT_HASH_SRC } from "../../constants/routes";
 import { ImageBundlePath } from "../../types/ImageBundlePath";
 
 /**

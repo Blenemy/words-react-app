@@ -2,7 +2,7 @@ import { useNavigate } from "react-router-dom";
 import { useAppDispatch } from "../app/hooks";
 import { useMutation } from "@tanstack/react-query";
 import { setUser } from "../features/userSlice";
-import { ROUTE_HOME } from "../data/constants";
+import { ROUTE_HOME } from "../constants/routes";
 import { getGoogleAuthCredentials } from "../api/getGoogleAuthCredentials";
 
 export const useGoogleAuthentification = () => {

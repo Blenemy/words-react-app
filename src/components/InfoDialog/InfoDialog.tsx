@@ -22,7 +22,7 @@ import {
   backendTechnologies,
   contacts,
   frontendTechnologies,
-} from "../../data/resources";
+} from "../../constants/resources";
 
 interface InfoDialogProps {
   infoOpen: boolean;

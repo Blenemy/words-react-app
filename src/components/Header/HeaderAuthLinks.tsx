@@ -1,5 +1,8 @@
 import { Link } from "react-router-dom";
-import { ROUTE_AUTHORIZATION, ROUTE_REGISTRATION } from "../../data/constants";
+import {
+  ROUTE_AUTHORIZATION,
+  ROUTE_REGISTRATION,
+} from "../../constants/routes";
 import { HTMLAttributes } from "react";
 
 /**

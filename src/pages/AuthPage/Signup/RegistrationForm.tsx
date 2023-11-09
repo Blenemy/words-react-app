@@ -1,6 +1,6 @@
 import { CustomInput } from "../../../components/CustomInput/CustomInput";
 import { RedirectNotification } from "../../../components/RedirectNotification/RedirectNotification";
-import { ROUTE_AUTHORIZATION } from "../../../data/constants";
+import { ROUTE_AUTHORIZATION } from "../../../constants/routes";
 import { useRegistration } from "../../../hooks/useRegistration";
 
 /**

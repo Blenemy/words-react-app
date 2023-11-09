@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { ROUTE_CARD_GAME } from "../../../data/constants";
+import { ROUTE_CARD_GAME } from "../../../constants/routes";
 import { HTMLAttributes } from "react";
 
 /**

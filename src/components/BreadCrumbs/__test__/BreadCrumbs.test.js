@@ -2,7 +2,7 @@ import { render, screen } from "@testing-library/react";
 import "@testing-library/jest-dom/extend-expect";
 import { HashRouter } from "react-router-dom";
 import { BreadCrumbs } from "../Breadcrumbs";
-import { ROUTE_HOME } from "../../../data/constants";
+import { ROUTE_HOME } from "../../../constants/routes";
 
 it("should contain a link", () => {
   render(

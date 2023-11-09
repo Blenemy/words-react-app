@@ -3,7 +3,7 @@ import {
   ROUTE_AUTHORIZATION,
   ROUTE_HOME,
   ROUTE_REGISTRATION,
-} from "../../data/constants";
+} from "../../constants/routes";
 
 /**
  * Компонент NotAvailable

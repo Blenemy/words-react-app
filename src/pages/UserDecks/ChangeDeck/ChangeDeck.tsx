@@ -4,7 +4,7 @@ import {
   ROUTE_CARD_GAME,
   ROUTE_HOME,
   ROUTE_USER_DECKS,
-} from "../../../data/constants";
+} from "../../../constants/routes";
 import { AddCard } from "../AddCard/AddCard";
 import { useGetDeck } from "../../../hooks/useGetDeck";
 import { NoResluts } from "../../../components/NoResults/NoResluts";

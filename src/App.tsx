@@ -10,7 +10,7 @@ import {
   ROUTE_PROFILE,
   ROUTE_REGISTRATION,
   ROUTE_USER_DECKS,
-} from "./data/constants";
+} from "./constants/routes";
 import { GamePage } from "./pages/GamePage/GamePage";
 import { HomePage } from "./pages/Home/HomePage";
 import { ChangeDeck } from "./pages/UserDecks/ChangeDeck/ChangeDeck";

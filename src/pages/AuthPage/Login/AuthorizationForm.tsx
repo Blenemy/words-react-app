@@ -1,6 +1,6 @@
 import { CustomInput } from "../../../components/CustomInput/CustomInput";
 import { RedirectNotification } from "../../../components/RedirectNotification/RedirectNotification";
-import { ROUTE_HOME } from "../../../data/constants";
+import { ROUTE_HOME } from "../../../constants/routes";
 import { useAuth } from "../../../hooks/useAuth";
 
 /**
