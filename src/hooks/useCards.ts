@@ -21,6 +21,7 @@ export const useCards = (deckId: number, token: string) => {
           setCurrentCard(data);
         }
       },
+      enabled: currentCard === null,
     }
   );
 
@@ -57,7 +58,9 @@ export const useCards = (deckId: number, token: string) => {
     const isCorrect = answer === currentCard?.translation;
     setIsCorrectAnswer(isCorrect);
     setShowPopup(true);
-    nextCardMutation.mutate();
+    if (currentCard) {
+      nextCardMutation.mutate();
+    }
   };
 
   return {
