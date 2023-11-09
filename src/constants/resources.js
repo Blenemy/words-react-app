@@ -32,43 +32,6 @@ export const apiResources = [
   },
 ];
 
-export const resources = [
-  {
-    category: "API",
-    items: [
-      {
-        title: "Words API",
-        description:
-          "Used to search for words, get definitions, transcriptions, synonyms and examples of words.",
-        link: "https://www.wordsapi.com/",
-      },
-      {
-        title: "Merriam-Webster API",
-        description:
-          "Merriam-Webster's Collegiate® Dictionary - used to get the audio pronunciation of the word.",
-        link: "https://dictionaryapi.com/",
-      },
-    ],
-  },
-  {
-    category: "Graphics",
-    items: [
-      {
-        title: "Icon Pack: Language Learning",
-        description: "Used for word learning modes on the Study page.",
-        link: "https://www.flaticon.com/packs/language-learning-66",
-      },
-      {
-        title: "Freepik Kawaii Flat Icons",
-        description: "Used for achievements section on the Progress page.",
-        link: "https://www.flaticon.com/authors/kawaii/flat?author_id=1&type=standard",
-      },
-      // ...other Graphics
-    ],
-  },
-  // ...other categories
-];
-
 export const frontendTechnologies = [
   {
     title: "TypeScript",
