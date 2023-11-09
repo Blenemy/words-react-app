@@ -1,5 +1,4 @@
-import axios from "axios";
-import { BASE_URL } from "../constants/routes";
+import { $host } from ".";
 
 /**
  * Получить следующую карту для изучения из указаной колоды.
@@ -15,15 +14,11 @@ export const getNextCard = async (
   dataToSend: any,
   token: string
 ) => {
-  const response = await axios.post(
-    `${BASE_URL}/study/learn/${deckId}/`,
-    dataToSend,
-    {
-      headers: {
-        Authorization: `Bearer ${token}`,
-      },
-    }
-  );
+  const response = await $host.post(`/study/learn/${deckId}/`, dataToSend, {
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+  });
 
   return response.data;
 };
@@ -37,10 +32,11 @@ export const getNextCard = async (
  */
 
 export const getFirstCard = async (deckId: number, token: string) => {
-  const response = await axios.get(`${BASE_URL}/study/learn/${deckId}/`, {
+  const response = await $host.get(`/study/learn/${deckId}/`, {
     headers: {
       Authorization: `Bearer ${token}`,
     },
   });
+
   return response.data;
 };

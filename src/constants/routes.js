@@ -12,5 +12,3 @@ export const ROUTE_NOT_AVAILABLE = "/not-available";
 export const ROUTE_GAME_OVER = "/game-over";
 
 export const BASE_URL = "https://langcards.fun";
-
-export const DEFAULT_HASH_SRC = "LEHV6nWB2yk8pyo0adR*.7kCMdnj";

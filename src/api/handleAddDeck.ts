@@ -1,5 +1,4 @@
-import axios from "axios";
-import { BASE_URL } from "../constants/routes";
+import { $host } from ".";
 
 /**
  * Добавить колоду.
@@ -18,7 +17,7 @@ export const handleAddDeck = async (
     image: formData.image,
   };
 
-  const response = await axios.post(BASE_URL + "/study/decks/", dataToSend, {
+  const response = await $host.post("/study/decks/", dataToSend, {
     headers: {
       Authorization: `Bearer ${token}`,
     },

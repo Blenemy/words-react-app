@@ -1,5 +1,4 @@
-import axios from "axios";
-import { BASE_URL } from "../constants/routes";
+import { $host } from ".";
 
 /**
  * Получить отзывы с сервера.
@@ -8,7 +7,7 @@ import { BASE_URL } from "../constants/routes";
  */
 
 export const getReviews = async () => {
-  const response = await axios.get(BASE_URL + "/social/comments/");
+  const response = await $host.get("/social/comments/");
 
   return response.data;
 };

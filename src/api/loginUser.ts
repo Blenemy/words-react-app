@@ -1,5 +1,4 @@
-import axios from "axios";
-import { BASE_URL } from "../constants/routes";
+import { $host } from ".";
 
 /**
  * Войти в систему, используя имя пользователя и пароль.
@@ -17,7 +16,7 @@ export const loginUser = async ({
   username: string;
   password: string;
 }) => {
-  const response = await axios.post(BASE_URL + "/user/login/", {
+  const response = await $host.post("/user/login/", {
     username,
     password,
   });

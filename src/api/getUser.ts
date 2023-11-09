@@ -1,5 +1,4 @@
-import axios from "axios";
-import { BASE_URL } from "../constants/routes";
+import { $host } from ".";
 
 /**
  * Получить информацию о пользователе.
@@ -9,7 +8,7 @@ import { BASE_URL } from "../constants/routes";
  */
 
 export const getUser = async (token: string | undefined) => {
-  const response = await axios.get(BASE_URL + "/user/profile/", {
+  const response = await $host.get("/user/profile/", {
     headers: {
       Authorization: `Bearer ${token}`,
     },

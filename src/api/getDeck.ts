@@ -1,5 +1,4 @@
-import axios from "axios";
-import { BASE_URL } from "../constants/routes";
+import { $host } from ".";
 
 /**
  * Получить информацию о колоде по её идентификатору.
@@ -13,7 +12,7 @@ export const getDeckInfo = async (
   deckId: string | undefined,
   token: string | undefined
 ) => {
-  const response = await axios.get(BASE_URL + `/study/decks/${deckId}/`, {
+  const response = await $host.get(`/study/decks/${deckId}/`, {
     headers: {
       Authorization: `Bearer ${token}`,
     },
@@ -30,7 +29,7 @@ export const getDeckInfo = async (
  */
 
 export const getDecks = async (token: string | undefined) => {
-  const response = await axios.get(BASE_URL + "/study/decks/", {
+  const response = await $host.get("/study/decks/", {
     headers: {
       Authorization: `Bearer ${token}`,
     },

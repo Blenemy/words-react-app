@@ -1,6 +1,5 @@
-import axios from "axios";
-import { BASE_URL } from "../constants/routes";
 import { UserAccountFormType } from "../pages/UserAccount/UserAccountPage";
+import { $host } from ".";
 
 /**
  * Обновить информацию пользователя.
@@ -24,7 +23,7 @@ export const updateuserInfo = async (
     Object.assign(dataToSend, formData);
   }
 
-  const request = await axios.patch(BASE_URL + "/user/profile/", dataToSend, {
+  const request = await $host.patch("/user/profile/", dataToSend, {
     headers: {
       Authorization: `Bearer ${token}`,
     },

@@ -1,6 +1,6 @@
 import { NavigateFunction } from "react-router-dom";
-import { BASE_URL, ROUTE_FLIP_CARD } from "../constants/routes";
-import axios from "axios";
+import { ROUTE_FLIP_CARD } from "../constants/routes";
+import { $host } from ".";
 
 /**
  * Отправить колоду на изучение.
@@ -16,8 +16,8 @@ export const handleSumbitDeck = async (
   navigate: NavigateFunction
 ) => {
   try {
-    const response = await axios.post(
-      BASE_URL + `/study/add_deck/${deck}/`,
+    const response = await $host.post(
+      `/study/add_deck/${deck}/`,
       {},
       {
         headers: {

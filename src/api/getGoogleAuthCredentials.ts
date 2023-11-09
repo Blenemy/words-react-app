@@ -1,6 +1,5 @@
-import axios from "axios";
-import { BASE_URL } from "../constants/routes";
 import Cookies from "js-cookie";
+import { $host } from ".";
 
 /**
  * Получить авторизационные данные пользователя с использованием токена Google.
@@ -15,13 +14,10 @@ export const getGoogleAuthCredentials = async (
   const dataToSend = {
     token: googleCrenedtial,
   };
-  const authResponse = await axios.post(
-    BASE_URL + "/user/google_auth/",
-    dataToSend
-  );
+  const authResponse = await $host.post("/user/google_auth/", dataToSend);
   Cookies.set("token", authResponse.data.token, { expires: 1 });
 
-  const userResponse = await axios.get(BASE_URL + "/user/profile/", {
+  const userResponse = await $host.get("/user/profile/", {
     headers: {
       Authorization: `Bearer ${authResponse.data.token}`,
     },

@@ -1,5 +1,4 @@
-import axios from "axios";
-import { BASE_URL } from "../constants/routes";
+import { $host } from ".";
 
 /**
  * Добавить карточку в колоду.
@@ -13,7 +12,7 @@ export const handleAddCard = async (
   dataToSend: Object,
   token: string | undefined
 ) => {
-  const response = await axios.post(BASE_URL + "/study/cards/", dataToSend, {
+  const response = await $host.post("/study/cards/", dataToSend, {
     headers: {
       Authorization: `Bearer ${token}`,
     },
