@@ -1,7 +1,9 @@
+import { useState } from "react";
 import cardLingoWhite from "../../assets/cardLingoWhite.png";
 import copyright from "../../assets/copyright.svg";
 import { Logo } from "../Logo/Logo";
 import { FooterLink } from "./FooterLink";
+import InfoDialog from "../InfoDialog/InfoDialog";
 
 /**
  * Компонент для отображения подвала страницы.
@@ -9,6 +11,8 @@ import { FooterLink } from "./FooterLink";
  * @returns {JSX.Element} - JSX элемент для подвала.
  */
 export const Footer = () => {
+  const [openModal, setOpenModal] = useState(false);
+
   return (
     <footer className="bg-primary">
       <div className="container mx-auto my-0">
@@ -17,7 +21,12 @@ export const Footer = () => {
             <Logo image={cardLingoWhite} />
             <ul>
               <FooterLink text="About Us" route="https://github.com/Blenemy" />
-              <FooterLink text="Review" route="/" />
+              <li
+                className="hover:text-wave duration-300 hover:cursor-pointer"
+                onClick={() => setOpenModal(true)}
+              >
+                Review
+              </li>
               <FooterLink text="FAQs" route="/" />
             </ul>
             <div className="flex gap-3 self-end">
@@ -28,6 +37,10 @@ export const Footer = () => {
           </div>
         </div>
       </div>
+
+      {openModal && (
+        <InfoDialog infoOpen={openModal} setInfoOpen={setOpenModal} />
+      )}
     </footer>
   );
 };
