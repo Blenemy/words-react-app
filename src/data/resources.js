@@ -7,12 +7,28 @@ import reactRouter from "../assets/logos/react-router-mark-color.png";
 import tanstack from "../assets/logos/react-query-logo-1340EA4CE9-seeklogo.com.png";
 import mui from "../assets/logos/mui.png";
 import tailwind from "../assets/logos/tailwind-css3232.logowik.com.webp";
+import python from "../assets/logos/python.jpg";
+import django from "../assets/logos/django.png";
+import postgres from "../assets/logos/Postgresql_elephant.svg.png";
+import redis from "../assets/logos/redis.jpg";
+import celery from "../assets/logos/Celery_logo.png";
+import docker from "../assets/logos/docker.png";
 
 export const apiResources = [
   {
     title: "Pixaby API",
     path: "https://pixabay.com/",
     desc: "Used to find images related to a given word.",
+  },
+  {
+    title: "Django Rest Framework",
+    path: "https://www.django-rest-framework.org",
+    desc: "Empowers our backend services to efficiently handle RESTful API requests and deliver data responses.",
+  },
+  {
+    title: "Requests",
+    path: "https://pypi.org/project/requests/",
+    desc: "Facilitates outbound HTTP requests to third-party services for additional data retrieval and integration.",
   },
 ];
 
@@ -53,7 +69,7 @@ export const resources = [
   // ...other categories
 ];
 
-export const technologies = [
+export const frontendTechnologies = [
   {
     title: "TypeScript",
     path: "https://www.typescriptlang.org/",
@@ -127,5 +143,46 @@ export const contacts = [
     title: "Gmail",
     path: "mailto:denystopchyi2@gmail.com",
     icon: <Email />,
+  },
+];
+
+export const backendTechnologies = [
+  {
+    title: "Python",
+    path: "https://www.python.org/",
+    avatar: python,
+  },
+  {
+    title: "Django",
+    path: "https://www.djangoproject.com/",
+    avatar: django,
+  },
+  {
+    title: "Django Rest Framework",
+    path: "https://www.django-rest-framework.org/",
+  },
+  {
+    title: "PostgreSQL",
+    path: "https://www.postgresql.org/",
+    avatar: postgres,
+  },
+  {
+    title: "Redis",
+    path: "https://redis.io/",
+    avatar: redis,
+  },
+  {
+    title: "Celery",
+    path: "http://www.celeryproject.org/",
+    avatar: celery,
+  },
+  {
+    title: "Requests",
+    path: "https://docs.python-requests.org/en/latest/",
+  },
+  {
+    title: "Docker",
+    path: "https://www.docker.com/",
+    avatar: docker,
   },
 ];

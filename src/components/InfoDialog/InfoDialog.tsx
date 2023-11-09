@@ -17,7 +17,12 @@ import {
   Stack,
   Typography,
 } from "@mui/material";
-import { apiResources, contacts, technologies } from "../../data/resources";
+import {
+  apiResources,
+  backendTechnologies,
+  contacts,
+  frontendTechnologies,
+} from "../../data/resources";
 
 interface InfoDialogProps {
   infoOpen: boolean;
@@ -99,9 +104,52 @@ const InfoDialog = ({ infoOpen, setInfoOpen }: InfoDialogProps) => {
             </ListSubheader>
           }
         >
+          <ListSubheader disableSticky disableGutters>
+            Frontend
+          </ListSubheader>
           <ListItem disableGutters>
             <Stack direction="row" gap={1} flexWrap="wrap">
-              {technologies.map((tech: any) => (
+              {frontendTechnologies.map((tech: any) => (
+                <Link
+                  href={tech.path}
+                  target="_blank"
+                  rel="noopener"
+                  key={tech.title}
+                >
+                  {tech.avatar ? (
+                    <Chip
+                      sx={{
+                        cursor: "pointer",
+                        "& .MuiChip-avatarColorPrimary": {
+                          backgroundColor: "transparent",
+                        },
+                      }}
+                      avatar={<Avatar alt={tech.title} src={tech.avatar} />}
+                      label={tech.title}
+                      color="primary"
+                    />
+                  ) : (
+                    <Chip
+                      sx={{
+                        cursor: "pointer",
+                        "& .MuiChip-avatarColorPrimary": {
+                          backgroundColor: "transparent",
+                        },
+                      }}
+                      label={tech.title}
+                      color="primary"
+                    />
+                  )}
+                </Link>
+              ))}
+            </Stack>
+          </ListItem>
+          <ListSubheader disableSticky disableGutters>
+            Backend
+          </ListSubheader>
+          <ListItem disableGutters>
+            <Stack direction="row" gap={1} flexWrap="wrap">
+              {backendTechnologies.map((tech: any) => (
                 <Link
                   href={tech.path}
                   target="_blank"
