@@ -2,7 +2,7 @@ import { handleFileUpload, handleInputChange } from "../../../utils/helpers";
 import { useAddCart } from "../../../hooks/useAddCard";
 import { CustomInput } from "../../../components/CustomInput/CustomInput";
 import { UserAccountButton } from "../../UserAccount/UserAccountLayout/UserAccountButton";
-import { useState } from "react";
+import { memo, useState } from "react";
 import { FileDropZone } from "../../../components/FileDropZone/FileDropZone";
 import { GlobalLoader } from "../../../components/Loaders/GlobalLoader";
 
@@ -18,7 +18,7 @@ interface AddCardType {
   deckId: number | undefined;
 }
 
-export const AddCard: React.FC<AddCardType> = ({ deckId }) => {
+export const AddCard: React.FC<AddCardType> = memo(({ deckId }) => {
   const [fileError, setFileError] = useState<string>("");
 
   const handleDragError = (payload: string) => {
@@ -102,4 +102,4 @@ export const AddCard: React.FC<AddCardType> = ({ deckId }) => {
       </div>
     </div>
   );
-};
+});

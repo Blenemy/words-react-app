@@ -8,16 +8,16 @@
   font-style: normal;
 }
 
-.blured-image {
-  background-color: rgba(228, 228, 228, 0.5);
-  backdrop-filter: blur(5px);
-}
-
 /* 
   NOTE: This code is hard to recreate via Tailwind 
 */
 
 // #region rest classes
+
+.blured-image {
+  background-color: rgba(228, 228, 228, 0.5);
+  backdrop-filter: blur(5px);
+}
 
 @keyframes moveUpDownWithoutRotate {
   0%,
