@@ -1,8 +1,8 @@
 import cn from "classnames";
 import React, { useState } from "react";
-import { CardFromServer } from "../../types/CardFromServer";
 import "./FlipCard.scss";
-import { ImageComponent } from "../ImageComponent/ImageComponent";
+import { CardFromServer } from "../../../../types/CardFromServer";
+import { ImageComponent } from "../../../../components/ImageComponent/ImageComponent";
 
 /**
  * FlipCard компонент представляет собой карточку, которая переворачивается по клику,

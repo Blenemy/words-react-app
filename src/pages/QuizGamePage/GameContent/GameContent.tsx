@@ -1,8 +1,8 @@
 import React, { memo } from "react";
-import { FlipCardLayout } from "./QuizGameLayout";
-import { QuizAnswer } from "../../components/QuizAnswer/QuizAnswer";
+import { FlipCardLayout } from "../QuizGameLayout/QuizGameLayout";
+import { QuizAnswer } from "../../../components/QuizAnswer/QuizAnswer";
 import { v4 as uuidv4 } from "uuid";
-import { CardFromServer } from "../../types/CardFromServer";
+import { CardFromServer } from "../../../types/CardFromServer";
 
 /**
  * GameContent component for rendering the game content.

@@ -25,7 +25,7 @@ import { NotFound } from "./components/404/NotFound";
 import { Layout } from "./components/Layout/Layout";
 import { GameOver } from "./components/GameOver/GameOver";
 import { UserDecksPage } from "./pages/UserDecks/UserDecksPage/UserDecksPage";
-import { ChangeDeck } from "./pages/UserDecks/UserDecksPage/UpdateUserDeck/ChangeDeck";
+import { UserCardsPage } from "./pages/UserDecks/UserCardsPage/UserCardsPage";
 
 function App() {
   const { isLoading } = useFetchUser();
@@ -48,7 +48,7 @@ function App() {
             </Route>
             <Route path={ROUTE_USER_DECKS}>
               <Route index element={<UserDecksPage />} />
-              <Route path=":deckId" element={<ChangeDeck />} />
+              <Route path=":deckId" element={<UserCardsPage />} />
             </Route>
           </Route>
           <Route path={ROUTE_NOT_AVAILABLE} element={<NotAvailable />} />

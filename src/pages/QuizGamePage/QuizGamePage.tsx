@@ -8,7 +8,7 @@ import { useLocation, useNavigate } from "react-router-dom";
 import { Loader } from "../../components/Loaders/Loader";
 import Cookies from "js-cookie";
 import { useCards } from "../../hooks/useCards";
-import { GameContent } from "./GameContent";
+import { GameContent } from "./GameContent/GameContent";
 import { Breadcrumbs } from "../../components/Breadcrumbs/Breadcrumbs";
 import { Progressbar } from "../../components/Progressbar/Progressbar";
 

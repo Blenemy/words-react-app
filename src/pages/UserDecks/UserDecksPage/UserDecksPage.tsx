@@ -5,7 +5,7 @@ import { Breadcrumbs } from "../../../components/Breadcrumbs/Breadcrumbs";
 import { ROUTE_CARD_GAME, ROUTE_HOME } from "../../../constants/routes";
 import { UserDeckList } from "./UserDeckList/UserDeckList";
 import { NoResluts } from "../../../components/NoResults/NoResluts";
-import { AddDeck } from "./UpdateUserDeck/AddDeck";
+import { AddDeck } from "./AddDeck/AddDeck";
 
 /**
  * Компонент UserDecksPage для отображения колод пользователя и добавления новых.

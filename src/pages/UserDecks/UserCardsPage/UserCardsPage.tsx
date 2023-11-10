@@ -1,16 +1,16 @@
 import Cookies from "js-cookie";
 import { useParams } from "react-router-dom";
-import { useGetDeck } from "../../../../hooks/useGetDeck";
-import { GlobalLoader } from "../../../../components/Loaders/GlobalLoader";
+import { useGetDeck } from "../../../hooks/useGetDeck";
+import { GlobalLoader } from "../../../components/Loaders/GlobalLoader";
 import {
   ROUTE_CARD_GAME,
   ROUTE_HOME,
   ROUTE_USER_DECKS,
-} from "../../../../constants/routes";
-import { Breadcrumbs } from "../../../../components/Breadcrumbs/Breadcrumbs";
-import { DeckCardsList } from "../../UserCardsPage/DeckCardsList/DeckCardsList";
-import { NoResluts } from "../../../../components/NoResults/NoResluts";
-import { AddCard } from "../../UserCardsPage/AddCard/AddCard";
+} from "../../../constants/routes";
+import { Breadcrumbs } from "../../../components/Breadcrumbs/Breadcrumbs";
+import { DeckCardsList } from "./DeckCardsList/DeckCardsList";
+import { NoResluts } from "../../../components/NoResults/NoResluts";
+import { AddCard } from "./AddCard/AddCard";
 
 /**
  * Компонент для управления деталями колоды и добавления новых карточек в нее.
@@ -19,7 +19,7 @@ import { AddCard } from "../../UserCardsPage/AddCard/AddCard";
  * @returns Компонент ChangeDeck с деталями колоды и функциональностью добавления карточек.
  */
 
-export const ChangeDeck = () => {
+export const UserCardsPage = () => {
   const { deckId } = useParams();
   const token = Cookies.get("token");
   const { cardInDecks, isLoading, deckTitle } = useGetDeck(deckId, token);
