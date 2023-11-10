@@ -6,6 +6,7 @@ import { UserAccountReview } from "./UserAccountReview/UserAccountReview";
 import { Feedback } from "../../components/Feedback/Feedback";
 import { useUserProfile } from "../../hooks/useUserProfile";
 import { useAppSelector } from "../../app/hooks";
+import { MotionContainer } from "../../components/MotionContainer/MotionContainer";
 
 /**
  * Компонент UserAccountPage, который отображает страницу учетной записи пользователя.
@@ -49,7 +50,7 @@ export const UserAccountPage = () => {
   }
 
   return (
-    <>
+    <MotionContainer>
       <UserAccountReview
         handleFileChange={handleFileChange}
         formData={formData}
@@ -59,6 +60,6 @@ export const UserAccountPage = () => {
         handleOnCancel={handleOnCancel}
       />
       <Feedback />
-    </>
+    </MotionContainer>
   );
 };

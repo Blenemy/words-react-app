@@ -11,6 +11,7 @@ import { Breadcrumbs } from "../../../components/Breadcrumbs/Breadcrumbs";
 import { DeckCardsList } from "./DeckCardsList/DeckCardsList";
 import { NoResluts } from "../../../components/NoResults/NoResluts";
 import { AddCard } from "./AddCard/AddCard";
+import { MotionContainer } from "../../../components/MotionContainer/MotionContainer";
 
 /**
  * Компонент для управления деталями колоды и добавления новых карточек в нее.
@@ -29,7 +30,7 @@ export const UserCardsPage = () => {
   }
 
   return (
-    <div className="p-14">
+    <MotionContainer classes="p-14">
       <div className="mb-7">
         <Breadcrumbs
           crumbs={[
@@ -51,6 +52,6 @@ export const UserCardsPage = () => {
         </div>
         {deckId && <AddCard deckId={+deckId} />}
       </div>
-    </div>
+    </MotionContainer>
   );
 };

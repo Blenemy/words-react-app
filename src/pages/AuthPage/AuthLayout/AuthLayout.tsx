@@ -4,6 +4,7 @@ import image3 from "../../../assets/createAccountImage3.png";
 import image4 from "../../../assets/createAccountImage4.png";
 import image5 from "../../../assets/createAccountImage5.png";
 import image6 from "../../../assets/createAccountImage6.png";
+import { MotionContainer } from "../../../components/MotionContainer/MotionContainer";
 import { RenderRowOfImages } from "./RenderRowOfImages";
 import { WelcomeMessage } from "./WelcomeMessage";
 
@@ -24,7 +25,7 @@ export const AuthLayout: React.FC<AuthLayoutProps> = ({
   children,
 }): React.ReactElement => {
   return (
-    <section className="text-primary py-6">
+    <MotionContainer elementType="section" classes="text-primary py-6">
       <div className="container mx-auto my-0">
         <div className="">
           <div className="flex gap-4">
@@ -43,6 +44,6 @@ export const AuthLayout: React.FC<AuthLayoutProps> = ({
           </div>
         </div>
       </div>
-    </section>
+    </MotionContainer>
   );
 };

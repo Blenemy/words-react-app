@@ -1,4 +1,5 @@
 import { Breadcrumbs } from "../../components/Breadcrumbs/Breadcrumbs";
+import { MotionContainer } from "../../components/MotionContainer/MotionContainer";
 import { ROUTE_USER_DECKS } from "../../constants/routes";
 import { useGamePageDecks } from "../../hooks/useGamePageDecks";
 import { DefaultDecksList } from "./DefaultDecksList/DefaultDecksList";
@@ -13,7 +14,7 @@ export const GamePage = () => {
   const { defaultDecks, navigate, token } = useGamePageDecks();
 
   return (
-    <div className="min-h-screen font-['Roboto_flex']">
+    <MotionContainer classes="min-h-screen font-['Roboto_flex']">
       <div className="container mx-auto my-0">
         <div className="py-14">
           <div className="mb-8">
@@ -42,6 +43,6 @@ export const GamePage = () => {
           </div>
         </div>
       </div>
-    </div>
+    </MotionContainer>
   );
 };

@@ -22,6 +22,7 @@ export const useGamePageDecks = () => {
     queryFn: () => getDecks(token),
     enabled: !!token,
     queryKey: ["defaultDecks"],
+    staleTime: 1000 * 60 * 5,
   });
 
   const defaultDecks = data?.filter((deck: DeckFromServer) => deck.default);

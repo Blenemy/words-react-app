@@ -6,6 +6,7 @@ import { ROUTE_CARD_GAME, ROUTE_HOME } from "../../../constants/routes";
 import { UserDeckList } from "./UserDeckList/UserDeckList";
 import { NoResluts } from "../../../components/NoResults/NoResluts";
 import { AddDeck } from "./AddDeck/AddDeck";
+import { MotionContainer } from "../../../components/MotionContainer/MotionContainer";
 
 /**
  * Компонент UserDecksPage для отображения колод пользователя и добавления новых.
@@ -23,7 +24,7 @@ export const UserDecksPage = () => {
   }
 
   return (
-    <div className="p-14">
+    <MotionContainer classes="p-14">
       <div className="mb-7">
         <Breadcrumbs
           crumbs={[
@@ -44,6 +45,6 @@ export const UserDecksPage = () => {
         </div>
         <AddDeck />
       </div>
-    </div>
+    </MotionContainer>
   );
 };
