@@ -22,7 +22,7 @@ import { Breadcrumbs } from "../../../components/Breadcrumbs/Breadcrumbs";
 export const ChangeDeck = () => {
   const { deckId } = useParams();
   const token = Cookies.get("token");
-  const { cardInDecks, isLoading } = useGetDeck(deckId, token);
+  const { cardInDecks, isLoading, deckTitle } = useGetDeck(deckId, token);
 
   if (isLoading) {
     return <GlobalLoader />;
@@ -37,7 +37,7 @@ export const ChangeDeck = () => {
             { text: "Back to game page", path: ROUTE_CARD_GAME },
             { text: "Back to my decks", path: ROUTE_USER_DECKS },
           ]}
-          current="Deck customization"
+          current={deckTitle}
         />
       </div>
 

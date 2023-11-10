@@ -2,7 +2,6 @@ import { useState } from "react";
 import cardLingoWhite from "../../assets/cardLingoWhite.png";
 import copyright from "../../assets/copyright.svg";
 import { Logo } from "../Logo/Logo";
-import { FooterLink } from "./FooterLink";
 import InfoDialog from "../InfoDialog/InfoDialog";
 
 /**
@@ -13,6 +12,10 @@ import InfoDialog from "../InfoDialog/InfoDialog";
 export const Footer = () => {
   const [openModal, setOpenModal] = useState(false);
 
+  const handleOpenModal = () => {
+    setOpenModal(true);
+  };
+
   return (
     <footer className="bg-primary">
       <div className="container mx-auto my-0">
@@ -20,14 +23,21 @@ export const Footer = () => {
           <div className="flex justify-between">
             <Logo image={cardLingoWhite} />
             <ul>
-              <FooterLink text="About Us" route="https://github.com/Blenemy" />
+              <li className="hover:text-wave duration-300">
+                <a
+                  href={"https://github.com/Blenemy"}
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  {"About Us"}
+                </a>
+              </li>
               <li
                 className="hover:text-wave duration-300 hover:cursor-pointer"
-                onClick={() => setOpenModal(true)}
+                onClick={handleOpenModal}
               >
                 Review
               </li>
-              <FooterLink text="FAQs" route="/" />
             </ul>
             <div className="flex gap-3 self-end">
               <img src={copyright} alt="copyright" />

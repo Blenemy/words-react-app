@@ -10,7 +10,7 @@ export const useGetDeck = (
     queryKey: [`deck${deckId}`],
   });
 
-  const cardInDecks = data?.cards;
+  const { cards: cardInDecks = [], title: deckTitle = "" } = data || {};
 
-  return { cardInDecks, isLoading };
+  return { cardInDecks, isLoading, deckTitle };
 };
