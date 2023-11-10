@@ -79,12 +79,10 @@ export const FileDropZone: React.FC<FileDropZoneProps> = memo(
                   className="flex items-center justify-center gap-2 text-[#1d7d74] text-center"
                   style={{ color: fileError ? "#F00631" : "" }}
                 >
-                  <span>Завантажити зображення</span> <DownLoad />
+                  <span>Download your image</span> <DownLoad />
                 </div>
-                <p className="text-sm">
-                  Формат зображення: JPG, PNG, SVG, WEBP
-                </p>
-                <p className="text-sm">Максимальний розмір: 30 МБ</p>
+                <p className="text-sm">Image format: JPG, PNG, SVG, WEBP</p>
+                <p className="text-sm">Maximum size: 30 MB</p>
               </div>
             </div>
           )}
