@@ -1,4 +1,5 @@
 import titleDecorator from "../../../assets/gamePageDecksDecorator.png";
+import { DeckFromServer } from "../../../types/DeckFromServer";
 
 /**
  * Компонент StackOfDecks для визуального отображения стопки колод.
@@ -10,18 +11,16 @@ import titleDecorator from "../../../assets/gamePageDecksDecorator.png";
  * @returns {React.ReactElement} Отрендеренный компонент StackOfDecks.
  */
 
-type Props = {
-  frontImage: string | undefined;
+interface StackOfDecksProps {
   onDeckClick: () => void;
-  deckTitle: string;
-};
+  deck: DeckFromServer;
+}
 
-export const StackOfDecks: React.FC<Props> = ({
-  frontImage,
+export const StackOfDecks: React.FC<StackOfDecksProps> = ({
   onDeckClick,
-  deckTitle,
+  deck,
 }) => {
-  if (!frontImage) {
+  if (!deck.image) {
     return;
   }
 
@@ -29,7 +28,7 @@ export const StackOfDecks: React.FC<Props> = ({
     <>
       <div className="relative flex items-center justify-center">
         <h3 className="text-primary mb-20 title-decorator text-center w-[182px]">
-          {deckTitle}
+          {deck.title}
         </h3>
         <img
           src={titleDecorator}
@@ -44,7 +43,7 @@ export const StackOfDecks: React.FC<Props> = ({
         <div className="w-full h-[329px] absolute rounded-3xl bg-primary min-h-[40%] items-center justify-center text-[10rem] duration-300 cursor-pointer z-10 text-primary" />
         <div className="w-full h-[329px] absolute rounded-3xl bg-secondary min-h-[40%] items-center justify-center text-[10rem] duration-300 cursor-pointer z-10 text-primary translate-y-2" />
         <img
-          src={frontImage}
+          src={deck.image}
           alt="Description"
           className="w-full h-[329px] absolute rounded-3xl min-h-[40%] items-center justify-center text-[10rem] duration-300 cursor-pointer z-10 text-primary translate-y-4"
         />

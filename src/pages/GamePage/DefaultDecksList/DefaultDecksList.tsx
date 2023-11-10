@@ -1,7 +1,8 @@
-import { NavigateFunction } from "react-router-dom";
+import { NavigateFunction, useNavigate } from "react-router-dom";
 import { handleSumbitDeck } from "../../../api/handleSubmitDeck";
 import { DeckFromServer } from "../../../types/DeckFromServer";
 import { StackOfDecks } from "../StackOfDecks/StackOfDecks";
+import { memo } from "react";
 
 /**
  * Компонент DefaultDecksList для отображения списка стандартных колод для пользователей.
@@ -19,22 +20,21 @@ type Props = {
   token: string | undefined;
 };
 
-export const DefaultDecksList: React.FC<Props> = ({
-  defaultDecks,
-  token,
-  navigateFunc,
-}) => {
-  return (
-    <>
-      {defaultDecks?.map((deck) => (
-        <div key={deck.id} className="basis-1/3 min-h-[500px] px-6">
-          <StackOfDecks
-            frontImage={deck.image}
-            onDeckClick={() => handleSumbitDeck(deck.id, token, navigateFunc)}
-            deckTitle={deck.title}
-          />
-        </div>
-      ))}
-    </>
-  );
-};
+export const DefaultDecksList: React.FC<Props> = memo(
+  ({ defaultDecks, token }) => {
+    const navigate = useNavigate();
+
+    return (
+      <>
+        {defaultDecks?.map((deck) => (
+          <div key={deck.id} className="basis-1/3 min-h-[500px] px-6">
+            <StackOfDecks
+              onDeckClick={() => handleSumbitDeck(deck.id, token, navigate)}
+              deck={deck}
+            />
+          </div>
+        ))}
+      </>
+    );
+  }
+);
