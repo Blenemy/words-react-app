@@ -30,54 +30,54 @@ import { GameOver } from "./components/GameOver/GameOver";
 function App() {
   const { isLoading } = useFetchUser();
 
+  if (isLoading) {
+    return <GlobalLoader />;
+  }
+
   return (
     <div className="App">
-      {isLoading ? (
-        <GlobalLoader />
-      ) : (
-        <div className="wrapper flex flex-col text-white min-h-screen  overflow-x-hidden">
-          <Routes>
-            <Route element={<Layout />}>
-              <Route path={ROUTE_HOME} element={<HomePage />} />
-              <Route path={ROUTE_CARD_GAME} element={<GamePage />} />
+      <div className="wrapper flex flex-col text-white min-h-screen  overflow-x-hidden">
+        <Routes>
+          <Route element={<Layout />}>
+            <Route path={ROUTE_HOME} element={<HomePage />} />
+            <Route path={ROUTE_CARD_GAME} element={<GamePage />} />
 
-              <Route path={ROUTE_PROFILE} element={<UserAccountPage />} />
-              <Route path={ROUTE_FLIP_CARD}>
-                <Route index element={<QuizGamePage />} />
-              </Route>
-              <Route path={ROUTE_USER_DECKS}>
-                <Route index element={<UserDecksPage />} />
-                <Route path=":deckId" element={<ChangeDeck />} />
-              </Route>
+            <Route path={ROUTE_PROFILE} element={<UserAccountPage />} />
+            <Route path={ROUTE_FLIP_CARD}>
+              <Route index element={<QuizGamePage />} />
             </Route>
-            <Route path={ROUTE_NOT_AVAILABLE} element={<NotAvailable />} />
-            <Route path={ROUTE_GAME_OVER} element={<GameOver />} />
-            <Route
-              path={ROUTE_REGISTRATION}
-              element={
-                <AuthPage
-                  FormComponent={RegistrationForm}
-                  googleMessage="Already Have an account?"
-                  route={ROUTE_AUTHORIZATION}
-                  link="Sign in"
-                />
-              }
-            />
-            <Route
-              path={ROUTE_AUTHORIZATION}
-              element={
-                <AuthPage
-                  FormComponent={AuthorizationForm}
-                  googleMessage="Don`t have an account?"
-                  route={ROUTE_REGISTRATION}
-                  link="Create the account"
-                />
-              }
-            />
-            <Route path="*" element={<NotFound />} />
-          </Routes>
-        </div>
-      )}
+            <Route path={ROUTE_USER_DECKS}>
+              <Route index element={<UserDecksPage />} />
+              <Route path=":deckId" element={<ChangeDeck />} />
+            </Route>
+          </Route>
+          <Route path={ROUTE_NOT_AVAILABLE} element={<NotAvailable />} />
+          <Route path={ROUTE_GAME_OVER} element={<GameOver />} />
+          <Route
+            path={ROUTE_REGISTRATION}
+            element={
+              <AuthPage
+                FormComponent={RegistrationForm}
+                googleMessage="Already Have an account?"
+                route={ROUTE_AUTHORIZATION}
+                link="Sign in"
+              />
+            }
+          />
+          <Route
+            path={ROUTE_AUTHORIZATION}
+            element={
+              <AuthPage
+                FormComponent={AuthorizationForm}
+                googleMessage="Don`t have an account?"
+                route={ROUTE_REGISTRATION}
+                link="Create the account"
+              />
+            }
+          />
+          <Route path="*" element={<NotFound />} />
+        </Routes>
+      </div>
     </div>
   );
 }

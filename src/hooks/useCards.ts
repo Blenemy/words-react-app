@@ -21,7 +21,7 @@ export const useCards = (deckId: number, token: string) => {
           setCurrentCard(data);
         }
       },
-      enabled: currentCard === null,
+      enabled: !currentCard && !successMessage,
     }
   );
 
@@ -59,7 +59,16 @@ export const useCards = (deckId: number, token: string) => {
     setIsCorrectAnswer(isCorrect);
     setShowPopup(true);
     if (currentCard) {
-      nextCardMutation.mutate();
+      if (currentCard.words_left === 1 && currentCard.words_total !== 1) {
+        if (isCorrect) {
+          setCurrentCard(null);
+          setSuccessMessage(true);
+        } else {
+          nextCardMutation.mutate();
+        }
+      } else {
+        nextCardMutation.mutate();
+      }
     }
   };
 
