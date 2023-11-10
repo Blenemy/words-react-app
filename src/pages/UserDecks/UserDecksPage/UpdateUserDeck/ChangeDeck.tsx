@@ -1,16 +1,16 @@
 import Cookies from "js-cookie";
 import { useParams } from "react-router-dom";
+import { useGetDeck } from "../../../../hooks/useGetDeck";
+import { GlobalLoader } from "../../../../components/Loaders/GlobalLoader";
 import {
   ROUTE_CARD_GAME,
   ROUTE_HOME,
   ROUTE_USER_DECKS,
-} from "../../../constants/routes";
-import { AddCard } from "../AddCard/AddCard";
-import { useGetDeck } from "../../../hooks/useGetDeck";
-import { NoResluts } from "../../../components/NoResults/NoResluts";
-import { GlobalLoader } from "../../../components/Loaders/GlobalLoader";
-import { DeckCardsList } from "../DeckCardsList/DeckCardsList";
-import { Breadcrumbs } from "../../../components/Breadcrumbs/Breadcrumbs";
+} from "../../../../constants/routes";
+import { Breadcrumbs } from "../../../../components/Breadcrumbs/Breadcrumbs";
+import { DeckCardsList } from "../../UserCardsPage/DeckCardsList/DeckCardsList";
+import { NoResluts } from "../../../../components/NoResults/NoResluts";
+import { AddCard } from "../../UserCardsPage/AddCard/AddCard";
 
 /**
  * Компонент для управления деталями колоды и добавления новых карточек в нее.

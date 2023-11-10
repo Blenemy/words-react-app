@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { CardFromServer } from "../../types/CardFromServer";
-import { UpdateCardWindow } from "../../pages/UserDecks/AddCard/UpdateCardWindow/UpdateCardWindow";
 import { ImageComponent } from "../ImageComponent/ImageComponent";
+import { UpdateCardWindow } from "../../pages/UserDecks/UserCardsPage/AddCard/UpdateUserCard";
 
 /**
  * Компонент для отображения карточки колоды.

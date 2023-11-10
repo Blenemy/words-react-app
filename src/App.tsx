@@ -13,9 +13,7 @@ import {
 } from "./constants/routes";
 import { GamePage } from "./pages/GamePage/GamePage";
 import { HomePage } from "./pages/Home/HomePage";
-import { ChangeDeck } from "./pages/UserDecks/ChangeDeck/ChangeDeck";
 import "./App.scss";
-import { UserDecksPage } from "./pages/UserDecks/UserDecksPage";
 import { GlobalLoader } from "./components/Loaders/GlobalLoader";
 import { AuthorizationForm } from "./pages/AuthPage/Login/AuthorizationForm";
 import { RegistrationForm } from "./pages/AuthPage/Signup/RegistrationForm";
@@ -26,6 +24,8 @@ import { QuizGamePage } from "./pages/QuizGamePage/QuizGamePage";
 import { NotFound } from "./components/404/NotFound";
 import { Layout } from "./components/Layout/Layout";
 import { GameOver } from "./components/GameOver/GameOver";
+import { UserDecksPage } from "./pages/UserDecks/UserDecksPage/UserDecksPage";
+import { ChangeDeck } from "./pages/UserDecks/UserDecksPage/UpdateUserDeck/ChangeDeck";
 
 function App() {
   const { isLoading } = useFetchUser();

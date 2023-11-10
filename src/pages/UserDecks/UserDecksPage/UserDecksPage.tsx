@@ -1,11 +1,11 @@
 import Cookies from "js-cookie";
-import { ROUTE_CARD_GAME, ROUTE_HOME } from "../../constants/routes";
-import { useGetUserDecks } from "../../hooks/useGetUserDecks";
+import { GlobalLoader } from "../../../components/Loaders/GlobalLoader";
+import { useGetUserDecks } from "../../../hooks/useGetUserDecks";
+import { Breadcrumbs } from "../../../components/Breadcrumbs/Breadcrumbs";
+import { ROUTE_CARD_GAME, ROUTE_HOME } from "../../../constants/routes";
 import { UserDeckList } from "./UserDeckList/UserDeckList";
-import { NoResluts } from "../../components/NoResults/NoResluts";
-import { GlobalLoader } from "../../components/Loaders/GlobalLoader";
-import { Breadcrumbs } from "../../components/Breadcrumbs/Breadcrumbs";
-import { AddDeck } from "./ChangeDeck/AddDeck";
+import { NoResluts } from "../../../components/NoResults/NoResluts";
+import { AddDeck } from "./UpdateUserDeck/AddDeck";
 
 /**
  * Компонент UserDecksPage для отображения колод пользователя и добавления новых.

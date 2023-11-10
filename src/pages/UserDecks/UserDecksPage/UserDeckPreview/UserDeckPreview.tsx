@@ -1,12 +1,12 @@
-import { ImageComponent } from "../../../components/ImageComponent/ImageComponent";
-import { DeckFromServer } from "../../../types/DeckFromServer";
-
 /**
  * Представляет предпросмотр колоды пользователя с функциональностью игры или выбора колоды.
  *
  * @param {UserDeckPreviewProps} props - Свойства компоненты UserDeckPreview.
  * @returns Элемент JSX, представляющий один предпросмотр колоды или null, если колода не предоставлена.
  */
+
+import { ImageComponent } from "../../../../components/ImageComponent/ImageComponent";
+import { DeckFromServer } from "../../../../types/DeckFromServer";
 
 type UserDeckPreviewProps = {
   deck: DeckFromServer | null;

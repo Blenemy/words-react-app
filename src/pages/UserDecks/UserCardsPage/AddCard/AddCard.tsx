@@ -1,10 +1,10 @@
-import { handleFileUpload, handleInputChange } from "../../../utils/helpers";
-import { useAddCart } from "../../../hooks/useAddCard";
-import { CustomInput } from "../../../components/CustomInput/CustomInput";
-import { UserAccountButton } from "../../UserAccount/UserAccountLayout/UserAccountButton";
 import { memo, useState } from "react";
-import { FileDropZone } from "../../../components/FileDropZone/FileDropZone";
-import { GlobalLoader } from "../../../components/Loaders/GlobalLoader";
+import { useAddCart } from "../../../../hooks/useAddCard";
+import { GlobalLoader } from "../../../../components/Loaders/GlobalLoader";
+import { CustomInput } from "../../../../components/CustomInput/CustomInput";
+import { handleFileUpload, handleInputChange } from "../../../../utils/helpers";
+import { FileDropZone } from "../../../../components/FileDropZone/FileDropZone";
+import { UserAccountButton } from "../../../UserAccount/UserAccountLayout/UserAccountButton";
 
 /**
  * Компонент для добавления новой карточки в колоду.

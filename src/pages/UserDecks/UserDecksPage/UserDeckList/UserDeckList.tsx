@@ -1,10 +1,10 @@
 import { FC } from "react";
-import { DeckFromServer } from "../../../types/DeckFromServer";
 import { UserDeckPreview } from "../UserDeckPreview/UserDeckPreview";
-import { handleSumbitDeck } from "../../../api/handleSubmitDeck";
 import Cookies from "js-cookie";
 import { useNavigate } from "react-router-dom";
-import { ROUTE_USER_DECKS } from "../../../constants/routes";
+import { DeckFromServer } from "../../../../types/DeckFromServer";
+import { ROUTE_USER_DECKS } from "../../../../constants/routes";
+import { handleSumbitDeck } from "../../../../api/handleSubmitDeck";
 
 /**
  * Отображает список колод пользователя.

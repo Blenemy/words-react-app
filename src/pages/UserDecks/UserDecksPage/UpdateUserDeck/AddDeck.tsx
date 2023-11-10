@@ -1,10 +1,10 @@
 import { useState } from "react";
-import { CustomInput } from "../../../components/CustomInput/CustomInput";
-import { FileDropZone } from "../../../components/FileDropZone/FileDropZone";
-import { useAddDeck } from "../../../hooks/useAddDeck";
-import { handleFileUpload, handleInputChange } from "../../../utils/helpers";
-import { UserAccountButton } from "../../UserAccount/UserAccountLayout/UserAccountButton";
-import { Loader } from "../../../components/Loaders/Loader";
+import { CustomInput } from "../../../../components/CustomInput/CustomInput";
+import { FileDropZone } from "../../../../components/FileDropZone/FileDropZone";
+import { useAddDeck } from "../../../../hooks/useAddDeck";
+import { handleFileUpload, handleInputChange } from "../../../../utils/helpers";
+import { UserAccountButton } from "../../../UserAccount/UserAccountLayout/UserAccountButton";
+import { Loader } from "../../../../components/Loaders/Loader";
 
 export const AddDeck = () => {
   const [fileError, setFileError] = useState<string>("");

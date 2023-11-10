@@ -1,12 +1,12 @@
-import { DeckCard } from "../../../components/DeckCard/DeckCard";
-import { CardFromServer } from "../../../types/CardFromServer";
-
 /**
  * Отображает список карточек, принадлежащих конкретной колоде.
  *
  * @param {DeckCardsListProps} props - Свойства компоненты DeckCardsList.
  * @returns Список компонентов DeckCard.
  */
+
+import { DeckCard } from "../../../../components/DeckCard/DeckCard";
+import { CardFromServer } from "../../../../types/CardFromServer";
 
 interface DeckCardsListProps {
   deckId: string | undefined;
