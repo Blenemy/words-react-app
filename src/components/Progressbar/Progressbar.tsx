@@ -1,4 +1,5 @@
 import { Progress, Typography } from "@material-tailwind/react";
+import "./Progressbar.scss";
 import { memo } from "react";
 
 /**
