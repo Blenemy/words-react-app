@@ -1,6 +1,6 @@
 import Cookies from "js-cookie";
 import { useParams } from "react-router-dom";
-import { useGetDeck } from "../../../hooks/useGetDeck";
+import { useGetCards } from "../../../hooks/useGetCards";
 import { GlobalLoader } from "../../../components/Loaders/GlobalLoader";
 import {
   ROUTE_CARD_GAME,
@@ -23,7 +23,7 @@ import { MotionContainer } from "../../../components/MotionContainer/MotionConta
 export const UserCardsPage = () => {
   const { deckId } = useParams();
   const token = Cookies.get("token");
-  const { cardInDecks, isLoading, deckTitle } = useGetDeck(deckId, token);
+  const { cardInDecks, isLoading, deckTitle } = useGetCards(deckId, token);
 
   if (isLoading) {
     return <GlobalLoader />;
