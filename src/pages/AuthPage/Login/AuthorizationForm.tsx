@@ -2,6 +2,7 @@ import { CustomInput } from "../../../components/CustomInput/CustomInput";
 import { RedirectNotification } from "../../../components/RedirectNotification/RedirectNotification";
 import { ROUTE_HOME } from "../../../constants/routes";
 import { useAuth } from "../../../hooks/useAuth";
+import cn from "classnames";
 
 /**
  * Компонент, который рендерит форму авторизации для входа в систему.
@@ -48,7 +49,12 @@ export const AuthorizationForm = () => {
       </div>
       <button
         type="submit"
-        className="bg-lilackButton rounded-3xl w-full py-2 text-primary font-semibold border-2 border-primary"
+        className={cn(
+          "bg-lilackButton rounded-3xl w-full py-2 text-primary font-semibold border-2 border-primary",
+          {
+            "mb-3": showAlert,
+          }
+        )}
         disabled={isLoading}
       >
         {isLoading ? "Processing..." : "Sign in"}
