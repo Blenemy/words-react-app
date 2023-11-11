@@ -1,6 +1,6 @@
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { handleAddDeck } from "../api/handleAddDeck";
-import { useState } from "react";
+import { FormEvent, useState } from "react";
 import Cookies from "js-cookie";
 
 export const useAddDeck = () => {
@@ -10,8 +10,8 @@ export const useAddDeck = () => {
   const [previewImage, setPreviewImage] = useState<string | null>(null);
 
   const { mutateAsync, isLoading: addDeckLoading } = useMutation(
-    ({ formData, token }: { formData: any; token: string | undefined }) =>
-      handleAddDeck(formData, token),
+    (data: { formData: Object; token: string | undefined }) =>
+      handleAddDeck(data.formData, data.token),
     {
       onSuccess: () => {
         queryClient.invalidateQueries(["user-decks"]);
@@ -21,7 +21,7 @@ export const useAddDeck = () => {
     }
   );
 
-  const handleOnSubmit = async (event: any) => {
+  const handleOnSubmit = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
 
     await mutateAsync({ formData, token });

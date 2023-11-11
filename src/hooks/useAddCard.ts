@@ -1,5 +1,5 @@
 import { AddCardType } from "../types/AddCardType";
-import { useState } from "react";
+import { FormEvent, useState } from "react";
 import Cookies from "js-cookie";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { handleAddCard } from "../api/handleAddCard";
@@ -34,7 +34,7 @@ export const useAddCart = (deckId: number | undefined) => {
     }
   );
 
-  const handleAddCardOnSubmit = async (event: any) => {
+  const handleOnSubmit = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
 
     const dataToSend = {
@@ -55,7 +55,7 @@ export const useAddCart = (deckId: number | undefined) => {
   return {
     formData,
     setFormData,
-    handleAddCardOnSubmit,
+    handleOnSubmit,
     error,
     previewImage,
     setPreviewImage,

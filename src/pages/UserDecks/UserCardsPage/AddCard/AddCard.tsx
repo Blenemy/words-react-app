@@ -1,10 +1,10 @@
 import { memo, useState } from "react";
 import { useAddCart } from "../../../../hooks/useAddCard";
-import { GlobalLoader } from "../../../../components/Loaders/GlobalLoader";
 import { CustomInput } from "../../../../components/CustomInput/CustomInput";
 import { handleFileUpload, handleInputChange } from "../../../../utils/helpers";
 import { FileDropZone } from "../../../../components/FileDropZone/FileDropZone";
 import { UserAccountButton } from "../../../UserAccount/UserAccountLayout/UserAccountButton";
+import { Loader } from "../../../../components/Loaders/Loader";
 
 /**
  * Компонент для добавления новой карточки в колоду.
@@ -28,7 +28,7 @@ export const AddCard: React.FC<AddCardType> = memo(({ deckId }) => {
   const {
     formData,
     setFormData,
-    handleAddCardOnSubmit,
+    handleOnSubmit,
     error,
     previewImage,
     setPreviewImage,
@@ -39,12 +39,9 @@ export const AddCard: React.FC<AddCardType> = memo(({ deckId }) => {
     <div className="basis-4/12 shrink-0 grow">
       <div className="flex flex-col">
         {isLoading ? (
-          <GlobalLoader />
+          <Loader />
         ) : (
-          <form
-            className="flex flex-col gap-4"
-            onSubmit={handleAddCardOnSubmit}
-          >
+          <form className="flex flex-col gap-4" onSubmit={handleOnSubmit}>
             <h3 className="text-center text-2xl text-red-600">
               Add you own card to this deck
             </h3>
