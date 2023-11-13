@@ -1,8 +1,8 @@
-import { ReviewCard } from "./ReviewCard";
+import { ReviewCard } from "./ReviewCard/ReviewCard";
 import { useState } from "react";
 import { CSSTransition, TransitionGroup } from "react-transition-group";
 import "./Review.scss";
-import { useGetReviews } from "../../../hooks/useGetReviews";
+import { useGetReviews } from "../../../../hooks/useGetReviews";
 
 /**
  * Компонент Review для отображения списка комментариев/отзывов.

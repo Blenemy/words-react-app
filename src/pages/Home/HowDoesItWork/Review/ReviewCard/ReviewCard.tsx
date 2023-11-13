@@ -1,5 +1,5 @@
-import star from "../../../assets/star.png";
-import defaultImage from "../../../assets/User.svg";
+import star from "../../../../../assets/star.png";
+import defaultImage from "../../../../../assets/User.svg";
 import { v4 as uuidv4 } from "uuid";
 
 /**

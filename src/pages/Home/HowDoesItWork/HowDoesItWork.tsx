@@ -1,6 +1,6 @@
-import { HowDoesItWorkCard } from "./HowDoesItWorkCard";
-import { Review } from "./Review";
-import { ImageRow } from "./ImageRow";
+import { HowDoesItWorkCard } from "./HowDoesItWorkCard/HowDoesItWorkCard";
+import { Review } from "./Review/Review";
+import { ImageRow } from "./ImageRow/ImageRow";
 
 /**
  * Компонент HowDoesItWork для отображения раздела, объясняющего как это работает.
