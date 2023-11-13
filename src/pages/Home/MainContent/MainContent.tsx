@@ -2,9 +2,9 @@ import image1 from "../../../assets/frontpage-list-image1.png";
 import image2 from "../../../assets/frontpage-list-image2.png";
 import image3 from "../../../assets/frontpage-list-image3.png";
 import image4 from "../../../assets/frontpage-list-image4.png";
-import { TextList } from "./TextList";
-import { ImageList } from "./ImageList";
-import { ButtonLink } from "./ButtonLink";
+import { TextList } from "./TextList/TextList";
+import { ImageList } from "./ImageList/ImageList";
+import { ButtonLink } from "./ButtonLink/ButtonLink";
 import { useUpdateHeight } from "../../../hooks/useUpdateHight";
 
 /**
