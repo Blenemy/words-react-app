@@ -1,8 +1,8 @@
 import image2 from "../../../assets/benefits-image2.png";
 import image4 from "../../../assets/benefits-image4.png";
-import { BenefitsCarousel } from "./BenefitsCarousel";
-import { BenefitsContent } from "./BenefitsContent";
-import { BenefitsImage } from "./BenefitsImageProps";
+import { BenefitsCarousel } from "./BenefitsCarousel/BenefitsCarousel";
+import { BenefitsContent } from "./BenefitsContent/BenefitsContent";
+import { BenefitsImage } from "./BenefitsImage/BenefitsImage";
 
 /**
  * Компонент Benefits для отображения раздела с контентом преимуществ.
