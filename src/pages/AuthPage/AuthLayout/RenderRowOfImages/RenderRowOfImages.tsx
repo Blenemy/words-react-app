@@ -1,4 +1,4 @@
-import { RenderImage } from "./RenderImage";
+import { RenderImage } from "../RenderImage/RenderImage";
 
 /**
  * Компонент RenderRowOfImages для отрисовки ряда изображений.

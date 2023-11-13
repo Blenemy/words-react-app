@@ -5,8 +5,8 @@ import image4 from "../../../assets/createAccountImage4.png";
 import image5 from "../../../assets/createAccountImage5.png";
 import image6 from "../../../assets/createAccountImage6.png";
 import { MotionContainer } from "../../../components/MotionContainer/MotionContainer";
-import { RenderRowOfImages } from "./RenderRowOfImages";
-import { WelcomeMessage } from "./WelcomeMessage";
+import { RenderRowOfImages } from "./RenderRowOfImages/RenderRowOfImages";
+import { WelcomeMessage } from "./WelcomeMessage/WelcomeMessage";
 
 /**
  * Компонент AuthLayout для рендеринга макета аутентификации.
