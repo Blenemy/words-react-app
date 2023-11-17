@@ -42,6 +42,8 @@ export const QuizGamePage: React.FC = () => {
     }
   }, [successMessage, navigate]);
 
+  console.log(currentCard);
+
   return (
     <div className="flex flex-col text-primary">
       <div className="container mx-auto my-0 relative">

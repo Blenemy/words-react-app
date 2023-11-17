@@ -1,7 +1,7 @@
 ## Developers
 
 - **Front-end**: Denys Topchyi, www.linkedin.com/in/denys-topchyi-4665a4188
-- **Back-end**: Kirill Horodiskiy, https://www.linkedin.com/in/kirill-horodiskyi-6324ab1b2/
+- **Back-end**: Kirill Horodiskiy, https://www.linkedin.com/in/kirill-horodiskyi-6324ab1b2
 - **UI/UX Design Web design**: Anastasiia Untilova, https://www.linkedin.com/in/anastasiia-untilova-a4332b231/
 
 # Ukrainian to English Word Learning SP Application
@@ -74,17 +74,4 @@ All user data, including passwords, are securely stored and encrypted to prevent
 - **Gunicorn**: Serves as the WSGI HTTP server for serving Python applications in a production environment.
 - **NGINX**: Employs as a reverse proxy server, routing client requests to the appropriate backend services and providing an additional layer of abstraction and control.
 - **JWT Authentication**: Manages secure user authentication using JSON Web Tokens.
-- **Swagger/OpenAPI**: Used for documenting the API endpoints, allowing for easier testing and integration for frontend developers.
-- **SQLAlchemy**: Optionally included as an ORM for working with databases using Python objects instead of SQL queries.
-- **Unit Testing/Pytest**: Ensures code quality and reliability through automated tests.
-- **Celery Beat**: Schedules regular tasks using Celery, such as database cleanup and email notifications.
-- **Django Channels**: Provides capabilities for handling WebSockets and real-time features in Django applications.
-- **API Versioning**: Implements version control to the APIs to manage changes and deprecations gracefully.
 - **CORS Headers**: Handles Cross-Origin Resource Sharing, allowing the frontend to securely request resources from the backend.
-
-### Infrastructure
-
-- **Docker Compose**: Used for defining and running multi-container Docker applications, simplifying the configuration and linking of services.
-- **CI/CD Pipelines**: Automates the process of testing and deploying the application.
-- **AWS/GCP**: Could be utilized for hosting the application and managing cloud resources.
-- **Terraform**: Optionally used for infrastructure as code to provision and manage any cloud, infrastructure, or service.
