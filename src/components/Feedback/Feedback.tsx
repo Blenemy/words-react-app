@@ -9,7 +9,6 @@ import cn from "classnames";
 
 import { FormEvent, memo, useEffect, useState } from "react";
 import axios from "axios";
-import { BASE_URL } from "../../constants/routes";
 import Cookies from "js-cookie";
 import { Alert } from "../Alert/Alert";
 
@@ -36,7 +35,7 @@ export const Feedback = memo((): JSX.Element => {
 
     try {
       axios.post(
-        BASE_URL + "/social/comments/",
+        process.env.REACT_APP_API_BASE_URL + "/social/comments/",
         {
           rating: selectedRating,
           message: inputValue,
