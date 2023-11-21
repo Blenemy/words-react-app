@@ -19,7 +19,7 @@ export const Review = () => {
 
   const { comments } = useGetReviews();
 
-  const displayedComments = showAll ? comments : comments.slice(0, 2);
+  const displayedComments = showAll ? comments : comments?.slice(0, 2);
 
   return (
     <div className="flex flex-col">
