@@ -1,5 +1,5 @@
-import { Breadcrumbs } from "../../components/Breadcrumbs/Breadcrumbs";
 import { MotionContainer } from "../../components/MotionContainer/MotionContainer";
+import { NavigationBar } from "../../components/NavigationBar/NavigationBar";
 import { ROUTE_USER_DECKS } from "../../constants/routes";
 import { useGamePageDecks } from "../../hooks/useGamePageDecks";
 import { DefaultDecksList } from "./DefaultDecksList/DefaultDecksList";
@@ -18,7 +18,7 @@ export const GamePage = () => {
       <div className="container mx-auto my-0">
         <div className="py-14">
           <div className="mb-8">
-            <Breadcrumbs
+            <NavigationBar
               crumbs={[{ text: "Go to my decks", path: ROUTE_USER_DECKS }]}
               current="Game Page"
             />

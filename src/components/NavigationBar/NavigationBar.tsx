@@ -19,7 +19,7 @@ interface BreadCrumbsProps extends HTMLAttributes<HTMLDivElement> {
   current: string;
 }
 
-export const Breadcrumbs: React.FC<BreadCrumbsProps> = ({
+export const NavigationBar: React.FC<BreadCrumbsProps> = ({
   crumbs,
   current,
   ...props

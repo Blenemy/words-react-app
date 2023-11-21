@@ -9,7 +9,7 @@ import { Loader } from "../../components/Loaders/Loader";
 import Cookies from "js-cookie";
 import { useCards } from "../../hooks/useCards";
 import { GameContent } from "./GameContent/GameContent";
-import { Breadcrumbs } from "../../components/Breadcrumbs/Breadcrumbs";
+import { NavigationBar } from "../../components/NavigationBar/NavigationBar";
 import { Progressbar } from "../../components/Progressbar/Progressbar";
 
 /**
@@ -42,15 +42,13 @@ export const QuizGamePage: React.FC = () => {
     }
   }, [successMessage, navigate]);
 
-  console.log(currentCard);
-
   return (
     <div className="flex flex-col text-primary">
       <div className="container mx-auto my-0 relative">
         <div className="py-14 flex flex-col min-w-full">
           {currentCard && (
             <div className="mb-5">
-              <Breadcrumbs
+              <NavigationBar
                 crumbs={[
                   { text: "Home", path: ROUTE_HOME },
                   { text: "Back to game page", path: ROUTE_CARD_GAME },

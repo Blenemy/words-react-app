@@ -7,7 +7,7 @@ import {
   ROUTE_HOME,
   ROUTE_USER_DECKS,
 } from "../../../constants/routes";
-import { Breadcrumbs } from "../../../components/Breadcrumbs/Breadcrumbs";
+import { NavigationBar } from "../../../components/NavigationBar/NavigationBar";
 import { DeckCardsList } from "./DeckCardsList/DeckCardsList";
 import { NoResluts } from "../../../components/NoResults/NoResluts";
 import { AddCard } from "./AddCard/AddCard";
@@ -32,7 +32,7 @@ export const UserCardsPage = () => {
   return (
     <MotionContainer classes="p-14">
       <div className="mb-7">
-        <Breadcrumbs
+        <NavigationBar
           crumbs={[
             { text: "Home", path: ROUTE_HOME },
             { text: "Back to game page", path: ROUTE_CARD_GAME },

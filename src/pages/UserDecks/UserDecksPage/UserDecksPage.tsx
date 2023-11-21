@@ -1,7 +1,7 @@
 import Cookies from "js-cookie";
 import { GlobalLoader } from "../../../components/Loaders/GlobalLoader";
 import { useGetUserDecks } from "../../../hooks/useGetUserDecks";
-import { Breadcrumbs } from "../../../components/Breadcrumbs/Breadcrumbs";
+import { NavigationBar } from "../../../components/NavigationBar/NavigationBar";
 import { ROUTE_CARD_GAME, ROUTE_HOME } from "../../../constants/routes";
 import { UserDeckList } from "./UserDeckList/UserDeckList";
 import { NoResluts } from "../../../components/NoResults/NoResluts";
@@ -26,7 +26,7 @@ export const UserDecksPage = () => {
   return (
     <MotionContainer classes="p-14">
       <div className="mb-7">
-        <Breadcrumbs
+        <NavigationBar
           crumbs={[
             { text: "Home", path: ROUTE_HOME },
             { text: "Back to game page", path: ROUTE_CARD_GAME },
