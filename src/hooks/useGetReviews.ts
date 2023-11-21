@@ -4,7 +4,7 @@ import { useState } from "react";
 import { CommentType } from "../types/Comments";
 
 export const useGetReviews = () => {
-  const [comments, setComments] = useState<CommentType[] | []>([]);
+  const [comments, setComments] = useState<CommentType[] | null>(null);
 
   useQuery({
     queryFn: () => getReviews(),

@@ -24,7 +24,7 @@ export const Review = () => {
   return (
     <div className="flex flex-col">
       <TransitionGroup className="flex font-['Roboto_flex'] flex-wrap">
-        {displayedComments.map((comment) => (
+        {displayedComments?.map((comment) => (
           <CSSTransition
             key={comment.id}
             timeout={300}
@@ -43,7 +43,7 @@ export const Review = () => {
         ))}
       </TransitionGroup>
       <div className="px-8 self-end">
-        {comments.length > 2 && (
+        {comments && comments.length && (
           <button
             onClick={() => setShowAll(!showAll)}
             type="button"
