@@ -1,6 +1,7 @@
-import { FormEvent, useEffect, useState } from "react";
+import { FormEvent, useState, useEffect } from "react";
 import Cookies from "js-cookie";
-import axios from "axios";
+import { useMutation } from "@tanstack/react-query";
+import { postReview, FeedbackType } from "../api/handleReviews";
 
 export const usePostFeedback = () => {
   const [error, setError] = useState<boolean>(false);
@@ -9,40 +10,34 @@ export const usePostFeedback = () => {
   const [isShowAlert, setShowAlert] = useState(false);
   const token = Cookies.get("token");
 
+  const { mutate, isLoading, isError } = useMutation(
+    (newReview: FeedbackType) => postReview(newReview, token!),
+    {
+      onSuccess: () => {
+        setShowAlert(true);
+        setInputValue("");
+        setSelectedRating(3);
+      },
+      onError: () => {
+        setError(true);
+      },
+    }
+  );
+
   const handleRatingClick = (rating: number) => {
     setSelectedRating(rating);
   };
 
-  const handleOnSubmit = async (e: FormEvent<HTMLFormElement>) => {
+  const handleOnSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-
     if (inputValue.length < 10) {
       setError(true);
       return;
     }
-
-    try {
-      axios.post(
-        process.env.REACT_APP_API_BASE_URL + "/social/comments/",
-        {
-          rating: selectedRating,
-          message: inputValue,
-        },
-        {
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
-        }
-      );
-
-      setError(false);
-      setShowAlert(true);
-    } catch (error) {
-      console.log(error);
-    } finally {
-      setSelectedRating(3);
-      setInputValue("");
-    }
+    mutate({
+      rating: selectedRating,
+      message: inputValue,
+    });
   };
 
   useEffect(() => {
@@ -62,5 +57,7 @@ export const usePostFeedback = () => {
     setShowAlert,
     handleRatingClick,
     selectedRating,
+    isLoading,
+    isError,
   };
 };

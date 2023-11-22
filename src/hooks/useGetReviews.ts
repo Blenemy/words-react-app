@@ -1,5 +1,5 @@
 import { useQuery } from "@tanstack/react-query";
-import { getReviews } from "../api/getReviews";
+import { getReviews } from "../api/handleReviews";
 import { useState } from "react";
 import { CommentType } from "../types/Comments";
 
